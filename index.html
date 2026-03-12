@@ -113,6 +113,82 @@
 
     .nav-link:hover { color: var(--gold); }
 
+    .nav-link-subscribe {
+      color: var(--gold) !important;
+      border: 1px solid var(--gold-dim);
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .nav-link-subscribe:hover {
+      background: var(--gold);
+      color: var(--navy-deep) !important;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* NEWSLETTER SECTION */
+    .newsletter-section {
+      background: var(--navy-mid);
+      border: 1px solid var(--navy-border);
+      border-left: 3px solid var(--gold);
+      padding: 2.5rem 2.5rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-text h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .newsletter-text p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* TYPING CURSOR */
+    .cursor-blink::after {
+      content: "|";
+      color: var(--gold);
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* SKILL TAG PULSE on hover */
+    .skill-tag:hover {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+      background: rgba(201,168,76,0.07);
+      transform: translateY(-1px);
+      transition: all 0.15s ease;
+    }
+
     /* HERO */
     header {
       padding: 4.5rem 0 4rem;
@@ -647,7 +723,7 @@
     }
 
     .eyebrow   { animation-delay: 0.1s; }
-    h1         { animation-delay: 0.25s; }]
+    h1         { animation-delay: 0.25s; }
     .tagline   { animation-delay: 0.4s; }
     .hero-meta { animation-delay: 0.52s; }
     .hero-photo { opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards; }
@@ -796,6 +872,7 @@
           <a href="#work" class="nav-link">Work</a>
           <a href="#resume" class="nav-link">Résumé</a>
           <a href="#contact" class="nav-link">Contact</a>
+          <a href="https://douglas-ebhoman.kit.com/0493328134" class="nav-link nav-link-subscribe" target="_blank" rel="noopener">Subscribe</a>
         </div>
       </div>
     </div>
@@ -982,7 +1059,7 @@
           <h2>Experience &amp; Background</h2>
         </div>
         <!-- Update href to your actual CV PDF path once uploaded to GitHub -->
-        <a href="Douglas_Ebhoman_CV.pdf" download class="resume-download">↓ Download CV</a>
+        <a href="Douglas_Ebhoman_CV_v4.pdf" download class="resume-download">↓ Download CV</a>
       </div>
 
       <!-- EXPERIENCE -->
@@ -1057,9 +1134,9 @@
       <div class="resume-block">
         <div class="resume-block-title">Education</div>
         <div class="resume-entry">
-          <div class="resume-entry-title">Diploma in Web Development ·  Benin City, Nigeria</div>
-          <div class="resume-entry-date">Apr2024 - May2025</div>
-          <div class="resume-entry-org">Complete Computer Technology (CCT) </div>
+          <div class="resume-entry-title">Update with your degree &amp; institution</div>
+          <div class="resume-entry-date">Year — Year</div>
+          <div class="resume-entry-org">Institution Name</div>
         </div>
       </div>
 
@@ -1075,10 +1152,10 @@
          and collaborations in developer education and Docs-as-Code environments.</p>
 
       <div class="contact-grid">
-        <a href="mailto:douglas@douglasebhoman.com" class="contact-link">
+        <a href="/cdn-cgi/l/email-protection#294d465c4e45485a694d465c4e45485a4c4b4146444847074a4644" class="contact-link">
           <span class="contact-link-label">Email</span>
           <span class="contact-divider"></span>
-          <span class="contact-link-value">douglas@douglasebhoman.com</span>
+          <span class="contact-link-value"><span class="__cf_email__" data-cfemail="33575c46545f524073575c46545f524056515b5c5e525d1d505c5e">[email&#160;protected]</span></span>
         </a>
         <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="contact-link" target="_blank" rel="noopener">
           <span class="contact-link-label">LinkedIn</span>
@@ -1099,12 +1176,60 @@
     </div>
   </section>
 
+  <!-- NEWSLETTER -->
+  <section>
+    <div class="container">
+      <div class="newsletter-section reveal">
+        <div class="newsletter-text">
+          <h3>Stay in the loop</h3>
+          <p>New guides, articles, and documentation resources — straight to your inbox.</p>
+        </div>
+        <a href="https://douglas-ebhoman.kit.com/0493328134" class="btn btn-gold" target="_blank" rel="noopener">Subscribe →</a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-inner">
         <div class="footer-name">Douglas <span>Ebhoman</span></div>
-        <div class="footer-meta">
+           <div class="footer-meta">
           <span>Prague, Czechia</span>
           <span class="footer-dot"></span>
-          <span>Built with GitHub Pa
+          <span>Technical Writer</span>
+          <span class="footer-dot"></span>
+          <a href="https://douglas-ebhoman.kit.com/0493328134" target="_blank" rel="noopener" style="color:var(--gold-dim);text-decoration:none;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('section, .series-card, .focus-item, .portfolio-item, .resume-entry, .newsletter-section');
+    reveals.forEach(el => el.classList.add('reveal'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger focus grid items
+    document.querySelectorAll('.focus-item').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.08) + 's';
+    });
+
+    // Stagger portfolio items
+    document.querySelectorAll('.portfolio-item').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.07) + 's';
+    });
+  </script>
+
+</body>
+</html>
