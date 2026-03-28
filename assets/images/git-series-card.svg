@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18222C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E2935;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gold line gradient -->
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A68959;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A68959;stop-opacity:0" />
+    </linearGradient>
+
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#A68959" stroke-width="0.3" opacity="0.15"/>
+    </pattern>
+
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Grid overlay -->
+  <rect width="800" height="420" fill="url(#grid)"/>
+
+  <!-- Left gold accent bar -->
+  <rect x="0" y="0" width="3" height="420" fill="#A68959" opacity="0.8"/>
+
+  <!-- Top gold accent line -->
+  <rect x="0" y="0" width="800" height="1.5" fill="url(#goldLine)"/>
+
+  <!-- Series label -->
+  <text x="40" y="58" font-family="'DM Mono', 'Courier New', monospace" font-size="11" font-weight="500" letter-spacing="3" fill="#A68959" opacity="0.9" text-anchor="start">GIT &amp; GITHUB FOR TECHNICAL WRITERS</text>
+
+  <!-- Decorative line after label -->
+  <line x1="40" y1="68" x2="760" y2="68" stroke="#A68959" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Main title -->
+  <text x="40" y="118" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#E8E6E1" letter-spacing="-0.5">A Six-Part</text>
+  <text x="40" y="158" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#A68959" font-style="italic" letter-spacing="-0.5">Documentation Series</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="178" x2="200" y2="178" stroke="#A68959" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Parts list - Left column -->
+  <g font-family="'DM Mono', 'Courier New', monospace" font-size="11.5" fill="#8892A4">
+
+    <!-- Part 01 -->
+    <text x="40" y="210">
+      <tspan fill="#A68959" opacity="0.7">01</tspan>
+      <tspan dx="12" fill="#B8C0CC">Git Basics for Technical Writers</tspan>
+    </text>
+
+    <!-- Part 02 -->
+    <text x="40" y="234">
+      <tspan fill="#A68959" opacity="0.7">02</tspan>
+      <tspan dx="12" fill="#B8C0CC">Git vs GitHub</tspan>
+    </text>
+
+    <!-- Part 03 -->
+    <text x="40" y="258">
+      <tspan fill="#A68959" opacity="0.7">03</tspan>
+      <tspan dx="12" fill="#B8C0CC">From Editing Files to Managing Versions</tspan>
+    </text>
+
+    <!-- Part 04 -->
+    <text x="40" y="282">
+      <tspan fill="#A68959" opacity="0.7">04</tspan>
+      <tspan dx="12" fill="#B8C0CC">Pull Requests as Documentation Governance</tspan>
+    </text>
+
+    <!-- Part 05 -->
+    <text x="40" y="306">
+      <tspan fill="#A68959" opacity="0.7">05</tspan>
+      <tspan dx="12" fill="#B8C0CC">CI/CD Pipelines for Documentation</tspan>
+    </text>
+
+    <!-- Part 06 -->
+    <text x="40" y="330">
+      <tspan fill="#A68959" opacity="0.7">06</tspan>
+      <tspan dx="12" fill="#B8C0CC">Documentation Architecture &amp; Diátaxis</tspan>
+    </text>
+  </g>
+
+  <!-- Horizontal divider before tags -->
+  <line x1="40" y1="352" x2="760" y2="352" stroke="#A68959" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Tech stack tags -->
+  <!-- MkDocs tag -->
+  <rect x="40" y="366" width="74" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5" rx="0"/>
+  <text x="77" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">MkDocs</text>
+
+  <!-- GitHub Actions tag -->
+  <rect x="126" y="366" width="124" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5" rx="0"/>
+  <text x="188" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">GitHub Actions</text>
+
+  <!-- Markdown tag -->
+  <rect x="262" y="366" width="82" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5" rx="0"/>
+  <text x="303" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">Markdown</text>
+
+  <!-- Docs-as-Code tag -->
+  <rect x="356" y="366" width="102" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5" rx="0"/>
+  <text x="407" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">Docs-as-Code</text>
+
+  <!-- Right side decorative element - vertical line -->
+  <line x1="620" y1="80" x2="620" y2="340" stroke="#A68959" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Right side - visual representation of git graph -->
+  <g opacity="0.35">
+    <!-- Main branch line -->
+    <line x1="660" y1="100" x2="660" y2="340" stroke="#A68959" stroke-width="1.5"/>
+
+    <!-- Commit nodes on main -->
+    <circle cx="660" cy="120" r="5" fill="#A68959" filter="url(#glow)"/>
+    <circle cx="660" cy="170" r="5" fill="#A68959" filter="url(#glow)"/>
+    <circle cx="660" cy="220" r="5" fill="#A68959" filter="url(#glow)"/>
+    <circle cx="660" cy="270" r="5" fill="#A68959" filter="url(#glow)"/>
+    <circle cx="660" cy="320" r="5" fill="#A68959" filter="url(#glow)"/>
+
+    <!-- Feature branch -->
+    <path d="M 660 170 Q 700 170 700 200 L 700 240 Q 700 270 660 270" fill="none" stroke="#B8C0CC" stroke-width="1"/>
+    <circle cx="700" cy="220" r="4" fill="#B8C0CC"/>
+
+    <!-- Branch labels -->
+    <text x="672" y="124" font-family="'DM Mono', 'Courier New', monospace" font-size="9" fill="#A68959" letter-spacing="0.5">main</text>
+    <text x="712" y="224" font-family="'DM Mono', 'Courier New', monospace" font-size="9" fill="#B8C0CC" letter-spacing="0.5">feature</text>
+  </g>
+
+  <!-- Bottom tagline -->
+  <text x="40" y="408" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#A68959" opacity="0.6" font-style="italic">Built with the same workflow it teaches.</text>
+
+  <!-- Live indicator -->
+  <circle cx="748" cy="400" r="4" fill="#A68959" opacity="0.8"/>
+  <text x="738" y="404" font-family="'DM Mono', 'Courier New', monospace" font-size="9" fill="#A68959" opacity="0.7" text-anchor="end" letter-spacing="1">LIVE</text>
+</svg>
