@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#18222C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E2935;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A68959;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A68959;stop-opacity:0" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#A68959" stroke-width="0.3" opacity="0.12"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <rect width="800" height="420" fill="url(#grid)"/>
+
+  <!-- Left gold accent bar -->
+  <rect x="0" y="0" width="3" height="420" fill="#A68959" opacity="0.8"/>
+
+  <!-- Top gold line -->
+  <rect x="0" y="0" width="800" height="1.5" fill="url(#goldLine)"/>
+
+  <!-- Label -->
+  <text x="40" y="58" font-family="'DM Mono', 'Courier New', monospace" font-size="11" font-weight="500" letter-spacing="3" fill="#A68959" opacity="0.9">OPENWEATHER API — GETTING STARTED GUIDE</text>
+  <line x1="40" y1="68" x2="760" y2="68" stroke="#A68959" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Title -->
+  <text x="40" y="118" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="600" fill="#E8E6E1" letter-spacing="-0.5">API Documentation</text>
+  <text x="40" y="158" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="600" fill="#A68959" font-style="italic" letter-spacing="-0.5">for Everyone</text>
+  <line x1="40" y1="178" x2="180" y2="178" stroke="#A68959" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Sections -->
+  <g font-family="'DM Mono', 'Courier New', monospace" font-size="11.5">
+    <text x="40" y="210"><tspan fill="#A68959" opacity="0.7">01</tspan><tspan dx="12" fill="#B8C0CC">Prerequisites &amp; Account Setup</tspan></text>
+    <text x="40" y="234"><tspan fill="#A68959" opacity="0.7">02</tspan><tspan dx="12" fill="#B8C0CC">Authentication &amp; API Keys</tspan></text>
+    <text x="40" y="258"><tspan fill="#A68959" opacity="0.7">03</tspan><tspan dx="12" fill="#B8C0CC">Endpoints &amp; Request Structure</tspan></text>
+    <text x="40" y="282"><tspan fill="#A68959" opacity="0.7">04</tspan><tspan dx="12" fill="#B8C0CC">Reading the Response</tspan></text>
+    <text x="40" y="306"><tspan fill="#A68959" opacity="0.7">05</tspan><tspan dx="12" fill="#B8C0CC">Error Handling &amp; Troubleshooting</tspan></text>
+    <text x="40" y="330"><tspan fill="#A68959" opacity="0.7">06</tspan><tspan dx="12" fill="#B8C0CC">Quick Reference</tspan></text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="40" y1="352" x2="760" y2="352" stroke="#A68959" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Tags -->
+  <rect x="40" y="366" width="74" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5"/>
+  <text x="77" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">REST API</text>
+
+  <rect x="126" y="366" width="74" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5"/>
+  <text x="163" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">Postman</text>
+
+  <rect x="212" y="366" width="82" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5"/>
+  <text x="253" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">Markdown</text>
+
+  <rect x="306" y="366" width="120" height="24" fill="none" stroke="#A68959" stroke-width="1" opacity="0.5"/>
+  <text x="366" y="382" font-family="'DM Mono', 'Courier New', monospace" font-size="10" fill="#A68959" text-anchor="middle" letter-spacing="1">Docs-as-Code</text>
+
+  <!-- Right side: request/response visual -->
+  <g opacity="0.4">
+    <!-- Request box -->
+    <rect x="555" y="90" width="205" height="100" fill="#1E2935" stroke="#A68959" stroke-width="0.8"/>
+    <text x="567" y="110" font-family="'DM Mono', 'Courier New', monospace" font-size="8.5" fill="#A68959" letter-spacing="1">REQUEST</text>
+    <line x1="555" y1="116" x2="760" y2="116" stroke="#A68959" stroke-width="0.5" opacity="0.4"/>
+    <text x="567" y="133" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#B8C0CC">GET /weather</text>
+    <text x="567" y="150" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#8892A4">?q=Prague</text>
+    <text x="567" y="167" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#8892A4">&amp;appid={API_KEY}</text>
+
+    <!-- Arrow -->
+    <line x1="657" y1="190" x2="657" y2="212" stroke="#A68959" stroke-width="1.2"/>
+    <polygon points="651,208 657,220 663,208" fill="#A68959"/>
+
+    <!-- Response box -->
+    <rect x="555" y="220" width="205" height="115" fill="#1E2935" stroke="#B8C0CC" stroke-width="0.8" opacity="0.5"/>
+    <text x="567" y="238" font-family="'DM Mono', 'Courier New', monospace" font-size="8.5" fill="#B8C0CC" letter-spacing="1">RESPONSE</text>
+    <line x1="555" y1="244" x2="760" y2="244" stroke="#B8C0CC" stroke-width="0.5" opacity="0.3"/>
+    <text x="567" y="262" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#8892A4">{</text>
+    <text x="575" y="278" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#B8C0CC">"name": "Prague",</text>
+    <text x="575" y="294" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#B8C0CC">"temp": 18.4,</text>
+    <text x="575" y="310" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#A68959">"status": 200</text>
+    <text x="567" y="326" font-family="'DM Mono', 'Courier New', monospace" font-size="8" fill="#8892A4">}</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="40" y="408" font-family="Georgia, 'Times New Roman', serif" font-size="12" fill="#A68959" opacity="0.6" font-style="italic">Written for anyone — not just developers.</text>
+
+  <!-- Live dot -->
+  <circle cx="748" cy="400" r="4" fill="#A68959" opacity="0.8"/>
+  <text x="738" y="404" font-family="'DM Mono', 'Courier New', monospace" font-size="9" fill="#A68959" opacity="0.7" text-anchor="end" letter-spacing="1">LIVE</text>
+</svg>
