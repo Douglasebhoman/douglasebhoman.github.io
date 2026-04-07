@@ -27,7 +27,7 @@ douglasebhoman.github.io/
 │       ├── systems-over-sentences-card.png
 │       ├── personal-website-guide-card.svg
 │       ├── static-portfolio-card.svg
-│       ├── headshot.jpg
+│       ├── about-image.png
 │       └── headshots.jpg
 ├── openweather-docs/
 ├── .github/
