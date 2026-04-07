@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0A1628"/>
+
+  <!-- LEFT SIDE — broken/confused state -->
+  <rect x="0" y="0" width="370" height="420" fill="#080F1C"/>
+
+  <!-- Broken DNS — scattered, wrong, conflicting -->
+  <text x="30" y="50" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" opacity="0.35" letter-spacing="1">DNS RECORDS — BROKEN</text>
+  <rect x="20" y="58" width="330" height="1" fill="#B8C0CC" opacity="0.1"/>
+
+  <!-- Wrong records table -->
+  <rect x="20" y="68" width="340" height="22" rx="3" fill="#0F2035" stroke="#B8C0CC" stroke-width="0.3" opacity="0.3"/>
+  <text x="30" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">Type</text>
+  <text x="80" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">Name</text>
+  <text x="140" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">Content</text>
+  <text x="280" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">Proxy</text>
+
+  <!-- Wrong row 1 — orange cloud enabled (wrong) -->
+  <rect x="20" y="90" width="340" height="18" rx="0" fill="#B8C0CC" opacity="0.03"/>
+  <text x="30" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">A</text>
+  <text x="80" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">@</text>
+  <text x="140" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">185.199.108.153</text>
+  <!-- Orange proxy cloud — wrong -->
+  <rect x="278" y="94" width="52" height="14" rx="3" fill="#8B4513" opacity="0.6"/>
+  <text x="304" y="104" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" text-anchor="middle">Proxied ✗</text>
+
+  <!-- Wrong row 2 -->
+  <text x="30" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">A</text>
+  <text x="80" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">@</text>
+  <text x="140" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.5">185.199.109.153</text>
+  <rect x="278" y="112" width="52" height="14" rx="3" fill="#8B4513" opacity="0.6"/>
+  <text x="304" y="122" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" text-anchor="middle">Proxied ✗</text>
+
+  <!-- Error message -->
+  <rect x="20" y="140" width="340" height="40" rx="4" fill="#1A0808" stroke="#8B4513" stroke-width="0.8"/>
+  <text x="30" y="156" font-family="'DM Mono', monospace" font-size="8" fill="#FFB347" opacity="0.8">⚠ HTTPS certificate failed to issue</text>
+  <text x="30" y="170" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.4">Cloudflare proxy interfering with Let's Encrypt</text>
+
+  <!-- 404 browser -->
+  <rect x="20" y="195" width="340" height="80" rx="6" fill="#0F2035" stroke="#B8C0CC" stroke-width="0.5" opacity="0.4"/>
+  <rect x="20" y="195" width="340" height="20" rx="6" fill="#B8C0CC" opacity="0.08"/>
+  <circle cx="36" cy="205" r="3" fill="#B8C0CC" opacity="0.3"/>
+  <circle cx="48" cy="205" r="3" fill="#B8C0CC" opacity="0.2"/>
+  <circle cx="60" cy="205" r="3" fill="#B8C0CC" opacity="0.15"/>
+  <rect x="72" y="199" width="180" height="12" rx="2" fill="#0A1628" stroke="#B8C0CC" stroke-width="0.3" opacity="0.5"/>
+  <text x="78" y="208" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.4">yourname.com</text>
+  <text x="190" y="250" font-family="'DM Mono', monospace" font-size="28" fill="#B8C0CC" text-anchor="middle" opacity="0.15" font-weight="500">404</text>
+  <text x="190" y="270" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" text-anchor="middle" opacity="0.25">Page not found</text>
+
+  <!-- Gmail confusion -->
+  <rect x="20" y="290" width="340" height="70" rx="6" fill="#0F2035" stroke="#B8C0CC" stroke-width="0.5" opacity="0.3"/>
+  <text x="30" y="308" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">From: yourname@gmail.com</text>
+  <text x="30" y="322" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.2">Reply-to: yourname@gmail.com</text>
+  <rect x="20" y="328" width="340" height="1" fill="#B8C0CC" opacity="0.08"/>
+  <text x="30" y="346" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.2">App Passwords not found...</text>
+  <text x="30" y="358" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.15">Enable 2-Step Verification first</text>
+
+  <!-- LEFT LABEL -->
+  <text x="185" y="406" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" text-anchor="middle" opacity="0.3" letter-spacing="2">BEFORE THIS GUIDE</text>
+
+  <!-- DIVIDER -->
+  <line x1="392" y1="20" x2="392" y2="400" stroke="#A68959" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- CENTRE TITLE -->
+  <rect x="290" y="168" width="220" height="84" rx="6" fill="#0A1628" opacity="0.95"/>
+  <rect x="290" y="168" width="220" height="84" rx="6" fill="none" stroke="#A68959" stroke-width="1"/>
+  <text x="400" y="196" font-family="'DM Mono', monospace" font-size="13" font-weight="500" fill="#FFFFFF" text-anchor="middle">Personal Website</text>
+  <text x="400" y="214" font-family="'DM Mono', monospace" font-size="13" font-weight="500" fill="#FFFFFF" text-anchor="middle">Setup Guide</text>
+  <rect x="320" y="220" width="160" height="1" fill="#A68959" opacity="0.4"/>
+  <text x="400" y="236" font-family="'DM Mono', monospace" font-size="8" fill="#A68959" text-anchor="middle" opacity="0.8">GitHub Pages · Cloudflare · Email</text>
+
+  <!-- RIGHT SIDE — resolved/working state -->
+  <rect x="414" y="0" width="386" height="420" fill="#0A1628"/>
+
+  <!-- Working DNS table -->
+  <text x="424" y="50" font-family="'DM Mono', monospace" font-size="10" fill="#A68959" opacity="0.6" letter-spacing="1">DNS RECORDS — CORRECT</text>
+  <rect x="414" y="58" width="376" height="1" fill="#A68959" opacity="0.2"/>
+
+  <rect x="414" y="68" width="376" height="22" rx="3" fill="#A68959" opacity="0.12"/>
+  <text x="424" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Type</text>
+  <text x="474" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Name</text>
+  <text x="524" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Content</text>
+  <text x="680" y="83" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Proxy</text>
+
+  <!-- Correct row 1 -->
+  <rect x="414" y="90" width="376" height="18" fill="#A68959" opacity="0.04"/>
+  <text x="424" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.8">A</text>
+  <text x="474" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.8">@</text>
+  <text x="524" y="103" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.8">185.199.108.153</text>
+  <rect x="678" y="94" width="58" height="14" rx="3" fill="#0F3020" opacity="0.8"/>
+  <text x="707" y="104" font-family="'DM Mono', monospace" font-size="7" fill="#4CAF50" text-anchor="middle">DNS only ✓</text>
+
+  <!-- Correct rows 2-4 -->
+  <text x="424" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">A</text>
+  <text x="474" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">@</text>
+  <text x="524" y="121" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">185.199.109.153</text>
+  <rect x="678" y="112" width="58" height="14" rx="3" fill="#0F3020" opacity="0.8"/>
+  <text x="707" y="122" font-family="'DM Mono', monospace" font-size="7" fill="#4CAF50" text-anchor="middle">DNS only ✓</text>
+
+  <rect x="414" y="126" width="376" height="18" fill="#A68959" opacity="0.04"/>
+  <text x="424" y="139" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">CNAME</text>
+  <text x="474" y="139" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">www</text>
+  <text x="524" y="139" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.7">douglasebhoman.github.io</text>
+  <rect x="678" y="130" width="58" height="14" rx="3" fill="#0F3020" opacity="0.8"/>
+  <text x="707" y="140" font-family="'DM Mono', monospace" font-size="7" fill="#4CAF50" text-anchor="middle">DNS only ✓</text>
+
+  <!-- HTTPS success -->
+  <rect x="414" y="158" width="376" height="36" rx="4" fill="#0A2010" stroke="#A68959" stroke-width="0.8" opacity="0.8"/>
+  <text x="424" y="172" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">✓ HTTPS certificate issued successfully</text>
+  <text x="424" y="186" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.5">Secured by Let's Encrypt · Auto-renews</text>
+
+  <!-- Working browser -->
+  <rect x="414" y="206" width="376" height="90" rx="6" fill="#0F2035" stroke="#A68959" stroke-width="0.8"/>
+  <rect x="414" y="206" width="376" height="22" rx="6" fill="#A68959" opacity="0.12"/>
+  <circle cx="430" cy="217" r="3" fill="#A68959" opacity="0.5"/>
+  <circle cx="444" cy="217" r="3" fill="#A68959" opacity="0.35"/>
+  <circle cx="458" cy="217" r="3" fill="#A68959" opacity="0.2"/>
+  <!-- Lock icon + URL -->
+  <rect x="470" y="211" width="200" height="12" rx="2" fill="#0A1628" stroke="#A68959" stroke-width="0.5" opacity="0.8"/>
+  <text x="476" y="220" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" opacity="0.9">🔒 douglasebhoman.com</text>
+  <!-- Live content -->
+  <text x="428" y="252" font-family="'DM Mono', monospace" font-size="11" fill="#FFFFFF" opacity="0.8">Douglas Ebhoman</text>
+  <text x="428" y="268" font-family="'DM Mono', monospace" font-size="8" fill="#A68959" opacity="0.7">Technical Writer · Prague</text>
+  <text x="428" y="284" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.4">Live · HTTPS · Custom domain</text>
+
+  <!-- Working email -->
+  <rect x="414" y="308" width="376" height="72" rx="6" fill="#0F2035" stroke="#A68959" stroke-width="0.8"/>
+  <text x="424" y="326" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">From: douglas@douglasebhoman.com</text>
+  <text x="424" y="340" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.5">via smtp.gmail.com · App Password auth</text>
+  <rect x="414" y="346" width="376" height="1" fill="#A68959" opacity="0.15"/>
+  <text x="424" y="362" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.6">Professional email · Sends via Gmail</text>
+  <text x="424" y="374" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" opacity="0.5">Cloudflare Email Routing · Free</text>
+
+  <!-- RIGHT LABEL -->
+  <text x="605" y="406" font-family="'DM Mono', monospace" font-size="10" fill="#A68959" text-anchor="middle" opacity="0.5" letter-spacing="2">AFTER THIS GUIDE</text>
+
+  <!-- Gold accent bar -->
+  <rect x="0" y="0" width="4" height="420" fill="#A68959"/>
+
+  <!-- Domain label -->
+  <text x="776" y="20" font-family="'DM Mono', monospace" font-size="8" fill="#A68959" text-anchor="end" opacity="0.4" letter-spacing="1">douglasebhoman.com</text>
+
+</svg>

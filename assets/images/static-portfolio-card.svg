@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="#0A1628"/>
+
+  <!-- LEFT SIDE — undocumented, no architecture -->
+  <rect x="0" y="0" width="370" height="420" fill="#080F1C"/>
+
+  <!-- Messy code without docs -->
+  <text x="30" y="48" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" opacity="0.3" letter-spacing="1">NO DOCUMENTATION</text>
+  <rect x="20" y="54" width="340" height="1" fill="#B8C0CC" opacity="0.08"/>
+
+  <!-- Code editor — undocumented -->
+  <rect x="20" y="62" width="340" height="240" rx="6" fill="#0F2035" stroke="#B8C0CC" stroke-width="0.5" opacity="0.3"/>
+  <rect x="20" y="62" width="340" height="20" rx="6" fill="#B8C0CC" opacity="0.06"/>
+  <circle cx="36" cy="72" r="3" fill="#B8C0CC" opacity="0.2"/>
+  <circle cx="48" cy="72" r="3" fill="#B8C0CC" opacity="0.15"/>
+  <circle cx="60" cy="72" r="3" fill="#B8C0CC" opacity="0.1"/>
+
+  <!-- Code lines — no comments, unclear -->
+  <text x="30" y="100" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.4">&lt;form action="/submit"&gt;</text>
+  <text x="30" y="114" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.35">  &lt;input type="email"/&gt;</text>
+  <text x="30" y="128" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.3">  &lt;button&gt;Submit&lt;/button&gt;</text>
+  <text x="30" y="142" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" opacity="0.25">&lt;/form&gt;</text>
+
+  <!-- Question marks floating -->
+  <text x="280" y="108" font-family="'DM Mono', monospace" font-size="22" fill="#B8C0CC" opacity="0.12">?</text>
+  <text x="300" y="140" font-family="'DM Mono', monospace" font-size="16" fill="#B8C0CC" opacity="0.1">?</text>
+  <text x="260" y="150" font-family="'DM Mono', monospace" font-size="12" fill="#B8C0CC" opacity="0.08">?</text>
+
+  <!-- Warning labels floating -->
+  <rect x="30" y="162" width="220" height="16" rx="3" fill="#1A0808" stroke="#8B4513" stroke-width="0.5" opacity="0.6"/>
+  <text x="36" y="174" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" opacity="0.6">Where does form data go?</text>
+
+  <rect x="30" y="184" width="200" height="16" rx="3" fill="#1A0808" stroke="#8B4513" stroke-width="0.5" opacity="0.5"/>
+  <text x="36" y="196" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" opacity="0.5">Is user input validated?</text>
+
+  <rect x="30" y="206" width="240" height="16" rx="3" fill="#1A0808" stroke="#8B4513" stroke-width="0.5" opacity="0.45"/>
+  <text x="36" y="218" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" opacity="0.45">No backend — does submit even work?</text>
+
+  <rect x="30" y="228" width="210" height="16" rx="3" fill="#1A0808" stroke="#8B4513" stroke-width="0.5" opacity="0.4"/>
+  <text x="36" y="240" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" opacity="0.4">CSRF protection missing?</text>
+
+  <rect x="30" y="250" width="190" height="16" rx="3" fill="#1A0808" stroke="#8B4513" stroke-width="0.5" opacity="0.35"/>
+  <text x="36" y="262" font-family="'DM Mono', monospace" font-size="7" fill="#FFB347" opacity="0.35">No GDPR documentation</text>
+
+  <!-- No README notice -->
+  <rect x="20" y="318" width="340" height="50" rx="6" fill="#0A0A0A" stroke="#B8C0CC" stroke-width="0.3" stroke-dasharray="4 3" opacity="0.3"/>
+  <text x="190" y="340" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" text-anchor="middle" opacity="0.2">README.md</text>
+  <text x="190" y="358" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" text-anchor="middle" opacity="0.15">not found</text>
+
+  <!-- LEFT LABEL -->
+  <text x="185" y="406" font-family="'DM Mono', monospace" font-size="10" fill="#B8C0CC" text-anchor="middle" opacity="0.3" letter-spacing="2">UNDOCUMENTED</text>
+
+  <!-- DIVIDER -->
+  <line x1="392" y1="20" x2="392" y2="400" stroke="#A68959" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- CENTRE TITLE -->
+  <rect x="286" y="162" width="228" height="96" rx="6" fill="#0A1628" opacity="0.95"/>
+  <rect x="286" y="162" width="228" height="96" rx="6" fill="none" stroke="#A68959" stroke-width="1"/>
+  <text x="400" y="188" font-family="'DM Mono', monospace" font-size="12" font-weight="500" fill="#FFFFFF" text-anchor="middle">Static Portfolio</text>
+  <text x="400" y="206" font-family="'DM Mono', monospace" font-size="12" font-weight="500" fill="#A68959" text-anchor="middle">Architecture Review</text>
+  <rect x="316" y="213" width="168" height="1" fill="#A68959" opacity="0.4"/>
+  <text x="400" y="228" font-family="'DM Mono', monospace" font-size="8" fill="#B8C0CC" text-anchor="middle" opacity="0.6">Frontend Security</text>
+  <text x="400" y="243" font-family="'DM Mono', monospace" font-size="8" fill="#A68959" text-anchor="middle" opacity="0.7">The documentation is the product.</text>
+
+  <!-- RIGHT SIDE — documented, architected -->
+  <rect x="414" y="0" width="386" height="420" fill="#0A1628"/>
+
+  <text x="424" y="48" font-family="'DM Mono', monospace" font-size="10" fill="#A68959" opacity="0.6" letter-spacing="1">DOCUMENTED ARCHITECTURE</text>
+  <rect x="414" y="54" width="376" height="1" fill="#A68959" opacity="0.2"/>
+
+  <!-- Architecture diagram — clean -->
+  <!-- User node -->
+  <rect x="424" y="66" width="100" height="40" rx="5" fill="#0F2035" stroke="#A68959" stroke-width="1"/>
+  <text x="474" y="82" font-family="'DM Mono', monospace" font-size="8" fill="#FFFFFF" text-anchor="middle">User</text>
+  <text x="474" y="96" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" text-anchor="middle" opacity="0.7">Browser</text>
+
+  <!-- Arrow -->
+  <line x1="526" y1="86" x2="562" y2="86" stroke="#A68959" stroke-width="0.8" opacity="0.6"/>
+  <polygon points="562,82 570,86 562,90" fill="#A68959" opacity="0.7"/>
+  <text x="544" y="80" font-family="'DM Mono', monospace" font-size="6" fill="#A68959" text-anchor="middle" opacity="0.5">HTTPS</text>
+
+  <!-- Static HTML node -->
+  <rect x="572" y="66" width="100" height="40" rx="5" fill="#0F2035" stroke="#A68959" stroke-width="1.5"/>
+  <text x="622" y="82" font-family="'DM Mono', monospace" font-size="8" fill="#FFFFFF" text-anchor="middle">Static HTML</text>
+  <text x="622" y="96" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" text-anchor="middle" opacity="0.7">CSS · JS</text>
+
+  <!-- Arrow down -->
+  <line x1="622" y1="106" x2="622" y2="128" stroke="#A68959" stroke-width="0.8" opacity="0.5"/>
+  <polygon points="618,128 622,136 626,128" fill="#A68959" opacity="0.6"/>
+
+  <!-- Scope boundary -->
+  <rect x="414" y="62" width="370" height="90" rx="6" fill="none" stroke="#A68959" stroke-width="0.5" stroke-dasharray="5 3" opacity="0.25"/>
+  <text x="766" y="78" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" text-anchor="end" opacity="0.35">Architectural Boundary</text>
+
+  <!-- No network traffic label -->
+  <line x1="680" y1="86" x2="770" y2="86" stroke="#B8C0CC" stroke-width="0.5" stroke-dasharray="3 2" opacity="0.2"/>
+  <text x="776" y="89" font-family="'DM Mono', monospace" font-size="6" fill="#B8C0CC" text-anchor="end" opacity="0.25">No external traffic</text>
+
+  <!-- Known limitations -->
+  <rect x="414" y="168" width="180" height="120" rx="6" fill="#0F2035" stroke="#A68959" stroke-width="0.8"/>
+  <text x="424" y="184" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Known Limitations</text>
+  <rect x="414" y="188" width="180" height="1" fill="#A68959" opacity="0.2"/>
+  <text x="424" y="202" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">✓ No data persistence</text>
+  <text x="424" y="216" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">✓ No authentication</text>
+  <text x="424" y="230" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">✓ No backend APIs</text>
+  <text x="424" y="244" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">✓ Form — simulated only</text>
+  <text x="424" y="258" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" opacity="0.5">Documented intentionally</text>
+  <text x="424" y="272" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.4">not implemented</text>
+
+  <!-- Architecture rationale -->
+  <rect x="606" y="168" width="178" height="120" rx="6" fill="#0F2035" stroke="#A68959" stroke-width="0.8"/>
+  <text x="616" y="184" font-family="'DM Mono', monospace" font-size="8" fill="#A68959">Architecture Rationale</text>
+  <rect x="606" y="188" width="178" height="1" fill="#A68959" opacity="0.2"/>
+  <text x="616" y="202" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">Static-only by design</text>
+  <text x="616" y="216" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">Reduced security surface</text>
+  <text x="616" y="230" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">Simple deployment</text>
+  <text x="616" y="244" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">No server required</text>
+  <text x="616" y="258" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" opacity="0.5">Decision-driven docs</text>
+  <text x="616" y="272" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.4">not feature-driven</text>
+
+  <!-- README exists -->
+  <rect x="414" y="302" width="370" height="60" rx="6" fill="#0A2010" stroke="#A68959" stroke-width="0.8" opacity="0.9"/>
+  <text x="424" y="320" font-family="'DM Mono', monospace" font-size="9" fill="#A68959">README.md</text>
+  <rect x="414" y="324" width="370" height="1" fill="#A68959" opacity="0.15"/>
+  <text x="424" y="340" font-family="'DM Mono', monospace" font-size="7" fill="#B8C0CC" opacity="0.6">Overview · Objectives · Architecture · Limitations</text>
+  <text x="424" y="354" font-family="'DM Mono', monospace" font-size="7" fill="#A68959" opacity="0.6">Deployment · What I Would Do Next · Purpose</text>
+
+  <!-- RIGHT LABEL -->
+  <text x="605" y="406" font-family="'DM Mono', monospace" font-size="10" fill="#A68959" text-anchor="middle" opacity="0.5" letter-spacing="2">DOCUMENTED</text>
+
+  <!-- Gold accent bar -->
+  <rect x="0" y="0" width="4" height="420" fill="#A68959"/>
+
+  <!-- Domain label -->
+  <text x="776" y="20" font-family="'DM Mono', monospace" font-size="8" fill="#A68959" text-anchor="end" opacity="0.4" letter-spacing="1">douglasebhoman.com</text>
+
+</svg>
