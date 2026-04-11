@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Most documentation doesn't fail because of bad writing. It fails because nobody designed how it should work. Here's what systems thinking actually looks like in practice." />
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/" />
+  <title>From Writing to Documentation Systems · Douglas Ebhoman</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles.css" />
+
+  <style>
+    /* ── Post-specific styles ── */
+    .post-hero {
+      padding: calc(var(--nav-height) + 60px) var(--container-padding) 48px;
+      background: var(--color-bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(166,137,89,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166,137,89,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .post-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-back {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-back:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .post-series-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      margin-bottom: 1.4rem;
+    }
+
+    .post-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .post-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .post-meta-item::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .post-meta-item:first-child::before {
+      display: none;
+    }
+
+    /* Cover image */
+    .post-cover {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .post-cover img {
+      max-width: 960px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+    }
+
+    /* Post body */
+    .post-body-wrap {
+      padding: 64px var(--container-padding);
+      background: var(--color-bg-primary);
+    }
+
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .post-body p {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.6rem;
+    }
+
+    .post-body p.lead {
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--color-silver-border);
+      margin: 2.4rem 0;
+    }
+
+    .post-body .pull-quote {
+      border-left: 2px solid var(--color-gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-gold-subtle);
+    }
+
+    .post-body .pull-quote p {
+      font-size: 1.05rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .post-body .quick-win {
+      border: 1px solid var(--color-gold-border);
+      padding: 1.6rem 2rem;
+      margin: 2.4rem 0;
+      background: var(--color-bg-card);
+    }
+
+    .post-body .quick-win-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .post-body .quick-win p {
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body .quick-win p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Series nav */
+    .series-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--color-silver-border);
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .series-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .series-nav-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .series-nav-link--next {
+      margin-left: auto;
+    }
+
+    /* Giscus comments */
+    .comments-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding) 64px;
+    }
+
+    .comments-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .comments-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    /* Newsletter CTA */
+    .post-newsletter {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      padding: 52px var(--container-padding);
+    }
+
+    .post-newsletter-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .post-newsletter-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-newsletter-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .post-newsletter-link {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1.5px solid var(--color-gold-border);
+      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.22s ease, border-color 0.22s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .post-newsletter-link:hover {
+      background: var(--color-gold-subtle);
+      border-color: var(--color-gold);
+    }
+
+    /* Footer */
+    .post-footer {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+      padding: 28px var(--container-padding);
+    }
+
+    .post-footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .post-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .post-footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      opacity: 0.5;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-footer-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    @media (max-width: 640px) {
+      .post-newsletter-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .series-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .series-nav-link--next {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Douglas Ebhoman</span>
+        <span class="nav-logo-rule"></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work"    class="nav-link">Work</a></li>
+        <li><a href="/#about"   class="nav-link">About</a></li>
+        <li><a href="/#skills"  class="nav-link">Skills</a></li>
+        <li><a href="/blog"     class="nav-link nav-link--active">Blog</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="post-hero-inner">
+        <a href="/blog" class="post-back">← All posts</a>
+        <span class="post-series-tag">Systems Over Sentences · Part 01 of 10</span>
+        <h1 class="post-title">From Writing to Documentation Systems</h1>
+        <p class="post-subtitle">Why technical writers must think beyond words</p>
+        <div class="post-meta">
+          <span class="post-meta-item">Douglas Ebhoman</span>
+          <span class="post-meta-item">April 8, 2026</span>
+          <span class="post-meta-item">8 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COVER IMAGE -->
+    <div class="post-cover">
+      <img
+        src="../../../assets/images/from-writing-to-documentation-systems.jpeg"
+        alt="From Writing to Documentation Systems — Systems Over Sentences Part 1"
+        width="1200"
+        height="630"
+        loading="eager"
+      />
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body-wrap">
+      <article class="post-body">
+
+        <p class="lead">Most people think technical writing is about writing.</p>
+
+        <p>Clear sentences. Good grammar. Well-structured paragraphs.</p>
+
+        <p>That's part of it. But it's not the real job.</p>
+
+        <p>The real job is designing how information works.</p>
+
+        <hr>
+
+        <h2>The symptom nobody names correctly</h2>
+
+        <p>At some point, every documentation team hits the same wall.</p>
+
+        <p>The guides are well-written. The grammar is clean. The tone is consistent. And yet — users still can't find what they need. Engineers still get the same questions in Slack. Onboarding still takes longer than it should.</p>
+
+        <p>The instinct is to write more. Add more detail. Create more guides.</p>
+
+        <p>But that's not the problem.</p>
+
+        <p>The problem is that nobody designed <em>how the documentation works</em> — only <em>what it says</em>.</p>
+
+        <h2>What a system problem looks like in practice</h2>
+
+        <p>You've seen this before, even if you didn't have a name for it.</p>
+
+        <p>Guides that contradict each other because two writers worked in isolation. Installation docs missing a step that everyone on the team knows but nobody wrote down. A getting-started page referencing a feature deprecated eight months ago — and nobody owns it, so nobody fixed it. Content scattered across Notion, Confluence, a GitHub wiki, and a PDF someone emailed in 2022.</p>
+
+        <p>None of that is a writing failure. Every individual document might be perfectly written.</p>
+
+        <p>It's a system failure. Academics call it Information Architecture. I call it what it actually feels like from inside a product team: Documentation Entropy. And a writer who can only fix sentences can't fix it.</p>
+
+        <h2>When I built my own series, the system taught me</h2>
+
+        <p>When I started my Git and GitHub for Technical Writers series, I had a plan.</p>
+
+        <p>Write the content. Host it on a GitHub repo. Publish each part on Hashnode. Use LinkedIn to drive traffic.</p>
+
+        <p>Clean. Simple. Logical.</p>
+
+        <p>But the process revealed what the plan couldn't see.</p>
+
+        <p>The GitHub repo was professional — but it was complex to navigate. A reader landing there for the first time had to orient themselves before they could learn anything. The information was accurate. The structure was technically sound. But the <em>experience</em> of moving through it was friction, not flow.</p>
+
+        <p>That's when I understood the difference between a document and a documentation system.</p>
+
+        <p>The solution wasn't to rewrite the content. It was to change the infrastructure — host it as a live static site where a reader could move through six parts the way you move through a story: with direction, with context, with a sense of where you are and where you're going.</p>
+
+        <p>That decision also became content. Documenting the process of building that system gave my audience something no amount of accurate writing could: a window into how documentation decisions actually get made.</p>
+
+        <p>I wasn't just thinking about whether the information was correct. I was thinking about how a reader moves through it — where they enter, where they get lost, what they need to find their way.</p>
+
+        <p>That's the shift. From writing to systems thinking.</p>
+
+        <p>And I didn't plan my way into it. The process revealed it.</p>
+
+        <h2>Drawing the line</h2>
+
+        <p>Here's the distinction that changed how I think about this work.</p>
+
+        <p><em>Writing</em> asks: is this clear? Is this accurate? Is this readable?</p>
+
+        <p><em>Documentation systems</em> ask: where does this live? Who owns it? How does it get updated when the product changes? Can any part of it be reused? What happens to it at scale?</p>
+
+        <p>One is about the quality of a document. The other is about the health of an entire information architecture.</p>
+
+        <p>Most writers are trained for the first. Most product teams desperately need the second.</p>
+
+        <h2>The same content. Two completely different levels of thinking.</h2>
+
+        <p>Take an installation guide.</p>
+
+        <p>A writing-focused approach produces clear, accurate, well-formatted steps. Good work. The user can follow it.</p>
+
+        <p>A systems-focused approach asks different questions before a single word is written: Should prerequisites be a separate reusable section or embedded in this guide? How does this guide connect to the configuration guide that follows it? What's the versioning strategy when v2 ships? Who is the subject matter expert and what's the review cadence?</p>
+
+        <p>The output might look similar on the surface. But the second approach produces documentation that survives the product — and the team — changing around it.</p>
+
+        <p>That's the difference between documentation that works on launch day and documentation that still works two years later.</p>
+
+        <h2>One of a technical writer's core jobs</h2>
+
+        <p>Architecture in technical writing is building doors that connect documents — foreseeing how your audience moves, and making sure they never feel lost in the middle of it.</p>
+
+        <p>A reader who stumbles onto Part 3 of a series without reading Part 1 must find something within that document telling them it's part of a whole. Every piece carries its own weight and solves a specific problem — but it also has to signal its place in something larger.</p>
+
+        <p>That's not a formatting decision. It's a systems decision.</p>
+
+        <p>Your job is to make complexity followable — the way a story feels native to the world of whoever is reading it. Not your world. Theirs.</p>
+
+        <h2>Why this matters more now than it ever has</h2>
+
+        <p>Modern product teams move fast. Features ship in weeks. APIs change. Products pivot.</p>
+
+        <p>In that environment, documentation that isn't designed as a system becomes a liability almost immediately. It goes stale. It fragments. It contradicts itself. And the cost of fixing it compounds every sprint.</p>
+
+        <p>Teams that understand this aren't just looking for writers. They're looking for people who can think about information architecture, work alongside engineers in Git-based workflows, own content strategy across a product, and make decisions about structure and reuse that a product manager doesn't have the context to make.</p>
+
+        <p>That's the role. And it requires a fundamentally different mindset than "write clearly and check your grammar."</p>
+
+        <h2>Where this series is going</h2>
+
+        <p>This is the opening argument. Everything that follows builds on it.</p>
+
+        <p>How do real product teams actually handle documentation — and where does it break? What separates writing for developers from writing for everyone else? What makes a great installation guide different from a great API reference? How do structured writing, Docs-as-Code workflows, and tools like Git fit into a system that actually holds together under pressure?</p>
+
+        <p>If you've encountered the Diátaxis framework — tutorials, how-tos, reference, explanation — this series is about the system that makes that framework actually function at scale.</p>
+
+        <p>Not theory. The way this works inside a real product team.</p>
+
+        <p>If that question matters to you — the next post is where we get into it.</p>
+
+        <div class="quick-win">
+          <span class="quick-win-label">Quick win for systems thinkers</span>
+          <p>Next time you're asked to fix a typo, pause for one second and ask yourself: does this error exist in five other places?</p>
+          <p>If yes — you don't have a typo problem. You have a system problem.</p>
+          <p>That question alone is the difference between a writer and a systems thinker.</p>
+        </div>
+
+        <h2>A word to whoever needs to hear this</h2>
+
+        <p>If you're just starting out in technical writing — or you're somewhere in the middle, feeling like there's a gap between what you were taught and what the work actually demands — this is for you.</p>
+
+        <p>Your audience lives in a world of complexity. They come to documentation already frustrated, already stuck, already short on time. Understanding that pain point isn't a soft skill. It's the foundation of every structural decision you make — what to put first, how to break up information, where to build the doors between documents so a reader never has to feel lost.</p>
+
+        <p>You don't have to figure all of this out before you start. I didn't.</p>
+
+        <p>The system reveals itself through the work. Your job is to pay attention when it does — and be willing to change the infrastructure, not just the sentences, when something isn't working.</p>
+
+        <p>Good documentation is a process. It just gets better along the way.</p>
+
+        <hr>
+
+        <p><em>Already thinking about the tooling layer? My <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/" style="color: var(--color-gold);">Git &amp; GitHub for Technical Writers series</a> covers the Git-based workflows that modern documentation systems run on — a practical foundation for everything this series builds toward.</em></p>
+
+      </article>
+    </div>
+
+    <!-- SERIES NAV -->
+    <nav class="series-nav">
+      <a href="/blog" class="series-nav-link">← All posts</a>
+      <a href="/blog/posts/your-documentation-is-a-bakery/" class="series-nav-link series-nav-link--next">Part 2: Your Documentation is a Bakery →</a>
+    </nav>
+
+    <!-- COMMENTS -->
+    <section class="comments-section">
+      <p class="comments-label">Discussion</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="Douglasebhoman/douglasebhoman.github.io"
+        data-repo-id="R_kgDORhvuTg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORhvuTs4C53Ys"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="post-newsletter">
+      <div class="post-newsletter-inner">
+        <div>
+          <p class="post-newsletter-label">Newsletter</p>
+          <p class="post-newsletter-desc">
+            New posts delivered to your inbox. Documentation insights, no spam.
+          </p>
+        </div>
+        <a href="https://douglasebhoman.hashnode.dev/newsletter" target="_blank" rel="noopener noreferrer" class="post-newsletter-link">
+          Subscribe →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="post-footer">
+    <div class="post-footer-inner">
+      <p class="post-footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <a href="/blog" class="post-footer-link">← Back to blog</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    const navHeader = document.getElementById('nav-header');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      hamburger.classList.toggle('hamburger--open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    window.addEventListener('scroll', () => {
+      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

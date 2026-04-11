@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Douglas Ebhoman's technical writing blog — long-form series on documentation systems, Docs-as-Code workflows, and the thinking behind great developer documentation." />
+  <title>Blog · Douglas Ebhoman</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+
+  <style>
+    /* ── Blog-specific overrides ── */
+    .blog-hero {
+      padding: calc(var(--nav-height) + 60px) var(--container-padding) 60px;
+      background: var(--color-bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(166,137,89,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166,137,89,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .blog-hero-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blog-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .blog-hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-gold);
+      opacity: 0.6;
+    }
+
+    .blog-hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      margin-bottom: 1.2rem;
+      max-width: 640px;
+    }
+
+    .blog-hero-sub {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .blog-hero-back {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2.4rem;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .blog-hero-back:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    /* ── Series section ── */
+    .series-section {
+      padding: 72px 0;
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+    }
+
+    .series-section-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .series-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .series-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .series-card {
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      padding: clamp(32px, 5vw, 52px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .series-card:hover {
+      border-color: rgba(166,137,89,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    .series-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      margin-bottom: 1.2rem;
+    }
+
+    .series-card-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .series-card-description {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 1.6rem;
+    }
+
+    .series-card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      gap: 24px;
+    }
+
+    .series-card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .series-card-meta span::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .series-progress {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .series-progress-count {
+      font-family: var(--font-mono);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--color-gold);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .series-progress-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .series-progress-bar {
+      width: 80px;
+      height: 2px;
+      background: var(--color-silver-border);
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .series-progress-fill {
+      height: 100%;
+      background: var(--color-gold);
+      border-radius: 1px;
+      width: 30%;
+    }
+
+    /* ── Posts section ── */
+    .posts-section {
+      padding: 72px 0;
+      background: var(--color-bg-primary);
+    }
+
+    .posts-section-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .posts-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.6;
+    }
+
+    .posts-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-silver-border);
+    }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 28px;
+      align-items: start;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--color-silver-border);
+      text-decoration: none;
+      transition: padding-left 0.22s ease;
+    }
+
+    .post-item:hover {
+      padding-left: 8px;
+    }
+
+    .post-item:hover .post-item-title {
+      color: var(--color-gold);
+    }
+
+    .post-item:hover .post-item-arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .post-item-number {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-gold);
+      opacity: 0.5;
+      padding-top: 4px;
+    }
+
+    .post-item-content { flex: 1; }
+
+    .post-item-series {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      opacity: 0.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-item-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+      transition: color 0.22s ease;
+    }
+
+    .post-item-excerpt {
+      font-size: 0.88rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    .post-item-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 0.8rem;
+    }
+
+    .post-item-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+    }
+
+    .post-item-read {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+    }
+
+    .post-item-arrow {
+      font-size: 0.9rem;
+      color: var(--color-gold);
+      opacity: 0.4;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      padding-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .post-item-status {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .post-item-status--live {
+      color: var(--color-gold);
+      background: var(--color-gold-subtle);
+      border: 1px solid var(--color-gold-border);
+    }
+
+    .post-item-status--coming {
+      color: var(--color-text-muted);
+      background: transparent;
+      border: 1px solid var(--color-silver-border);
+      opacity: 0.5;
+    }
+
+    .post-item--coming {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* ── Newsletter strip ── */
+    .newsletter-strip {
+      padding: 60px var(--container-padding);
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .newsletter-strip-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-strip-text {}
+
+    .newsletter-strip-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-strip-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .newsletter-strip-link {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1.5px solid var(--color-gold-border);
+      padding: 12px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.22s ease, border-color 0.22s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .newsletter-strip-link:hover {
+      background: var(--color-gold-subtle);
+      border-color: var(--color-gold);
+    }
+
+    /* ── Footer ── */
+    .blog-footer {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+      padding: 28px var(--container-padding);
+    }
+
+    .blog-footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .blog-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .blog-footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      opacity: 0.5;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .blog-footer-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    @media (max-width: 768px) {
+      .series-card {
+        grid-template-columns: 1fr;
+      }
+
+      .series-progress {
+        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .post-item {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .post-item-arrow {
+        display: none;
+      }
+
+      .newsletter-strip-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Douglas Ebhoman</span>
+        <span class="nav-logo-rule"></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work"    class="nav-link">Work</a></li>
+        <li><a href="/#about"   class="nav-link">About</a></li>
+        <li><a href="/#skills"  class="nav-link">Skills</a></li>
+        <li><a href="/blog"     class="nav-link nav-link--active">Blog</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+      <div class="blog-hero-inner">
+        <a href="/" class="blog-hero-back">← douglasebhoman.com</a>
+        <p class="blog-hero-eyebrow">Writing</p>
+        <h1 class="blog-hero-headline">Long-form thinking on documentation systems.</h1>
+        <p class="blog-hero-sub">
+          Series and standalone essays on Docs-as-Code, information architecture,
+          and the thinking behind documentation that scales.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERIES -->
+    <section class="series-section">
+      <div class="series-section-inner">
+        <p class="series-label">Current Series</p>
+
+        <div class="series-card">
+          <div class="series-card-body">
+            <span class="series-card-tag">In Progress</span>
+            <h2 class="series-card-title">Systems Over Sentences</h2>
+            <p class="series-card-description">
+              A technical writer's evolution — from producing content to designing
+              documentation systems. Ten posts on how documentation actually works
+              inside real product teams: the structure, workflows, tools, and thinking
+              behind docs that scale.
+            </p>
+            <div class="series-card-meta">
+              <span>10 parts planned</span>
+              <span>3 published</span>
+              <span>Weekly cadence</span>
+            </div>
+          </div>
+          <div class="series-progress">
+            <div>
+              <div class="series-progress-count">3</div>
+              <div class="series-progress-label">of 10</div>
+            </div>
+            <div class="series-progress-bar">
+              <div class="series-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- POSTS -->
+    <section class="posts-section">
+      <div class="posts-section-inner">
+        <p class="posts-label">All Posts</p>
+
+        <div class="post-list">
+
+          <!-- Part 1 -->
+          <a href="/blog/posts/from-writing-to-documentation-systems/" class="post-item reveal-on-scroll">
+            <span class="post-item-number">01</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 1</p>
+              <h3 class="post-item-title">From Writing to Documentation Systems</h3>
+              <p class="post-item-excerpt">
+                Most documentation doesn't fail because of bad writing. It fails because
+                nobody designed how it should work. Here's what systems thinking actually
+                looks like in practice.
+              </p>
+              <div class="post-item-meta">
+                <span class="post-item-date">Apr 8, 2026</span>
+                <span class="post-item-read">8 min read</span>
+                <span class="post-item-status post-item-status--live">Live</span>
+              </div>
+            </div>
+            <span class="post-item-arrow">→</span>
+          </a>
+
+          <!-- Part 2 -->
+          <a href="/blog/posts/your-documentation-is-a-bakery/" class="post-item reveal-on-scroll" style="--scroll-delay:0.1s">
+            <span class="post-item-number">02</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 2</p>
+              <h3 class="post-item-title">Your Documentation is a Bakery. Here's How to Build a Supermarket.</h3>
+              <p class="post-item-excerpt">
+                You can't control which page your reader lands on first. What you can
+                control is whether every page has windows — connections that show readers
+                where to go next.
+              </p>
+              <div class="post-item-meta">
+                <span class="post-item-date">Apr 13, 2026</span>
+                <span class="post-item-read">9 min read</span>
+                <span class="post-item-status post-item-status--live">Live</span>
+              </div>
+            </div>
+            <span class="post-item-arrow">→</span>
+          </a>
+
+          <!-- Part 3 -->
+          <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="post-item reveal-on-scroll" style="--scroll-delay:0.2s">
+            <span class="post-item-number">03</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 3</p>
+              <h3 class="post-item-title">How Product Teams Actually Handle Documentation</h3>
+              <p class="post-item-excerpt">
+                Documentation doesn't break at writing or review. It breaks when no one
+                clearly owns what happens next. And the most dangerous version of that
+                problem isn't a large team — it's a solo writer with no external check.
+              </p>
+              <div class="post-item-meta">
+                <span class="post-item-date">Apr 20, 2026</span>
+                <span class="post-item-read">10 min read</span>
+                <span class="post-item-status post-item-status--live">Live</span>
+              </div>
+            </div>
+            <span class="post-item-arrow">→</span>
+          </a>
+
+          <!-- Parts 4–10 — coming -->
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">04</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 4</p>
+              <h3 class="post-item-title">Writing for Developers vs Non-Technical Users</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">05</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 5</p>
+              <h3 class="post-item-title">Anatomy of Great Documentation</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">06</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 6</p>
+              <h3 class="post-item-title">Introduction to Structured Writing</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">07</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 7</p>
+              <h3 class="post-item-title">Docs-as-Code vs Traditional Documentation</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">08</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 8</p>
+              <h3 class="post-item-title">Documentation Workflow in a Real Team</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">09</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 9</p>
+              <h3 class="post-item-title">My Technical Writing Workflow</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="post-item post-item--coming">
+            <span class="post-item-number">10</span>
+            <div class="post-item-content">
+              <p class="post-item-series">Systems Over Sentences · Part 10</p>
+              <h3 class="post-item-title">Using AI in Technical Writing</h3>
+              <div class="post-item-meta">
+                <span class="post-item-status post-item-status--coming">Coming soon</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER STRIP -->
+    <section class="newsletter-strip">
+      <div class="newsletter-strip-inner">
+        <div class="newsletter-strip-text">
+          <p class="newsletter-strip-label">Newsletter</p>
+          <p class="newsletter-strip-desc">
+            New posts delivered to your inbox. Documentation insights, no spam.
+          </p>
+        </div>
+        <a href="https://douglasebhoman.hashnode.dev/newsletter" target="_blank" rel="noopener noreferrer" class="newsletter-strip-link">
+          Subscribe →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="blog-footer">
+    <div class="blog-footer-inner">
+      <p class="blog-footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <a href="/" class="blog-footer-link">← Back to douglasebhoman.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    const navHeader = document.getElementById('nav-header');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      hamburger.classList.toggle('hamburger--open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    window.addEventListener('scroll', () => {
+      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      revealObserver.observe(el);
+    });
+  </script>
+
+</body>
+</html>
