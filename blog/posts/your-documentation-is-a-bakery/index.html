@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="You can't control which page your reader lands on first. What you can control is whether every page has windows — connections that show readers where to go next." />
+  <meta name="author" content="Douglas Ebhoman" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/" />
+  <meta property="og:title" content="Your Documentation is a Bakery. Here's How to Build a Supermarket." />
+  <meta property="og:description" content="You can't control which page your reader lands on first. What you can control is whether every page has windows — connections that show readers where to go next." />
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/your-documentation-is-a-bakery.jpeg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Your Documentation is a Bakery. Here's How to Build a Supermarket." />
+  <meta name="twitter:description" content="You can't control which page your reader lands on first. What you can control is whether every page has windows — connections that show readers where to go next." />
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/your-documentation-is-a-bakery.jpeg" />
+
+  <title>Your Documentation is a Bakery. Here's How to Build a Supermarket. · Douglas Ebhoman</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles.css" />
+
+  <style>
+    .post-hero {
+      padding: calc(var(--nav-height) + 60px) var(--container-padding) 48px;
+      background: var(--color-bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(166,137,89,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166,137,89,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .post-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-back {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-back:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .post-series-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      margin-bottom: 1.4rem;
+    }
+
+    .post-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .post-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .post-meta-item::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .post-meta-item:first-child::before {
+      display: none;
+    }
+
+    .post-cover {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .post-cover img {
+      max-width: 960px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+    }
+
+    .post-body-wrap {
+      padding: 64px var(--container-padding);
+      background: var(--color-bg-primary);
+    }
+
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .post-body p {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.6rem;
+    }
+
+    .post-body p.lead {
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--color-silver-border);
+      margin: 2.4rem 0;
+    }
+
+    .post-body .pull-quote {
+      border-left: 2px solid var(--color-gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-gold-subtle);
+    }
+
+    .post-body .pull-quote p {
+      font-size: 1.05rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .post-body .quick-win {
+      border: 1px solid var(--color-gold-border);
+      padding: 1.6rem 2rem;
+      margin: 2.4rem 0;
+      background: var(--color-bg-card);
+    }
+
+    .post-body .quick-win-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .post-body .quick-win p {
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body .quick-win p:last-child {
+      margin-bottom: 0;
+    }
+
+    .series-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--color-silver-border);
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .series-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .series-nav-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .series-nav-link--next {
+      margin-left: auto;
+    }
+
+    .comments-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding) 64px;
+    }
+
+    .comments-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .comments-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .post-newsletter {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      padding: 52px var(--container-padding);
+    }
+
+    .post-newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .post-newsletter-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-newsletter-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .post-footer {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+      padding: 28px var(--container-padding);
+    }
+
+    .post-footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .post-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .post-footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      opacity: 0.5;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-footer-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    @media (max-width: 640px) {
+      .post-newsletter-inner {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .series-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .series-nav-link--next {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Douglas Ebhoman</span>
+        <span class="nav-logo-rule"></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work"    class="nav-link">Work</a></li>
+        <li><a href="/#about"   class="nav-link">About</a></li>
+        <li><a href="/#skills"  class="nav-link">Skills</a></li>
+        <li><a href="/blog"     class="nav-link nav-link--active">Blog</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="post-hero-inner">
+        <a href="/blog" class="post-back">← All posts</a>
+        <span class="post-series-tag">Systems Over Sentences · Part 02 of 10</span>
+        <h1 class="post-title">Your Documentation is a Bakery. Here's How to Build a Supermarket.</h1>
+        <p class="post-subtitle">What good documentation actually means in tech — and why well-written isn't enough.</p>
+        <div class="post-meta">
+          <span class="post-meta-item">Douglas Ebhoman</span>
+          <span class="post-meta-item">April 13, 2026</span>
+          <span class="post-meta-item">9 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COVER IMAGE -->
+    <div class="post-cover">
+      <img
+        src="../../../assets/images/your-documentation-is-a-bakery.jpeg"
+        alt="Your Documentation is a Bakery — Systems Over Sentences Part 2"
+        width="1200"
+        height="630"
+        loading="eager"
+      />
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body-wrap">
+      <article class="post-body">
+
+        <p class="lead">I was reading through an open-source project's documentation recently.</p>
+
+        <p>The content was worth it. Detailed, accurate, clearly written by people who understood the product deeply.</p>
+
+        <p>But I kept getting lost.</p>
+
+        <p>Not because the information wasn't there. It was. But every page I landed on felt like it existed in isolation — no sense of where I was in the overall structure, no signal of what came before or what should come next, no way to know whether I was reading a beginner concept or an advanced configuration detail.</p>
+
+        <p>I was somewhere in the middle of a large, well-written document — and I felt like I'd walked into a building with no signs, no floor plan, and no windows.</p>
+
+        <p>That experience sent me back to a book I'd been reading: <em>Every Page is Page One</em> by Mark Baker.</p>
+
+        <p>And it changed how I think about documentation entirely.</p>
+
+        <hr>
+
+        <h2>The supermarket problem</h2>
+
+        <p>Baker uses a simple metaphor that I haven't been able to stop thinking about.</p>
+
+        <p>A bakery that sells one product — fresh, quality bread — will always sell less than a supermarket. Not because the bread is worse. The bread might be exceptional. But the supermarket gives you bread and options. And options keep people coming back.</p>
+
+        <p>Most documentation is a bakery.</p>
+
+        <p>One product. One shelf. Accurate, useful, well-written — but isolated. A reader arrives looking for one specific thing, finds it or doesn't, and leaves. There's nothing to pull them deeper. No jam next to the bread. No sign pointing to the dairy aisle.</p>
+
+        <p>When I finished my Git and GitHub for Technical Writers series, that's exactly what I had built. Six parts. Clear, practical, well-structured. A bakery.</p>
+
+        <p>Someone could land on Part 3 — "Working with Branches" — get what they needed, and leave. And I had no way to show them that if they were also wondering how to think about documentation architecture, how to structure content for scale, how to work inside a real product team — that conversation existed too.</p>
+
+        <p>The bread was good. The jam didn't exist yet.</p>
+
+        <p>This series is the jam.</p>
+
+        <hr>
+
+        <h2>Every Page is Page One</h2>
+
+        <p>Here's the core idea from Baker's book, and why it matters for how you build documentation:</p>
+
+        <p>You cannot control which page your reader lands on first.</p>
+
+        <p>They arrive through a Google result. A Slack message. A colleague's bookmark. A link buried in a Stack Overflow answer. They enter anywhere — and wherever they enter, that page becomes their Page One.</p>
+
+        <p>Which means every page must be able to stand alone. Not in isolation — but with enough context, enough orientation, enough connection to the whole that a reader arriving cold can find their footing and know where to go next.</p>
+
+        <div class="pull-quote">
+          <p>Not all documents are relevant to an audience. But every document is relevant to the right audience. Your job is to build the windows that connect them.</p>
+        </div>
+
+        <h2>What a window looks like in practice</h2>
+
+        <p>A window isn't a link at the bottom of a page that says "see also."</p>
+
+        <p>A window is a signal — embedded naturally in the content — that tells a reader: there's more here if you need it. Here's where it lives. Here's why it might matter to you.</p>
+
+        <p>When someone lands on a page about Git branching workflows, a window might say: "If you're thinking about how this fits into a larger documentation system, that's a different conversation — here's where we have it."</p>
+
+        <p>That reader came for bread. You just showed them the jam.</p>
+
+        <p>And the reader who came specifically for documentation architecture? They land on this series and find exactly what they were looking for — something my Git series, for all its value, couldn't give them.</p>
+
+        <p>Same writer. Bigger supermarket.</p>
+
+        <h2>The Every Page is Page One test</h2>
+
+        <p>Pick any page from your current documentation — not the homepage, not the getting started guide. A random page from somewhere in the middle.</p>
+
+        <p>Then ask four questions:</p>
+
+        <p>Does this page tell me where I am in the overall structure? Does it connect to related content I might need next? Does it signal what level of knowledge it assumes? Could someone arriving here cold find their footing in thirty seconds?</p>
+
+        <p>If the answer to any of those is no — you don't have a writing problem. You have a system problem.</p>
+
+        <p>And system problems can't be fixed by better sentences.</p>
+
+        <h2>What this means for your role</h2>
+
+        <p>A technical writer who understands this isn't just producing content. They're designing a supermarket — deciding what goes on which shelf, how the aisles connect, what signs point where, and how a customer who came for one thing discovers everything else they needed.</p>
+
+        <p>You can't dictate which page your audience lands on first. But you can build a system where it doesn't matter — because every page is designed to orient, connect, and guide.</p>
+
+        <p>That's not writing. That's architecture.</p>
+
+        <div class="quick-win">
+          <span class="quick-win-label">Quick win for systems thinkers</span>
+          <p>Look at your last published document. Find the most important concept on that page. Now ask: is there another document in your system that a reader of this page would also benefit from?</p>
+          <p>If yes — add the window. One sentence. One link. That's it.</p>
+          <p>Not all readers will take it. But the right reader will — and that's the one who comes back.</p>
+        </div>
+
+        <h2>What's next</h2>
+
+        <p>In Part 3 we move from philosophy to practice — how real product teams actually handle documentation, where the handoffs break down, and what a systems thinker does differently at each stage.</p>
+
+        <hr>
+
+        <p><em>The <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/" style="color: var(--color-gold);">Git &amp; GitHub for Technical Writers series</a> is the tooling foundation this series builds on. If you haven't read it — that's the bread. This is the jam.</em></p>
+
+      </article>
+    </div>
+
+    <!-- SERIES NAV -->
+    <nav class="series-nav">
+      <a href="/blog/posts/from-writing-to-documentation-systems/" class="series-nav-link">← Part 1: From Writing to Documentation Systems</a>
+      <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="series-nav-link series-nav-link--next">Part 3: How Product Teams Actually Handle Documentation →</a>
+    </nav>
+
+    <!-- COMMENTS -->
+    <section class="comments-section">
+      <p class="comments-label">Discussion</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="Douglasebhoman/douglasebhoman.github.io"
+        data-repo-id="R_kgDORhvuTg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORhvuTs4C53Ys"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="post-newsletter">
+      <div class="post-newsletter-inner">
+        <div>
+          <p class="post-newsletter-label">Newsletter</p>
+          <p class="post-newsletter-desc">
+            One post a week on how documentation actually works.<br>No spam. Unsubscribe anytime.
+          </p>
+        </div>
+        <!-- MailerLite Universal -->
+        <script>
+          (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+          .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+          n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+          (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+          ml('account', '2241731');
+        </script>
+        <div class="ml-embedded" data-form="8iCjwu" style="width: 100%;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="post-footer">
+    <div class="post-footer-inner">
+      <p class="post-footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <a href="/blog" class="post-footer-link">← Back to blog</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    const navHeader = document.getElementById('nav-header');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      hamburger.classList.toggle('hamburger--open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    window.addEventListener('scroll', () => {
+      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
