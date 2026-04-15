@@ -33,6 +33,119 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ── Social Proof Section ── */
+    .proof-section {
+      padding: 80px 0;
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .proof-section-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .proof-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .proof-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .proof-card {
+      position: relative;
+      padding: clamp(32px, 5vw, 52px);
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .proof-card:hover {
+      border-color: rgba(166,137,89,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    .proof-card-watermark {
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      font-family: var(--font-serif);
+      font-size: 10rem;
+      line-height: 1;
+      color: var(--color-gold);
+      opacity: 0.06;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .proof-card-quote {
+      font-family: var(--font-serif);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-style: italic;
+      color: var(--color-text-primary);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .proof-card-attribution {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .proof-card-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      flex-shrink: 0;
+    }
+
+    .proof-card-name {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--color-gold);
+    }
+
+    .proof-card-role {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+    }
+
+    @media (min-width: 768px) {
+      .proof-grid--two {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -387,6 +500,31 @@
     </section>
 
     <!-- ============================================================
+         SOCIAL PROOF SECTION
+    ============================================================ -->
+    <section class="proof-section">
+      <div class="proof-section-inner">
+        <p class="proof-label">Peer Review</p>
+        <div class="proof-grid reveal-on-scroll">
+          <div class="proof-card">
+            <span class="proof-card-watermark">"</span>
+            <p class="proof-card-quote">
+              Douglas has nailed it with his 'Git &amp; GitHub for Technical Writers' series.
+              It's a must-read if you want to adopt Git and GitHub for product documentation.
+              He has a knack for writing in a simple, clear style — it's a pleasure to read.
+              I'm looking forward to more great insights.
+            </p>
+            <div class="proof-card-attribution">
+              <span class="proof-card-dot"></span>
+              <span class="proof-card-name">Tejas Dandekar</span>
+              <span class="proof-card-role">Associate Director, DP&amp;S</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          SKILLS SECTION
     ============================================================ -->
     <section class="section skills-section" id="skills">
@@ -526,8 +664,6 @@
             <!-- End MailerLite Universal -->
             <div class="ml-embedded" data-form="8iCjwu"></div>
           </div>
-
-
 
         </div>
       </div>
