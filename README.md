@@ -8,7 +8,7 @@ Personal website and portfolio of Douglas Ebhoman — Technical Writer and Docs-
 
 ## Overview
 
-This repository is the source for my personal website and portfolio. It is hand-built in HTML and CSS — no frameworks, no static site generators, no dependencies — and deployed automatically to GitHub Pages via GitHub Actions on every push to `main`.
+This repository is the source for my personal website, portfolio, and blog. It is hand-built in HTML and CSS — no frameworks, no static site generators, no dependencies — and deployed automatically to GitHub Pages via GitHub Actions on every push to `main`.
 
 The site itself is a proof of work. A technical writer who specialises in Docs-as-Code and advocates for documentation as infrastructure should be able to build, version-control, and deploy their own web presence using the same principles they apply to documentation systems. This repository is that argument made concrete.
 
@@ -28,8 +28,23 @@ douglasebhoman.github.io/
 │       ├── personal-website-guide-card.svg
 │       ├── static-portfolio-card.svg
 │       ├── about-image.png
-│       └── headshots.jpg
-├── openweather-docs/
+│       └── headshot.jpg
+├── blog/
+│   ├── index.html
+│   └── posts/
+│       ├── from-writing-to-documentation-systems/
+│       │   └── index.html
+│       ├── your-documentation-is-a-bakery/
+│       │   └── index.html
+│       └── how-product-teams-actually-handle-documentation/
+│           └── index.html
+├── site-docs/
+│   ├── overview.md
+│   ├── architecture.md
+│   ├── local-setup.md
+│   ├── deployment.md
+│   ├── content-guide.md
+│   └── contributing.md
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
@@ -44,11 +59,11 @@ douglasebhoman.github.io/
 
 **No framework.** Every line of HTML and CSS is written by hand. This was a deliberate choice — not because frameworks are wrong, but because building without them forces a precise understanding of how the web actually works. For a technical writer who teaches Git-based workflows, the site infrastructure should be as transparent as the documentation it supports.
 
-**Static only.** No server, no database, no build step beyond deployment. The entire site is a single `index.html` and a `styles.css`. This keeps the security surface area minimal, the deployment pipeline simple, and the maintenance overhead close to zero.
+**Static only.** No server, no database, no build step beyond deployment. All pages are plain HTML files sharing a single `styles.css`. This keeps the security surface area minimal, the deployment pipeline simple, and the maintenance overhead close to zero.
 
 **GitHub Pages + Cloudflare.** The site is hosted on GitHub Pages and served through a custom domain registered and DNS-managed via Cloudflare. HTTPS is handled automatically by GitHub via Let's Encrypt. All DNS records are set to DNS-only — no Cloudflare proxy — to allow GitHub's certificate issuance to work correctly.
 
-**Navy, gold, silver palette.** The colour palette — `#0A1628` navy, `#A68959` gold, `#B8C0CC` silver — was chosen to signal precision and authority without the clinical sterility of pure black and white. Gold as the accent colour communicates craft and intentionality.
+**Navy, gold, silver palette.** The colour palette — `#18222C` navy, `#A68959` gold, `#B8C0CC` silver — was chosen to signal precision and authority without the clinical sterility of pure black and white. Gold as the accent colour communicates craft and intentionality.
 
 **DM Mono and Lora typography.** DM Mono is used for labels, metadata, and structural elements — it signals technical precision. Lora is used for body copy and headlines — it brings warmth and readability to long-form content. The combination balances the technical and the human, which is the same balance good documentation tries to strike.
 
@@ -68,6 +83,22 @@ No build step is required — the repository contents are the deployment artefac
 
 ---
 
+## Blog
+
+The `/blog` directory contains a hand-built blog section for the *Systems Over Sentences* series — ten posts on documentation systems, Docs-as-Code workflows, and the thinking behind developer documentation.
+
+Each post lives in its own folder with an `index.html` file to enable clean URLs. Comments are handled by [Giscus](https://giscus.app) — a GitHub Discussions-backed comment system requiring no database. The newsletter section on each post embeds a MailerLite form connected to a live welcome sequence.
+
+**Published posts:**
+
+| # | Title | Published |
+|---|-------|-----------|
+| 01 | From Writing to Documentation Systems | Apr 8, 2026 |
+| 02 | Your Documentation is a Bakery. Here's How to Build a Supermarket. | Apr 13, 2026 |
+| 03 | How Product Teams Actually Handle Documentation | Apr 20, 2026 |
+
+---
+
 ## Portfolio pieces
 
 The Work section currently features five portfolio pieces:
@@ -76,7 +107,7 @@ The Work section currently features five portfolio pieces:
 |---|-------|------|------|
 | 01 | Git & GitHub for Technical Writers | Six-part series | [Live site](https://douglasebhoman.github.io/git-github-for-technical-writers-series) |
 | 02 | OpenWeather API — Getting Started Guide | API documentation | [Live docs](https://douglasebhoman.com/openweather-docs/) |
-| 03 | Systems Over Sentences | Blog series | [Hashnode](https://douglasebhoman.hashnode.dev) |
+| 03 | Systems Over Sentences | Blog series | [douglasebhoman.com/blog](https://douglasebhoman.com/blog) |
 | 04 | Personal Website Setup Guide | How-to guide | [Hashnode](https://douglasebhoman.hashnode.dev/how-to-build-a-personal-website-with-a-custom-domain-and-professional-email) |
 | 05 | Static Portfolio Architecture Review | Architecture documentation | [GitHub](https://github.com/Douglasebhoman/static-portfolio-site) |
 
@@ -84,11 +115,7 @@ The Work section currently features five portfolio pieces:
 
 ## What I would add next
 
-**Blog section via Eleventy.** The next planned addition is a `/blog` directory powered by Eleventy — a lightweight static site generator that uses the existing HTML as a layout template. Posts would be written in Markdown with frontmatter, and Eleventy would generate the blog index, series pages, and individual post pages automatically. From Part 3 of the Systems Over Sentences series onward, all posts would publish natively on this domain.
-
-**Giscus comments.** Individual blog post pages will use [Giscus](https://giscus.app) for comments — a GitHub Discussions-backed comment system that requires no database and survives any future infrastructure changes. The Giscus app is already installed on this repository and GitHub Discussions is enabled.
-
-**Newsletter integration.** The contact section currently embeds a MailerLite form. Once the sender domain is authenticated via CNAME and DKIM records in Cloudflare, the form will be fully active and subscribers will receive documentation insights directly.
+**Blog migration to Eleventy.** The current blog is hand-built HTML. The next planned addition is migrating to Eleventy — a lightweight static site generator that would use the existing HTML as a layout template. Posts would be written in Markdown with frontmatter, and Eleventy would generate the blog index, series pages, and individual post pages automatically.
 
 **Dark mode.** The navy palette already works well in dark contexts. A `prefers-color-scheme` media query on the CSS custom properties will enable full dark mode support without a separate stylesheet.
 
