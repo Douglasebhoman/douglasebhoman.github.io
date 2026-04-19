@@ -2,15 +2,17 @@
 
 To create a blog post, index.html must be created under each posts. same HTML structure as every other posts, defferent content.
 
-## Folder structure?
+## Folder structure
 
 Every post folder carries index.html as a file. each of these posts are governed by the blog folder.
 
+```
 ├── blog/
 │   ├── index.html
 │   └── posts/
 │       └── post-folder-name/
 │           └── index.html
+```
 
 ## What folder and file need to be named
 
