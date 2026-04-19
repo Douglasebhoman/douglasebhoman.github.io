@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Documentation doesn't break at the writing stage. It breaks when no one clearly owns what happens next. And the most dangerous version of that problem isn't a large team — it's a solo writer with no external check." />
+  <meta name="author" content="Douglas Ebhoman" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/" />
+  <meta property="og:title" content="Documentation doesn't break at the writing stage. Here's where it actually breaks." />
+  <meta property="og:description" content="How product teams actually handle documentation — and where ownership quietly disappears." />
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/how-product-teams-handle-documentation-card.jpeg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Documentation doesn't break at the writing stage. Here's where it actually breaks." />
+  <meta name="twitter:description" content="How product teams actually handle documentation — and where ownership quietly disappears." />
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/how-product-teams-handle-documentation-card.jpeg" />
+
+  <title>How Product Teams Actually Handle Documentation · Douglas Ebhoman</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles.css" />
+
+  <style>
+    .post-hero {
+      padding: calc(var(--nav-height) + 60px) var(--container-padding) 48px;
+      background: var(--color-bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(166,137,89,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166,137,89,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .post-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-back {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-back:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .post-series-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      margin-bottom: 1.4rem;
+    }
+
+    .post-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .post-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .post-meta-item::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .post-meta-item:first-child::before {
+      display: none;
+    }
+
+    .post-cover {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .post-cover img {
+      max-width: 960px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+    }
+
+    .post-body-wrap {
+      padding: 64px var(--container-padding);
+      background: var(--color-bg-primary);
+    }
+
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .post-body p {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.6rem;
+    }
+
+    .post-body p.lead {
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--color-silver-border);
+      margin: 2.4rem 0;
+    }
+
+    .post-body .pull-quote {
+      border-left: 2px solid var(--color-gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-gold-subtle);
+    }
+
+    .post-body .pull-quote p {
+      font-size: 1.05rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .post-body .quick-win {
+      border: 1px solid var(--color-gold-border);
+      padding: 1.6rem 2rem;
+      margin: 2.4rem 0;
+      background: var(--color-bg-card);
+    }
+
+    .post-body .quick-win-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .post-body .quick-win p {
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body .quick-win p:last-child {
+      margin-bottom: 0;
+    }
+
+    .post-body strong {
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+
+    .series-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--color-silver-border);
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .series-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .series-nav-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .series-nav-link--next {
+      margin-left: auto;
+    }
+
+    .comments-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding) 64px;
+    }
+
+    .comments-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .comments-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .post-newsletter {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      padding: 52px var(--container-padding);
+    }
+
+    .post-newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .post-newsletter-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-newsletter-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .post-footer {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+      padding: 28px var(--container-padding);
+    }
+
+    .post-footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .post-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .post-footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      opacity: 0.5;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-footer-link:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    @media (max-width: 640px) {
+      .post-newsletter-inner {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .series-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .series-nav-link--next {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Douglas Ebhoman</span>
+        <span class="nav-logo-rule"></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work"    class="nav-link">Work</a></li>
+        <li><a href="/#about"   class="nav-link">About</a></li>
+        <li><a href="/#skills"  class="nav-link">Skills</a></li>
+        <li><a href="/blog"     class="nav-link nav-link--active">Blog</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="post-hero-inner">
+        <a href="/blog" class="post-back">← All posts</a>
+        <span class="post-series-tag">Systems Over Sentences · Part 03 of 10</span>
+        <h1 class="post-title">How Product Teams Actually Handle Documentation</h1>
+        <p class="post-subtitle">Documentation doesn't break at the writing stage. Here's where it actually breaks.</p>
+        <div class="post-meta">
+          <span class="post-meta-item">Douglas Ebhoman</span>
+          <span class="post-meta-item">April 20, 2026</span>
+          <span class="post-meta-item">10 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COVER IMAGE -->
+    <div class="post-cover">
+      <img
+        src="../../../assets/images/how-product-teams-handle-documentation-card.jpeg"
+        alt="How Product Teams Actually Handle Documentation — Systems Over Sentences Part 3"
+        width="1200"
+        height="630"
+        loading="eager"
+      />
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body-wrap">
+      <article class="post-body">
+
+        <p class="lead">At one point in my independent technical writing practice, I held every role simultaneously.</p>
+
+        <p>Subject matter expert. Writer. Reviewer. Maintainer. Owner.</p>
+
+        <p>I was the only one in the room — which meant I was also the only one reading the room.</p>
+
+        <p>Documentation moved slower than it should have. Not because the writing was poor. Not because the process was unclear. But because one person moving through every stage of a workflow that was designed for multiple people creates a bottleneck at every turn.</p>
+
+        <p>And then something worse happened.</p>
+
+        <p>Unwounded errors merged into the source of truth — blind spots that survived because no one attacked them during review.</p>
+
+        <p>Not typos. Not formatting issues. Conceptual blind spots — assumptions I'd made about what a reader already knew, steps I'd considered obvious because I was the one who knew the product — baked into the canonical document. And because I owned the source of truth, the error became the truth.</p>
+
+        <p>Nobody caught it. There was nobody to catch it.</p>
+
+        <hr>
+
+        <h2>The ownership problem nobody names</h2>
+
+        <p>Here's what I've come to believe about how documentation actually fails inside product teams:</p>
+
+        <p>It doesn't break at the writing stage. Most technical writers care about accuracy and work hard to get it right.</p>
+
+        <p>It doesn't break at the review stage — at least not always. Many teams have review processes, even informal ones.</p>
+
+        <p>It doesn't break at the handoff between engineering and documentation. That's a friction point, but it's a visible one. Teams know it exists and work around it.</p>
+
+        <div class="pull-quote">
+          <p>Documentation breaks when no one clearly owns what happens next.</p>
+        </div>
+
+        <p>The product ships. The docs go live. The sprint closes. And then three months later the product changes — a parameter is renamed, a step is deprecated, a new prerequisite is added — and the documentation doesn't change with it. Not because no one noticed. Because no one was assigned to notice.</p>
+
+        <p>Ownership was assumed. Which means ownership belonged to no one.</p>
+
+        <hr>
+
+        <h2>The SME relationship is where ownership actually lives</h2>
+
+        <p>I talked about this once with Lucia — a technical writer with seven years of experience I've been building a relationship with. She said something that stayed with me: depending on the company, some instantly make the SME available to you. In others, you have to make that move yourself.</p>
+
+        <p>SMEs are humans with emotions — and tightly scheduled ones. They're not waiting for your questions. They're in sprint planning, in code review, in three other meetings before lunch. Getting accurate answers out of them isn't just a process problem. It's a relationship problem.</p>
+
+        <p>The best technical writers understand this instinctively. The formal channel — the email, the scheduled sync, the Slack message — gets you access. But access isn't the same as answers. The personal relationship is what gets you answers. And in professional settings, that personal relationship is built slowly, deliberately, through consistent contact and genuine curiosity about what the SME actually builds.</p>
+
+        <p>Because here's what most teams don't account for: documentation is never a one-time conversation. As the product evolves, the questions multiply. A writer who has cultivated a real relationship with their SME gets those answers quickly. A writer who hasn't cultivated that relationship waits. And while they wait, the documentation drifts.</p>
+
+        <p>Ownership lives in that relationship. When it breaks down — or was never built — documentation breaks down with it.</p>
+
+        <hr>
+
+        <h2>How it compounds — and why nobody notices</h2>
+
+        <p>The insidious thing about the ownership problem is that it's invisible until it isn't.</p>
+
+        <p>On launch day, the documentation is accurate. Six months later, the product has moved. The documentation hasn't. But nobody filed a ticket about it. The support requests that referenced the outdated page were answered directly by engineers — which meant the documentation problem was solved without the documentation being fixed.</p>
+
+        <p>This is Documentation Entropy in its quietest form. Not a catastrophic failure. A slow drift. Pages that are ninety percent accurate. Procedures that mostly work. Instructions that were right once and are now slightly wrong in ways that cost users ten minutes, thirty minutes, an hour of confusion.</p>
+
+        <p>Each instance is small. Accumulated across a documentation system with no clear ownership — it's a liability that compounds every sprint.</p>
+
+        <p>Infrastructure has owners. Infrastructure has maintenance schedules. Infrastructure has someone who gets paged when it breaks.</p>
+
+        <p>Documentation should have the same. Not because it's as critical as a production database — but because the cost of unowned pages compounds quietly, invisibly, until it surfaces as a support ticket, a confused onboarding call, or a developer asking a colleague instead of checking the docs.</p>
+
+        <div class="pull-quote">
+          <p>The question every product team needs to answer — and almost none of them do — is not "who wrote this?" It's "who owns this next?"</p>
+        </div>
+
+        <div class="quick-win">
+          <span class="quick-win-label">Quick win for systems thinkers</span>
+          <p><strong>The ownership audit:</strong> Pick any page in your current documentation. Ask one question: if this page becomes inaccurate tomorrow, who is responsible for fixing it? If you can't answer that with a name — not a team, not a role, a name — you don't have a documentation system. You have a documentation snapshot.</p>
+          <p><strong>The SME question that builds instant respect:</strong> Stop asking SMEs "How does this work?" Start asking "What's the one thing users always get wrong about this?" That question changes the dynamic immediately. It shows the SME you're thinking about their support load, not just your writing task. It builds trust faster than any formal introduction.</p>
+        </div>
+
+        <h2>What's next</h2>
+
+        <p>In Part 4 we get into one of the most practically useful distinctions in technical writing — writing for developers versus writing for everyone else. Same information, completely different approach. And why getting it wrong costs more than you'd think.</p>
+
+        <hr>
+
+        <p><em>The <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/" style="color: var(--color-gold);">Git &amp; GitHub for Technical Writers series</a> is the tooling foundation this series builds on. If you're thinking about how ownership, version control, and CI/CD pipelines connect to what I've described here — that's where to start.</em></p>
+
+      </article>
+    </div>
+
+    <!-- SERIES NAV -->
+    <nav class="series-nav">
+      <a href="/blog/posts/your-documentation-is-a-bakery/" class="series-nav-link">← Part 2: Your Documentation is a Bakery</a>
+      <span class="series-nav-link series-nav-link--next" style="opacity: 0.4; pointer-events: none;">Coming up next: Writing for Developers vs Non-Technical Users →</span>
+    </nav>
+
+    <!-- COMMENTS -->
+    <section class="comments-section">
+      <p class="comments-label">Discussion</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="Douglasebhoman/douglasebhoman.github.io"
+        data-repo-id="R_kgDORhvuTg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORhvuTs4C53Ys"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="post-newsletter">
+      <div class="post-newsletter-inner">
+        <div>
+          <p class="post-newsletter-label">Newsletter</p>
+          <p class="post-newsletter-desc">
+            One post a week on how documentation actually works.<br>No spam. Unsubscribe anytime.
+          </p>
+        </div>
+        <!-- MailerLite Universal -->
+        <script>
+          (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+          .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+          n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+          (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+          ml('account', '2241731');
+        </script>
+        <div class="ml-embedded" data-form="8iCjwu" style="width: 100%;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="post-footer">
+    <div class="post-footer-inner">
+      <p class="post-footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <a href="/blog" class="post-footer-link">← Back to blog</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    const navHeader = document.getElementById('nav-header');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      hamburger.classList.toggle('hamburger--open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    window.addEventListener('scroll', () => {
+      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
