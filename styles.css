@@ -315,7 +315,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   overflow: hidden;
 }
 
-/* Subtle grid texture */
 .hero::before {
   content: '';
   position: absolute;
@@ -327,7 +326,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   pointer-events: none;
 }
 
-/* Warm radial glow */
 .hero::after {
   content: '';
   position: absolute;
@@ -387,7 +385,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* Hero Photo */
 .hero-photo {
   display: flex;
   align-items: center;
@@ -442,7 +439,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   50%       { opacity: 0.9; transform: scale(1.025); }
 }
 
-/* Scroll indicator */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 32px; left: 50%;
@@ -473,6 +469,69 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.4; transform: scaleY(1); }
   50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* ============================================================
+   ACTIVITY STRIP
+============================================================ */
+.activity-strip {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-gold-border);
+  border-bottom: 1px solid var(--color-gold-border);
+  padding: 14px var(--container-padding);
+  overflow: hidden;
+}
+
+.activity-strip-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.activity-item {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 28px 0 0;
+  white-space: nowrap;
+}
+
+.activity-item + .activity-item {
+  padding-left: 28px;
+  border-left: 1px solid var(--color-silver-border);
+}
+
+.activity-item-number {
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.activity-item--available {
+  margin-left: auto;
+  padding-left: 28px;
+  border-left: 1px solid var(--color-silver-border);
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-item--available::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: availPulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 /* ============================================================
@@ -507,7 +566,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   box-shadow: 0 0 14px rgba(166,137,89,0.5);
 }
 
-/* Card preview image */
 .card-image-link {
   display: block;
   overflow: hidden;
@@ -673,7 +731,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   50%       { opacity: 0.4; transform: scale(0.7); }
 }
 
-/* About photo */
 .about-photo { flex-shrink: 0; }
 
 .about-photo-frame {
@@ -688,7 +745,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   object-position: center top;
   display: block;
   transition: transform 0.4s var(--ease-out-quart);
-
   -webkit-mask-image:
     linear-gradient(
       to bottom,
@@ -731,11 +787,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   mask-composite: intersect;
 }
 
-.about-portrait:hover {
-  transform: scale(1.015);
-}
+.about-portrait:hover { transform: scale(1.015); }
 
-/* Subtle gold accent line — left edge only, complements the blend */
 .about-photo-frame::before {
   content: '';
   position: absolute;
@@ -754,9 +807,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   z-index: 1;
 }
 
-.about-photo-accent {
-  display: none;
-}
+.about-photo-accent { display: none; }
 
 /* ============================================================
    SKILLS SECTION
@@ -879,7 +930,6 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
               opacity var(--transition-base);
 }
 
-/* Newsletter box */
 .newsletter-box {
   border: 1px solid var(--color-gold-border);
   padding: clamp(28px, 4vw, 44px);
@@ -956,11 +1006,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
 /* ============================================================
    MAILERLITE EMBED OVERRIDES
-   Forces MailerLite form to match brand identity
 ============================================================ */
-.newsletter-box .ml-embedded {
-  width: 100% !important;
-}
+.newsletter-box .ml-embedded { width: 100% !important; }
 
 .newsletter-box .ml-form-embedWrapper {
   background: transparent !important;
@@ -974,9 +1021,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   padding: 0 !important;
 }
 
-.newsletter-box .ml-form-embedContent {
-  display: none !important;
-}
+.newsletter-box .ml-form-embedContent { display: none !important; }
 
 .newsletter-box .ml-form-fieldRow input[type="email"],
 .newsletter-box .ml-block-form input[type="email"] {
@@ -1172,6 +1217,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
   .contact-item { grid-template-columns: 70px 1fr auto; }
   .hero-scroll-indicator { display: none; }
+
+  .activity-strip-inner { gap: 12px; }
+  .activity-item + .activity-item { padding-left: 0; border-left: none; }
+  .activity-item--available { margin-left: 0; padding-left: 0; border-left: none; }
 }
 
 /* ============================================================
@@ -1201,7 +1250,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   .hero-photo-decoration,
   .hero-photo-ring,
   .scroll-line,
-  .about-meta-value.available::before {
+  .about-meta-value.available::before,
+  .activity-item--available::before {
     animation: none;
   }
 
