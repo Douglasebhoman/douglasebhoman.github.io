@@ -8,7 +8,7 @@ Personal website and portfolio of Douglas Ebhoman — Technical Writer and Docs-
 
 ## Overview
 
-This repository is the source for my personal website, portfolio, and blog. It is hand-built in HTML and CSS — no frameworks, no static site generators, no dependencies — and deployed automatically to GitHub Pages via GitHub Actions on every push to `main`.
+This repository is the source for my personal website, portfolio, and blog. It is hand-built in HTML and CSS — no frameworks, no static site generators, no dependencies — and deployed automatically to GitHub Pages on every push to `main`.
 
 The site itself is a proof of work. A technical writer who specialises in Docs-as-Code and advocates for documentation as infrastructure should be able to build, version-control, and deploy their own web presence using the same principles they apply to documentation systems. This repository is that argument made concrete.
 
@@ -27,6 +27,7 @@ douglasebhoman.github.io/
 │       ├── systems-over-sentences-card.png
 │       ├── personal-website-guide-card.svg
 │       ├── static-portfolio-card.svg
+│       ├── site-docs-card.png
 │       ├── about-image.png
 │       └── headshot.jpg
 ├── blog/
@@ -45,9 +46,6 @@ douglasebhoman.github.io/
 │   ├── deployment.md
 │   ├── content-guide.md
 │   └── contributing.md
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
 ├── CNAME
 ├── index.html
 └── styles.css
@@ -69,13 +67,15 @@ douglasebhoman.github.io/
 
 **Scroll animations.** Entry animations on scroll use the Intersection Observer API with CSS transitions — no JavaScript animation libraries. Each section reveals on scroll with a configurable delay, keeping the page feel dynamic without sacrificing performance.
 
-**Pulsing availability indicator.** The availability status in the About section uses a CSS keyframe animation — a small pulsing green dot that signals open to work. It updates by editing one line of HTML.
+**Pulsing availability indicator.** The availability status in the About section and the activity strip both use a CSS keyframe animation — a small pulsing gold dot that signals open to work. It updates by editing one line of HTML.
+
+**Documentation co-located with the codebase.** The `site-docs/` directory lives inside this repository rather than separately. This is a deliberate Docs-as-Code decision — documentation and the system it documents are version-controlled together, so they stay in sync as the site evolves.
 
 ---
 
 ## Deployment
 
-Deployment is handled by a GitHub Actions workflow triggered on every push to `main`. The workflow copies the repository contents to the `gh-pages` branch, which GitHub Pages serves as the live site.
+Deployment is handled by GitHub's built-in Pages deployment, triggered automatically on every push to `main`. No custom workflow file is required — GitHub detects the push and serves the contents of `main` directly as the live site via the `pages-build-deployment` workflow.
 
 The `CNAME` file in the root maps the GitHub Pages URL to the custom domain `douglasebhoman.com`.
 
@@ -87,7 +87,7 @@ No build step is required — the repository contents are the deployment artefac
 
 The `/blog` directory contains a hand-built blog section for the *Systems Over Sentences* series — ten posts on documentation systems, Docs-as-Code workflows, and the thinking behind developer documentation.
 
-Each post lives in its own folder with an `index.html` file to enable clean URLs. Comments are handled by [Giscus](https://giscus.app) — a GitHub Discussions-backed comment system requiring no database. The newsletter section on each post embeds a MailerLite form connected to a live welcome sequence.
+Each post lives in its own folder with an `index.html` file to enable clean URLs. Comments are handled by [Giscus](https://giscus.app) — a GitHub Discussions-backed comment system that requires no database. Note: GitHub Discussions must be enabled on this repository for Giscus to function. The newsletter section on each post embeds a MailerLite form connected to a live welcome sequence.
 
 **Published posts:**
 
@@ -101,7 +101,7 @@ Each post lives in its own folder with an `index.html` file to enable clean URLs
 
 ## Portfolio pieces
 
-The Work section currently features five portfolio pieces:
+The Work section currently features six portfolio pieces:
 
 | # | Title | Type | Link |
 |---|-------|------|------|
@@ -110,6 +110,7 @@ The Work section currently features five portfolio pieces:
 | 03 | Systems Over Sentences | Blog series | [douglasebhoman.com/blog](https://douglasebhoman.com/blog) |
 | 04 | Personal Website Setup Guide | How-to guide | [Hashnode](https://douglasebhoman.hashnode.dev/how-to-build-a-personal-website-with-a-custom-domain-and-professional-email) |
 | 05 | Static Portfolio Architecture Review | Architecture documentation | [GitHub](https://github.com/Douglasebhoman/static-portfolio-site) |
+| 06 | douglasebhoman.com — Site Documentation | Site documentation | [Live docs](https://douglasebhoman.github.io/site-docs/) |
 
 ---
 
