@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Writing for developers and non-technical readers aren't just different tones — they're different jobs. Here's what that distinction actually means in practice." />
+  <meta name="author" content="Douglas Ebhoman" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/" />
+  <meta property="og:title" content="Writing for Developers vs Non-Technical Users" />
+  <meta property="og:description" content="Writing for developers and non-technical readers aren't just different tones — they're different jobs. Here's what that distinction actually means in practice." />
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/writing-for-developers-cover.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Writing for Developers vs Non-Technical Users" />
+  <meta name="twitter:description" content="Writing for developers and non-technical readers aren't just different tones — they're different jobs. Here's what that distinction actually means in practice." />
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/writing-for-developers-cover.png" />
+
+  <title>Writing for Developers vs Non-Technical Users · Douglas Ebhoman</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../styles.css" />
+
+  <style>
+    .post-hero {
+      padding: calc(var(--nav-height) + 60px) var(--container-padding) 48px;
+      background: var(--color-bg-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(166,137,89,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(166,137,89,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .post-hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-back {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2rem;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-back:hover {
+      opacity: 1;
+      color: var(--color-gold);
+    }
+
+    .post-series-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      margin-bottom: 1.4rem;
+    }
+
+    .post-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--color-text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .post-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-meta-item {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .post-meta-item::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .post-meta-item:first-child::before { display: none; }
+
+    .post-cover {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      border-bottom: 1px solid var(--color-gold-border);
+    }
+
+    .post-cover img {
+      max-width: 960px;
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+    }
+
+    .post-body-wrap {
+      padding: 64px var(--container-padding);
+      background: var(--color-bg-primary);
+    }
+
+    .post-body {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .post-body p {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.85;
+      margin-bottom: 1.6rem;
+    }
+
+    .post-body p.lead {
+      font-size: 1.15rem;
+      color: var(--color-text-primary);
+      line-height: 1.75;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-silver-border);
+    }
+
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--color-silver-border);
+      margin: 2.4rem 0;
+    }
+
+    .post-body .pull-quote {
+      border-left: 2px solid var(--color-gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--color-gold-subtle);
+    }
+
+    .post-body .pull-quote p {
+      font-size: 1.05rem;
+      color: var(--color-text-primary);
+      font-style: italic;
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+
+    .post-body .quick-win {
+      border: 1px solid var(--color-gold-border);
+      padding: 1.6rem 2rem;
+      margin: 2.4rem 0;
+      background: var(--color-bg-card);
+    }
+
+    .post-body .quick-win-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .post-body .quick-win p {
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body .quick-win p:last-child { margin-bottom: 0; }
+
+    .post-body strong { color: var(--color-text-primary); font-weight: 600; }
+
+    .post-body pre {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-silver-border);
+      padding: 1.2rem 1.5rem;
+      margin: 1.6rem 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--color-gold);
+      line-height: 1.6;
+    }
+
+    .post-body code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--color-gold);
+      background: var(--color-gold-subtle);
+      padding: 2px 6px;
+    }
+
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      color: var(--color-text-secondary);
+    }
+
+    .audience-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 2rem 0;
+    }
+
+    .audience-card {
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      padding: 1.4rem;
+    }
+
+    .audience-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .audience-card pre {
+      margin: 0;
+      border: none;
+      padding: 0;
+      background: none;
+      font-size: 0.78rem;
+    }
+
+    .audience-card p {
+      font-size: 0.92rem;
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      .audience-comparison { grid-template-columns: 1fr; }
+    }
+
+    .series-nav {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px var(--container-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--color-silver-border);
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .series-nav-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-silver);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .series-nav-link:hover { opacity: 1; color: var(--color-gold); }
+    .series-nav-link--next { margin-left: auto; }
+
+    .comments-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding) 64px;
+    }
+
+    .comments-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .comments-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .post-newsletter {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+      padding: 52px var(--container-padding);
+    }
+
+    .post-newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+
+    .post-newsletter-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .post-newsletter-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .post-footer {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
+      padding: 28px var(--container-padding);
+    }
+
+    .post-footer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .post-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .post-footer-link {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-silver);
+      opacity: 0.5;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .post-footer-link:hover { opacity: 1; color: var(--color-gold); }
+
+    @media (max-width: 640px) {
+      .post-newsletter-inner { align-items: flex-start; text-align: left; }
+      .series-nav { flex-direction: column; align-items: flex-start; }
+      .series-nav-link--next { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav-header" id="nav-header">
+    <nav class="nav-container">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Douglas Ebhoman</span>
+        <span class="nav-logo-rule"></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/#work"    class="nav-link">Work</a></li>
+        <li><a href="/#about"   class="nav-link">About</a></li>
+        <li><a href="/#skills"  class="nav-link">Skills</a></li>
+        <li><a href="/blog"     class="nav-link nav-link--active">Blog</a></li>
+        <li><a href="/#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="post-hero-inner">
+        <a href="/blog" class="post-back">← All posts</a>
+        <span class="post-series-tag">Systems Over Sentences · Part 04 of 10</span>
+        <h1 class="post-title">Writing for Developers vs Non-Technical Users</h1>
+        <p class="post-subtitle">Same information. Completely different job.</p>
+        <div class="post-meta">
+          <span class="post-meta-item">Douglas Ebhoman</span>
+          <span class="post-meta-item">April 27, 2026</span>
+          <span class="post-meta-item">11 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COVER IMAGE -->
+    <div class="post-cover">
+      <img
+        src="../../../assets/images/writing-for-developers-vs-non-technical-users-card.png"
+        alt="Writing for Developers vs Non-Technical Users — Systems Over Sentences Part 4"
+        width="1600"
+        height="840"
+        loading="eager"
+      />
+    </div>
+
+    <!-- POST BODY -->
+    <div class="post-body-wrap">
+      <article class="post-body">
+
+        <p class="lead">Last week I documented douglasebhoman.com, my personal portfolio site.</p>
+
+        <p>I built it. Every line of HTML, every CSS variable, every deployment pipeline. I made every architectural decision, named every class, wrote every commit message. There is no version of this site I don't understand.</p>
+
+        <p>And yet, writing developer documentation for it was one of the hardest writing tasks I've done.</p>
+
+        <p>Not because the system was complex. Because I knew it too well.</p>
+
+        <p>Every assumption I'd made during the build, assumptions so familiar they had become invisible, suddenly needed to be surfaced, named, and explained for someone who wasn't me. The curse of knowledge doesn't spare you just because the system is your own. It hits harder.</p>
+
+        <p>That experience gave me something I couldn't have gotten from reading about developer documentation: a felt understanding of why writing for developers and writing for non-technical readers are not just different tones. They are different jobs entirely.</p>
+
+        <hr>
+
+        <h2>The tour guide and the expert escort</h2>
+
+        <p>Writing a blog series is like taking your audience on a tour. There's a specific destination, but the journey is the point. You show the reader every detail along the way, not because they need all of it, but because context is what makes the content worth reading. The narrative earns the information.</p>
+
+        <p>Writing developer documentation is different. You're not a tour guide. You're an expert escort who takes the reader directly to the destination, stripping out everything that doesn't serve the task. No history. No exploration. No detours through your own thinking.</p>
+
+        <p>Precision is the value. Every word that isn't load-bearing is a word that shouldn't be there.</p>
+
+        <p>What made documenting my own site so disorienting was that I had to become the escort for a destination I'd built myself. I had to pretend I didn't know the shortcuts. I had to write the long way for a reader who needed the long way, even though I'd never taken it.</p>
+
+        <p>That's the job. And it's harder than it sounds.</p>
+
+        <hr>
+
+        <h2>The developer wants results. The non-technical reader wants understanding.</h2>
+
+        <p>When their needs align, writing for both audiences is straightforward. When they diverge, they diverge completely.</p>
+
+        <p>Consider the same piece of information written for two different readers:</p>
+
+        <div class="audience-comparison">
+          <div class="audience-card">
+            <span class="audience-card-label">For a developer</span>
+            <pre>GET /users/{id}
+Returns a single user object.
+Parameters: id (string, required)
+Response: 200 OK
+{
+  "id": "abc123",
+  "name": "Douglas Ebhoman"
+}</pre>
+          </div>
+          <div class="audience-card">
+            <span class="audience-card-label">For a non-technical reader</span>
+            <p>"Think of the user ID as a library card number. When you ask the system for a specific user, you hand over their card number and the system retrieves everything it knows about them."</p>
+          </div>
+        </div>
+
+        <p>Same information. One gives the developer exactly what they need to act. The other gives the non-technical reader exactly what they need to understand. Neither version works for the wrong audience.</p>
+
+        <p>Part of writing for developers is also meeting them in their environment. A non-technical user reads a Help Centre article or a PDF. A developer often reads a README.md in a Git repository or documentation embedded directly in their IDE. The format is part of the message.</p>
+
+        <hr>
+
+        <h2>Where technical writers most often get this wrong</h2>
+
+        <p>There are two failure modes and most writers fall into one of them. Both come from the same root problem.</p>
+
+        <p>The first is not trusting the developer. Over-explaining code samples. Defining syntax that any working engineer already knows. Adding context the developer didn't ask for and doesn't need. The result is documentation that wastes their time and signals clearly that the writer doesn't understand who they're writing for.</p>
+
+        <p>The second is underestimating the non-technical reader. Assuming they know what an API is, what a parameter does, what an acronym means. The result is documentation that informs no one, too thin for a developer and too opaque for a newcomer.</p>
+
+        <p>I fell into the first failure mode when I started documenting my own site. I kept wanting to explain why I made certain decisions, the thinking behind the architecture, the tradeoffs I considered. That's valuable context for a blog post. It's noise in a technical reference. Stripping that context out was the hardest editing I've done.</p>
+
+        <hr>
+
+        <h2>What language precision actually means in practice</h2>
+
+        <p>Language precision isn't about vocabulary. It's about matching your language to the level of understanding your reader brings to the page. In other words, precision is a form of empathy.</p>
+
+        <p>Someone once told me that language precision is all about knowing your audience. But here's the tension: how do you truly understand your audience without knowing them in person?</p>
+
+        <p>In a product team, you don't guess. You work from user personas, documented profiles of your target readers. A Senior DevOps Engineer and a Marketing Manager are not the same reader, even if they're using the same product. The persona tells you what they already know, what they need to accomplish, and what language they speak. It turns an abstract audience into a concrete one.</p>
+
+        <p>Outside a product team, writing independently as I am, you build the persona yourself. You make educated assumptions based on who you expect to land on the page, and you write for that reader explicitly. The friction of writing for someone you can't meet is part of the job. The skill is in making your assumptions deliberate rather than accidental.</p>
+
+        <hr>
+
+        <h2>Progressive disclosure: one system, two readers</h2>
+
+        <p>The developer and non-technical reader split doesn't always mean writing two separate documents. Great documentation systems use progressive disclosure, giving each reader what they need at the level they need it, within the same structure.</p>
+
+        <p>The developer gets the code sample immediately. The escort takes them straight to the destination.</p>
+
+        <p>The non-technical reader gets a link: "Read more about how this works." The tour guide is still available, just one step deeper.</p>
+
+        <p>This is the difference between documentation that serves one audience and documentation that scales. The escort and the tour guide don't have to be separate trips. They can be the same road with different lanes.</p>
+
+        <div class="quick-win">
+          <span class="quick-win-label">Quick win for systems thinkers</span>
+          <p>Before you write a single word, ask yourself one question: <em>does my reader want to understand this, or do they want to use it?</em></p>
+          <p><strong>Understanding</strong> means writing for the non-technical reader. Define terms. Build context. Surface assumptions. Tell the story.</p>
+          <p><strong>Using</strong> means writing for the developer. Lead with the outcome. Trust the reader. Get out of the way.</p>
+          <p>And if your documentation needs to serve both, design for progressive disclosure. Give the developer the direct path. Give the non-technical reader the door to go deeper.</p>
+          <p>That one question and that one design principle will change how you approach every document you write.</p>
+        </div>
+
+        <h2>What's next</h2>
+
+        <p>In Part 5 we get into the anatomy of great documentation, what separates a document that works from one that merely exists. The difference shows up in the same three places every time.</p>
+
+        <hr>
+
+        <p><em>I'm building a live example of developer-facing documentation as I write this series. <a href="https://douglasebhoman.github.io/mkdocs-for-technical-writers" style="color: var(--color-gold);">MkDocs for Technical Writers</a> is a practical guide to building and deploying documentation sites, and it's the direct result of everything this post describes.</em></p>
+
+      </article>
+    </div>
+
+    <!-- SERIES NAV -->
+    <nav class="series-nav">
+      <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="series-nav-link">← Part 3: How Product Teams Actually Handle Documentation</a>
+      <span class="series-nav-link series-nav-link--next" style="opacity: 0.4; pointer-events: none;">Coming up next: Anatomy of Great Documentation →</span>
+    </nav>
+
+    <!-- COMMENTS -->
+    <section class="comments-section">
+      <p class="comments-label">Discussion</p>
+      <script src="https://giscus.app/client.js"
+        data-repo="Douglasebhoman/douglasebhoman.github.io"
+        data-repo-id="R_kgDORhvuTg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDORhvuTs4C53Ys"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="post-newsletter">
+      <div class="post-newsletter-inner">
+        <div>
+          <p class="post-newsletter-label">Newsletter</p>
+          <p class="post-newsletter-desc">
+            One post a week on how documentation actually works.<br>No spam. Unsubscribe anytime.
+          </p>
+        </div>
+        <!-- MailerLite Universal -->
+        <script>
+          (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+          .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+          n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+          (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+          ml('account', '2241731');
+        </script>
+        <div class="ml-embedded" data-form="8iCjwu" style="width: 100%;"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="post-footer">
+    <div class="post-footer-inner">
+      <p class="post-footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <a href="/blog" class="post-footer-link">← Back to blog</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    const navHeader = document.getElementById('nav-header');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('nav-links--open');
+      hamburger.classList.toggle('hamburger--open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    window.addEventListener('scroll', () => {
+      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
