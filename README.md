@@ -38,7 +38,9 @@ douglasebhoman.github.io/
 │       ├── your-documentation-is-a-bakery/
 │       │   └── index.html
 │       └── how-product-teams-actually-handle-documentation/
-│           └── index.html
+│       │   └── index.html
+│       └── writing-for-developers-vs-non-technical-users
+|           └── index.html
 ├── site-docs/
 │   ├── overview.md
 │   ├── architecture.md
@@ -96,6 +98,7 @@ Each post lives in its own folder with an `index.html` file to enable clean URLs
 | 01 | From Writing to Documentation Systems | Apr 8, 2026 |
 | 02 | Your Documentation is a Bakery. Here's How to Build a Supermarket. | Apr 13, 2026 |
 | 03 | How Product Teams Actually Handle Documentation | Apr 20, 2026 |
+| 04 | writing-for-developers-vs-non-technical-users | Apr 27, 2026 |
 
 ---
 
