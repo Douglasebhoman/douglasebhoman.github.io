@@ -37,7 +37,7 @@ douglasebhoman.github.io/
 │       │   └── index.html
 │       ├── your-documentation-is-a-bakery/
 │       │   └── index.html
-│       └── how-product-teams-actually-handle-documentation/
+│       ├── how-product-teams-actually-handle-documentation/
 │       │   └── index.html
 │       └── writing-for-developers-vs-non-technical-users
 |           └── index.html
