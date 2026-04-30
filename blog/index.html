@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../styles.css" />
 
   <style>
-    /* ── Blog-specific overrides ── */
+    /* ── Blog hero ── */
     .blog-hero {
       padding: calc(var(--nav-height) + 60px) var(--container-padding) 60px;
       background: var(--color-bg-primary);
@@ -99,11 +99,156 @@
       color: var(--color-gold);
     }
 
-    /* ── Series section ── */
-    .series-section {
+    /* ── Featured post ── */
+    .featured-section {
       padding: 72px 0;
       background: var(--color-bg-secondary);
       border-top: 1px solid var(--color-gold-border);
+    }
+
+    .featured-section-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .featured-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .featured-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-gold-border);
+    }
+
+    .featured-card {
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+
+    .featured-card:hover {
+      border-color: rgba(166,137,89,0.5);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+
+    .featured-card:hover .featured-card-title {
+      color: var(--color-gold);
+    }
+
+    .featured-card:hover .featured-card-image {
+      transform: scale(1.02);
+      opacity: 1;
+    }
+
+    .featured-card-image-wrap {
+      overflow: hidden;
+      border-right: 1px solid var(--color-gold-border);
+    }
+
+    .featured-card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+      transition: transform 0.5s ease, opacity 0.3s ease;
+      min-height: 280px;
+    }
+
+    .featured-card-body {
+      padding: clamp(32px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .featured-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold-border);
+      padding: 3px 10px;
+      background: var(--color-gold-subtle);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .featured-card-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      transition: color 0.22s ease;
+    }
+
+    .featured-card-pull {
+      border-left: 2px solid var(--color-gold);
+      padding-left: 1rem;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+    }
+
+    .featured-card-meta {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      display: flex;
+      gap: 16px;
+    }
+
+    .featured-card-link {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+      .featured-card-image-wrap {
+        border-right: none;
+        border-bottom: 1px solid var(--color-gold-border);
+      }
+      .featured-card-image {
+        min-height: 200px;
+      }
+    }
+
+    /* ── Series section ── */
+    .series-section {
+      padding: 72px 0;
+      background: var(--color-bg-primary);
+      border-top: 1px solid var(--color-silver-border);
     }
 
     .series-section-inner {
@@ -246,7 +391,8 @@
     /* ── Posts section ── */
     .posts-section {
       padding: 72px 0;
-      background: var(--color-bg-primary);
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-silver-border);
     }
 
     .posts-section-inner {
@@ -292,18 +438,10 @@
       transition: padding-left 0.22s ease;
     }
 
-    .post-item:hover {
-      padding-left: 8px;
-    }
-
-    .post-item:hover .post-item-title {
-      color: var(--color-gold);
-    }
-
-    .post-item:hover .post-item-arrow {
-      opacity: 1;
-      transform: translateX(4px);
-    }
+    .post-item:hover { padding-left: 8px; }
+    .post-item:hover .post-item-title { color: var(--color-gold); }
+    .post-item:hover .post-item-arrow { opacity: 1; transform: translateX(4px); }
+    .post-item:hover .post-item-thumb { opacity: 1; }
 
     .post-item-number {
       font-family: var(--font-mono);
@@ -340,7 +478,21 @@
       font-size: 0.88rem;
       color: var(--color-text-secondary);
       line-height: 1.7;
-      max-width: 580px;
+      max-width: 520px;
+      margin-bottom: 0.8rem;
+    }
+
+    .post-item-pull {
+      border-left: 2px solid var(--color-gold);
+      padding-left: 0.8rem;
+      margin-bottom: 0.8rem;
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 480px;
+      opacity: 0.8;
     }
 
     .post-item-meta {
@@ -348,6 +500,7 @@
       align-items: center;
       gap: 16px;
       margin-top: 0.8rem;
+      flex-wrap: wrap;
     }
 
     .post-item-date {
@@ -362,6 +515,17 @@
       font-size: 0.62rem;
       letter-spacing: 0.08em;
       color: var(--color-text-muted);
+    }
+
+    .post-item-thumb {
+      width: 120px;
+      height: 72px;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      border: 1px solid var(--color-gold-border);
+      flex-shrink: 0;
+      align-self: center;
     }
 
     .post-item-arrow {
@@ -409,7 +573,7 @@
     /* ── Newsletter strip ── */
     .newsletter-strip {
       padding: 60px var(--container-padding);
-      background: var(--color-bg-secondary);
+      background: var(--color-bg-primary);
       border-top: 1px solid var(--color-silver-border);
     }
 
@@ -436,27 +600,6 @@
       font-size: 0.95rem;
       color: var(--color-text-secondary);
       line-height: 1.6;
-    }
-
-    .newsletter-strip-link {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      border: 1.5px solid var(--color-gold-border);
-      padding: 12px 24px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.22s ease, border-color 0.22s ease;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .newsletter-strip-link:hover {
-      background: var(--color-gold-subtle);
-      border-color: var(--color-gold);
     }
 
     /* ── Footer ── */
@@ -498,28 +641,12 @@
     }
 
     @media (max-width: 768px) {
-      .series-card {
-        grid-template-columns: 1fr;
-      }
-
-      .series-progress {
-        align-items: flex-start;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .post-item {
-        grid-template-columns: 40px 1fr;
-      }
-
-      .post-item-arrow {
-        display: none;
-      }
-
-      .newsletter-strip-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .series-card { grid-template-columns: 1fr; }
+      .series-progress { align-items: flex-start; flex-direction: row; }
+      .post-item { grid-template-columns: 40px 1fr; }
+      .post-item-arrow { display: none; }
+      .post-item-thumb { display: none; }
+      .newsletter-strip-inner { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -562,11 +689,40 @@
       </div>
     </section>
 
+    <!-- FEATURED POST -->
+    <section class="featured-section">
+      <div class="featured-section-inner">
+        <p class="featured-label">Latest Post</p>
+        <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="featured-card">
+          <div class="featured-card-image-wrap">
+            <img
+              src="../assets/images/writing-for-developers-vs-non-technical-users-card.png"
+              alt="Writing for Developers vs Non-Technical Users"
+              class="featured-card-image"
+              loading="eager"
+            />
+          </div>
+          <div class="featured-card-body">
+            <span class="featured-card-tag">Systems Over Sentences · Part 4</span>
+            <h2 class="featured-card-title">Writing for Developers vs Non-Technical Users</h2>
+            <p class="featured-card-pull">
+              One reader wants to understand. The other wants to use. The technical writer
+              who cannot tell the difference fails both of them, usually without knowing it.
+            </p>
+            <div class="featured-card-meta">
+              <span>Apr 27, 2026</span>
+              <span>7 min read</span>
+            </div>
+            <span class="featured-card-link">Read the post →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- SERIES -->
     <section class="series-section">
       <div class="series-section-inner">
         <p class="series-label">Current Series</p>
-
         <div class="series-card">
           <div class="series-card-body">
             <span class="series-card-tag">In Progress</span>
@@ -593,7 +749,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -612,8 +767,11 @@
               <h3 class="post-item-title">From Writing to Documentation Systems</h3>
               <p class="post-item-excerpt">
                 Most documentation does not fail because of bad writing. It fails because
-                nobody designed how it should work. Here is what systems thinking actually
-                looks like in practice.
+                nobody designed how it should work.
+              </p>
+              <p class="post-item-pull">
+                "Infrastructure has owners. Infrastructure has maintenance schedules.
+                Documentation should have the same."
               </p>
               <div class="post-item-meta">
                 <span class="post-item-date">Apr 8, 2026</span>
@@ -622,7 +780,12 @@
                 <span class="post-item-status post-item-status--start">Start here</span>
               </div>
             </div>
-            <span class="post-item-arrow">→</span>
+            <img
+              src="../assets/images/from-writing-to-documentation-systems.jpeg"
+              alt="From Writing to Documentation Systems"
+              class="post-item-thumb"
+              loading="lazy"
+            />
           </a>
 
           <!-- Part 2 -->
@@ -633,8 +796,10 @@
               <h3 class="post-item-title">Your Documentation is a Bakery. Here's How to Build a Supermarket.</h3>
               <p class="post-item-excerpt">
                 You cannot control which page your reader lands on first. What you can
-                control is whether every page has windows, connections that show readers
-                where to go next.
+                control is whether every page has windows.
+              </p>
+              <p class="post-item-pull">
+                "Every page is page one for someone. Build it that way."
               </p>
               <div class="post-item-meta">
                 <span class="post-item-date">Apr 13, 2026</span>
@@ -642,7 +807,12 @@
                 <span class="post-item-status post-item-status--live">Live</span>
               </div>
             </div>
-            <span class="post-item-arrow">→</span>
+            <img
+              src="../assets/images/Your-documentation-is-a-bakery.png"
+              alt="Your Documentation is a Bakery"
+              class="post-item-thumb"
+              loading="lazy"
+            />
           </a>
 
           <!-- Part 3 -->
@@ -653,8 +823,10 @@
               <h3 class="post-item-title">How Product Teams Actually Handle Documentation</h3>
               <p class="post-item-excerpt">
                 Documentation does not break at writing or review. It breaks when no one
-                clearly owns what happens next. And the most dangerous version of that
-                problem is not a large team. It is a solo writer with no external check.
+                clearly owns what happens next.
+              </p>
+              <p class="post-item-pull">
+                "Ownership was assumed. Which means ownership belonged to no one."
               </p>
               <div class="post-item-meta">
                 <span class="post-item-date">Apr 20, 2026</span>
@@ -662,7 +834,12 @@
                 <span class="post-item-status post-item-status--live">Live</span>
               </div>
             </div>
-            <span class="post-item-arrow">→</span>
+            <img
+              src="../assets/images/how-product-teams-handle-documentation-card.jpeg"
+              alt="How Product Teams Actually Handle Documentation"
+              class="post-item-thumb"
+              loading="lazy"
+            />
           </a>
 
           <!-- Part 4 -->
@@ -673,8 +850,11 @@
               <h3 class="post-item-title">Writing for Developers vs Non-Technical Users</h3>
               <p class="post-item-excerpt">
                 Knowing your audience is the most repeated advice in technical writing.
-                But how do you truly understand your audience without knowing them in
-                person? And what happens when the system is your own?
+                But how do you truly understand your audience without knowing them in person?
+              </p>
+              <p class="post-item-pull">
+                "Precision is not about vocabulary. It is about matching your language
+                to the level of understanding your reader brings to the page."
               </p>
               <div class="post-item-meta">
                 <span class="post-item-date">Apr 27, 2026</span>
@@ -682,7 +862,12 @@
                 <span class="post-item-status post-item-status--live">Live</span>
               </div>
             </div>
-            <span class="post-item-arrow">→</span>
+            <img
+              src="../assets/images/writing-for-developers-vs-non-technical-users-card.png"
+              alt="Writing for Developers vs Non-Technical Users"
+              class="post-item-thumb"
+              loading="lazy"
+            />
           </a>
 
           <!-- Parts 5-10 coming -->
@@ -765,7 +950,6 @@
             One post a week on how documentation actually works.<br>No spam. Unsubscribe anytime.
           </p>
         </div>
-        <!-- MailerLite Universal -->
         <script>
           (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
           .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
