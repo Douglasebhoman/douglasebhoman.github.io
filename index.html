@@ -35,6 +35,18 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
+    /* ── Card Tilt Effect ── */
+    .card {
+      transform-style: preserve-3d;
+      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      transition: transform 0.1s ease, box-shadow 0.3s ease;
+      will-change: transform;
+    }
+
+    .card:hover {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
     /* ── Scroll Progress Bar ── */
     .scroll-progress {
       position: fixed;
@@ -910,6 +922,27 @@
     window.addEventListener('load', () => {
       document.querySelectorAll('.reveal-hero').forEach(el => {
         el.classList.add('hero-animate');
+      });
+    });
+
+    // ── Card Tilt Effect ──
+    const tiltCards = document.querySelectorAll('.card');
+    const MAX_TILT = 6;
+
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = (e.clientX - centerX) / (rect.width / 2);
+        const deltaY = (e.clientY - centerY) / (rect.height / 2);
+        const rotateX = -deltaY * MAX_TILT;
+        const rotateY = deltaX * MAX_TILT;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       });
     });
 
