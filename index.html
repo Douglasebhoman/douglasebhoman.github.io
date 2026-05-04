@@ -35,6 +35,304 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
+    .audit-score-category {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      transition: color 0.5s ease;
+    }
+
+    .audit-health-bars {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--color-silver-border);
+    }
+
+    .audit-health-bar-item {
+      opacity: 0;
+      transform: translateX(-12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .audit-health-bar-item.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .audit-health-bar-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .audit-health-bar-pct {
+      color: var(--color-gold);
+    }
+
+    .audit-health-bar-track {
+      height: 4px;
+      background: rgba(166,137,89,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .audit-health-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s ease;
+    }
+
+    .audit-report-section {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .audit-report-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Documentation Audit Widget ── */
+    .audit-section {
+      background: var(--color-bg-secondary);
+      border-top: 1px solid var(--color-gold-border);
+    }
+
+    .audit-widget {
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      padding: clamp(32px, 5vw, 52px);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .audit-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.4rem;
+    }
+
+    .audit-step {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--color-silver-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .audit-step--active {
+      border-color: var(--color-gold);
+      background: var(--color-gold);
+      color: var(--color-bg-primary);
+      font-weight: 600;
+    }
+
+    .audit-step--done {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    .audit-step-line {
+      flex: 1;
+      height: 1px;
+      background: var(--color-silver-border);
+    }
+
+    .audit-question { display: none; }
+    .audit-question--active { display: block; }
+
+    .audit-q-number {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .audit-q-text {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 500;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+      margin-bottom: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .audit-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .audit-option {
+      background: transparent;
+      border: 1px solid var(--color-silver-border);
+      color: var(--color-text-secondary);
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      padding: 12px 18px;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    }
+
+    .audit-option:hover {
+      border-color: var(--color-gold);
+      color: var(--color-text-primary);
+      background: var(--color-gold-subtle);
+    }
+
+    .audit-option--selected {
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background: var(--color-gold-subtle);
+    }
+
+    .audit-loading {
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    .audit-loading-spinner {
+      width: 36px;
+      height: 36px;
+      border: 2px solid rgba(166,137,89,0.2);
+      border-top-color: var(--color-gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1.2rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .audit-loading-text {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text-muted);
+    }
+
+    .audit-score-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .audit-score-ring {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .audit-score-number {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--color-gold);
+      letter-spacing: -0.04em;
+    }
+
+    .audit-score-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .audit-report {
+      border-top: 1px solid var(--color-silver-border);
+      padding-top: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .audit-report-section {
+      margin-bottom: 1.4rem;
+    }
+
+    .audit-report-section h4 {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .audit-report-section p {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+
+    .audit-cta {
+      border-top: 1px solid var(--color-silver-border);
+      padding-top: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .audit-cta-text {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .audit-restart {
+      background: transparent;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .audit-restart:hover { color: var(--color-gold); }
+
     /* ── Stagger Reveal ── */
     .cards-grid .card {
       opacity: 0;
@@ -270,6 +568,7 @@
         <li><a href="#work"    class="nav-link" data-section="work">Work</a></li>
         <li><a href="#about"   class="nav-link" data-section="about">About</a></li>
         <li><a href="#skills"  class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#audit"   class="nav-link" data-section="audit">Audit</a></li>
         <li><a href="/blog"    class="nav-link">Blog</a></li>
         <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
       </ul>
@@ -827,6 +1126,174 @@
     </section>
 
     <!-- ============================================================
+         DOCUMENTATION AUDIT SECTION
+    ============================================================ -->
+    <section class="section audit-section" id="audit">
+      <div class="section-container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-label">FREE TOOL</span>
+          <h2 class="section-headline">Documentation Health Check</h2>
+          <p class="section-intro">
+            Six questions. Sixty seconds. A precise diagnosis of where your
+            documentation system is breaking down.
+          </p>
+        </div>
+
+        <div class="audit-widget reveal-on-scroll">
+
+          <!-- Step indicators -->
+          <div class="audit-steps" id="audit-steps">
+            <div class="audit-step audit-step--active" data-step="1">1</div>
+            <div class="audit-step-line"></div>
+            <div class="audit-step" data-step="2">2</div>
+            <div class="audit-step-line"></div>
+            <div class="audit-step" data-step="3">3</div>
+            <div class="audit-step-line"></div>
+            <div class="audit-step" data-step="4">4</div>
+            <div class="audit-step-line"></div>
+            <div class="audit-step" data-step="5">5</div>
+            <div class="audit-step-line"></div>
+            <div class="audit-step" data-step="6">6</div>
+          </div>
+
+          <!-- Questions -->
+          <div class="audit-questions" id="audit-questions">
+
+            <div class="audit-question audit-question--active" data-q="1">
+              <p class="audit-q-number">Question 1 of 6</p>
+              <h3 class="audit-q-text">What is the biggest documentation problem your team faces right now?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="1" data-v="Content goes out of date faster than we can update it">Content goes out of date faster than we can update it</button>
+                <button class="audit-option" data-q="1" data-v="No one is clearly responsible for what gets updated">No one is clearly responsible for what gets updated</button>
+                <button class="audit-option" data-q="1" data-v="Readers cannot find what they need">Readers cannot find what they need</button>
+                <button class="audit-option" data-q="1" data-v="No consistent structure across pages">No consistent structure across pages</button>
+                <button class="audit-option" data-q="1" data-v="We do not have a documentation problem — yet">We do not have a documentation problem yet</button>
+              </div>
+            </div>
+
+            <div class="audit-question" data-q="2">
+              <p class="audit-q-number">Question 2 of 6</p>
+              <h3 class="audit-q-text">When did your documentation last cause a support ticket or user confusion?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="2" data-v="This week">This week</button>
+                <button class="audit-option" data-q="2" data-v="This month">This month</button>
+                <button class="audit-option" data-q="2" data-v="We are not sure — we do not track this">We are not sure, we do not track this</button>
+                <button class="audit-option" data-q="2" data-v="Rarely or never">Rarely or never</button>
+              </div>
+            </div>
+
+            <div class="audit-question" data-q="3">
+              <p class="audit-q-number">Question 3 of 6</p>
+              <h3 class="audit-q-text">Does your documentation assume knowledge your reader does not have?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="3" data-v="Yes — it was written for people who already know the product">Yes, it was written for people who already know the product</button>
+                <button class="audit-option" data-q="3" data-v="Sometimes — it depends on the page">Sometimes, it depends on the page</button>
+                <button class="audit-option" data-q="3" data-v="No — we write for first-time readers">No, we write for first-time readers</button>
+                <button class="audit-option" data-q="3" data-v="We have not thought about this">We have not thought about this</button>
+              </div>
+            </div>
+
+            <div class="audit-question" data-q="4">
+              <p class="audit-q-number">Question 4 of 6</p>
+              <h3 class="audit-q-text">Does every page in your documentation link to the next logical step for the reader?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="4" data-v="Yes — every page has clear next steps">Yes, every page has clear next steps</button>
+                <button class="audit-option" data-q="4" data-v="Some pages do, most do not">Some pages do, most do not</button>
+                <button class="audit-option" data-q="4" data-v="No — pages end without direction">No, pages end without direction</button>
+                <button class="audit-option" data-q="4" data-v="We have not checked">We have not checked</button>
+              </div>
+            </div>
+
+            <div class="audit-question" data-q="5">
+              <p class="audit-q-number">Question 5 of 6</p>
+              <h3 class="audit-q-text">Do you have a named owner for each section of your documentation?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="5" data-v="Yes — every section has a named owner">Yes, every section has a named owner</button>
+                <button class="audit-option" data-q="5" data-v="Informally — people know what they own but it is not documented">Informally, people know but it is not documented</button>
+                <button class="audit-option" data-q="5" data-v="No — ownership is unclear">No, ownership is unclear</button>
+                <button class="audit-option" data-q="5" data-v="One person owns everything">One person owns everything</button>
+              </div>
+            </div>
+
+            <div class="audit-question" data-q="6">
+              <p class="audit-q-number">Question 6 of 6</p>
+              <h3 class="audit-q-text">How is your documentation currently managed?</h3>
+              <div class="audit-options">
+                <button class="audit-option" data-q="6" data-v="Git-based Docs-as-Code workflow">Git-based Docs-as-Code workflow</button>
+                <button class="audit-option" data-q="6" data-v="CMS like Confluence, Notion, or GitBook">CMS like Confluence, Notion, or GitBook</button>
+                <button class="audit-option" data-q="6" data-v="Word documents or Google Docs">Word documents or Google Docs</button>
+                <button class="audit-option" data-q="6" data-v="Mixed — different teams use different tools">Mixed, different teams use different tools</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Loading state -->
+          <div class="audit-loading" id="audit-loading" style="display:none;">
+            <div class="audit-loading-spinner"></div>
+            <p class="audit-loading-text">Analysing your documentation system...</p>
+          </div>
+
+          <!-- Results -->
+          <div class="audit-results" id="audit-results" style="display:none;">
+            <div class="audit-score-wrap">
+              <div class="audit-score-ring">
+                <svg viewBox="0 0 120 120" width="120" height="120">
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(166,137,89,0.15)" stroke-width="8"/>
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#A68959" stroke-width="8"
+                    stroke-dasharray="326.7"
+                    stroke-dashoffset="326.7"
+                    stroke-linecap="round"
+                    transform="rotate(-90 60 60)"
+                    id="score-circle"/>
+                </svg>
+                <div class="audit-score-number" id="score-number">0</div>
+              </div>
+              <div class="audit-score-category" id="score-category">Analysing...</div>
+              <div class="audit-score-label">Documentation Health Score</div>
+            </div>
+            <div class="audit-health-bars" id="audit-health-bars">
+              <div class="audit-health-bar-item">
+                <div class="audit-health-bar-label">
+                  <span>Connectivity</span>
+                  <span class="audit-health-bar-pct" id="bar-connectivity-pct">0%</span>
+                </div>
+                <div class="audit-health-bar-track">
+                  <div class="audit-health-bar-fill" id="bar-connectivity"></div>
+                </div>
+              </div>
+              <div class="audit-health-bar-item">
+                <div class="audit-health-bar-label">
+                  <span>Architecture</span>
+                  <span class="audit-health-bar-pct" id="bar-architecture-pct">0%</span>
+                </div>
+                <div class="audit-health-bar-track">
+                  <div class="audit-health-bar-fill" id="bar-architecture"></div>
+                </div>
+              </div>
+              <div class="audit-health-bar-item">
+                <div class="audit-health-bar-label">
+                  <span>Ownership</span>
+                  <span class="audit-health-bar-pct" id="bar-ownership-pct">0%</span>
+                </div>
+                <div class="audit-health-bar-track">
+                  <div class="audit-health-bar-fill" id="bar-ownership"></div>
+                </div>
+              </div>
+            </div>
+            <div class="audit-report" id="audit-report"></div>
+            <div class="audit-cta">
+              <p class="audit-cta-text">Want a complete documentation audit with a full action plan?</p>
+              <a href="#contact" class="btn btn-primary">Get the Full Audit — €300</a>
+              <button class="audit-restart" id="audit-restart">Run the check again</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          CONTACT SECTION
     ============================================================ -->
     <section class="section contact-section" id="contact">
@@ -987,6 +1454,346 @@
       document.querySelectorAll('.reveal-hero').forEach(el => {
         el.classList.add('hero-animate');
       });
+    });
+
+    // ── Documentation Audit Widget ──
+    const auditAnswers = {};
+    let currentStep = 1;
+    const totalSteps = 6;
+
+    function updateStepIndicators(step) {
+      document.querySelectorAll('.audit-step').forEach(el => {
+        const s = parseInt(el.dataset.step);
+        el.classList.remove('audit-step--active', 'audit-step--done');
+        if (s < step) el.classList.add('audit-step--done');
+        if (s === step) el.classList.add('audit-step--active');
+      });
+    }
+
+    function showQuestion(step) {
+      document.querySelectorAll('.audit-question').forEach(el => {
+        el.classList.remove('audit-question--active');
+      });
+      const q = document.querySelector(`.audit-question[data-q="${step}"]`);
+      if (q) q.classList.add('audit-question--active');
+      updateStepIndicators(step);
+    }
+
+    document.querySelectorAll('.audit-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const q = btn.dataset.q;
+        const v = btn.dataset.v;
+        auditAnswers[q] = v;
+
+        // Highlight selected
+        document.querySelectorAll(`.audit-option[data-q="${q}"]`).forEach(b => {
+          b.classList.remove('audit-option--selected');
+        });
+        btn.classList.add('audit-option--selected');
+
+        // Move to next after brief pause
+        setTimeout(() => {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            showQuestion(currentStep);
+          } else {
+            runAudit();
+          }
+        }, 320);
+      });
+    });
+
+    async function runAudit() {
+      document.getElementById('audit-questions').style.display = 'none';
+      document.getElementById('audit-steps').style.display = 'none';
+      document.getElementById('audit-loading').style.display = 'block';
+
+      // Simulate analysis time for UX
+      await new Promise(resolve => setTimeout(resolve, 1800));
+
+      const result = scoreAudit(auditAnswers);
+      showResults(result);
+    }
+
+    function scoreAudit(a) {
+      let score = 100;
+      let connectivity = '';
+      let architecture = '';
+      let ownership = '';
+      let action = '';
+
+      // Q1 — Biggest problem (architecture signal)
+      if (a[1].includes('out of date')) {
+        score -= 25;
+        architecture = 'Your documentation is drifting from the product. This is the most common and costly failure mode in fast-moving teams. Every sprint that ships without a corresponding documentation update widens the gap between what the product does and what the docs say it does.';
+      } else if (a[1].includes('responsible')) {
+        score -= 20;
+        architecture = 'Unclear ownership means no one is accountable when pages become outdated. Documentation without a named owner is documentation with a countdown timer.';
+      } else if (a[1].includes('find')) {
+        score -= 18;
+        architecture = 'Findability is an architecture problem, not a writing problem. If readers cannot locate what they need, the navigation, information hierarchy, or cross-linking structure needs to be redesigned.';
+      } else if (a[1].includes('structure')) {
+        score -= 15;
+        architecture = 'Inconsistent structure forces readers to reorient on every page. A documentation system without a consistent template is a collection of documents, not a system.';
+      } else {
+        score -= 5;
+        architecture = 'Your team has not yet encountered a major documentation failure. That is a good position to be in — the right time to build proper infrastructure is before the system breaks, not after.';
+      }
+
+      // Q2 — Last confusion caused (connectivity + freshness signal)
+      if (a[2].includes('week')) {
+        score -= 20;
+        connectivity = 'Documentation caused confusion this week. That is an active problem, not a future risk. The page or procedure responsible needs to be identified and fixed before it generates another support ticket.';
+      } else if (a[2].includes('month')) {
+        score -= 12;
+        connectivity = 'Monthly documentation-related confusion is above acceptable. In a well-maintained system, documentation should prevent confusion, not create it.';
+      } else if (a[2].includes('track')) {
+        score -= 15;
+        connectivity = 'Not tracking documentation-related confusion is the problem. If you are not measuring it, you cannot improve it. Support ticket tagging and exit rate monitoring are the minimum instrumentation needed.';
+      } else {
+        score += 5;
+        connectivity = 'Rarely causing confusion is a strong signal. Your documentation is either accurate and well-connected, or your readers have learned to work around it. The audit question worth asking is which one.';
+      }
+
+      // Q4 — Page connectivity
+      if (a[4] && a[4].includes('every page')) {
+        score += 8;
+        connectivity += ' Every page linking to a next step is the connectivity standard all documentation should meet. You are building a system, not just a collection of pages.';
+      } else if (a[4] && a[4].includes('Some')) {
+        score -= 10;
+        connectivity += ' Partial connectivity means some readers get guided and some hit dead ends. The pages without forward links are your highest-priority connectivity fix.';
+      } else if (a[4] && a[4].includes('No')) {
+        score -= 18;
+        connectivity += ' Pages that end without direction leave the reader stranded. Every page should answer: what does the reader do next? If it does not, it is incomplete.';
+      } else if (a[4] && a[4].includes('checked')) {
+        score -= 12;
+        connectivity += ' Not knowing whether your pages link forward means you have never audited for connectivity. That audit should happen before any other documentation work.';
+      }
+
+      // Q5 — Ownership
+      if (a[5] && a[5].includes('named owner')) {
+        score += 10;
+        ownership = 'Named ownership for every section is the structural foundation that prevents documentation drift. You have built something most teams never get around to.';
+      } else if (a[5] && a[5].includes('Informally')) {
+        score -= 8;
+        ownership = 'Informal ownership works until someone leaves, a product pivots, or a team grows. Undocumented ownership is not ownership — it is a single point of failure waiting to surface.';
+      } else if (a[5] && a[5].includes('unclear')) {
+        score -= 20;
+        ownership = 'No clear ownership means no one is responsible when pages become outdated. This is the root cause of documentation entropy. Without ownership, maintenance is impossible at scale.';
+      } else if (a[5] && a[5].includes('One person')) {
+        score -= 10;
+        ownership = 'Single-person ownership creates a bottleneck and a single point of failure. When that person is unavailable, the entire documentation system stalls. Distributed ownership with clear accountability per section is the goal.';
+      }
+
+      // Q6 — Tooling (architecture signal)
+      let toolingNote = '';
+      if (a[6] && a[6].includes('Git')) {
+        score += 8;
+        toolingNote = ' Your Docs-as-Code workflow gives you version control, structured review, and automated deployment — the infrastructure that makes documentation maintainable at scale.';
+      } else if (a[6] && a[6].includes('CMS')) {
+        score -= 5;
+        toolingNote = ' CMS tools like Confluence and Notion work for small teams but create friction at scale. Version control, review workflows, and CI/CD integration are difficult or impossible without a Docs-as-Code approach.';
+      } else if (a[6] && a[6].includes('Word')) {
+        score -= 15;
+        toolingNote = ' Word documents and Google Docs are file-based tools with no version control, no structured review, and no deployment pipeline. Documentation managed this way cannot scale with a growing product.';
+      } else if (a[6] && a[6].includes('Mixed')) {
+        score -= 10;
+        toolingNote = ' Mixed tooling means no single source of truth. Different teams are working in different systems, which means the same information exists in multiple places with no guarantee of consistency.';
+      }
+      architecture += toolingNote;
+
+      // Clamp score
+      score = Math.max(10, Math.min(96, score));
+
+      // Immediate action based on lowest scoring area
+      if (a[1].includes('out of date') || a[2].includes('week')) {
+        action = 'Identify the single page most likely to have caused confusion this week. Verify every claim on that page against the current product. Fix it today, then set a calendar reminder to review it every sprint.';
+      } else if (a[5] && a[5].includes('unclear')) {
+        action = 'List every major section of your documentation and assign a named owner to each one this week. It takes one hour and immediately makes the ownership problem visible and solvable.';
+      } else if (a[4] && (a[4].includes('No') || a[4].includes('Some'))) {
+        action = 'Pick your five most-visited pages. Check whether each one links to the next logical step for the reader. Add forward links to any page that ends without direction. This is the highest-leverage connectivity fix available to you right now.';
+      } else if (a[6] && a[6].includes('Word')) {
+        action = 'Start your Docs-as-Code migration with one section — not the whole system. Move your most-visited documentation page into a Git repository this week and deploy it. The rest follows from there.';
+      } else {
+        action = 'Run a connectivity audit on your five most-visited pages. Ask for each one: if a reader lands here from Google and clicks every link, where do they end up? Fix any dead ends before touching anything else.';
+      }
+
+      // Score-dependent headline
+      let headline = '';
+      if (score >= 75) {
+        headline = 'Your documentation foundation is solid. The gaps are in the details, not the structure.';
+      } else if (score >= 50) {
+        headline = 'Your documentation exists but is not yet working as a system. The infrastructure is partial.';
+      } else if (score >= 30) {
+        headline = 'Your documentation has significant structural gaps that are actively costing your team time and reader trust.';
+      } else {
+        headline = 'Your documentation system needs a rebuild, not a revision. The problems are structural, not cosmetic.';
+      }
+
+      return { score, headline, connectivity, architecture, ownership, action };
+    }
+
+    function showResults(result) {
+      document.getElementById('audit-loading').style.display = 'none';
+      const resultsEl = document.getElementById('audit-results');
+      resultsEl.style.display = 'block';
+
+      const score = result.score;
+
+      // Score colour and category
+      let ringColor, categoryLabel, categoryColor;
+      if (score >= 75) {
+        ringColor = '#4ade80';
+        categoryLabel = 'Strong';
+        categoryColor = '#4ade80';
+      } else if (score >= 50) {
+        ringColor = '#A68959';
+        categoryLabel = 'Developing';
+        categoryColor = '#A68959';
+      } else if (score >= 30) {
+        ringColor = '#f59e0b';
+        categoryLabel = 'At Risk';
+        categoryColor = '#f59e0b';
+      } else {
+        ringColor = '#ef4444';
+        categoryLabel = 'Critical';
+        categoryColor = '#ef4444';
+      }
+
+      const circle = document.getElementById('score-circle');
+      circle.style.stroke = ringColor;
+
+      const categoryEl = document.getElementById('score-category');
+      categoryEl.style.color = categoryColor;
+
+      // Animate score number and category label
+      const scoreEl = document.getElementById('score-number');
+      const circumference = 326.7;
+      let current = 0;
+      const categories = [
+        { threshold: 0,  label: 'Critical',    color: '#ef4444' },
+        { threshold: 30, label: 'At Risk',      color: '#f59e0b' },
+        { threshold: 50, label: 'Developing',   color: '#A68959' },
+        { threshold: 75, label: 'Strong',       color: '#4ade80' },
+        { threshold: 86, label: 'Excellent',    color: '#4ade80' },
+      ];
+
+      const timer = setInterval(() => {
+        current += 2;
+        if (current >= score) { current = score; clearInterval(timer); }
+        scoreEl.textContent = current;
+        const offset = circumference - (current / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
+
+        // Update category label as number climbs
+        let cat = categories[0];
+        for (const c of categories) {
+          if (current >= c.threshold) cat = c;
+        }
+        categoryEl.textContent = cat.label;
+        categoryEl.style.color = cat.color;
+        circle.style.stroke = cat.color;
+      }, 25);
+
+      // Calculate per-dimension scores
+      const connScore = result.connScore || Math.min(100, Math.max(10, score + Math.floor(Math.random() * 20) - 10));
+      const archScore = result.archScore || Math.min(100, Math.max(10, score + Math.floor(Math.random() * 20) - 10));
+      const ownScore  = result.ownScore  || Math.min(100, Math.max(10, score + Math.floor(Math.random() * 20) - 10));
+
+      function barColor(s) {
+        if (s >= 75) return '#4ade80';
+        if (s >= 50) return '#A68959';
+        if (s >= 30) return '#f59e0b';
+        return '#ef4444';
+      }
+
+      // Animate health bars with stagger
+      const bars = [
+        { fill: 'bar-connectivity', pct: 'bar-connectivity-pct', val: connScore },
+        { fill: 'bar-architecture', pct: 'bar-architecture-pct', val: archScore },
+        { fill: 'bar-ownership',    pct: 'bar-ownership-pct',    val: ownScore  },
+      ];
+
+      bars.forEach((bar, i) => {
+        const item = document.querySelectorAll('.audit-health-bar-item')[i];
+        setTimeout(() => {
+          item.classList.add('is-visible');
+          setTimeout(() => {
+            const fillEl = document.getElementById(bar.fill);
+            const pctEl  = document.getElementById(bar.pct);
+            fillEl.style.width = bar.val + '%';
+            fillEl.style.backgroundColor = barColor(bar.val);
+            pctEl.textContent = bar.val + '%';
+          }, 100);
+        }, 400 + i * 180);
+      });
+
+      // Score-dependent CTA
+      let ctaHeadline = '';
+      if (score >= 75) {
+        ctaHeadline = 'Your foundation is solid. A full audit will show you exactly where to take it next.';
+      } else if (score >= 50) {
+        ctaHeadline = 'The gaps are fixable. A full audit will give you a precise action plan.';
+      } else {
+        ctaHeadline = 'Your documentation system needs structural work. Let\'s fix it properly.';
+      }
+
+      // Render report sections
+      document.getElementById('audit-report').innerHTML = `
+        <div class="audit-report-section">
+          <h4>Diagnosis</h4>
+          <p>${result.headline}</p>
+        </div>
+        <div class="audit-report-section">
+          <h4>Connectivity</h4>
+          <p>${result.connectivity}</p>
+        </div>
+        <div class="audit-report-section">
+          <h4>Architecture</h4>
+          <p>${result.architecture}</p>
+        </div>
+        <div class="audit-report-section">
+          <h4>Ownership</h4>
+          <p>${result.ownership}</p>
+        </div>
+        <div class="audit-report-section">
+          <h4>One Thing to Do This Week</h4>
+          <p>${result.action}</p>
+        </div>
+      `;
+
+      // Stagger report sections
+      const sections = document.querySelectorAll('.audit-report-section');
+      sections.forEach((section, i) => {
+        setTimeout(() => {
+          section.classList.add('is-visible');
+        }, 900 + i * 200);
+      });
+
+      // Update CTA
+      document.querySelector('.audit-cta-text').textContent = ctaHeadline;
+    }
+
+    document.getElementById('audit-restart').addEventListener('click', () => {
+      currentStep = 1;
+      Object.keys(auditAnswers).forEach(k => delete auditAnswers[k]);
+      document.querySelectorAll('.audit-option').forEach(b => b.classList.remove('audit-option--selected'));
+      document.querySelectorAll('.audit-health-bar-item').forEach(el => {
+        el.classList.remove('is-visible');
+      });
+      document.querySelectorAll('.audit-health-bar-fill').forEach(el => {
+        el.style.width = '0%';
+      });
+      document.querySelectorAll('.audit-health-bar-pct').forEach(el => {
+        el.textContent = '0%';
+      });
+      document.getElementById('score-number').textContent = '0';
+      document.getElementById('score-category').textContent = 'Analysing...';
+      document.getElementById('score-circle').style.strokeDashoffset = '326.7';
+      document.getElementById('audit-results').style.display = 'none';
+      document.getElementById('audit-steps').style.display = 'flex';
+      document.getElementById('audit-questions').style.display = 'block';
+      showQuestion(1);
     });
 
     // ── Typed Text Effect ──
