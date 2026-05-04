@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Douglas Ebhoman, Technical Writer, Documentation Systems, Docs-as-Code. Based in Prague. Open to full-time roles and freelance engagements." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://douglasebhoman.com/cv/" />
+  <meta property="og:title" content="CV: Douglas Ebhoman · Technical Writer" />
+  <meta property="og:description" content="Technical Writer specialising in Documentation Systems, Docs-as-Code workflows, and developer-facing content. Based in Prague." />
+  <meta property="og:url" content="https://douglasebhoman.com/cv/" />
+  <title>CV: Douglas Ebhoman · Technical Writer</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23A68959' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #18222C;
+      --navy-light: #1f2f3d;
+      --gold:       #A68959;
+      --gold-border: rgba(166,137,89,0.25);
+      --gold-subtle: rgba(166,137,89,0.07);
+      --silver:     #B8C0CC;
+      --silver-border: rgba(184,192,204,0.2);
+      --text-primary:   #E8DCC8;
+      --text-secondary: #B8C0CC;
+      --text-muted:     #7a8796;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+      --font-serif: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text-primary);
+      font-family: var(--font-serif);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 52px;
+      background: rgba(24,34,44,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      z-index: 100;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .topbar-name {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--text-primary);
+      text-transform: uppercase;
+    }
+
+    .topbar-sep {
+      width: 1px;
+      height: 16px;
+      background: var(--gold-border);
+    }
+
+    .topbar-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .topbar-link {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .topbar-link:hover { color: var(--gold); text-decoration: none; }
+
+    .topbar-download {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: var(--gold);
+      padding: 6px 16px;
+      transition: opacity 0.2s ease;
+    }
+
+    .topbar-download:hover { opacity: 0.85; text-decoration: none; }
+
+    /* ── PAGE WRAPPER ── */
+    .cv-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 92px 40px 80px;
+    }
+
+    /* ── HERO ── */
+    .cv-hero {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--gold-border);
+      margin-bottom: 48px;
+    }
+
+    .cv-hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cv-hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .cv-hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .cv-hero-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .cv-hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .cv-hero-contact a { color: var(--text-muted); transition: color 0.2s ease; }
+    .cv-hero-contact a:hover { color: var(--gold); text-decoration: none; }
+
+    /* ── METRICS STRIP ── */
+    .metrics-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      border: 1px solid var(--gold-border);
+      margin-bottom: 56px;
+      background: var(--gold-subtle);
+    }
+
+    .metric-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 20px 24px;
+      border-right: 1px solid var(--gold-border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .metric-item:last-child { border-right: none; }
+
+    .metric-number {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── TWO COLUMN LAYOUT ── */
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .cv-sidebar { position: sticky; top: 72px; }
+
+    .sidebar-section { margin-bottom: 40px; }
+
+    .sidebar-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--gold-border);
+      display: block;
+    }
+
+    .sidebar-summary {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .sidebar-summary strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .skill-group { margin-bottom: 16px; }
+
+    .skill-group-name {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 2px 8px;
+      background: var(--gold-subtle);
+    }
+
+    .edu-item { margin-bottom: 16px; }
+
+    .edu-degree {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .edu-date {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    .availability-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 8px 14px;
+      border: 1px solid var(--gold-border);
+      background: var(--gold-subtle);
+    }
+
+    .availability-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* ── MAIN CONTENT ── */
+    .cv-main {}
+
+    .cv-section { margin-bottom: 52px; }
+
+    .cv-section-header {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cv-section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold-border);
+    }
+
+    /* Portfolio entries */
+    .portfolio-entry {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--silver-border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .portfolio-entry:last-child { border-bottom: none; }
+
+    .portfolio-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .portfolio-url {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .portfolio-url:hover { opacity: 1; text-decoration: none; }
+
+    .portfolio-desc {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-demonstrates {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .portfolio-demonstrates strong {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .portfolio-badge {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 3px 10px;
+      background: var(--gold-subtle);
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    /* Experience entries */
+    .exp-entry { margin-bottom: 36px; }
+    .exp-entry:last-child { margin-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .exp-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .exp-org {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-bullets li {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* Changelog section */
+    .changelog-entry {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--silver-border);
+      align-items: baseline;
+    }
+
+    .changelog-entry:last-child { border-bottom: none; }
+
+    .changelog-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .changelog-text {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .changelog-tag {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+
+    .tag-new { background: rgba(74,222,128,0.12); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+    .tag-update { background: var(--gold-subtle); color: var(--gold); border: 1px solid var(--gold-border); }
+    .tag-deploy { background: rgba(96,165,250,0.1); color: #60a5fa; border: 1px solid rgba(96,165,250,0.2); }
+
+    /* ── FOOTER ── */
+    .cv-footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--gold-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cv-footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .cv-footer-doctrine {
+      font-family: var(--font-serif);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      .topbar { display: none; }
+      .cv-wrapper { padding-top: 40px; }
+      .cv-sidebar { position: static; }
+      body { background: white; color: black; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .cv-wrapper { padding: 72px 20px 60px; }
+      .topbar { padding: 0 20px; }
+      .topbar-right .topbar-link { display: none; }
+      .cv-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cv-sidebar { position: static; }
+      .metrics-strip { flex-direction: column; }
+      .metric-item { border-right: none; border-bottom: 1px solid var(--gold-border); }
+      .metric-item:last-child { border-bottom: none; }
+      .portfolio-entry { grid-template-columns: 1fr; }
+      .changelog-entry { grid-template-columns: 1fr; gap: 6px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-name">Douglas Ebhoman</span>
+      <div class="topbar-sep"></div>
+      <span class="topbar-label">Curriculum Vitae</span>
+    </div>
+    <div class="topbar-right">
+      <a href="/" class="topbar-link">Portfolio</a>
+      <a href="/blog" class="topbar-link">Blog</a>
+      <a href="/#contact" class="topbar-link">Contact</a>
+      <a href="/assets/files/Douglas_Ebhoman_CV.pdf" download class="topbar-download">Download PDF ↓</a>
+    </div>
+  </header>
+
+  <div class="cv-wrapper">
+
+    <!-- HERO -->
+    <div class="cv-hero fade-up">
+      <p class="cv-hero-eyebrow">Technical Writer · Prague, Czechia</p>
+      <h1 class="cv-hero-name">Douglas Ebhoman</h1>
+      <p class="cv-hero-title">Documentation Systems · Docs-as-Code · Developer-Facing Content</p>
+      <div class="cv-hero-contact">
+        <a href="mailto:douglas@douglasebhoman.com">douglas@douglasebhoman.com</a>
+        <a href="https://douglasebhoman.com" target="_blank">douglasebhoman.com</a>
+        <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank">LinkedIn</a>
+        <a href="https://github.com/Douglasebhoman" target="_blank">GitHub</a>
+        <span>Prague, Czechia · Open to remote</span>
+      </div>
+    </div>
+
+    <!-- METRICS STRIP -->
+    <div class="metrics-strip fade-up">
+      <div class="metric-item">
+        <span class="metric-number">7</span>
+        <span class="metric-label">Portfolio pieces</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">3</span>
+        <span class="metric-label">Live docs sites</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">5</span>
+        <span class="metric-label">Blog posts published</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">800+</span>
+        <span class="metric-label">LinkedIn connections</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-number">€300</span>
+        <span class="metric-label">Documentation audit</span>
+      </div>
+    </div>
+
+    <!-- TWO COLUMN GRID -->
+    <div class="cv-grid">
+
+      <!-- SIDEBAR -->
+      <aside class="cv-sidebar">
+
+        <div class="sidebar-section fade-up">
+          <span class="sidebar-label">Availability</span>
+          <div class="availability-badge">
+            <div class="availability-dot"></div>
+            Open to opportunities
+          </div>
+        </div>
+
+        <div class="sidebar-section fade-up">
+          <span class="sidebar-label">Summary</span>
+          <p class="sidebar-summary">
+            Documentation fails in predictable ways. It drifts from the product. It loses its owner.
+            It answers the question nobody asked.<br><br>
+            <strong>I design systems that stop that from happening.</strong><br><br>
+            My background in creative writing means I arrived at technical writing already knowing how
+            to earn a reader's attention before asking for it.
+          </p>
+        </div>
+
+        <div class="sidebar-section fade-up">
+          <span class="sidebar-label">Tools</span>
+          <div class="skill-group">
+            <p class="skill-group-name">Docs-as-Code</p>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">MkDocs</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Markdown</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-name">Documentation</p>
+            <div class="skill-tags">
+              <span class="skill-tag">API docs</span>
+              <span class="skill-tag">Diataxis</span>
+              <span class="skill-tag">SSoT</span>
+              <span class="skill-tag">Postman</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-name">Technical</p>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">Cloudflare</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-section fade-up">
+          <span class="sidebar-label">Education</span>
+          <div class="edu-item">
+            <p class="edu-degree">Diploma in Web Development</p>
+            <p class="edu-school">Complete Computer Technology · Benin City</p>
+            <p class="edu-date">Apr 2024 – May 2025</p>
+          </div>
+        </div>
+
+        <div class="sidebar-section fade-up">
+          <span class="sidebar-label">Quick links</span>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a href="https://douglasebhoman.com" style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--gold);">Portfolio →</a>
+            <a href="https://douglasebhoman.com/blog" style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--gold);">Blog →</a>
+            <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/" style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--gold);">Git Series →</a>
+            <a href="https://douglasebhoman.com/mkdocs-for-technical-writers/" style="font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--gold);">MkDocs Guide →</a>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- MAIN -->
+      <main class="cv-main">
+
+        <!-- PORTFOLIO -->
+        <section class="cv-section fade-up">
+          <h2 class="cv-section-header">Writing Portfolio</h2>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">Git &amp; GitHub for Technical Writers</h3>
+              <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/" target="_blank" class="portfolio-url">douglasebhoman.com/git-github-for-technical-writers-series</a>
+              <p class="portfolio-desc">A six-part Docs-as-Code project built with the workflow it teaches. Every article authored in Markdown, version-controlled in Git, deployed automatically via GitHub Actions. Covers Git fundamentals, Pull Request governance, CI/CD automation, and documentation architecture using the Diataxis framework.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> End-to-end Docs-as-Code system design · GitHub Actions deployment · Audience-adaptive technical writing · Diataxis architecture</p>
+            </div>
+            <span class="portfolio-badge">Live Site</span>
+          </div>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">MkDocs for Technical Writers</h3>
+              <a href="https://douglasebhoman.com/mkdocs-for-technical-writers/" target="_blank" class="portfolio-url">douglasebhoman.com/mkdocs-for-technical-writers</a>
+              <p class="portfolio-desc">A complete 11-page technical documentation guide covering installation, configuration, content authoring, GitHub Pages deployment, custom domain setup, and troubleshooting. Written specifically for technical writers adopting Docs-as-Code workflows. Every page follows the every-page-is-page-one principle.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> Every-page-is-page-one information architecture · Troubleshooting documentation · Cross-platform technical writing</p>
+            </div>
+            <span class="portfolio-badge">Live Site</span>
+          </div>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">OpenWeather API: Getting Started Guide</h3>
+              <a href="https://douglasebhoman.com/openweather-docs/" target="_blank" class="portfolio-url">douglasebhoman.com/openweather-docs</a>
+              <p class="portfolio-desc">API documentation built using the OpenWeather REST API and Postman, covering authentication, endpoint structure, request parameters, and response interpretation. Structured in Markdown with clear separation between conceptual explanation and procedural steps.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> API documentation · REST endpoint documentation · Developer-facing content · Postman workflow</p>
+            </div>
+            <span class="portfolio-badge">Live Site</span>
+          </div>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">Systems Over Sentences</h3>
+              <a href="https://douglasebhoman.com/blog" target="_blank" class="portfolio-url">douglasebhoman.com/blog</a>
+              <p class="portfolio-desc">A 10-part blog series on documentation systems, Docs-as-Code workflows, and information architecture. Five parts published covering documentation ownership, audience-adaptive writing, connectivity, architecture, and feedback responsiveness as the three elements of great documentation.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> Long-form technical writing · Documentation systems thinking · Consistent publishing cadence</p>
+            </div>
+            <span class="portfolio-badge">5 of 10</span>
+          </div>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">douglasebhoman.com: Site Documentation</h3>
+              <a href="https://douglasebhoman.github.io/site-docs/" target="_blank" class="portfolio-url">douglasebhoman.github.io/site-docs</a>
+              <p class="portfolio-desc">Technical documentation for this portfolio site covering architecture decisions, local setup, deployment pipeline, content workflow, and contributing guidelines. The site documents itself.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> Architecture documentation · Docs-as-Code discipline · Self-referential documentation systems</p>
+            </div>
+            <span class="portfolio-badge">Live Site</span>
+          </div>
+
+          <div class="portfolio-entry">
+            <div>
+              <h3 class="portfolio-title">Static Portfolio Architecture Review</h3>
+              <a href="https://github.com/Douglasebhoman/static-portfolio-site" target="_blank" class="portfolio-url">github.com/Douglasebhoman/static-portfolio-site</a>
+              <p class="portfolio-desc">Architecture and security documentation for a static frontend, covering system design decisions, security considerations, trade-offs, and scope boundaries. Written simultaneously for technical stakeholders and non-technical product teams within the same document.</p>
+              <p class="portfolio-demonstrates"><strong>Demonstrates:</strong> Architecture documentation · Audience-adaptive writing · Security documentation · Decision-driven documentation</p>
+            </div>
+            <span class="portfolio-badge">GitHub</span>
+          </div>
+
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="cv-section fade-up">
+          <h2 class="cv-section-header">Professional Experience</h2>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <h3 class="exp-title">Technical Writer, Freelance</h3>
+              <span class="exp-date">Nov 2025 – Present</span>
+            </div>
+            <p class="exp-org">Self-Employed · Prague, Czechia</p>
+            <ul class="exp-bullets">
+              <li>Built and deployed three live MkDocs documentation sites, version-controlled and deployed via GitHub Actions, demonstrating Docs-as-Code infrastructure in production.</li>
+              <li>Authored a 10-part blog series on documentation systems and Docs-as-Code workflows, five parts published, generating engagement from senior practitioners including Associate Directors and 20-year technical writing veterans.</li>
+              <li>Designed and launched a Documentation Audit service at €300 per engagement, a productised offering diagnosing documentation system failures across connectivity, architecture, and ownership dimensions.</li>
+              <li>Built an interactive documentation health audit widget using a rule-based scoring engine and Cloudflare Workers, a six-question diagnostic tool generating scored reports and feeding directly into the audit service funnel.</li>
+              <li>Grew LinkedIn audience from zero to 800+ connections through consistent technical writing content focused on documentation systems and Docs-as-Code workflows.</li>
+              <li>Produces architecture and security documentation for static frontend projects, writing simultaneously for technical stakeholders and non-technical product teams within the same document.</li>
+            </ul>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <h3 class="exp-title">Freelance Writer &amp; Content Creator</h3>
+              <span class="exp-date">2023 – 2025</span>
+            </div>
+            <p class="exp-org">Self-Employed · Remote</p>
+            <ul class="exp-bullets">
+              <li>Produced long-form content across multiple topics over two years, developing editorial discipline, consistent writing habits, and an audience-adaptive voice.</li>
+              <li>Transitioned writing practice into technical documentation following completion of web development training in May 2025, applying structural and narrative instincts directly to developer-facing content.</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <!-- CHANGELOG -->
+        <section class="cv-section fade-up">
+          <h2 class="cv-section-header">Changelog</h2>
+
+          <div class="changelog-entry">
+            <span class="changelog-date">May 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-new">New</span>Live CV page deployed at douglasebhoman.com/cv/ as a version-controlled Docs-as-Code artefact</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">May 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-new">New</span>Part 5 of Systems Over Sentences published: Anatomy of Great Documentation</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">May 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-deploy">Deploy</span>MkDocs for Technical Writers guide deployed at douglasebhoman.com/mkdocs-for-technical-writers/</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">Apr 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-new">New</span>Documentation Audit service launched at €300 per engagement</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">Apr 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-update">Update</span>Parts 3 and 4 of Systems Over Sentences published</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">Mar 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-deploy">Deploy</span>Git and GitHub for Technical Writers series deployed as live MkDocs site</span>
+          </div>
+          <div class="changelog-entry">
+            <span class="changelog-date">Mar 2026</span>
+            <span class="changelog-text"><span class="changelog-tag tag-deploy">Deploy</span>OpenWeather API documentation deployed at douglasebhoman.com/openweather-docs/</span>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="cv-footer">
+      <p class="cv-footer-text">© 2026 Douglas Ebhoman · Last updated May 2026</p>
+      <p class="cv-footer-doctrine">Documentation is infrastructure. I treat it that way.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Fade up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

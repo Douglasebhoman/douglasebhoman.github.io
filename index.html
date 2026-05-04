@@ -107,6 +107,96 @@
       transform: translateY(0);
     }
 
+    /* ── Contact Section Upgrades ── */
+    .contact-hero {
+      margin-bottom: 48px;
+    }
+
+    .contact-subhead {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-top: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .contact-availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+    }
+
+    .contact-availability-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .contact-response-time {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      opacity: 0.6;
+      padding-top: 8px;
+    }
+
+    .contact-audit-prompt {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .contact-audit-inner {
+      border: 1px solid var(--color-gold-border);
+      background: var(--color-bg-card);
+      padding: clamp(28px, 4vw, 40px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      position: relative;
+    }
+
+    .contact-audit-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--color-gold);
+      opacity: 0.6;
+    }
+
+    .contact-audit-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+
+    .contact-audit-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+
     /* ── Documentation Audit Widget ── */
     .audit-section {
       background: var(--color-bg-secondary);
@@ -632,11 +722,13 @@
     }
 
     /* Before/After */
+    /* max-width added for mobile containment */
     .before-after {
       border: 1px solid var(--color-silver-border);
       background: var(--color-bg-primary);
       margin-bottom: 12px;
       overflow: hidden;
+      max-width: 100%;
     }
 
     .before-after-tabs {
@@ -665,7 +757,7 @@
       background: var(--color-gold-subtle);
     }
 
-    .ba-panel { display: none; padding: 16px; }
+    .ba-panel { display: none; padding: 16px; overflow: hidden; max-width: 100%; box-sizing: border-box; }
     .ba-panel--active { display: block; }
 
     .ba-label {
@@ -675,6 +767,9 @@
       text-transform: uppercase;
       color: var(--color-text-muted);
       margin-bottom: 10px;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.6;
     }
 
     .ba-code {
@@ -682,7 +777,8 @@
       font-size: 0.72rem;
       line-height: 1.7;
       color: var(--color-text-secondary);
-      white-space: pre;
+      white-space: pre-wrap;
+      word-break: break-word;
       overflow-x: auto;
       margin: 0;
     }
@@ -946,6 +1042,7 @@
         <li><a href="#skills"  class="nav-link" data-section="skills">Skills</a></li>
         <li><a href="#audit"   class="nav-link" data-section="audit">Audit</a></li>
         <li><a href="/blog"    class="nav-link">Blog</a></li>
+        <li><a href="/cv"      class="nav-link">CV</a></li>
         <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
       </ul>
       <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -1596,7 +1693,7 @@
                       <button class="ba-tab" data-ba="after">After</button>
                     </div>
                     <div class="ba-panel ba-panel--active" data-ba="before">
-                      <div class="ba-label">Raw API response — undocumented</div>
+                    <div class="ba-label">Raw API response — undocumented</div>
                       <pre class="ba-code">{
   "status": 200,
   "data": {
@@ -1807,23 +1904,31 @@
     ============================================================ -->
     <section class="section contact-section" id="contact">
       <div class="section-container">
-        <div class="section-header reveal-on-scroll">
+
+        <div class="contact-hero reveal-on-scroll">
           <span class="section-label">CONTACT</span>
-          <h2 class="section-headline">Start a Conversation</h2>
-          <p class="section-intro">
-            Open to full-time roles and freelance engagements with engineering teams
-            building products that documentation should be proud of.<br>
-            Based in Prague, available remotely.
+          <h2 class="section-headline">Is your product growing faster than your documentation can keep up with?</h2>
+          <p class="contact-subhead">
+            Most teams reach that point and do not know it until something breaks.
+            That is the problem I solve — documentation that works as a system,
+            maintained deliberately as the product evolves.
           </p>
+          <div class="contact-availability">
+            <span class="contact-availability-dot"></span>
+            <span class="contact-availability-text">Available for new engagements from June 2026 · Full-time and freelance</span>
+          </div>
         </div>
+
         <div class="contact-grid">
 
           <div class="contact-links reveal-on-scroll">
+
             <a href="mailto:douglas@douglasebhoman.com" class="contact-item">
               <span class="contact-item-label">Email</span>
-              <span class="contact-item-value">douglas@douglasebhoman.com</span>
+              <span class="contact-item-value">Send me a message · douglas@douglasebhoman.com</span>
               <span class="contact-item-arrow">→</span>
             </a>
+
             <a
               href="https://linkedin.com/in/douglas-ebhoman-757329289"
               target="_blank"
@@ -1831,9 +1936,10 @@
               class="contact-item"
             >
               <span class="contact-item-label">LinkedIn</span>
-              <span class="contact-item-value">linkedin.com/in/douglas-ebhoman</span>
+              <span class="contact-item-value">Connect on LinkedIn</span>
               <span class="contact-item-arrow">→</span>
             </a>
+
             <a
               href="https://github.com/Douglasebhoman"
               target="_blank"
@@ -1841,39 +1947,39 @@
               class="contact-item"
             >
               <span class="contact-item-label">GitHub</span>
-              <span class="contact-item-value">github.com/Douglasebhoman</span>
+              <span class="contact-item-value">Explore the repositories</span>
               <span class="contact-item-arrow">→</span>
             </a>
+
             <a
-              href="assets/files/Douglas_Ebhoman_CV.pdf"
-              download="Douglas_Ebhoman_CV.pdf"
-              class="contact-item contact-item--cv"
+              href="/cv/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-item"
             >
               <span class="contact-item-label">CV</span>
-              <span class="contact-item-value">Download my CV</span>
-              <span class="contact-item-arrow">↓</span>
+              <span class="contact-item-value">View full CV and download PDF</span>
+              <span class="contact-item-arrow">→</span>
             </a>
+
+            <p class="contact-response-time">I respond to every message within 24 hours.</p>
+
           </div>
 
-          <div class="newsletter-box reveal-on-scroll">
-            <p class="newsletter-label">Newsletter</p>
-            <p class="newsletter-description">
-              Documentation insights for technical writers and engineering teams.
-              No spam. Unsubscribe anytime.
-            </p>
-            <!-- MailerLite Universal -->
-            <script>
-              (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-              .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-              n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-              (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-              ml('account', '2241731');
-            </script>
-            <!-- End MailerLite Universal -->
-            <div class="ml-embedded" data-form="8iCjwu"></div>
+          <div class="contact-audit-prompt reveal-on-scroll">
+            <div class="contact-audit-inner">
+              <p class="contact-audit-label">Not sure where to start?</p>
+              <p class="contact-audit-text">
+                Run the free Documentation Health Check above. Six questions, sixty seconds.
+                Once you have your score, send it to me and I will respond with a specific
+                assessment of your next best step.
+              </p>
+              <a href="#audit" class="btn btn-secondary">Run the Health Check</a>
+            </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
