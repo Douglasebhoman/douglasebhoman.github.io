@@ -690,11 +690,71 @@
     .ba-comment { color: var(--color-gold); opacity: 0.8; }
 
     @media (max-width: 768px) {
-      .skills-panel-grid { grid-template-columns: 1fr; }
-      .skills-tab-btn { padding: 12px 16px; }
-      .skills-tab-label { display: none; }
-      .pipeline-diagram { gap: 4px; padding: 16px; }
-      .pipeline-node { min-width: 60px; padding: 8px; }
+      .skills-panel-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      /* Tab nav scrolls horizontally on mobile */
+      .skills-tab-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        border-bottom: 1px solid var(--color-gold-border);
+      }
+
+      .skills-tab-nav::-webkit-scrollbar { display: none; }
+
+      .skills-tab-btn {
+        padding: 12px 16px;
+        flex-shrink: 0;
+      }
+
+      /* Show labels on mobile but smaller */
+      .skills-tab-label {
+        font-size: 0.62rem;
+        display: block;
+      }
+
+      .skills-tab-num { display: none; }
+
+      /* Pipeline diagram stacks vertically on mobile */
+      .pipeline-diagram {
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        align-items: center;
+      }
+
+      .pipeline-arrow {
+        transform: rotate(90deg);
+        margin: 4px 0;
+      }
+
+      .pipeline-node { min-width: 120px; padding: 10px 16px; }
+
+      /* Diátaxis grid stays 2x2 but smaller text */
+      .diataxis-cell { padding: 12px; }
+      .diataxis-label { font-size: 0.6rem; }
+      .diataxis-sub { font-size: 0.55rem; }
+      .diataxis-expand { font-size: 0.78rem; }
+
+      /* Before/after code scrolls horizontally */
+      .ba-code {
+        font-size: 0.65rem;
+        overflow-x: auto;
+        white-space: pre;
+      }
+
+      /* Panel padding tighter on mobile */
+      .skills-tab-panel { padding: 20px 16px; }
+
+      /* Visual comes before text on mobile */
+      .skills-panel-grid {
+        display: flex;
+        flex-direction: column-reverse;
+      }
     }
 
     /* ── Scroll Progress Bar ── */
@@ -738,6 +798,20 @@
     .activity-item-number {
       display: inline-block;
       transition: transform 0.3s ease;
+    }
+
+    a.activity-item--link {
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    a.activity-item--link:hover {
+      color: var(--color-gold);
+    }
+
+    a.activity-item--link:hover .activity-item-number {
+      color: var(--color-gold);
     }
 
     /* ── Social Proof Section ── */
@@ -896,7 +970,7 @@
             <em><span id="typed-text"></span><span class="typed-cursor">|</span></em>
           </h1>
           <p class="hero-subheadline reveal-hero" style="--delay:0.46s">
-            Documentation Systems · Docs-as-Code · Developer Content · Open to hire
+            Documentation Systems · Docs-as-Code · Developer Content
           </p>
           <div class="hero-cta reveal-hero" style="--delay:0.62s">
             <a href="#work" class="btn btn-primary">View My Work</a>
@@ -934,9 +1008,9 @@
         <span class="activity-item">
           <span class="activity-item-number">5</span> posts published
         </span>
-        <span class="activity-item">
-          <span class="activity-item-number">10</span>-part series in progress
-        </span>
+        <a href="/blog" class="activity-item activity-item--link">
+          <span class="activity-item-number">10</span>-part blog series in progress
+        </a>
         <span class="activity-item">
           <span class="activity-item-number">3</span> documentation sites live
         </span>
@@ -1121,7 +1195,7 @@
                 <li class="tag">Technical Writing</li>
               </ul>
               <a
-                href="https://github.com/Douglasebhoman/personal-website-setup-guide"
+                href="https://douglasebhoman.hashnode.dev/how-to-build-a-personal-website-with-a-custom-domain-and-professional-email"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="card-link"
@@ -1336,7 +1410,7 @@
     ============================================================ -->
     <section class="proof-section">
       <div class="proof-section-inner">
-        <p class="proof-label">Peer Review</p>
+        <p class="proof-label">What People Say</p>
         <div class="proof-grid reveal-on-scroll">
           <div class="proof-card">
             <span class="proof-card-watermark">"</span>
@@ -1364,7 +1438,7 @@
         <div class="section-header reveal-on-scroll">
           <span class="section-label">SKILLS</span>
           <h2 class="section-headline">What I Bring to a Team</h2>
-          <p class="section-intro">Not a list of tools. A demonstration of how I think.</p>
+          <p class="section-intro">Not a list of tools. A demonstration of how I think and what I build.</p>
         </div>
 
         <div class="skills-tabs reveal-on-scroll">
@@ -1570,7 +1644,7 @@
           <h2 class="section-headline">Documentation Health Check</h2>
           <p class="section-intro">
             Six questions. Sixty seconds. A precise diagnosis of where your
-            documentation system is breaking down.
+            documentation system stands.
           </p>
         </div>
 
@@ -1735,7 +1809,7 @@
       <div class="section-container">
         <div class="section-header reveal-on-scroll">
           <span class="section-label">CONTACT</span>
-          <h2 class="section-headline">Let's Work Together</h2>
+          <h2 class="section-headline">Start a Conversation</h2>
           <p class="section-intro">
             Open to full-time roles and freelance engagements with engineering teams
             building products that documentation should be proud of.<br>
@@ -1782,7 +1856,7 @@
           </div>
 
           <div class="newsletter-box reveal-on-scroll">
-            <p class="newsletter-label">JOIN MY NEWSLETTER</p>
+            <p class="newsletter-label">Newsletter</p>
             <p class="newsletter-description">
               Documentation insights for technical writers and engineering teams.
               No spam. Unsubscribe anytime.
@@ -1810,7 +1884,8 @@
   ============================================================ -->
   <footer class="footer">
     <div class="footer-container">
-      <p class="footer-text">© 2026 Douglas Ebhoman · Built with intention.</p>
+      <p class="footer-text">© 2026 Douglas Ebhoman · Technical Writer · Prague</p>
+      <p class="footer-text" style="opacity: 0.45; margin-top: 4px; font-size: 0.62rem;">Documentation is infrastructure. I treat it that way.</p>
     </div>
   </footer>
 
