@@ -35,6 +35,21 @@
   <link rel="stylesheet" href="styles.css" />
 
   <style>
+    /* ── Typed Text Cursor ── */
+    .typed-cursor {
+      display: inline-block;
+      color: var(--color-gold);
+      font-style: italic;
+      font-weight: 400;
+      animation: blink 0.8s step-end infinite;
+      margin-left: 1px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     /* ── Card Tilt Effect ── */
     .card {
       transform-style: preserve-3d;
@@ -241,8 +256,8 @@
         <div class="hero-text">
           <p class="hero-eyebrow reveal-hero" style="--delay:0.1s">Technical Writer · Prague</p>
           <h1 class="hero-headline reveal-hero" style="--delay:0.28s">
-            I turn complex systems into documentation
-            <em>engineers can trust.</em>
+            I turn complex systems into documentation.
+            <em><span id="typed-text"></span><span class="typed-cursor">|</span></em>
           </h1>
           <p class="hero-subheadline reveal-hero" style="--delay:0.46s">
             Documentation Systems · Docs-as-Code · Developer Content · Open to hire
@@ -923,6 +938,65 @@
       document.querySelectorAll('.reveal-hero').forEach(el => {
         el.classList.add('hero-animate');
       });
+    });
+
+    // ── Typed Text Effect ──
+    const typedEl = document.getElementById('typed-text');
+    const cursor  = document.querySelector('.typed-cursor');
+    const phrases = [
+      'Engineers trust it.',
+      'Teams can maintain it.',
+      'Products can depend on it.',
+      'Organisations can scale with it.'
+    ];
+
+    let phraseIndex  = 0;
+    let charIndex    = 0;
+    let isDeleting   = false;
+    let typingActive = false;
+
+    const TYPE_SPEED   = 55;
+    const DELETE_SPEED = 30;
+    const PAUSE_END    = 2200;
+    const PAUSE_START  = 400;
+
+    function type() {
+      const current = phrases[phraseIndex];
+
+      if (isDeleting) {
+        typedEl.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedEl.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      if (!isDeleting && charIndex === current.length) {
+        // Pause at end of phrase
+        isDeleting = true;
+        setTimeout(type, PAUSE_END);
+        return;
+      }
+
+      if (isDeleting && charIndex === 0) {
+        isDeleting   = false;
+        phraseIndex  = (phraseIndex + 1) % phrases.length;
+        setTimeout(type, PAUSE_START);
+        return;
+      }
+
+      setTimeout(type, isDeleting ? DELETE_SPEED : TYPE_SPEED);
+    }
+
+    // Start typing after hero animation completes
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.reveal-hero').forEach(el => {
+        el.classList.add('hero-animate');
+      });
+      if (!typingActive) {
+        typingActive = true;
+        setTimeout(type, 1400);
+      }
     });
 
     // ── Card Tilt Effect ──
