@@ -5,8 +5,8 @@
 All file and folder names must use lowercase letters and hyphens instead of spaces.
 
 ```
-good: your-documentation-is-a-bakery
-bad:  Your Documentation Is A Bakery
+correct: your-documentation-is-a-bakery
+incorrect: Your Documentation Is A Bakery
 ```
 
 ## Commit message conventions
@@ -15,20 +15,22 @@ All commit messages must follow the Conventional Commits format: `type: short de
 
 | Type | When to use | Example |
 |------|-------------|---------|
-| `feat:` | Adding something new that didn't exist before | `feat: add Part 4 blog post` |
+| `feat:` | Adding something new that did not exist before | `feat: add Part 5 blog post` |
 | `fix:` | Correcting something broken or wrong | `fix: correct broken nav link on mobile` |
 | `docs:` | Updating documentation only — site-docs, README, Markdown files | `docs: update architecture section` |
-| `style:` | Visual or CSS changes that don't affect functionality | `style: adjust newsletter padding on mobile` |
+| `style:` | Visual or CSS changes that do not affect functionality | `style: adjust newsletter padding on mobile` |
 | `chore:` | Maintenance tasks — reorganising files, renaming folders | `chore: rename assets folder structure` |
+| `config:` | Changes to configuration files — mkdocs.yml, CNAME, workflow files | `config: add navigation.footer to mkdocs features` |
 
 ## Submitting changes
 
-Never push directly to `main`. This is a live site — broken code pushed to `main` deploys immediately.
+Never push directly to `main`. This is a live site. Broken code pushed to `main` deploys immediately.
 
 Always:
+
 1. Create a new branch for your change
 2. Make your changes on that branch
-3. Submit a pull request for review
+3. Submit a Pull Request for review
 4. Merge to `main` only after review
 
 ## Code style
@@ -38,13 +40,18 @@ Always:
 **Class naming:** Use kebab-case — all lowercase, words separated by hyphens.
 
 ```
-good: nav-header, post-hero-inner, blog-footer-text
-bad:  navHeader, PostHeroInner, blogFooterText
+correct: nav-header, post-hero-inner, blog-footer-text
+incorrect: navHeader, PostHeroInner, blogFooterText
 ```
 
 **CSS location:**
-- Global styles that apply across all pages → `styles.css`
-- Page-specific styles that apply to one page only → `<style>` tag inside that page's `<head>`
+
+- Global styles that apply across all pages: `styles.css`
+- Page-specific styles that apply to one page only: `<style>` tag inside that page's `<head>`
+
+**Em dashes:** Do not use em dashes in any content, documentation, commit messages, or code comments. Use a comma, full stop, or colon instead.
+
+**Contractions:** Do not use contractions in documentation or site-docs. Use full forms: "do not" not "don't", "does not" not "doesn't".
 
 ## Reporting bugs and suggestions
 
@@ -52,4 +59,4 @@ If you find a bug or want to suggest an improvement, raise a GitHub Issue on the
 
 [github.com/Douglasebhoman/douglasebhoman.github.io/issues](https://github.com/Douglasebhoman/douglasebhoman.github.io/issues)
 
-Describe the problem or suggestion clearly — include the page affected, what you expected to happen, and what actually happened.
+Describe the problem or suggestion clearly. Include the page affected, what you expected to happen, and what actually happened.
