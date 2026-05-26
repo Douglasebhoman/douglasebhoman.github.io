@@ -1608,23 +1608,6 @@ ul, ol {
   color: var(--color-gold);
 }
 
-@media (max-width: 768px) {
-  .footer-main {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-main {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 /* ============================================================
    19. SCROLL REVEAL
@@ -2012,18 +1995,23 @@ ul, ol {
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 
+  /* Hero — text first, portrait second */
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-12);
+    gap: var(--space-8);
   }
 
   .hero-photo-col {
     align-items: center;
-    order: -1;
+    order: 2;
+  }
+
+  .hero-left {
+    order: 1;
   }
 
   .portrait-frame {
-    max-width: 220px;
+    max-width: 200px;
   }
 
   .hero-side-proof {
@@ -2031,27 +2019,70 @@ ul, ol {
     width: 100%;
   }
 
+  /* Hero stats — wrap cleanly */
+  .hero-proof {
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    padding: 0 var(--space-6) var(--space-4) 0;
+    min-width: 100px;
+  }
+
+  .hero-stat:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Problem grid */
   .problem-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Work grid */
   .work-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Process steps */
   .process-steps {
     grid-template-columns: 1fr 1fr;
   }
 
-  .doctrine-band-inner {
+  /* Process flow — vertical on mobile */
+  .process-flow {
+    flex-direction: column;
+  }
+
+  .process-flow-step {
+    width: 100%;
+  }
+
+  .process-flow-connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-2) 0;
+    margin: 0;
+    transform: none;
+  }
+
+  .process-flow-connector svg {
+    transform: rotate(90deg);
+  }
+
+  /* About band */
+  .about-band-grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
 
+  /* Service flex */
   .service-flex {
     flex-direction: column;
   }
 
+  /* Contact */
   .contact-block {
     flex-direction: column;
   }
@@ -2060,17 +2091,30 @@ ul, ol {
     width: 100%;
   }
 
-  .footer {
-    flex-direction: column;
-    align-items: flex-start;
+  /* Writing grid */
+  .writing-grid {
+    grid-template-columns: 1fr;
   }
 
+  /* Strip scrollable */
   .strip {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .strip::-webkit-scrollbar { display: none; }
+
+  /* Footer — single column on mobile */
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer-brand {
+    grid-column: 1;
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
 }
 
 @media (max-width: 480px) {
@@ -2078,7 +2122,11 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
-  .hero-proof {
-    gap: var(--space-8);
+  .hero-stat-num {
+    font-size: 28px;
+  }
+
+  .portrait-frame {
+    max-width: 180px;
   }
 }
