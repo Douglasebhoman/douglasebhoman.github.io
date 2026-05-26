@@ -1614,26 +1614,40 @@ ul, ol {
 ============================================================ */
 
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  opacity: 1;
+  transform: none;
 }
 
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal-hero {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  transition-delay: var(--delay, 0s);
+  opacity: 1;
+  transform: none;
 }
 
-.reveal-hero.hero-animate {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .reveal-hero {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: var(--delay, 0s);
+  }
+
+  .reveal-hero.hero-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -1703,15 +1717,22 @@ ul, ol {
 }
 
 .work-card--stagger {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-  transition-delay: var(--stagger, 0s);
+  opacity: 1;
+  transform: none;
 }
 
-.work-card--stagger.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .work-card--stagger {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    transition-delay: var(--stagger, 0s);
+  }
+
+  .work-card--stagger.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .work-card-arrow {
@@ -1995,43 +2016,87 @@ ul, ol {
   .nav-hamburger { display: flex; }
   .nav-cta { display: none; }
 
-  /* Hero — text first, portrait second */
+  /* Hero — text first, portrait compact alongside proof */
   .hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
-  }
-
-  .hero-photo-col {
-    align-items: center;
-    order: 2;
   }
 
   .hero-left {
     order: 1;
   }
 
+  .hero-photo-col {
+    order: 2;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
   .portrait-frame {
-    max-width: 200px;
+    max-width: 120px;
+    flex-shrink: 0;
+  }
+
+  .portrait-accent {
+    display: none;
+  }
+
+  .portrait-label {
+    display: none;
   }
 
   .hero-side-proof {
+    flex: 1;
     max-width: 100%;
-    width: 100%;
+    width: auto;
   }
 
-  /* Hero stats — wrap cleanly */
+  .side-proof-item {
+    padding: 10px 12px;
+  }
+
+  .side-proof-text {
+    font-size: 10px;
+  }
+
+  /* Hero stats — three in a clean row */
   .hero-proof {
-    gap: 0;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-5);
+    flex-wrap: nowrap;
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255,255,255,0.07);
   }
 
   .hero-stat {
-    padding: 0 var(--space-6) var(--space-4) 0;
-    min-width: 100px;
+    padding: 0;
+    flex: 1;
   }
 
   .hero-stat:not(:last-child)::after {
     display: none;
+  }
+
+  .hero-stat-num {
+    font-size: 22px;
+  }
+
+  .hero-stat-label {
+    font-size: 8px;
+  }
+
+  /* Hero actions stack on mobile */
+  .hero-actions {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+    display: block;
   }
 
   /* Problem grid */
@@ -2104,16 +2169,31 @@ ul, ol {
   }
   .strip::-webkit-scrollbar { display: none; }
 
-  /* Footer — single column on mobile */
+  /* Footer — single column, brand block prominent */
   .footer-main {
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: 0;
   }
 
   .footer-brand {
     grid-column: 1;
-    padding-bottom: var(--space-6);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: var(--space-8) var(--container-padding);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-col {
+    padding: var(--space-6) var(--container-padding);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-brand-name {
+    font-size: 20px;
+    margin-bottom: var(--space-2);
+  }
+
+  .footer-brand-doctrine {
+    font-size: 12px;
+    margin-bottom: var(--space-5);
   }
 }
 
