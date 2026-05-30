@@ -1,35 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Primary SEO -->
-  <title>Work · Documentation Portfolio · Douglas Ebhoman</title>
-  <meta name="description" content="Documentation portfolio of Douglas Ebhoman — freelance technical writer and documentation systems specialist. Six live projects covering API documentation, Docs-as-Code, MkDocs, and developer guides." />
-  <meta name="keywords" content="technical writing portfolio, documentation portfolio, docs-as-code examples, API documentation examples, MkDocs documentation, developer documentation portfolio, freelance technical writer portfolio" />
-  <meta name="author" content="Douglas Ebhoman" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://douglasebhoman.com/work/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://douglasebhoman.com/work/" />
-  <meta property="og:title" content="Work · Documentation Portfolio · Douglas Ebhoman" />
-  <meta property="og:description" content="Six live documentation projects. All version-controlled. All deployed. Built the way engineers ship code." />
-  <meta property="og:image" content="https://douglasebhoman.com/assets/images/headshot.jpg" />
-  <meta property="og:site_name" content="Douglas Ebhoman" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Work · Documentation Portfolio · Douglas Ebhoman" />
-  <meta name="twitter:description" content="Six live documentation projects. All version-controlled. All deployed." />
-  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/headshot.jpg" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111827'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
-
-  <!-- Structured Data -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work &middot; Documentation Portfolio &middot; Douglas Ebhoman</title>
+  <meta name="description" content="Documentation portfolio of Douglas Ebhoman — freelance technical writer and documentation systems specialist. Six live projects covering API documentation, Docs-as-Code, MkDocs, and developer guides.">
+  <meta name="keywords" content="technical writing portfolio, documentation portfolio, docs-as-code examples, API documentation examples, MkDocs documentation, developer documentation portfolio, freelance technical writer portfolio">
+  <meta name="author" content="Douglas Ebhoman">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://douglasebhoman.com/work/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://douglasebhoman.com/work/">
+  <meta property="og:title" content="Work &middot; Documentation Portfolio &middot; Douglas Ebhoman">
+  <meta property="og:description" content="Six live documentation projects. All version-controlled. All deployed. Built the way engineers ship code.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/headshot.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Work &middot; Documentation Portfolio &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="Six live documentation projects. All version-controlled. All deployed.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/headshot.jpg">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,980 +26,715 @@
     "name": "Documentation Portfolio — Douglas Ebhoman",
     "description": "Six live documentation projects covering API documentation, Docs-as-Code workflows, MkDocs, and developer guides.",
     "url": "https://douglasebhoman.com/work/",
-    "author": {
-      "@type": "Person",
-      "name": "Douglas Ebhoman",
-      "url": "https://douglasebhoman.com"
-    }
+    "author": { "@type": "Person", "name": "Douglas Ebhoman", "url": "https://douglasebhoman.com" }
   }
   </script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:ital,wght@0,300;0,400;0,500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="../styles.css" />
-
-  <style>
-
-    .work-hero {
-      background: var(--color-navy);
-      padding: clamp(56px, 8vw, 96px) var(--container-padding) clamp(64px, 8vw, 80px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-gold-border), transparent);
-    }
-
-    .work-hero-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--space-12);
-      align-items: end;
-    }
-
-    .work-hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: var(--space-6);
-    }
-
-    .work-hero-eyebrow-line {
-      width: 32px;
-      height: 1px;
-      background: var(--color-gold);
-    }
-
-    .work-hero-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 300;
-      color: #fff;
-      line-height: 1.18;
-      letter-spacing: -0.02em;
-      max-width: 600px;
-      margin-bottom: var(--space-5);
-    }
-
-    .work-hero-headline em {
-      font-style: italic;
-      color: var(--color-gold-light);
-    }
-
-    .work-hero-sub {
-      font-size: 14px;
-      color: var(--color-text-dim);
-      line-height: 1.85;
-      max-width: 480px;
-      font-weight: 300;
-    }
-
-    .work-hero-stats {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-6);
-      text-align: right;
-      flex-shrink: 0;
-    }
-
-    .work-hero-stat-num {
-      font-family: var(--font-serif);
-      font-size: 40px;
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-
-    .work-hero-stat-label {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-text-ghost);
-      margin-top: 4px;
-    }
-
-    .work-filter-bar {
-      background: var(--color-navy-mid);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 0 var(--container-padding);
-    }
-
-    .work-filter-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .work-filter-inner::-webkit-scrollbar { display: none; }
-
-    .work-filter-btn {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      padding: 16px 20px;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      white-space: nowrap;
-      margin-bottom: -1px;
-    }
-
-    .work-filter-btn:hover {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .work-filter-btn--active {
-      color: var(--color-gold-light);
-      border-bottom-color: var(--color-gold);
-    }
-
-    .work-page-section {
-      background: var(--color-cream);
-      padding: clamp(48px, 7vw, 80px) var(--container-padding);
-    }
-
-    .work-page-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-    }
-
-    .work-full-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--color-border-light);
-    }
-
-    .work-full-card {
-      background: var(--color-white);
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow var(--transition-base);
-    }
-
-    .work-full-card.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .work-full-card:nth-child(1) { transition-delay: 0.05s; }
-    .work-full-card:nth-child(2) { transition-delay: 0.12s; }
-    .work-full-card:nth-child(3) { transition-delay: 0.19s; }
-    .work-full-card:nth-child(4) { transition-delay: 0.26s; }
-    .work-full-card:nth-child(5) { transition-delay: 0.33s; }
-    .work-full-card:nth-child(6) { transition-delay: 0.40s; }
-
-    .work-full-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: var(--color-gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--transition-base);
-      z-index: 1;
-    }
-
-    .work-full-card:hover {
-      box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-      z-index: 1;
-    }
-
-    .work-full-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .work-full-card-image {
-      width: 100%;
-      aspect-ratio: 16 / 8;
-      overflow: hidden;
-      background: var(--color-cream-2);
-    }
-
-    .work-full-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .work-full-card:hover .work-full-card-image img {
-      transform: scale(1.03);
-    }
-
-    .work-full-card-body {
-      padding: clamp(20px, 3vw, 32px);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    .work-full-card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .work-full-card-num {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      color: var(--color-text-muted);
-    }
-
-    .work-full-card-type {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      background: var(--color-gold-subtle);
-      border: 1px solid var(--color-gold-border);
-      padding: 2px 8px;
-    }
-
-    .work-full-card-title {
-      font-family: var(--font-serif);
-      font-size: clamp(16px, 2vw, 19px);
-      font-weight: 400;
-      color: var(--color-text-dark);
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-
-    .work-full-card-desc {
-      font-size: 13px;
-      color: var(--color-text-mid);
-      line-height: 1.8;
-      font-weight: 300;
-      flex: 1;
-    }
-
-    .work-full-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: var(--space-4);
-      border-top: 1px solid var(--color-border-light);
-      margin-top: var(--space-2);
-    }
-
-    .work-full-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .work-full-card-arrow {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--color-text-muted);
-      transition: color var(--transition-fast), transform var(--transition-fast);
-      flex-shrink: 0;
-    }
-
-    .work-full-card:hover .work-full-card-arrow {
-      color: var(--color-gold);
-      transform: translateX(4px);
-    }
-
-    .work-writing-strip {
-      background: var(--color-navy-mid);
-      padding: clamp(48px, 6vw, 72px) var(--container-padding);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .work-writing-strip-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-    }
-
-    .work-writing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.06);
-      margin-top: var(--space-10);
-    }
-
-    .work-writing-card {
-      background: var(--color-navy);
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: background var(--transition-base);
-      overflow: hidden;
-    }
-
-    .work-writing-card:hover {
-      background: var(--color-navy-light);
-    }
-
-    .work-writing-card-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: var(--color-navy-mid);
-    }
-
-    .work-writing-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.75;
-      transition: opacity 0.4s ease, transform 0.5s ease;
-    }
-
-    .work-writing-card:hover .work-writing-card-image img {
-      opacity: 0.9;
-      transform: scale(1.03);
-    }
-
-    .work-writing-card-body {
-      padding: clamp(16px, 2vw, 24px);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      flex: 1;
-    }
-
-    .work-writing-card-series {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-    }
-
-    .work-writing-card-title {
-      font-family: var(--font-serif);
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.45;
-      flex: 1;
-    }
-
-    .work-writing-card-link {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.25);
-      margin-top: var(--space-3);
-      transition: color var(--transition-fast);
-    }
-
-    .work-writing-card:hover .work-writing-card-link {
-      color: var(--color-gold);
-    }
-
-    .work-cta-portrait {
-      margin-bottom: var(--space-5);
-    }
-
-    .work-cta-portrait img {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center top;
-      border: 2px solid var(--color-gold-border);
-      filter: grayscale(15%);
-      margin: 0 auto;
-      display: block;
-    }
-
-    .work-cta-band {
-      background: var(--color-navy);
-      padding: clamp(56px, 8vw, 96px) var(--container-padding);
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .work-cta-band-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .work-cta-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      margin-bottom: var(--space-5);
-    }
-
-    .work-cta-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 300;
-      color: #fff;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-5);
-    }
-
-    .work-cta-headline em {
-      font-style: italic;
-      color: var(--color-gold-light);
-    }
-
-    .work-cta-sub {
-      font-size: 14px;
-      color: var(--color-text-dim);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: var(--space-8);
-    }
-
-    .work-cta-actions {
-      display: flex;
-      gap: var(--space-4);
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      .work-hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .work-hero-stats {
-        flex-direction: row;
-        text-align: left;
-        gap: var(--space-8);
-      }
-
-      .work-full-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-writing-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-  </style>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+<style>
+/* ── Critical base (self-contained) ── */
+:root {
+  --navy:#18222C; --navy-mid:#1E2D3D; --navy-light:#243044;
+  --cream:#F9F7F4; --cream-2:#F2EFE9;
+  --gold:#B8962E; --gold-light:#D4B060;
+  --gold-subtle:rgba(184,150,46,0.08); --gold-border:rgba(184,150,46,0.20);
+  --text-dark:#111827; --text-mid:#4B5563; --text-muted:#9CA3AF;
+  --text-dim:rgba(255,255,255,0.45); --text-ghost:rgba(255,255,255,0.25);
+  --border-light:rgba(0,0,0,0.08); --border-dark:rgba(255,255,255,0.06);
+  --green:#4ADE80;
+  --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --mono:'DM Mono',monospace;
+  --fast:0.15s ease; --base:0.25s ease; --container:960px; --pad:clamp(24px,5vw,48px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--text-dark);background:var(--cream);overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gold);z-index:9999;transition:width .1s linear;}
+.nav{background:var(--navy);padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-dark);transition:box-shadow var(--base);}
+.nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.4);}
+.nav-logo{font-family:var(--serif);font-size:15px;color:#fff;font-weight:300;letter-spacing:-.01em;}
+.nav-links{display:flex;gap:20px;align-items:center;}
+.nav-text{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color var(--fast);}
+.nav-text:hover{color:rgba(255,255,255,.8);}
+.nav-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);transition:border-color var(--fast),color var(--fast);}
+.nav-icon svg{width:15px;height:15px;fill:currentColor;display:block;}
+.nav-cta{background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;font-weight:500;transition:background var(--fast);display:inline-block;}
+.nav-cta:hover{background:var(--gold-light);}
+.btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.12);}
+.btn-ghost-light:hover{border-color:rgba(255,255,255,.3);color:#fff;}
+.btn-ghost-dark{background:transparent;color:var(--text-mid);border:1px solid var(--border-light);}
+.btn-ghost-dark:hover{border-color:var(--gold-border);color:var(--gold);}
+.label-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.lm{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.lm--dim{color:rgba(255,255,255,.3);}
+.gold-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);width:48px;display:inline-block;flex-shrink:0;}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);border:1px solid var(--border-light);padding:3px 8px;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);}
+.f-inner{max-width:var(--container);margin:0 auto;}
+.f-brand{padding:clamp(28px,5vw,48px) var(--pad);display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06);}
+.f-logo{font-family:var(--serif);font-size:20px;font-weight:300;color:#fff;letter-spacing:-.01em;margin-bottom:7px;}
+.f-tagline{font-family:var(--serif);font-size:13px;font-style:italic;color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:14px;}
+.f-avail{display:flex;align-items:center;gap:8px;}
+.f-avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite;}
+.f-avail-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
+.f-audit-btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:10px 18px;transition:background var(--fast);flex-shrink:0;align-self:center;}
+.f-audit-btn:hover{background:var(--gold-subtle);}
+.f-nav{padding:clamp(28px,5vw,48px) var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,60px);border-bottom:1px solid rgba(255,255,255,.06);}
+.f-col-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);}
+.f-links{display:flex;flex-direction:column;gap:10px;}
+.f-links a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.35);transition:color var(--fast);}
+.f-links a:hover{color:var(--gold-light);}
+.f-contact{padding:clamp(20px,4vw,36px) var(--pad);border-bottom:1px solid rgba(255,255,255,.06);}
+.f-contact-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.06);}
+.f-contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);}
+.f-contact-item{background:var(--navy);padding:18px;text-decoration:none;display:flex;flex-direction:column;gap:7px;transition:background var(--fast);}
+.f-contact-item:hover{background:var(--navy-mid);}
+.f-contact-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+.f-contact-icon{color:rgba(255,255,255,.3);}
+.f-contact-icon svg{width:18px;height:18px;}
+.f-contact-val{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);}
+.f-bottom{padding:18px var(--pad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.f-copy{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);}
+.f-back{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);transition:color var(--fast);}
+.f-back:hover{color:var(--gold-light);}
+
+/* ── Work page specific ── */
+.work-hero {
+  background: var(--navy);
+  padding: clamp(56px,8vw,96px) var(--pad) clamp(64px,8vw,80px);
+  position: relative;
+  overflow: hidden;
+}
+.work-hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(184,150,46,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,46,.025) 1px,transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.work-hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+}
+.work-hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(32px,6vw,64px);
+  align-items: end;
+  position: relative;
+  z-index: 1;
+}
+.work-hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(28px,5vw,48px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+.work-hero-headline em { font-style: italic; color: var(--gold-light); }
+.work-hero-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.85;
+  max-width: 480px;
+  font-weight: 300;
+}
+.work-hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px,3vw,32px);
+  text-align: right;
+  flex-shrink: 0;
+}
+.work-hero-stat-num {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.work-hero-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-top: 5px;
+}
+
+/* Filter bar */
+.work-filter-bar {
+  background: var(--navy-mid);
+  border-bottom: 1px solid var(--border-dark);
+  padding: 0 var(--pad);
+}
+.work-filter-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.work-filter-inner::-webkit-scrollbar { display: none; }
+.work-filter-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--fast);
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+.work-filter-btn:hover { color: rgba(255,255,255,.7); }
+.work-filter-btn--active { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+/* Work grid */
+.work-page-section {
+  background: var(--cream);
+  padding: clamp(48px,7vw,80px) var(--pad);
+}
+.work-page-inner { max-width: var(--container); margin: 0 auto; }
+
+.work-full-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1px;
+  background: var(--border-light);
+}
+
+.work-full-card {
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .55s ease, transform .55s ease, box-shadow var(--base);
+}
+.work-full-card.is-visible { opacity: 1; transform: translateY(0); }
+.work-full-card:nth-child(1){transition-delay:.05s;}
+.work-full-card:nth-child(2){transition-delay:.12s;}
+.work-full-card:nth-child(3){transition-delay:.19s;}
+.work-full-card:nth-child(4){transition-delay:.26s;}
+.work-full-card:nth-child(5){transition-delay:.33s;}
+.work-full-card:nth-child(6){transition-delay:.40s;}
+.work-full-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--base); z-index: 1;
+}
+.work-full-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.08); z-index: 1; }
+.work-full-card:hover::before { transform: scaleX(1); }
+
+.work-full-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+  background: var(--cream-2);
+}
+.work-full-card-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+.work-full-card:hover .work-full-card-image img { transform: scale(1.03); }
+
+.work-full-card-body {
+  padding: clamp(20px,3vw,32px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.work-full-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.work-full-card-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--text-muted);
+}
+.work-full-card-type {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: var(--gold-subtle);
+  border: 1px solid var(--gold-border);
+  padding: 2px 8px;
+}
+.work-full-card-title {
+  font-family: var(--serif);
+  font-size: clamp(16px,2vw,19px);
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+.work-full-card-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  font-weight: 300;
+  flex: 1;
+}
+.work-full-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+}
+.work-full-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.work-full-card-arrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: color var(--fast), transform var(--fast);
+  flex-shrink: 0;
+}
+.work-full-card:hover .work-full-card-arrow { color: var(--gold); transform: translateX(4px); }
+
+/* Writing strip */
+.work-writing-strip {
+  background: var(--navy-mid);
+  padding: clamp(48px,6vw,72px) var(--pad);
+  border-top: 1px solid var(--border-dark);
+}
+.work-writing-strip-inner { max-width: var(--container); margin: 0 auto; }
+.work-writing-h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px,4vw,36px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin-bottom: 36px;
+}
+.work-writing-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: rgba(255,255,255,.06);
+}
+.work-writing-card {
+  background: var(--navy);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--base);
+  overflow: hidden;
+}
+.work-writing-card:hover { background: var(--navy-light); }
+.work-writing-card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--navy-mid);
+}
+.work-writing-card-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .75;
+  transition: opacity .4s ease, transform .5s ease;
+}
+.work-writing-card:hover .work-writing-card-image img { opacity: .9; transform: scale(1.03); }
+.work-writing-card-body {
+  padding: clamp(16px,2vw,24px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.work-writing-card-series {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.work-writing-card-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.7);
+  line-height: 1.45;
+  flex: 1;
+}
+.work-writing-card-link {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: rgba(255,255,255,.25);
+  margin-top: 8px;
+  transition: color var(--fast);
+}
+.work-writing-card:hover .work-writing-card-link { color: var(--gold); }
+
+/* CTA band */
+.work-cta-band {
+  background: var(--navy);
+  padding: clamp(56px,8vw,96px) var(--pad);
+  text-align: center;
+  border-top: 1px solid var(--border-dark);
+  position: relative;
+}
+.work-cta-band::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(184,150,46,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,46,.025) 1px,transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.work-cta-band-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+.work-cta-portrait { margin-bottom: 20px; }
+.work-cta-portrait img {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid var(--gold-border);
+  margin: 0 auto;
+  display: block;
+}
+.work-cta-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.25);
+  margin-bottom: 20px;
+}
+.work-cta-headline {
+  font-family: var(--serif);
+  font-size: clamp(24px,4vw,36px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.work-cta-headline em { font-style: italic; color: var(--gold-light); }
+.work-cta-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+.work-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .work-hero-inner { grid-template-columns: 1fr; }
+  .work-hero-stats { flex-direction: row; text-align: left; gap: 28px; }
+  .work-full-grid { grid-template-columns: 1fr; }
+  .work-writing-grid { grid-template-columns: 1fr; }
+  .f-contact-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
 </head>
 <body>
 
-  <div class="scroll-progress" id="scroll-progress"></div>
+<div class="progress-bar" id="progressBar"></div>
 
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
-  <header class="nav-header" id="nav-header">
-    <a href="/" class="nav-logo">Douglas Ebhoman</a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/services/" class="nav-link">Services</a></li>
-      <li><a href="/work/"     class="nav-link nav-link--active">Work</a></li>
-      <li><a href="/#about-band" class="nav-link">About</a></li>
-      <li><a href="/blog/"     class="nav-link">Blog</a></li>
-      <li><a href="/#contact"  class="nav-link">Contact</a></li>
-    </ul>
-    <a href="mailto:douglas@douglasebhoman.com?subject=Documentation Audit Enquiry" class="nav-cta">Book the Audit</a>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
-  </header>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <div class="nav-links">
+    <a href="/services/" class="nav-text">Services</a>
+    <a href="/work/"     class="nav-text" style="color:var(--gold);">Work</a>
+    <a href="/#about"    class="nav-text">About</a>
+    <a href="/blog/"     class="nav-text">Blog</a>
+    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
+  </div>
+</nav>
 
-  <main>
-
-    <!-- ============================================================
-         HERO
-    ============================================================ -->
-    <section class="work-hero">
-      <div class="work-hero-inner">
-        <div class="work-hero-left">
-          <div class="work-hero-eyebrow">
-            <div class="work-hero-eyebrow-line"></div>
-            <span class="label label--light">Portfolio</span>
-          </div>
-          <h1 class="work-hero-headline">
-            Six pieces. All live.<br>
-            All built the way engineers<br>
-            <em>ship code.</em>
-          </h1>
-          <p class="work-hero-sub">
-            Every piece in this portfolio is version-controlled, publicly accessible,
-            and maintained as a living system. Not a PDF. Not a screenshot.
-            Something you can read, evaluate, and judge for yourself right now.
-          </p>
-        </div>
-        <div class="work-hero-stats">
-          <div>
-            <div class="work-hero-stat-num">6</div>
-            <div class="work-hero-stat-label">Portfolio pieces</div>
-          </div>
-          <div>
-            <div class="work-hero-stat-num">3</div>
-            <div class="work-hero-stat-label">Live deployed sites</div>
-          </div>
-          <div>
-            <div class="work-hero-stat-num">100%</div>
-            <div class="work-hero-stat-label">Publicly accessible</div>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="work-hero" id="top">
+  <div class="work-hero-grid-bg"></div>
+  <div class="work-hero-inner">
+    <div>
+      <div class="label-row"><span class="lm lm--dim">Portfolio</span><span class="gold-rule"></span></div>
+      <h1 class="work-hero-headline">Six pieces. All live.<br>All built the way engineers<br><em>ship code.</em></h1>
+      <p class="work-hero-sub">Every piece in this portfolio is version-controlled, publicly accessible, and maintained as a living system. Not a PDF. Not a screenshot. Something you can read, evaluate, and judge for yourself right now.</p>
+    </div>
+    <div class="work-hero-stats">
+      <div>
+        <div class="work-hero-stat-num">6</div>
+        <div class="work-hero-stat-label">Portfolio pieces</div>
       </div>
-    </section>
-
-    <!-- ============================================================
-         FILTER BAR
-    ============================================================ -->
-    <div class="work-filter-bar">
-      <div class="work-filter-inner">
-        <button class="work-filter-btn work-filter-btn--active" data-filter="all">All work</button>
-        <button class="work-filter-btn" data-filter="docs-as-code">Docs-as-Code</button>
-        <button class="work-filter-btn" data-filter="api">API Documentation</button>
-        <button class="work-filter-btn" data-filter="guide">Guides</button>
-        <button class="work-filter-btn" data-filter="architecture">Architecture</button>
+      <div>
+        <div class="work-hero-stat-num">3</div>
+        <div class="work-hero-stat-label">Live deployed sites</div>
+      </div>
+      <div>
+        <div class="work-hero-stat-num">100%</div>
+        <div class="work-hero-stat-label">Publicly accessible</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- ============================================================
-         WORK GRID
-    ============================================================ -->
-    <section class="work-page-section">
-      <div class="work-page-inner">
-        <div class="work-full-grid" id="work-grid">
+<!-- FILTER BAR -->
+<div class="work-filter-bar">
+  <div class="work-filter-inner">
+    <button class="work-filter-btn work-filter-btn--active" data-filter="all">All work</button>
+    <button class="work-filter-btn" data-filter="docs-as-code">Docs-as-Code</button>
+    <button class="work-filter-btn" data-filter="api">API Documentation</button>
+    <button class="work-filter-btn" data-filter="guide">Guides</button>
+    <button class="work-filter-btn" data-filter="architecture">Architecture</button>
+  </div>
+</div>
 
-          <a href="https://douglasebhoman.com/mkdocs-for-technical-writers/"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="docs-as-code guide">
-            <div class="work-full-card-image">
-              <img src="../assets/images/mkdocs-for-technical-writers-card.png"
-                   alt="MkDocs for Technical Writers" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">01</span>
-                <span class="work-full-card-type">Docs-as-Code</span>
-              </div>
-              <h2 class="work-full-card-title">MkDocs for Technical Writers</h2>
-              <p class="work-full-card-desc">
-                A complete 11-page guide to building and deploying documentation sites with MkDocs.
-                Covers installation, configuration, content writing, GitHub Pages deployment,
-                custom domains, and troubleshooting. Written for technical writers adopting
-                Docs-as-Code workflows without prior developer experience.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">MkDocs</span>
-                  <span class="tag">Docs-as-Code</span>
-                  <span class="tag">GitHub Pages</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
+<!-- WORK GRID -->
+<section class="work-page-section">
+  <div class="work-page-inner">
+    <div class="work-full-grid" id="work-grid">
 
-          <a href="https://douglasebhoman.com/openweather-docs/"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="api">
-            <div class="work-full-card-image">
-              <img src="../assets/images/openweather-card.svg"
-                   alt="OpenWeather API Getting Started Guide" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">02</span>
-                <span class="work-full-card-type">API Documentation</span>
-              </div>
-              <h2 class="work-full-card-title">OpenWeather API — Getting Started Guide</h2>
-              <p class="work-full-card-desc">
-                Hands-on API documentation built using the OpenWeather REST API and Postman.
-                Covers authentication, endpoint structure, request parameters, and response
-                interpretation. Written for developers encountering a REST API for the first time,
-                with clear separation between conceptual explanation and procedural steps.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">REST API</span>
-                  <span class="tag">Postman</span>
-                  <span class="tag">Markdown</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://douglasebhoman.com/personal-website-setup-guide/"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="guide">
-            <div class="work-full-card-image">
-              <img src="../assets/images/personal-website-setup-guide.png"
-                   alt="Personal Website Setup Guide" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">03</span>
-                <span class="work-full-card-type">Multi-part Guide</span>
-              </div>
-              <h2 class="work-full-card-title">Personal Website Setup Guide</h2>
-              <p class="work-full-card-desc">
-                End-to-end setup documentation for a multi-component technical system.
-                Covers GitHub Pages hosting, domain registration, DNS configuration,
-                HTTPS setup, and professional email via Gmail SMTP. Includes a
-                troubleshooting page and quick reference for every configuration value.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">GitHub Pages</span>
-                  <span class="tag">Cloudflare</span>
-                  <span class="tag">DNS</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://douglasebhoman.github.io/site-docs/"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="docs-as-code architecture">
-            <div class="work-full-card-image">
-              <img src="../assets/images/site-docs-card.png"
-                   alt="douglasebhoman.com Site Documentation" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">04</span>
-                <span class="work-full-card-type">Internal Docs</span>
-              </div>
-              <h2 class="work-full-card-title">douglasebhoman.com — Site Documentation</h2>
-              <p class="work-full-card-desc">
-                Internal-style technical documentation for this portfolio site. Covers
-                architecture decisions, local setup, deployment pipeline, content workflow,
-                and contributing guidelines. Structured and maintained the same way
-                engineering teams document their own products. The site documents itself.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">MkDocs</span>
-                  <span class="tag">GitHub Actions</span>
-                  <span class="tag">Architecture</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://douglasebhoman.github.io/git-github-for-technical-writers-series/"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="docs-as-code guide">
-            <div class="work-full-card-image">
-              <img src="../assets/images/git-series-card.svg"
-                   alt="Git and GitHub for Technical Writers" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">05</span>
-                <span class="work-full-card-type">Six-Part Series</span>
-              </div>
-              <h2 class="work-full-card-title">Git and GitHub for Technical Writers</h2>
-              <p class="work-full-card-desc">
-                A complete Docs-as-Code project authored in Markdown, version-controlled
-                in Git, and deployed automatically to GitHub Pages via GitHub Actions.
-                Six parts covering version control fundamentals, pull request workflows,
-                CI/CD pipelines, and documentation architecture using the Diátaxis framework.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">Git</span>
-                  <span class="tag">GitHub Actions</span>
-                  <span class="tag">Diátaxis</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="https://github.com/Douglasebhoman/notion-beginner-guide"
-             target="_blank" rel="noopener noreferrer"
-             class="work-full-card"
-             data-tags="guide">
-            <div class="work-full-card-image">
-              <img src="../assets/images/systems-over-sentences-card.png"
-                   alt="Getting Started with Notion" loading="lazy" width="800" height="420" />
-            </div>
-            <div class="work-full-card-body">
-              <div class="work-full-card-meta">
-                <span class="work-full-card-num">06</span>
-                <span class="work-full-card-type">Beginner Guide</span>
-              </div>
-              <h2 class="work-full-card-title">Getting Started with Notion</h2>
-              <p class="work-full-card-desc">
-                Beginner-level product documentation for Notion written for non-technical
-                users. Annotated screenshots, structured walkthroughs, and clear onboarding
-                steps. Demonstrates the ability to document consumer-facing products with
-                the same structural discipline applied to developer tools.
-              </p>
-              <div class="work-full-card-footer">
-                <div class="work-full-card-tags">
-                  <span class="tag">Product Docs</span>
-                  <span class="tag">Beginner</span>
-                  <span class="tag">Notion</span>
-                </div>
-                <span class="work-full-card-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
+      <a href="https://douglasebhoman.com/mkdocs-for-technical-writers/" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="docs-as-code guide">
+        <div class="work-full-card-image"><img src="../assets/images/mkdocs-for-technical-writers-card.png" alt="MkDocs for Technical Writers" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">01</span><span class="work-full-card-type">Docs-as-Code</span></div>
+          <h2 class="work-full-card-title">MkDocs for Technical Writers</h2>
+          <p class="work-full-card-desc">A complete 11-page guide to building and deploying documentation sites with MkDocs. Covers installation, configuration, content writing, GitHub Pages deployment, custom domains, and troubleshooting. Written for technical writers adopting Docs-as-Code workflows without prior developer experience.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">MkDocs</span><span class="tag">Docs-as-Code</span><span class="tag">GitHub Pages</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- ============================================================
-         WRITING STRIP
-    ============================================================ -->
-    <section class="work-writing-strip">
-      <div class="work-writing-strip-inner">
-        <div class="section-label-row">
-          <span class="label label--light">Latest writing</span>
-          <div class="label-line" style="background:rgba(255,255,255,0.08)"></div>
+      <a href="https://douglasebhoman.com/openweather-docs/" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="api">
+        <div class="work-full-card-image"><img src="../assets/images/openweather-card.svg" alt="OpenWeather API Getting Started Guide" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">02</span><span class="work-full-card-type">API Documentation</span></div>
+          <h2 class="work-full-card-title">OpenWeather API &mdash; Getting Started Guide</h2>
+          <p class="work-full-card-desc">Hands-on API documentation built using the OpenWeather REST API and Postman. Covers authentication, endpoint structure, request parameters, and response interpretation. Written for developers encountering a REST API for the first time, with clear separation between conceptual explanation and procedural steps.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">REST API</span><span class="tag">Postman</span><span class="tag">Markdown</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
-        <h2 class="section-headline section-headline--light">How I think about documentation systems.</h2>
+      </a>
 
-        <div class="work-writing-grid">
-
-          <a href="/blog/" class="work-writing-card">
-            <div class="work-writing-card-image">
-              <img src="../assets/images/anatomy-of-great-documentation-cover.png"
-                   alt="The Anatomy of Great Documentation" loading="lazy" width="800" height="450" />
-            </div>
-            <div class="work-writing-card-body">
-              <span class="work-writing-card-series">Systems Over Sentences</span>
-              <h3 class="work-writing-card-title">The Anatomy of Great Documentation</h3>
-              <span class="work-writing-card-link">Read on the blog →</span>
-            </div>
-          </a>
-
-          <a href="/blog/" class="work-writing-card">
-            <div class="work-writing-card-image">
-              <img src="../assets/images/from-writing-to-documentation-systems.jpg"
-                   alt="From Writing to Documentation Systems" loading="lazy" width="800" height="450" />
-            </div>
-            <div class="work-writing-card-body">
-              <span class="work-writing-card-series">Systems Over Sentences</span>
-              <h3 class="work-writing-card-title">From Writing to Documentation Systems</h3>
-              <span class="work-writing-card-link">Read on the blog →</span>
-            </div>
-          </a>
-
-          <a href="/blog/" class="work-writing-card">
-            <div class="work-writing-card-image">
-              <img src="../assets/images/Your-documentation-is-a-bakery.png"
-                   alt="Your Documentation is a Bakery" loading="lazy" width="800" height="450" />
-            </div>
-            <div class="work-writing-card-body">
-              <span class="work-writing-card-series">Systems Over Sentences</span>
-              <h3 class="work-writing-card-title">Your Documentation is a Bakery</h3>
-              <span class="work-writing-card-link">Read on the blog →</span>
-            </div>
-          </a>
-
+      <a href="https://douglasebhoman.com/personal-website-setup-guide/" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="guide">
+        <div class="work-full-card-image"><img src="../assets/images/personal-website-setup-guide.png" alt="Personal Website Setup Guide" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">03</span><span class="work-full-card-type">Multi-part Guide</span></div>
+          <h2 class="work-full-card-title">Personal Website Setup Guide</h2>
+          <p class="work-full-card-desc">End-to-end setup documentation for a multi-component technical system. Covers GitHub Pages hosting, domain registration, DNS configuration, HTTPS setup, and professional email via Gmail SMTP. Includes a troubleshooting page and quick reference for every configuration value.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">GitHub Pages</span><span class="tag">Cloudflare</span><span class="tag">DNS</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
+      </a>
 
-        <div style="text-align:center;margin-top:var(--space-10)">
-          <a href="/blog/" class="btn btn-ghost">View All Writing →</a>
+      <a href="https://douglasebhoman.github.io/site-docs/" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="docs-as-code architecture">
+        <div class="work-full-card-image"><img src="../assets/images/site-docs-card.png" alt="douglasebhoman.com Site Documentation" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">04</span><span class="work-full-card-type">Internal Docs</span></div>
+          <h2 class="work-full-card-title">douglasebhoman.com &mdash; Site Documentation</h2>
+          <p class="work-full-card-desc">Internal-style technical documentation for this portfolio site. Covers architecture decisions, local setup, deployment pipeline, content workflow, and contributing guidelines. Structured and maintained the same way engineering teams document their own products. The site documents itself.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">MkDocs</span><span class="tag">GitHub Actions</span><span class="tag">Architecture</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- ============================================================
-         CTA BAND
-    ============================================================ -->
-    <section class="work-cta-band">
-      <div class="work-cta-band-inner">
-        <div class="work-cta-portrait">
-          <img
-            src="../assets/images/headshot.jpg"
-            alt="Douglas Ebhoman"
-            width="64"
-            height="64"
-            loading="lazy"
-          />
+      <a href="https://douglasebhoman.github.io/git-github-for-technical-writers-series/" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="docs-as-code guide">
+        <div class="work-full-card-image"><img src="../assets/images/git-series-card.svg" alt="Git and GitHub for Technical Writers" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">05</span><span class="work-full-card-type">Six-Part Series</span></div>
+          <h2 class="work-full-card-title">Git and GitHub for Technical Writers</h2>
+          <p class="work-full-card-desc">A complete Docs-as-Code project authored in Markdown, version-controlled in Git, and deployed automatically to GitHub Pages via GitHub Actions. Six parts covering version control fundamentals, pull request workflows, CI/CD pipelines, and documentation architecture using the Di&aacute;taxis framework.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">Git</span><span class="tag">GitHub Actions</span><span class="tag">Di&aacute;taxis</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
-        <p class="work-cta-eyebrow">Seen enough?</p>
-        <h2 class="work-cta-headline">
-          Let me audit <em>your</em><br>
-          documentation next.
-        </h2>
-        <p class="work-cta-sub">
-          The Documentation Audit tells you precisely where your system is failing
-          and what to fix first. €300, delivered in five working days.
-        </p>
-        <div class="work-cta-actions">
-          <a href="mailto:douglas@douglasebhoman.com?subject=Documentation Audit Enquiry&body=Hi Douglas,%0A%0AI would like to book a Documentation Audit for [company name].%0A%0AOur documentation lives at [URL or platform].%0A%0ALooking forward to hearing from you."
-             class="btn btn-primary">Book the Documentation Audit — €300</a>
-          <a href="/services/" class="btn btn-ghost">See what is included →</a>
+      </a>
+
+      <a href="https://github.com/Douglasebhoman/notion-beginner-guide" target="_blank" rel="noopener noreferrer" class="work-full-card" data-tags="guide">
+        <div class="work-full-card-image"><img src="../assets/images/systems-over-sentences-card.png" alt="Getting Started with Notion" loading="lazy" width="800" height="420"></div>
+        <div class="work-full-card-body">
+          <div class="work-full-card-meta"><span class="work-full-card-num">06</span><span class="work-full-card-type">Beginner Guide</span></div>
+          <h2 class="work-full-card-title">Getting Started with Notion</h2>
+          <p class="work-full-card-desc">Beginner-level product documentation for Notion written for non-technical users. Annotated screenshots, structured walkthroughs, and clear onboarding steps. Demonstrates the ability to document consumer-facing products with the same structural discipline applied to developer tools.</p>
+          <div class="work-full-card-footer">
+            <div class="work-full-card-tags"><span class="tag">Product Docs</span><span class="tag">Beginner</span><span class="tag">Notion</span></div>
+            <span class="work-full-card-arrow">&rarr;</span>
+          </div>
         </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
-  <footer class="footer">
-    <div class="footer-main">
-
-      <div class="footer-brand">
-        <div class="footer-brand-name">Douglas Ebhoman</div>
-        <p class="footer-brand-doctrine">Narrative is infrastructure. I treat it that way.</p>
-        <a href="mailto:douglas@douglasebhoman.com?subject=Documentation Audit Enquiry&body=Hi Douglas,%0A%0AI would like to book a Documentation Audit for [company name].%0A%0AOur documentation lives at [URL or platform].%0A%0ALooking forward to hearing from you."
-           class="footer-brand-audit">Book the Audit — €300</a>
-      </div>
-
-      <div class="footer-col">
-        <p class="footer-col-label">Navigation</p>
-        <div class="footer-col-links">
-          <a href="/services/" class="footer-col-link footer-col-link--highlight">Services</a>
-          <a href="/work/"     class="footer-col-link">Work</a>
-          <a href="/#about-band" class="footer-col-link">About</a>
-          <a href="/blog/"    class="footer-col-link">Blog</a>
-          <a href="/#contact" class="footer-col-link">Contact</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <p class="footer-col-label">Latest Writing</p>
-        <div class="footer-col-links">
-          <a href="/blog/" class="footer-col-link">The Anatomy of Great Documentation</a>
-          <a href="/blog/" class="footer-col-link">From Writing to Documentation Systems</a>
-          <a href="/blog/" class="footer-col-link">Your Documentation is a Bakery</a>
-          <a href="/blog/" class="footer-col-link footer-col-link--highlight">View all writing →</a>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <p class="footer-col-label">Contact</p>
-        <div class="footer-col-links">
-          <a href="mailto:douglas@douglasebhoman.com" class="footer-col-link footer-col-link--highlight">douglas@douglasebhoman.com</a>
-          <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank" rel="noopener noreferrer" class="footer-col-link">LinkedIn</a>
-          <a href="https://github.com/Douglasebhoman" target="_blank" rel="noopener noreferrer" class="footer-col-link">GitHub</a>
-          <a href="/cv/" class="footer-col-link">View CV</a>
-        </div>
-      </div>
+      </a>
 
     </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-inner">
-        <span class="footer-copy">© 2026 Douglas Ebhoman · Prague, Czechia · Documentation Systems Specialist</span>
-        <a href="#" class="footer-back-top">Back to top ↑</a>
+  </div>
+</section>
+
+<!-- WRITING STRIP -->
+<section class="work-writing-strip">
+  <div class="work-writing-strip-inner">
+    <div class="label-row"><span class="lm lm--dim">Latest writing</span><span class="gold-rule"></span></div>
+    <h2 class="work-writing-h2">How I think about documentation systems.</h2>
+    <div class="work-writing-grid">
+
+      <a href="/blog/posts/anatomy-of-great-documentation/" class="work-writing-card">
+        <div class="work-writing-card-image"><img src="../assets/images/anatomy-of-great-documentation-cover.png" alt="The Anatomy of Great Documentation" loading="lazy" width="800" height="450"></div>
+        <div class="work-writing-card-body">
+          <span class="work-writing-card-series">Systems Over Sentences &middot; Part 05</span>
+          <h3 class="work-writing-card-title">The Anatomy of Great Documentation</h3>
+          <span class="work-writing-card-link">Read on the blog &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/blog/posts/from-writing-to-documentation-systems/" class="work-writing-card">
+        <div class="work-writing-card-image"><img src="../assets/images/from-writing-to-documentation-systems.jpeg" alt="From Writing to Documentation Systems" loading="lazy" width="800" height="450"></div>
+        <div class="work-writing-card-body">
+          <span class="work-writing-card-series">Systems Over Sentences &middot; Part 01</span>
+          <h3 class="work-writing-card-title">From Writing to Documentation Systems</h3>
+          <span class="work-writing-card-link">Read on the blog &rarr;</span>
+        </div>
+      </a>
+
+      <a href="/blog/posts/your-documentation-is-a-bakery/" class="work-writing-card">
+        <div class="work-writing-card-image"><img src="../assets/images/Your-documentation-is-a-bakery.png" alt="Your Documentation is a Bakery" loading="lazy" width="800" height="450"></div>
+        <div class="work-writing-card-body">
+          <span class="work-writing-card-series">Systems Over Sentences &middot; Part 02</span>
+          <h3 class="work-writing-card-title">Your Documentation is a Bakery. Here&rsquo;s How to Build a Supermarket.</h3>
+          <span class="work-writing-card-link">Read on the blog &rarr;</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/blog/" class="btn btn-ghost-light">View all writing &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="work-cta-band">
+  <div class="work-cta-band-inner">
+    <div class="work-cta-portrait">
+      <img src="../assets/images/douglas.jpg" alt="Douglas Ebhoman" width="64" height="64" loading="lazy">
+    </div>
+    <p class="work-cta-eyebrow">Seen enough?</p>
+    <h2 class="work-cta-headline">Let me audit <em>your</em><br>documentation next.</h2>
+    <p class="work-cta-sub">The Documentation Audit tells you precisely where your system is failing and what to fix first. &euro;300, delivered in five working days.</p>
+    <div class="work-cta-actions">
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Documentation Audit &mdash; &euro;300</a>
+      <a href="/services/" class="btn btn-ghost-light">See what is included &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="f-inner">
+    <div class="f-brand">
+      <div>
+        <p class="f-logo">Douglas Ebhoman</p>
+        <p class="f-tagline">Narrative is infrastructure. I treat it that way.</p>
+        <div class="f-avail"><span class="f-avail-dot"></span><span class="f-avail-text">Available for freelance engagements</span></div>
+      </div>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="f-audit-btn" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
+    </div>
+    <div class="f-nav">
+      <div><p class="f-col-label">Navigation</p><div class="f-links"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/#about">About</a><a href="/blog/">Blog</a><a href="/cv/">CV</a></div></div>
+      <div><p class="f-col-label">Selected work</p><div class="f-links"><a href="https://douglasebhoman.com/mkdocs-for-technical-writers/" target="_blank">MkDocs for Technical Writers</a><a href="https://douglasebhoman.com/openweather-docs/" target="_blank">OpenWeather API Guide</a><a href="https://douglasebhoman.com/personal-website-setup-guide/" target="_blank">Personal Website Setup</a><a href="https://douglasebhoman.github.io/site-docs/" target="_blank">Site Documentation</a></div></div>
+    </div>
+    <div class="f-contact">
+      <p class="f-contact-label">Connect</p>
+      <div class="f-contact-grid">
+        <a href="mailto:douglas@douglasebhoman.com" class="f-contact-item"><span class="f-contact-lbl">Email</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="f-contact-val">douglas@douglasebhoman.com</span></a>
+        <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank" class="f-contact-item"><span class="f-contact-lbl">LinkedIn</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span><span class="f-contact-val">linkedin.com/in/douglas-ebhoman</span></a>
+        <a href="https://github.com/Douglasebhoman" target="_blank" class="f-contact-item"><span class="f-contact-lbl">GitHub</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span><span class="f-contact-val">github.com/Douglasebhoman</span></a>
+        <a href="/cv/" class="f-contact-item"><span class="f-contact-lbl">CV</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="f-contact-val">View full CV &rarr;</span></a>
       </div>
     </div>
-  </footer>
+    <div class="f-bottom">
+      <span class="f-copy">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</span>
+      <a href="#top" class="f-back">Back to top &uarr;</a>
+    </div>
+  </div>
+</footer>
 
-  <script>
-
-    /* ── Navigation ── */
-    const hamburger = document.getElementById('nav-hamburger');
-    const navLinks  = document.getElementById('nav-links');
-    const navHeader = document.getElementById('nav-header');
-
-    hamburger.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('nav-links--open');
-      hamburger.classList.toggle('hamburger--open', isOpen);
-      hamburger.setAttribute('aria-expanded', String(isOpen));
+<script>
+/* Progress bar + nav scroll */
+let _t = false;
+window.addEventListener('scroll', () => {
+  if (!_t) {
+    requestAnimationFrame(() => {
+      const s = document.documentElement.scrollTop;
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('progressBar').style.width = (s / h * 100) + '%';
+      document.getElementById('nav').className = 'nav' + (s > 40 ? ' scrolled' : '');
+      _t = false;
     });
+    _t = true;
+  }
+}, { passive: true });
 
-    navLinks.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('nav-links--open');
-        hamburger.classList.remove('hamburger--open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+/* Staggered card reveal */
+const cardObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); cardObs.unobserve(e.target); }
+  });
+}, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.work-full-card').forEach(el => cardObs.observe(el));
+
+/* Filter */
+const filterBtns = document.querySelectorAll('.work-filter-btn');
+const cards = document.querySelectorAll('.work-full-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    filterBtns.forEach(b => b.classList.remove('work-filter-btn--active'));
+    btn.classList.add('work-filter-btn--active');
+    cards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      if (filter === 'all' || tags.includes(filter)) {
+        card.style.display = 'flex';
+        setTimeout(() => card.classList.add('is-visible'), 50);
+      } else {
+        card.style.display = 'none';
+      }
     });
-
-    window.addEventListener('scroll', () => {
-      navHeader.classList.toggle('nav-header--scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    /* ── Scroll progress ── */
-    const scrollBar = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-      scrollBar.style.width = pct + '%';
-    }, { passive: true });
-
-    /* ── Staggered card reveal ── */
-    const cardObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          cardObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-
-    document.querySelectorAll('.work-full-card').forEach(el => cardObserver.observe(el));
-
-    /* ── Filter ── */
-    const filterBtns = document.querySelectorAll('.work-filter-btn');
-    const cards = document.querySelectorAll('.work-full-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-
-        filterBtns.forEach(b => b.classList.remove('work-filter-btn--active'));
-        btn.classList.add('work-filter-btn--active');
-
-        cards.forEach(card => {
-          const tags = card.dataset.tags || '';
-          if (filter === 'all' || tags.includes(filter)) {
-            card.style.display = 'flex';
-            setTimeout(() => card.classList.add('is-visible'), 50);
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-  </script>
-
+  });
+});
+</script>
 </body>
 </html>
