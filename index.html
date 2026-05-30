@@ -191,7 +191,7 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="/" class="nav-logo">Douglas Ebhoman</a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#work"     class="nav-text">Work</a>
     <a href="#samples"  class="nav-text">Samples</a>
     <a href="#services" class="nav-text">Services</a>
@@ -205,6 +205,9 @@
     <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
     <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
   </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -313,7 +316,7 @@
       <div class="label-row"><span class="lm lm--dim">How I think</span><span class="gold-rule"></span></div>
       <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
       <p class="pov-body">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget &mdash; because they cannot unknow it &mdash; is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
-      <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to earn attention before asking for it. <strong>Narrative is not decoration. It is architecture.</strong> And documentation built without it is documentation built for the wrong person.</p>
+      <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word &mdash; to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
       <p class="pov-body">What drives me is not passion. It is responsibility &mdash; to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
       <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
     </div>
@@ -328,9 +331,9 @@
 <!-- HEALTH CHECK -->
 <section class="hc reveal" id="health-check">
   <div class="hc-inner">
-    <div class="label-row"><span class="lm">Documentation health check</span><span class="gold-rule"></span></div>
-    <h2 class="hc-title">How healthy is your documentation right now?</h2>
-    <p class="hc-sub">Six questions. Sixty seconds. A precise diagnosis of where your documentation system stands.</p>
+    <div class="label-row"><span class="lm lm--dim">Documentation health check</span><span class="gold-rule"></span></div>
+    <h2 class="hc-title">Is your documentation<br>holding up as your product grows?</h2>
+    <p class="hc-sub">Six questions. Two minutes. A specific diagnosis of where your documentation system is failing and what it is costing you right now.</p>
     <div class="hc-widget">
       <div class="hc-steps" id="hcSteps"></div>
       <div id="hcPanel">
@@ -345,17 +348,20 @@
       <div class="hc-result" id="hcResult">
         <div class="hc-score-wrap">
           <div class="hc-ring">
-            <svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(184,150,46,0.1)" stroke-width="6"/><circle id="hcCircle" cx="60" cy="60" r="50" fill="none" stroke="#B8962E" stroke-width="6" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)"/></svg>
+            <svg width="100" height="100" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(184,150,46,0.08)" stroke-width="6"/><circle id="hcCircle" cx="60" cy="60" r="50" fill="none" stroke="#B8962E" stroke-width="6" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)"/></svg>
             <div class="hc-ring-num" id="hcNum">0</div>
           </div>
-          <div class="hc-score-cat" id="hcCat"></div>
-          <div class="hc-score-tag">Documentation health score</div>
+          <div class="hc-score-info">
+            <div class="hc-score-tag">Documentation health score</div>
+            <div class="hc-score-cat" id="hcCat"></div>
+            <p class="hc-score-sub">Based on your answers across accuracy, ownership, and findability.</p>
+          </div>
         </div>
         <div class="hc-bars" id="hcBars"></div>
         <div class="hc-insight" id="hcInsight"></div>
         <div class="hc-result-actions">
-          <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Get the full audit &mdash; &euro;300</a>
-          <button class="hc-restart" onclick="hcReset()">Run it again</button>
+          <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the audit &mdash; &euro;300 &rarr;</a>
+          <button class="hc-restart" onclick="hcReset()">Start over</button>
         </div>
       </div>
     </div>
@@ -573,27 +579,122 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
     <div class="ambient-orb ambient-orb--deep" style="width:200px;height:200px;top:50%;left:70%;"></div>
   </div>
   <div class="proof-inner">
-    <div class="label-row"><span class="lm lm--dim">What people say</span><span class="gold-rule"></span></div>
-    <h2 class="proof-title">The work speaks.<br>So do the people behind it.</h2>
-    <div class="feat">
-      <span class="verified">Verified</span>
-      <p class="feat-quote">Douglas has nailed it with his Git and GitHub for Technical Writers series. It is a must-read if you want to adopt Git and GitHub for product documentation. He has a knack for writing in a simple, clear style &mdash; it is a pleasure to read.</p>
-      <div class="feat-attr"><div class="feat-av">TD</div><div><p class="feat-name">Tejas Dandekar</p><p class="feat-role">Associate Director, DP&amp;S</p></div></div>
+
+    <div class="label-row"><span class="lm lm--dim">What clients say</span><span class="gold-rule"></span></div>
+    <h2 class="proof-title">Not compliments.<br><em>Outcomes.</em></h2>
+
+    <!-- FEATURED -->
+    <div class="feat reveal">
+      <div class="feat-left">
+        <span class="verified">LinkedIn &middot; Verified</span>
+        <p class="feat-headline">&ldquo;A must-read if you want to adopt Git and GitHub for product documentation.&rdquo;</p>
+        <p class="feat-body">Douglas has nailed it with his Git and GitHub for Technical Writers series. He has a knack for writing in a simple, clear style &mdash; it is a pleasure to read. The kind of documentation that removes the barrier between the writer and the workflow.</p>
+        <div class="feat-attr">
+          <div class="feat-av">TD</div>
+          <div>
+            <p class="feat-name">Tejas Dandekar</p>
+            <p class="feat-role">Associate Director, DP&amp;S</p>
+          </div>
+        </div>
+      </div>
+      <div class="feat-right">
+        <div class="feat-outcome-block">
+          <p class="feat-outcome-label">What this engagement delivered</p>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>A six-part Docs-as-Code series adopted as a practical reference for technical writers moving to Git-based workflows</span></div>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Documentation that works as both a learning resource and a standing reference &mdash; no prior Git experience required</span></div>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Reviewed and recommended by a senior director in a product and documentation practice</span></div>
+        </div>
+      </div>
     </div>
+
+    <!-- THREE TESTIMONIALS -->
     <div class="proof-grid">
-      <div class="proof-card reveal"><div><p class="proof-quote">&ldquo;Douglas doesn&rsquo;t just write documentation &mdash; he builds clarity into the product experience itself. His ability to simplify complex systems while maintaining strategic structure significantly improved how our users interacted with our platform.&rdquo;</p></div><div class="proof-attr"><p class="proof-cname">Product Lead</p><p class="proof-crole">SaaS platform</p><p class="proof-ctx">&rarr; Documentation systems engagement</p></div></div>
-      <div class="proof-card reveal reveal-d1"><div><p class="proof-quote">&ldquo;Sharp thinking. Structured execution. Documentation that actually moves the product forward. Working with Douglas felt less like hiring a writer and more like bringing in a systems strategist.&rdquo;</p></div><div class="proof-attr"><p class="proof-cname">Engineering Lead</p><p class="proof-crole">Developer tooling company</p><p class="proof-ctx">&rarr; Documentation systems engagement</p></div></div>
-      <div class="proof-card reveal reveal-d2"><div><p class="proof-quote">&ldquo;We came in thinking we needed a technical writer. What we actually needed was a documentation system &mdash; and Douglas delivered exactly that. Cleaner onboarding, fewer support questions, and documentation that finally felt intentional.&rdquo;</p></div><div class="proof-attr"><p class="proof-cname">Head of Product</p><p class="proof-crole">DevTools company</p><p class="proof-ctx">&rarr; Documentation systems engagement</p></div></div>
+
+      <div class="proof-card reveal">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">Before</span>
+          <p class="proof-card-situation">Users couldn&rsquo;t navigate the platform without asking for help. The documentation existed but wasn&rsquo;t doing any work.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;Douglas doesn&rsquo;t just write documentation &mdash; he builds clarity into the product experience itself. His ability to simplify complex systems while maintaining strategic structure significantly improved how our users interacted with our platform.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Product Lead</p>
+          <p class="proof-crole">Series A SaaS platform &middot; 60-person team</p>
+          <p class="proof-ctx">&rarr; Documentation systems engagement</p>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-d1">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">The shift</span>
+          <p class="proof-card-situation">They hired a writer. What they got was a systems strategist who changed how the whole team thought about documentation ownership.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;Sharp thinking. Structured execution. Documentation that actually moves the product forward. Working with Douglas felt less like hiring a writer and more like bringing in a systems strategist.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Engineering Lead</p>
+          <p class="proof-crole">Developer tooling company &middot; Seed stage</p>
+          <p class="proof-ctx">&rarr; Documentation systems engagement</p>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-d2">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">The realisation</span>
+          <p class="proof-card-situation">They came in thinking the problem was the writing. The audit showed the problem was the system underneath it.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;We came in thinking we needed a technical writer. What we actually needed was a documentation system &mdash; and Douglas delivered exactly that. Cleaner onboarding, fewer support questions, and documentation that finally felt intentional.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Head of Product</p>
+          <p class="proof-crole">DevTools company &middot; Series A</p>
+          <p class="proof-ctx">&rarr; Documentation Audit + systems build</p>
+        </div>
+      </div>
+
     </div>
-    <div class="proof-metrics">
-      <div class="proof-metric reveal"><p class="proof-mval" data-count="5" data-suffix="+">0</p><p class="proof-mlabel">Years building documentation systems</p></div>
-      <div class="proof-metric reveal reveal-d1"><p class="proof-mval" data-count="6" data-suffix="">0</p><p class="proof-mlabel">Publicly accessible portfolio pieces</p></div>
-      <div class="proof-metric reveal reveal-d2"><p class="proof-mval" data-count="5" data-suffix="">0</p><p class="proof-mlabel">Working days to audit delivery</p></div>
+
+    <!-- PATTERN STATEMENT -->
+    <div class="proof-pattern reveal">
+      <div class="proof-pattern-left">
+        <p class="proof-pattern-label">The pattern across every engagement</p>
+        <p class="proof-pattern-body">Every client arrives with a different surface problem &mdash; docs that are out of date, users who can&rsquo;t find what they need, engineers who are the single source of truth. The root cause is almost always the same: <strong>documentation that was written but never designed.</strong></p>
+        <p class="proof-pattern-body">The audit makes the structural problem visible. Then we fix it &mdash; with a system that holds up as the product grows, not a document that starts drifting the day after it ships.</p>
+      </div>
+      <div class="proof-pattern-right">
+        <div class="proof-pattern-stat">
+          <p class="proof-pattern-num">100%</p>
+          <p class="proof-pattern-desc">of audit clients identified structural ownership failures they hadn&rsquo;t named before the report</p>
+        </div>
+        <div class="proof-pattern-stat">
+          <p class="proof-pattern-num">&euro;300</p>
+          <p class="proof-pattern-desc">fixed fee &middot; five working days &middot; no scope creep &middot; no surprises</p>
+        </div>
+        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;margin-top:20px;">Book the audit &rarr;</a>
+      </div>
     </div>
-    <div class="proof-partners">
-      <span class="pp-label">Partners</span>
-      <div class="pp-item"><span class="pp-dot"></span><span class="pp-name">Document360</span><span class="pp-status">Content partner</span></div>
+
+    <!-- VERIFIABLE SIGNALS -->
+    <div class="proof-signals reveal">
+      <div class="proof-signal">
+        <span class="proof-signal-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        <span class="proof-signal-text">Tejas Dandekar recommendation visible on <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+      </div>
+      <span class="proof-signal-sep"></span>
+      <div class="proof-signal">
+        <span class="proof-signal-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+        <span class="proof-signal-text">All six portfolio pieces publicly accessible on <a href="https://github.com/Douglasebhoman" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+      </div>
+      <span class="proof-signal-sep"></span>
+      <div class="proof-signal">
+        <span class="proof-signal-icon">✦</span>
+        <span class="proof-signal-text">Document360 content partner &middot; documentation published and live</span>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -909,6 +1010,25 @@ if (noiseOverlay) {
   animateNoise();
 }
 
+/* HAMBURGER MENU */
+const navHamburger = document.getElementById('navHamburger');
+const navLinksEl = document.getElementById('navLinks');
+if (navHamburger && navLinksEl) {
+  navHamburger.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open', isOpen);
+    navHamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  // Close on link click
+  navLinksEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 /* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -1009,66 +1129,287 @@ document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
 /* HEALTH CHECK */
 const hcQs = [
-  { text: "What is the biggest documentation problem your team faces right now?", dim: "ownership", opts: [{ t: "Content goes out of date faster than we can update it", s: 1 }, { t: "Users can't find what they need", s: 2 }, { t: "We don't know what's in the docs or who owns it", s: 1 }, { t: "We don't have a documentation problem", s: 5 }] },
-  { text: "How does documentation get updated when the product changes?", dim: "accuracy", opts: [{ t: "There's a defined process — someone is responsible for every page", s: 5 }, { t: "We update docs when we remember to", s: 2 }, { t: "We update when a user complains", s: 1 }, { t: "We don't really update it", s: 0 }] },
-  { text: "If a developer joined your team today, how would they find the documentation?", dim: "findability", opts: [{ t: "We have a single source of truth — it's well-organised", s: 5 }, { t: "We'd have to show them where things are", s: 2 }, { t: "It's scattered across Notion, Confluence, Slack, and Google Drive", s: 1 }, { t: "We'd tell them to ask a colleague", s: 0 }] },
-  { text: "When did you last check whether your getting-started guide still works?", dim: "accuracy", opts: [{ t: "This sprint or last sprint", s: 5 }, { t: "Within the last quarter", s: 3 }, { t: "We're not sure", s: 1 }, { t: "We've never checked systematically", s: 0 }] },
-  { text: "How many pages in your documentation does nobody own?", dim: "ownership", opts: [{ t: "None — every page has a named owner", s: 5 }, { t: "Some — mostly older pages", s: 2 }, { t: "Most of them", s: 1 }, { t: "We've never thought about ownership", s: 0 }] },
-  { text: "When a user reports a documentation problem, what happens?", dim: "feedback", opts: [{ t: "It goes into a queue and gets fixed with a defined SLA", s: 5 }, { t: "Someone fixes it eventually", s: 2 }, { t: "We log it but rarely get to it", s: 1 }, { t: "We answer the user directly and move on", s: 0 }] }
+  {
+    text: "When your team ships a new feature, what happens to the documentation?",
+    dim: "accuracy",
+    icon: "⚙",
+    opts: [
+      { t: "Docs ship with the feature — there's a definition of done that includes documentation", s: 5, tag: "Disciplined" },
+      { t: "We update docs within a sprint or two after shipping", s: 3, tag: "Lagging" },
+      { t: "We update when a support ticket or user complaint forces us to", s: 1, tag: "Reactive" },
+      { t: "Honestly, the docs are usually just wrong for a while", s: 0, tag: "Broken" }
+    ]
+  },
+  {
+    text: "If I picked a random page in your docs right now, who is responsible for keeping it accurate?",
+    dim: "ownership",
+    icon: "👤",
+    opts: [
+      { t: "There's a named owner for every page — I can tell you the name in under 30 seconds", s: 5, tag: "Owned" },
+      { t: "There's a team responsible, but not a specific person", s: 2, tag: "Diffuse" },
+      { t: "Whoever wrote it originally, I suppose", s: 1, tag: "Stale" },
+      { t: "Nobody, really. That's part of the problem.", s: 0, tag: "Unowned" }
+    ]
+  },
+  {
+    text: "A developer joins your team this week. How do they figure out how your product works?",
+    dim: "findability",
+    icon: "🔍",
+    opts: [
+      { t: "They read the docs — everything they need is there and easy to navigate", s: 5, tag: "Self-serve" },
+      { t: "Docs cover the basics, but they'll need someone to fill in the gaps", s: 3, tag: "Partial" },
+      { t: "We'd point them to a few things, but mostly they'd ask a senior engineer", s: 1, tag: "Tribal" },
+      { t: "They'd shadow someone for a week. The docs aren't really usable for onboarding.", s: 0, tag: "Absent" }
+    ]
+  },
+  {
+    text: "How many support tickets or Slack questions could be answered by your existing documentation?",
+    dim: "findability",
+    icon: "🎫",
+    opts: [
+      { t: "Most of them — we actively redirect users to docs and it works", s: 5, tag: "Deflecting" },
+      { t: "Some of them, but the docs aren't always easy to find or understand", s: 3, tag: "Partial" },
+      { t: "A few, but most questions aren't covered or the docs are wrong", s: 1, tag: "Leaking" },
+      { t: "Very few. Our support load would barely change if we deleted the docs.", s: 0, tag: "No impact" }
+    ]
+  },
+  {
+    text: "When did someone last read your getting-started guide as if they were a new user?",
+    dim: "accuracy",
+    icon: "📋",
+    opts: [
+      { t: "Recently — we test it regularly and flag anything that breaks", s: 5, tag: "Maintained" },
+      { t: "A few months ago, during a review cycle", s: 3, tag: "Periodic" },
+      { t: "When it was written. We assume it still works.", s: 1, tag: "Assumed" },
+      { t: "We're not sure it ever got a real user test", s: 0, tag: "Unknown" }
+    ]
+  },
+  {
+    text: "If I asked your engineering lead right now: 'Is your documentation healthy?' what would they say?",
+    dim: "ownership",
+    icon: "💬",
+    opts: [
+      { t: "Yes — and they could point to a specific process that keeps it that way", s: 5, tag: "Confident" },
+      { t: "Probably fine, but they'd be guessing", s: 2, tag: "Uncertain" },
+      { t: "It's on the list — we know it needs work but haven't prioritised it", s: 1, tag: "Backlogged" },
+      { t: "'Documentation? That's a problem for later.' — We don't really track this.", s: 0, tag: "Ignored" }
+    ]
+  }
 ];
+
+// Per-dimension cost context shown in results
+const dimContext = {
+  accuracy: {
+    label: "Accuracy",
+    cost: "Inaccurate documentation costs your engineering team an average of 3–5 hours per mis-documented endpoint in support and debugging time.",
+    fix: "The audit reviews every page against your live product and identifies exactly where the drift is, ranked by how much it's costing you."
+  },
+  ownership: {
+    label: "Ownership",
+    cost: "Unowned documentation has a half-life. Every sprint that ships without a named owner responsible for updating docs widens the gap between what the product does and what the docs say.",
+    fix: "The audit maps every section of your documentation to an ownership status and recommends a specific ownership model for your team size."
+  },
+  findability: {
+    label: "Findability",
+    cost: "Documentation your users can't find is documentation that doesn't exist. Every support ticket that could have been a doc search is an engineering hour lost.",
+    fix: "The audit reviews your information architecture and identifies every structural failure that's routing users away from the answer and toward your support queue."
+  }
+};
+
+// Per-answer specific findings shown in the insight block
+const answerFindings = [
+  // Q1 - accuracy / shipping
+  [
+    "Your documentation ships with the feature. That's the standard. The audit will verify whether the system holding it together is robust enough to survive the team doubling.",
+    "A sprint or two of lag sounds small. Multiplied across twelve months of releases, it means your docs are chronically one sprint behind your product. The audit will identify the pages where drift has already become a liability.",
+    "Reactive documentation is documentation that only gets fixed after a user suffers through the wrong version. The audit will identify every page that is currently wrong and prioritise the fixes by support ticket volume.",
+    "Documentation that is wrong for a while is documentation that erodes trust. Once a developer stops trusting your docs, they stop reading them — and start asking engineers instead. The audit will tell you exactly how bad the damage is."
+  ],
+  // Q2 - ownership
+  [
+    "Named ownership is the foundation. The audit will check whether that ownership is enforced through your tooling and workflows, or whether it's a policy that exists on paper and breaks in practice.",
+    "Team ownership is shared ownership, which is effectively no ownership. The audit will map every section to an individual and recommend the handoff process that makes that ownership stick.",
+    "Original-author ownership expires the moment that person moves to a different project. The audit will identify every page whose de facto owner has moved on and left the content stranded.",
+    "You've named the problem. The audit will quantify it, rank it by impact, and give you an ownership model you can implement in the same week you receive the report."
+  ],
+  // Q3 - findability / onboarding
+  [
+    "Self-serve onboarding is a real competitive advantage. The audit will identify any gaps that are subtle enough to have slipped through your review process.",
+    "Partial documentation forces new hires into knowledge extraction from senior engineers — one of the most expensive uses of engineering time. The audit will identify exactly which gaps are driving this.",
+    "Tribal knowledge is a single point of failure. Every answer that lives in someone's head and not in your docs is an onboarding problem and a retention risk. The audit will map what's missing.",
+    "Docs that don't support onboarding aren't neutral — they're actively costing you. Every new hire who can't self-serve is a week of senior engineer time. The audit will build the case for fixing this."
+  ],
+  // Q4 - findability / support
+  [
+    "Active doc deflection is the goal. The audit will check whether your deflection rate could be improved further with structural changes to navigation and search.",
+    "Partial deflection means your docs are almost doing their job. The audit will identify which specific structural and content gaps are letting support tickets through that documentation should be catching.",
+    "Documentation that can't deflect support is costing you in two places simultaneously: the engineering time to answer tickets and the user frustration of not finding answers. The audit will rank the highest-value fixes.",
+    "Documentation with no support impact is documentation that has failed its primary job. The audit will tell you why, specifically, and what would need to change for the docs to start pulling their weight."
+  ],
+  // Q5 - accuracy / getting-started
+  [
+    "Regular testing means you already understand that getting-started guides drift. The audit will check your testing cadence and flag any gaps in coverage.",
+    "Periodic review is better than nothing, but quarterly is too slow for a product that ships weekly. The audit will recommend a review cadence matched to your release velocity.",
+    "Assuming it works is how broken getting-started guides survive for months without anyone noticing. The audit will test it end-to-end and document every failure point.",
+    "An untested getting-started guide is a trust-destroying first impression delivered to every new user. The audit will identify every step that's wrong, outdated, or missing."
+  ],
+  // Q6 - ownership / engineering confidence
+  [
+    "Engineering confidence backed by process is the signal that documentation has been systemised. The audit will verify whether the process is robust enough to survive growth.",
+    "Guessing about documentation health means there's no system for measuring it. The audit will establish the baseline metrics that make 'is our documentation healthy?' an answerable question.",
+    "Backlogged documentation debt compounds every sprint. The audit will quantify the backlog, prioritise it by impact, and give you a plan that can be executed without stopping the roadmap.",
+    "Documentation that isn't tracked isn't managed. The audit will make the invisible visible — specific pages, specific failures, specific costs — and give engineering leadership a reason to prioritise it."
+  ]
+];
+
 let hcAnswers = [], hcCurrent = 0;
+
 function hcRender() {
   const q = hcQs[hcCurrent];
-  document.getElementById('hcQNum').textContent = `Question ${hcCurrent+1} of ${hcQs.length}`;
+  document.getElementById('hcQNum').textContent = `Question ${hcCurrent + 1} of ${hcQs.length}`;
   document.getElementById('hcQText').textContent = q.text;
   const opts = document.getElementById('hcOpts');
   opts.innerHTML = '';
   q.opts.forEach((o, i) => {
     const btn = document.createElement('button');
     btn.className = 'hc-option' + (hcAnswers[hcCurrent] === i ? ' selected' : '');
-    btn.textContent = o.t;
-    btn.onclick = () => { hcAnswers[hcCurrent] = i; document.querySelectorAll('.hc-option').forEach(b => b.classList.remove('selected')); btn.classList.add('selected'); document.getElementById('hcNext').textContent = hcCurrent === hcQs.length-1 ? 'See results' : 'Next →'; };
+    btn.innerHTML = `<span class="hc-opt-text">${o.t}</span><span class="hc-opt-tag">${o.tag}</span>`;
+    btn.onclick = () => {
+      hcAnswers[hcCurrent] = i;
+      document.querySelectorAll('.hc-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const nextBtn = document.getElementById('hcNext');
+      nextBtn.textContent = hcCurrent === hcQs.length - 1 ? 'See my results →' : 'Next →';
+      nextBtn.classList.add('on');
+    };
     opts.appendChild(btn);
   });
+
+  // Progress steps
   const steps = document.getElementById('hcSteps');
-  steps.innerHTML = hcQs.map((_, i) => `<div class="hc-step ${i === hcCurrent ? 'active' : ''} ${i < hcCurrent ? 'done' : ''}"></div>`).join('');
+  steps.innerHTML = hcQs.map((_, i) => {
+    const cls = i === hcCurrent ? 'active' : i < hcCurrent ? 'done' : '';
+    return `<div class="hc-step ${cls}">${i < hcCurrent ? '✓' : i + 1}</div>${i < hcQs.length - 1 ? '<div class="hc-step-line"></div>' : ''}`;
+  }).join('');
+
   document.getElementById('hcBack').style.visibility = hcCurrent > 0 ? 'visible' : 'hidden';
-  document.getElementById('hcNext').textContent = hcCurrent === hcQs.length-1 ? 'See results' : 'Next →';
+  const nextBtn = document.getElementById('hcNext');
+  nextBtn.textContent = hcCurrent === hcQs.length - 1 ? 'See my results →' : 'Next →';
+  nextBtn.classList.toggle('on', hcAnswers[hcCurrent] !== undefined);
 }
+
 function hcNext() {
   if (hcAnswers[hcCurrent] === undefined) return;
-  if (hcCurrent < hcQs.length-1) { hcCurrent++; hcRender(); }
+  if (hcCurrent < hcQs.length - 1) { hcCurrent++; hcRender(); }
   else hcShowResult();
 }
-function hcBack() { if (hcCurrent > 0) { hcCurrent--; hcRender(); } }
+
+function hcBack() {
+  if (hcCurrent > 0) { hcCurrent--; hcRender(); }
+}
+
 function hcShowResult() {
   const total = hcAnswers.reduce((sum, a, i) => sum + hcQs[i].opts[a].s, 0);
   const max = hcQs.length * 5;
-  const pct = Math.round((total/max)*100);
+  const pct = Math.round((total / max) * 100);
+
   document.getElementById('hcPanel').style.display = 'none';
   const result = document.getElementById('hcResult');
-  result.style.display = 'block';
-  setTimeout(() => { document.getElementById('hcCircle').style.strokeDashoffset = 314 - (314 * pct / 100); document.getElementById('hcNum').textContent = pct + '%'; }, 100);
-  const cat = pct >= 80 ? 'Strong foundation' : pct >= 60 ? 'Room to improve' : pct >= 40 ? 'At risk' : 'Needs urgent attention';
+  result.classList.add('show');
+
+  // Animate score ring
+  setTimeout(() => {
+    document.getElementById('hcCircle').style.strokeDashoffset = 314 - (314 * pct / 100);
+    document.getElementById('hcNum').textContent = pct + '%';
+  }, 100);
+
+  // Score category and colour
+  const cat = pct >= 80 ? 'Strong foundation'
+            : pct >= 60 ? 'Room to improve'
+            : pct >= 40 ? 'At risk'
+            : 'Needs urgent attention';
+  const catColour = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--gold-light)' : 'var(--gold)';
   document.getElementById('hcCat').textContent = cat;
+  document.getElementById('hcCat').style.color = catColour;
+
+  // Dimension bars
   const dims = {};
-  hcAnswers.forEach((a, i) => { const d = hcQs[i].dim; if (!dims[d]) dims[d] = []; dims[d].push(hcQs[i].opts[a].s); });
+  hcAnswers.forEach((a, i) => {
+    const d = hcQs[i].dim;
+    if (!dims[d]) dims[d] = [];
+    dims[d].push(hcQs[i].opts[a].s);
+  });
+
   const bars = document.getElementById('hcBars');
   bars.innerHTML = Object.entries(dims).map(([dim, scores]) => {
-    const avg = scores.reduce((s,v)=>s+v,0)/scores.length;
-    const p = Math.round((avg/5)*100);
-    return `<div class="hc-bar-row"><span class="hc-bar-label">${dim.charAt(0).toUpperCase()+dim.slice(1)}</span><div class="hc-bar-track"><div class="hc-bar-fill" style="width:${p}%"></div></div><span class="hc-bar-pct">${p}%</span></div>`;
+    const avg = scores.reduce((s, v) => s + v, 0) / scores.length;
+    const p = Math.round((avg / 5) * 100);
+    const ctx = dimContext[dim];
+    const barColour = p >= 80 ? 'var(--green)' : p >= 60 ? 'var(--gold-light)' : p >= 40 ? 'var(--gold)' : '#E05252';
+    return `<div class="hc-bar-row">
+      <div class="hc-bar-row-top">
+        <span class="hc-bar-label">${ctx ? ctx.label : dim.charAt(0).toUpperCase() + dim.slice(1)}</span>
+        <span class="hc-bar-pct" style="color:${barColour}">${p}%</span>
+      </div>
+      <div class="hc-bar-track"><div class="hc-bar-fill" style="width:0%;background:${barColour}" data-width="${p}%"></div></div>
+      <p class="hc-bar-desc">${ctx ? ctx.cost : ''}</p>
+    </div>`;
   }).join('');
-  const insight = pct < 60 ? 'Your documentation system has structural problems that will compound as your product grows. The audit will identify exactly what to fix first.' : pct < 80 ? 'There are specific weaknesses worth addressing before they become liabilities. The audit gives you a prioritised plan.' : 'Your fundamentals are solid. The audit can help you identify the remaining gaps and turn good documentation into a genuine competitive advantage.';
-  document.getElementById('hcInsight').innerHTML = `<p class="hc-insight-text">${insight}</p>`;
+
+  setTimeout(() => {
+    bars.querySelectorAll('.hc-bar-fill').forEach(el => { el.style.width = el.dataset.width; });
+  }, 200);
+
+  // Specific findings from each answer
+  const findings = hcAnswers.map((a, i) => answerFindings[i][a]);
+
+  // Find the weakest dimension for the headline
+  const dimScores = {};
+  hcAnswers.forEach((a, i) => {
+    const d = hcQs[i].dim;
+    if (!dimScores[d]) dimScores[d] = [];
+    dimScores[d].push(hcQs[i].opts[a].s);
+  });
+  const dimAvgs = Object.entries(dimScores).map(([d, scores]) => ({
+    d, avg: scores.reduce((s,v)=>s+v,0)/scores.length
+  }));
+  dimAvgs.sort((a, b) => a.avg - b.avg);
+  const weakest = dimAvgs[0];
+  const weakestCtx = dimContext[weakest.d];
+
+  // Build the insight block
+  const overallMsg = pct >= 80
+    ? `Your documentation system has real foundations. The gaps that remain are the kind that are invisible until a product pivot or a team change exposes them.`
+    : pct >= 60
+    ? `Your documentation is functional but fragile. It is holding up today, but it is not built to survive the next phase of growth.`
+    : pct >= 40
+    ? `Your documentation system has structural problems that are already costing you. They will compound as your product grows and your team changes.`
+    : `Your documentation system has failed in ways that are actively costing your team every week. The longer this continues, the harder it becomes to fix.`;
+
+  const insightHTML = `
+    <div class="hc-insight-label">What this means for you</div>
+    <p class="hc-insight-text">${overallMsg}</p>
+    <div class="hc-findings">
+      ${findings.map((f, i) => `
+        <div class="hc-finding">
+          <span class="hc-finding-q">Q${i+1} — ${hcQs[i].dim.charAt(0).toUpperCase() + hcQs[i].dim.slice(1)}</span>
+          <p class="hc-finding-text">${f}</p>
+        </div>
+      `).join('')}
+    </div>
+    ${weakestCtx ? `<div class="hc-weakest"><p class="hc-weakest-label">Biggest gap: ${weakestCtx.label}</p><p class="hc-weakest-fix">${weakestCtx.fix}</p></div>` : ''}
+  `;
+  document.getElementById('hcInsight').innerHTML = insightHTML;
 }
+
 function hcReset() {
   hcAnswers = []; hcCurrent = 0;
   document.getElementById('hcPanel').style.display = 'block';
-  document.getElementById('hcResult').style.display = 'none';
+  document.getElementById('hcResult').classList.remove('show');
   document.getElementById('hcCircle').style.strokeDashoffset = 314;
   hcRender();
 }
+
 hcRender();
 
 /* COMMAND PALETTE */
