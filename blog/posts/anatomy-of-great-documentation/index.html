@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab. Here are the three elements that make documentation actually work.">
+  <meta name="description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab. The three architectural elements that separate documentation that works from documentation that merely exists.">
   <meta name="author" content="Douglas Ebhoman">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
   <meta property="og:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
-  <meta property="og:description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab. Here are the three elements that make documentation actually work.">
+  <meta property="og:description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="The three architectural elements that separate documentation that works from documentation that merely exists.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
   <title>Anatomy of Great Documentation &middot; Douglas Ebhoman</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +23,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
 <style>
-/* ── Critical base styles (self-contained) ── */
+/* ── Critical base (self-contained) ── */
 :root {
   --navy:#18222C; --navy-mid:#1E2D3D; --navy-light:#243044;
-  --cream:#F9F7F4; --cream-2:#F2EFE9; --white:#FFFFFF;
+  --cream:#F9F7F4; --cream-2:#F2EFE9;
   --gold:#B8962E; --gold-light:#D4B060;
   --gold-subtle:rgba(184,150,46,0.08); --gold-border:rgba(184,150,46,0.20);
   --text-dark:#111827; --text-mid:#4B5563; --text-muted:#9CA3AF;
@@ -32,54 +37,87 @@
   --fast:0.15s ease; --base:0.25s ease; --container:960px; --pad:clamp(24px,5vw,48px);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+html{font-size:16px;-webkit-font-smoothing:antialiased;}
 body{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--text-dark);background:var(--cream);overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
-.progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gold);z-index:9999;transition:width .1s linear;}
+
+/* Nav */
+.progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gold);z-index:9999;box-shadow:0 0 8px rgba(184,150,46,.4);}
 .nav{background:var(--navy);padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-dark);transition:box-shadow var(--base);}
 .nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.4);}
 .nav-logo{font-family:var(--serif);font-size:15px;color:#fff;font-weight:300;letter-spacing:-.01em;}
 .nav-links{display:flex;gap:20px;align-items:center;}
 .nav-text{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color var(--fast);}
-.nav-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);transition:border-color var(--fast),color var(--fast),background var(--fast);}
+.nav-text:hover{color:rgba(255,255,255,.8);}
+.nav-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);transition:all var(--fast);}
+.nav-icon:hover{border-color:rgba(255,255,255,.3);color:#fff;}
 .nav-icon svg{width:15px;height:15px;fill:currentColor;display:block;}
 .nav-cta{background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;font-weight:500;transition:background var(--fast);display:inline-block;}
 .nav-cta:hover{background:var(--gold-light);}
 .btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
 .btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
 .btn-gold:hover{background:var(--gold-light);}
-.btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.12);}
-.btn-ghost-light:hover{border-color:rgba(255,255,255,.3);color:#fff;}
-.label-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.lm{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
-.lm--dim{color:rgba(255,255,255,.3);}
-.gold-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);width:48px;display:inline-block;flex-shrink:0;}
+.btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);}
+.btn-ghost-light:hover{border-color:rgba(255,255,255,.35);color:#fff;}
 
+/* Noise overlay */
+.noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;}
+.cursor-particle{position:fixed;width:4px;height:4px;border-radius:50%;background:rgba(184,150,46,.6);pointer-events:none;z-index:9997;will-change:transform,opacity;}
 
-.post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
-.post-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(184,150,46,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,46,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
-.post-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);}
-.post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
-.post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;transition:color var(--fast);}
-.post-back:hover{color:var(--gold-light);}
-.post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;background:var(--gold-subtle);display:inline-block;margin-bottom:20px;}
-.post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
-.post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
-.post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);}
-.post-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:8px;}
-.post-meta-item::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.5;}
-.post-meta-item:first-child::before{display:none;}
+/* ── Banner — image top, content below ── */
+.post-banner-card{background:var(--navy);border-bottom:1px solid var(--border-dark);}
+.post-banner-img-wrap{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;position:relative;}
+.post-banner-img-wrap picture{display:block;width:100%;height:100%;}
+.post-banner-img-wrap img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  animation:kenBurns 20s ease-in-out infinite alternate;
+}
+@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,-1%)}}
+.post-banner-img-wrap:hover img{animation-play-state:paused;}
+
+.post-banner-body{padding:clamp(20px,3vw,40px) clamp(20px,5vw,48px);}
+.post-banner-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.post-banner-back{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color var(--fast);}
+.post-banner-back:hover{color:var(--gold-light);}
+.post-banner-sep{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.15);}
+.post-banner-tag{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-block;border:1px solid var(--gold-border);padding:3px 10px;margin-bottom:14px;}
+.post-banner-title{font-family:var(--serif);font-size:clamp(22px,4vw,40px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px;}
+.post-banner-pull{font-family:var(--serif);font-size:clamp(13px,1.6vw,15px);font-style:italic;font-weight:300;color:rgba(255,255,255,.38);line-height:1.75;border-left:2px solid var(--gold-border);padding-left:14px;margin-bottom:18px;max-width:600px;}
+.post-banner-meta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.post-banner-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.4;}
+
+/* Part nav strip */
+.post-part-nav{background:var(--navy-mid);border-bottom:1px solid var(--border-dark);padding:0 clamp(20px,5vw,48px);position:relative;overflow:hidden;}
+.post-part-nav::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.03),transparent);animation:shimmer 8s ease-in-out infinite;}
+@keyframes shimmer{0%,100%{left:-100%}50%{left:200%}}
+.post-part-nav-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:44px;}
+.post-part-link{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px;transition:color var(--fast);text-decoration:none;}
+.post-part-link:hover{color:var(--gold-light);}
+.post-part-link--disabled{opacity:.18;pointer-events:none;cursor:default;}
+.post-part-series{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.1);}
+
+/* ── Post body ── */
 .post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
 .post-body{max-width:720px;margin:0 auto;}
-.post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.85;margin-bottom:1.6rem;font-weight:300;}
-.post-body p.lead{font-size:clamp(17px,2.2vw,20px);color:var(--text-dark);line-height:1.75;font-weight:400;}
+.post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.9;margin-bottom:1.6rem;font-weight:300;}
+.post-body p.lead{font-size:clamp(18px,2.4vw,22px);color:var(--text-dark);line-height:1.7;font-weight:400;margin-bottom:1.8rem;}
+.post-body p.lead::first-letter{font-family:var(--serif);font-size:3.2em;float:left;line-height:.8;padding-right:8px;margin-top:4px;color:var(--gold);font-weight:400;}
 .post-body h2{font-family:var(--serif);font-size:clamp(20px,2.8vw,26px);font-weight:400;color:var(--text-dark);line-height:1.25;letter-spacing:-.02em;margin:3.5rem 0 1.2rem;padding-top:1.5rem;border-top:1px solid var(--border-light);}
 .post-body hr{border:none;border-top:1px solid var(--border-light);margin:2.5rem 0;}
 .post-body strong{color:var(--text-dark);font-weight:500;}
 .post-body a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
 .post-body a:hover{color:var(--gold-light);}
-.pull-quote{border-left:2px solid var(--gold);padding:16px 24px;margin:2rem 0;background:var(--gold-subtle);}
+
+/* Selection */
+::selection{background:rgba(184,150,46,.2);color:var(--text-dark);}
+
+/* Pull quote */
+.pull-quote{border-left:2px solid var(--gold);padding:16px 24px;margin:2.5rem 0;background:var(--gold-subtle);position:relative;overflow:hidden;}
+.pull-quote::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,rgba(184,150,46,.04) 0%,transparent 60%);animation:quotePulse 5s ease-in-out infinite;pointer-events:none;}
+@keyframes quotePulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
 .pull-quote p{font-size:clamp(15px,2vw,18px);color:var(--text-dark);font-style:italic;margin-bottom:0;line-height:1.7;font-weight:400;}
+
+/* Quick win */
 .quick-win{border:1px solid var(--gold-border);padding:clamp(20px,3vw,32px);margin:2.5rem 0;background:var(--cream-2);}
 .quick-win-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
 .quick-win p{font-size:14px;margin-bottom:12px;color:var(--text-mid);}
@@ -87,105 +125,206 @@ a{color:inherit;text-decoration:none;}
 .quick-win ol{padding-left:20px;margin-bottom:12px;}
 .quick-win ol li{font-family:var(--serif);font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:8px;}
 .quick-win ol li:last-child{margin-bottom:0;}
+
+/* Anatomy grid */
 .anatomy-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.anatomy-item{background:var(--cream);padding:20px 24px;border-left:2px solid transparent;transition:border-color var(--fast);}
-.anatomy-item:hover{border-left-color:var(--gold);}
+.anatomy-item{background:var(--cream);padding:20px 24px;border-left:2px solid transparent;transition:border-color var(--fast),transform var(--base),box-shadow var(--base);}
+.anatomy-item:hover{border-left-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04);}
 .anatomy-item-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
 .anatomy-item p{font-size:13px;margin-bottom:0;color:var(--text-mid);}
-.audience-comparison{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.audience-card{background:var(--cream);padding:20px;}
-.audience-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.audience-card pre{margin:0;font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.6;white-space:pre-wrap;background:none;border:none;padding:0;}
-.audience-card p{font-size:13px;margin-bottom:0;font-style:italic;color:var(--text-mid);}
-.post-body pre{background:var(--navy);border:1px solid rgba(255,255,255,.08);padding:20px 24px;margin:1.5rem 0;overflow-x:auto;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);line-height:1.6;}
-.post-body code{font-family:var(--mono);font-size:13px;color:var(--gold);background:var(--gold-subtle);padding:2px 6px;}
-.post-body pre code{background:none;padding:0;color:rgba(255,255,255,.7);}
-.series-nav{max-width:720px;margin:0 auto;padding:40px var(--pad);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-light);gap:24px;flex-wrap:wrap;background:var(--cream);}
-.series-nav-link{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);display:inline-flex;align-items:center;gap:8px;transition:color var(--fast);}
-.series-nav-link:hover{color:var(--gold);}
-.series-nav-link--next{margin-left:auto;}
-.post-comments{max-width:720px;margin:0 auto;padding:0 var(--pad) 64px;background:var(--cream);}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
+
+/* Related cards */
+.post-related{background:var(--navy-mid);padding:clamp(40px,6vw,60px) clamp(20px,5vw,48px);border-top:1px solid var(--border-dark);}
+.post-related-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.post-related-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
+.post-related-grid{display:grid;gap:1px;background:rgba(255,255,255,.06);}
+.post-related-grid--single{grid-template-columns:1fr;max-width:480px;}
+.post-related-grid--double{grid-template-columns:1fr 1fr;}
+.post-related-card{background:var(--navy);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background var(--base);}
+.post-related-card:hover{background:rgba(255,255,255,.03);}
+.post-related-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;}
+.post-related-card-img picture{display:block;width:100%;height:100%;}
+.post-related-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+.post-related-card:hover .post-related-card-img img{transform:scale(1.03);}
+.post-related-card-body{padding:clamp(14px,2vw,22px);}
+.post-related-card-dir{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:6px;display:block;}
+.post-related-card-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+.post-related-card-title{font-family:var(--serif);font-size:clamp(14px,1.8vw,18px);font-weight:300;color:rgba(255,255,255,.8);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px;}
+.post-related-card-pull{font-family:var(--serif);font-size:12px;font-style:italic;font-weight:300;color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:12px;}
+.post-related-card-cta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap var(--fast);}
+.post-related-card:hover .post-related-card-cta{gap:10px;}
+
+/* Comments */
+.post-comments{max-width:720px;margin:0 auto;padding:48px var(--pad) 64px;}
 .comments-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
 .comments-label::after{content:'';flex:1;height:1px;background:var(--gold-border);}
-.post-newsletter{background:var(--navy);border-top:1px solid var(--border-dark);padding:clamp(48px,6vw,72px) var(--pad);}
-.post-newsletter-inner{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 280px;gap:clamp(32px,5vw,64px);align-items:center;}
+
+/* Newsletter */
+.post-newsletter{background:var(--navy);border-top:1px solid var(--border-dark);padding:clamp(48px,6vw,72px) var(--pad);position:relative;}
+.post-newsletter::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(184,150,46,.05) 0%,transparent 50%);pointer-events:none;}
+.post-newsletter-inner{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 280px;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1;}
 .post-newsletter-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:300;color:#fff;line-height:1.25;letter-spacing:-.02em;margin-bottom:10px;}
 .post-newsletter-title em{font-style:italic;color:var(--gold-light);}
 .post-newsletter-desc{font-size:13px;color:var(--text-dim);line-height:1.8;font-weight:300;}
 .post-newsletter-actions{display:flex;flex-direction:column;gap:10px;}
+
+/* Footer */
 .post-footer{background:var(--navy-mid);border-top:1px solid var(--border-dark);padding:24px var(--pad);}
 .post-footer-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
 .post-footer-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.25);}
 .post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
 .post-footer-link:hover{color:var(--gold-light);}
+
+/* Mobile */
 @media(max-width:768px){
-  .audience-comparison,.post-newsletter-inner{grid-template-columns:1fr;}
-  .series-nav{flex-direction:column;align-items:flex-start;}
-  .series-nav-link--next{margin-left:0;}
+  .post-newsletter-inner{grid-template-columns:1fr;}
+  .post-related-grid--double{grid-template-columns:1fr;}
+  .post-banner-img-wrap{aspect-ratio:16/10;}
 }
 </style>
 </head>
 <body>
+
+<div class="noise-overlay" id="noiseOverlay"></div>
 <div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV — no base target blank, Work goes to /work/ -->
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <a href="/">Douglas Ebhoman</a>
   <div class="nav-links">
     <a href="/services/" class="nav-text">Services</a>
-    <a href="/#work" class="nav-text">Work</a>
-    <a href="/#about" class="nav-text">About</a>
-    <a href="/blog/" class="nav-text" style="color:var(--gold);">Blog</a>
-    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
-    <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta">Book the Audit</a>
+    <a href="/work/"     class="nav-text">Work</a>
+    <a href="/#about"    class="nav-text">About</a>
+    <a href="/blog/"     class="nav-text" style="color:var(--gold);">Blog</a>
+    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
   </div>
 </nav>
+
 <main>
-  <section class="post-hero">
-    <div class="post-hero-inner">
-      <a href="/blog/" class="post-back">&larr; All posts</a>
-      <span class="post-series-tag">Systems Over Sentences &middot; Part 05 of 10</span>
-      <h1 class="post-title">Anatomy of Great Documentation</h1>
-      <p class="post-subtitle">Not every document that exists actually works. Here is what separates the two.</p>
-      <div class="post-meta">
-        <span class="post-meta-item">Douglas Ebhoman</span>
-        <span class="post-meta-item">May 3, 2026</span>
-        <span class="post-meta-item">12 min read</span>
-      </div>
+
+<!-- BANNER CARD — image on top, content below, no text overlaid on image -->
+<div class="post-banner-card">
+  <div class="post-banner-img-wrap">
+    <picture>
+      <source type="image/webp" srcset="../../assets/images/anatomy-of-great-documentation-cover.webp">
+      <img src="../../assets/images/anatomy-of-great-documentation-cover.png"
+           srcset="../../assets/images/anatomy-of-great-documentation-cover.png 1200w, ../../assets/images/anatomy-of-great-documentation-cover.png 600w"
+           sizes="(max-width:600px) 100vw, 100vw"
+           alt="The Anatomy of Great Documentation Systems — a framework showing five elements: Understand Your Users, Structure With Purpose, Write for Clarity, Make It Findable, and Keep It Alive"
+           width="1200" height="675"
+           loading="eager"
+           fetchpriority="high"
+           onerror="this.closest('.post-banner-img-wrap').style.background='var(--navy-mid)';this.remove()">
+    </picture>
+  </div>
+  <div class="post-banner-body">
+    <div class="post-banner-breadcrumb">
+      <a href="/blog/" class="post-banner-back">&larr; Blog</a>
+      <span class="post-banner-sep">/</span>
+      <span class="post-banner-back">Systems Over Sentences</span>
     </div>
-  </section>
-<div class="post-body-wrap"><article class="post-body">
+    <span class="post-banner-tag">Systems Over Sentences &middot; Part 05 of 10</span>
+    <h1 class="post-banner-title">Anatomy of Great Documentation</h1>
+    <p class="post-banner-pull">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
+    <div class="post-banner-meta">
+      <span>Douglas Ebhoman</span>
+      <span class="post-banner-meta-dot"></span>
+      <span>May 3, 2026</span>
+      <span class="post-banner-meta-dot"></span>
+      <span>8 min read</span>
+    </div>
+  </div>
+</div>
+
+<!-- PART NAV — single, no duplicate -->
+<div class="post-part-nav">
+  <div class="post-part-nav-inner">
+    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-part-link">&larr; Part 04</a>
+    <span class="post-part-series">Systems Over Sentences</span>
+    <span class="post-part-link post-part-link--disabled">Series in progress &rarr;</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="post-body-wrap" id="post-content">
+<article class="post-body">
+
 <p class="lead">Most documentation does not fail at launch.</p>
-<p>It fails quietly. Weeks later. When a reader clicks a link that goes nowhere. When a procedure ends without telling them what to do next. When a page describes a product that shipped six months ago. Nobody filed a bug report. Nobody sent an email. The reader just closed the tab. That is how documentation dies. Not with a complaint. With silence.</p>
-<p>I know this because I lived it.</p>
+
+<p>It fails quietly. Weeks later. When a reader clicks a link that goes nowhere. When a procedure ends without telling them what to do next. When a page describes a product that shipped six months ago. Nobody filed a bug report. Nobody sent an email. The reader just closed the tab.</p>
+
+<p>That is how documentation dies. Not with a complaint. With silence.</p>
+
 <hr>
-<p>Sometime ago, I was working on a product documentation project. I was paying close attention to information accuracy, editing and re-editing ruthlessly. Every sentence earned its place. Every technical term was defined. Every procedure was tested before it was written. And then someone clicked a link. It went nowhere.</p>
+
+<p>Earlier in my practice, I was working on a product documentation project. Paying close attention to information accuracy, editing and re-editing ruthlessly. Every sentence earned its place. Every technical term was defined. Every procedure was tested before it was written.</p>
+
+<p>And then someone clicked a link. It went nowhere.</p>
+
 <p>One broken link. That was all it took to push an otherwise solid piece of documentation into isolation. Not bad writing. Not inaccurate information. Not poor structure. A single broken connection, and the reader had nowhere to go next.</p>
-<p>That experience forced a question I had not asked before: what actually makes documentation great? Not good. Not accurate. Not well-formatted. Great. The answer is not what most technical writers expect. It is not a writing standard. It is an architectural one. And it shows up consistently in three places.</p>
+
+<p>That experience forced a question I had not asked before: what actually makes documentation great? Not good. Not accurate. Not well-formatted. <strong>Great.</strong></p>
+
+<p>The answer is not what most technical writers expect. It is not a writing standard. It is an architectural one. And it shows up consistently in the same three places: <strong>Connectivity, Architecture, and Feedback Responsiveness</strong> &mdash; in that order, because that is the order in which most documentation systems fail.</p>
+
 <hr>
+
 <h2>Element 1: Connectivity</h2>
-<p>There is a version of documentation that is technically correct in every sentence and still completely useless. It answers the question the reader asked, but does not anticipate the question they are about to ask. It defines the term, but does not link to where the term is used. It explains the procedure, but ends without telling the reader where to go next. This documentation exists. It does not work.</p>
-<p>Documentation that actually works is connected: connected to other pages, connected to the product it describes, connected to the reader&rsquo;s next question before they have to ask it.</p>
-<p>Think about the last time you used documentation that felt effortless. You probably did not notice the writing. You did not notice the formatting. What you noticed was that every time you needed the next piece of information, it was already there. That is connectivity in action. It is invisible when it works. Now think about documentation that frustrated you: the broken link, the reference to a page that no longer exists, the procedure that ended with no next step. None of those were writing problems. All of them were connectivity problems.</p>
-<div class="pull-quote">
+
+<p>There is a version of documentation that is technically correct in every sentence and still completely useless. It answers the question the reader asked, but does not anticipate the question they are about to ask. It defines the term, but does not link to where the term is used. It explains the procedure, but ends without telling the reader where to go next.</p>
+
+<p>This documentation exists. It does not work.</p>
+
+<p>Documentation that actually works is connected: connected to other pages, connected to the product it describes, connected to the reader&rsquo;s next question before they have to ask it. Think about the last time you used documentation that felt effortless. You probably did not notice the writing. You did not notice the formatting. What you noticed was that every time you needed the next piece of information, it was already there. That is connectivity in action. It is invisible when it works.</p>
+
+<p>Now think about documentation that frustrated you: the broken link, the reference to a page that no longer exists, the procedure that ended with no next step. None of those were writing problems. All of them were connectivity problems.</p>
+
+<div class="pull-quote reveal">
   <p>Great documentation is not the sum of its well-written parts. It is the quality of its connections.</p>
 </div>
-<p>Connectivity is the first thing that breaks when documentation is treated as a writing task rather than a systems task. The systems solution to a human error is automation. A GitHub Actions workflow that checks every link on every push and fails the build if any are broken catches what a careful edit misses.</p>
+
+<p>Connectivity is the first thing that breaks when documentation is treated as a writing task rather than a systems task. The fix is rarely more careful editing. It is automation: a GitHub Actions workflow that checks every link on every push and fails the build if any are broken catches what a careful editor misses every time.</p>
+
 <hr>
+
 <h2>Element 2: Architecture</h2>
-<p>If connectivity is about how pages relate to each other, architecture is about how the documentation system relates to the product it documents. Most technical writers are trained to handle visible threats: poor grammar, wrong terminology, structural errors. The real threat hides in plain sight.</p>
-<p>Which pages exist and which do not. How navigation is structured. What the entry points are and where they lead. Whether the documentation reflects the current version of the product or the version that shipped eighteen months ago. These decisions are rarely made deliberately. They accumulate. A page is added here. A section deprecated there. A nav item renamed but not updated elsewhere. Over time, the documentation develops invisible fault lines: places where the structure no longer reflects reality, where readers fall through gaps that the writer never saw because the writer always knew the way.</p>
+
+<p>If connectivity is about how pages relate to each other, architecture is about how the documentation system as a whole reflects &mdash; or fails to reflect &mdash; the product it documents.</p>
+
+<p>Most technical writers are trained to handle visible threats: poor grammar, wrong terminology, structural errors. The real threat hides in plain sight. Which pages exist and which do not. How navigation is structured. What the entry points are and where they lead. Whether the documentation reflects the current version of the product or the version that shipped eighteen months ago.</p>
+
+<p>These decisions are rarely made deliberately. They accumulate. A page is added here. A section deprecated there. A nav item renamed but not updated elsewhere. Over time, the documentation develops invisible fault lines: places where the structure no longer reflects reality, where readers fall through gaps that the writer never saw because the writer always knew the way.</p>
+
 <p>Architecture problems do not show up in a grammar check. They show up when a reader hits a dead end and closes the tab. They show up in support tickets that reference the same documentation page three months running. They show up when a developer onboards and tells you the docs do not match the product.</p>
+
 <p>A document can be technically perfect and architecturally broken. When that happens, the writing is not what failed. The system failed. The technical writer&rsquo;s job is not just to write accurately at launch. It is to maintain a system that stays accurate as the product evolves.</p>
+
 <hr>
-<h2>Element 3: Feedback responsiveness</h2>
+
+<h2>Element 3: Feedback Responsiveness</h2>
+
+<p>Feedback Responsiveness means the documentation system actively collects signal from real readers and uses it to improve. Not a quarterly review. Not a ticket when something breaks. A structural part of how documentation is maintained.</p>
+
 <p>Here is where the most experienced technical writers quietly undermine their own best work. They assume they know what good documentation looks like. That assumption, built from years of experience, style guides, frameworks, and professional instinct, creates a problem that is almost invisible from the inside. When you already know what good looks like, you stop asking whether it works.</p>
-<div class="pull-quote">
+
+<div class="pull-quote reveal">
   <p>The writer sees a flaw. The reader sees a door.</p>
 </div>
-<p>Most technical writers fix the flaw before asking whether it was a flaw at all. They edit toward correctness and away from connection. Real documentation quality is not determined at the writing stage. It is determined at the reading stage. The only way to know what happens at the reading stage is to build feedback into the process: not as a quarterly review, not as a ticket when something breaks, but as a structural element of how documentation is maintained.</p>
-<p>Ask readers what confused them. Track which pages have the highest exit rates. Notice which support tickets reference the same documentation page repeatedly. The signal is always there. Most writers are just not looking for it.</p>
+
+<p>Most technical writers fix the flaw before asking whether it was a flaw at all. They edit toward correctness and away from connection. Real documentation quality is not determined at the writing stage. It is determined at the reading stage.</p>
+
+<p>The only way to know what happens at the reading stage is to build feedback into the process. Ask readers what confused them. Track which pages have the highest exit rates. Notice which support tickets reference the same documentation page repeatedly. The signal is always there. Most writers are just not looking for it.</p>
+
 <hr>
-<div class="quick-win">
+
+<div class="quick-win reveal">
   <span class="quick-win-label">Quick win for systems thinkers</span>
   <p>Pick any page in your current documentation. Ask four questions:</p>
   <ol>
@@ -194,34 +333,64 @@ a{color:inherit;text-decoration:none;}
     <li>When did you last ask a real reader what confused them on this page?</li>
     <li>Does this page have a clear owner whose name you can identify immediately?</li>
   </ol>
-  <p>If any link goes nowhere, you have found a connectivity failure. If any content describes an outdated behaviour, you have found an architecture failure. If you have never asked a real reader about this page, you have found a feedback failure.</p>
+  <p>If any link goes nowhere, you have found a connectivity failure. If any content describes outdated behaviour, you have found an architecture failure. If you have never asked a real reader about this page, you have found a feedback failure.</p>
 </div>
+
 <h2>The full anatomy</h2>
+
 <p>Great documentation is built on three elements, maintained deliberately and continuously:</p>
+
 <div class="anatomy-grid">
-  <div class="anatomy-item">
+  <div class="anatomy-item reveal">
     <span class="anatomy-item-label">Connectivity</span>
     <p>Every page knows where it leads and every link goes somewhere that serves the reader&rsquo;s next question.</p>
   </div>
-  <div class="anatomy-item">
+  <div class="anatomy-item reveal reveal-d1">
     <span class="anatomy-item-label">Architecture</span>
-    <p>The documentation system reflects the current state of the product, updated not just at launch but as the product evolves.</p>
+    <p>The documentation system reflects the current state of the product, updated not just at launch but continuously as the product evolves.</p>
   </div>
-  <div class="anatomy-item">
+  <div class="anatomy-item reveal reveal-d2">
     <span class="anatomy-item-label">Feedback Responsiveness</span>
     <p>The writer actively seeks signal from real readers rather than assuming experience is enough to know what works.</p>
   </div>
 </div>
-<p>Remove any one of these and the documentation still exists. It may even look good. But it will not work the way it needs to. The broken link that opened this post was a connectivity failure. But it taught me something about all three elements. I had the writing right. I had the accuracy right. What I had not built was a system for maintaining what I had written.</p>
+
+<p>Remove any one of these and the documentation still exists. It may even look good. But it will not work the way it needs to.</p>
+
+<p>The broken link that opened this post was a connectivity failure. But it taught me something about all three elements. I had the writing right. I had the accuracy right. What I had not built was a system for maintaining what I had written.</p>
+
 <p>That is the anatomy. It is not something you build once at launch. It is something you maintain every time the product changes, every time a reader hits a dead end, and every time you are tempted to edit the prose instead of checking the connections.</p>
-<hr>
-<h2>What&rsquo;s next</h2>
-<p>In Part 6 we get into structured writing: what it means to write documentation that is reusable, consistent, and built to scale across a team rather than depending on a single writer&rsquo;s instincts.</p>
-</article></div>
-<nav class="series-nav">
-  <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="series-nav-link">&larr; Part 4: Writing for Developers vs Non-Technical Users</a>
-  <span class="series-nav-link series-nav-link--next" style="opacity:.4;pointer-events:none;">Part 6: Structured Writing &mdash; coming soon</span>
-</nav>
+
+</article>
+</div>
+
+<!-- RELATED CARD — previous only, series in progress -->
+<section class="post-related">
+  <p class="post-related-label">Continue the series</p>
+  <div class="post-related-grid post-related-grid--single">
+    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-related-card">
+      <div class="post-related-card-img">
+        <picture>
+          <source type="image/webp" srcset="../../assets/images/writing-for-developers-vs-non-technical-users-cover.webp">
+          <img src="../../assets/images/writing-for-developers-vs-non-technical-users-cover.png"
+               alt="Writing for Developers vs Non-Technical Users"
+               width="800" height="450"
+               loading="lazy"
+               onerror="this.closest('.post-related-card-img').style.background='var(--navy-mid)';this.remove()">
+        </picture>
+      </div>
+      <div class="post-related-card-body">
+        <span class="post-related-card-dir">&larr; Previous</span>
+        <span class="post-related-card-tag">Part 04</span>
+        <h3 class="post-related-card-title">Writing for Developers vs Non-Technical Users</h3>
+        <p class="post-related-card-pull">&ldquo;Same information, completely different job. The distinction is not about vocabulary.&rdquo;</p>
+        <span class="post-related-card-cta">Read Part 04 &rarr;</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- COMMENTS -->
 <section class="post-comments">
   <p class="comments-label">Discussion</p>
   <script src="https://giscus.app/client.js"
@@ -241,36 +410,111 @@ a{color:inherit;text-decoration:none;}
     async>
   </script>
 </section>
+
+<!-- NEWSLETTER -->
 <section class="post-newsletter">
   <div class="post-newsletter-inner">
     <div>
-      <p class="lm" style="color:rgba(255,255,255,.3);margin-bottom:12px;">Stay current</p>
-      <h2 class="post-newsletter-title">New writing, when it&rsquo;s <em>worth reading.</em></h2>
+      <p class="post-newsletter-title">New writing, when it&rsquo;s <em>worth reading.</em></p>
       <p class="post-newsletter-desc">No newsletter cadence. No content calendar. I write when I have something worth saying and you get it when it&rsquo;s done.</p>
     </div>
     <div class="post-newsletter-actions">
-      <a href="mailto:douglas@douglasebhoman.com?subject=Subscribe%20to%20Systems%20Over%20Sentences" class="btn btn-gold">Subscribe by email &rarr;</a>
-      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-outline-light" style="text-align:center;">Book the Audit &mdash; &euro;300</a>
+      <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2241731');
+      </script>
+      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-ghost-light" style="text-align:center;" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
     </div>
   </div>
 </section>
+
 </main>
+
 <footer class="post-footer">
   <div class="post-footer-inner">
     <p class="post-footer-text">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</p>
     <a href="/blog/" class="post-footer-link">&larr; Back to blog</a>
   </div>
 </footer>
+
 <script>
+/* Noise animation */
+const noiseEl = document.getElementById('noiseOverlay');
+if(noiseEl){let n=0;function an(){n+=.5;noiseEl.style.backgroundPosition=n+'px '+n+'px';requestAnimationFrame(an);}an();}
+
+/* Cursor trail */
+const cp=[];let lct=0;
+document.addEventListener('mousemove',e=>{
+  const now=Date.now();if(now-lct<30)return;lct=now;
+  const p=document.createElement('div');p.className='cursor-particle';
+  p.style.cssText=`left:${e.clientX}px;top:${e.clientY}px`;
+  document.body.appendChild(p);
+  cp.push({el:p,life:1,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2-1});
+  if(cp.length>15){const o=cp.shift();o.el.remove();}
+});
+(function ucp(){
+  for(let i=cp.length-1;i>=0;i--){
+    const p=cp[i];p.life-=.03;
+    p.el.style.cssText+=`;opacity:${p.life};transform:translate(${p.vx*(1-p.life)*20}px,${p.vy*(1-p.life)*20}px) scale(${p.life})`;
+    if(p.life<=0){p.el.remove();cp.splice(i,1);}
+  }
+  requestAnimationFrame(ucp);
+})();
+
+/* Ken Burns parallax — does NOT fight CSS animation */
+window.addEventListener('scroll',()=>{
+  const img=document.querySelector('.post-banner-img-wrap img');
+  if(!img)return;
+  const wrap=document.querySelector('.post-banner-img-wrap');
+  const rect=wrap.getBoundingClientRect();
+  if(rect.bottom>0&&rect.top<window.innerHeight){
+    const progress=Math.min(1,Math.max(0,-rect.top/rect.height));
+    img.style.transform=`scale(1.06) translateY(${progress*8}%)`;
+  }
+},{passive:true});
+
+/* Scroll — null-safe */
 let _t=false;
-window.addEventListener("scroll",()=>{
+window.addEventListener('scroll',()=>{
   if(!_t){requestAnimationFrame(()=>{
-    const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-    document.getElementById("progressBar").style.width=(s/h*100)+"%";
-    document.getElementById("nav").className="nav"+(s>40?" scrolled":"");
+    const s=document.documentElement.scrollTop;
+    const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+    const pb=document.getElementById('progressBar');
+    const nv=document.getElementById('nav');
+    if(pb)pb.style.width=(s/h*100)+'%';
+    if(nv)nv.className='nav'+(s>40?' scrolled':'');
     _t=false;
   });_t=true;}
 },{passive:true});
+
+/* Reveal */
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*100);
+      ro.unobserve(e.target);
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    const start=window.pageYOffset,dist=t.getBoundingClientRect().top;
+    let s=null;
+    (function step(ts){
+      if(!s)s=ts;
+      const p=Math.min((ts-s)/800,1);
+      window.scrollTo(0,start+dist*(1-Math.pow(1-p,4)));
+      if(p<1)requestAnimationFrame(step);
+    })(performance.now());
+  });
+});
 </script>
 </body>
 </html>

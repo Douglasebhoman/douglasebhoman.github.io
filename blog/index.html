@@ -205,6 +205,9 @@ a{color:inherit;text-decoration:none;}
   .blog-grid{grid-template-columns:1fr;}
   .blog-series-parts{grid-template-columns:1fr 1fr;}
 }
+.blog-featured-banner{width:100%;height:200px;overflow:hidden;position:relative;background:var(--navy-mid);}
+.blog-featured-banner img{width:100%;height:100%;object-fit:cover;opacity:.5;}
+.blog-featured-banner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--navy-mid));}
 </style>
 </head>
 <body>
@@ -242,6 +245,10 @@ a{color:inherit;text-decoration:none;}
 
 <!-- FEATURED ARTICLE -->
 <section class="blog-featured">
+  <div class="blog-featured-banner">
+    <img src="../assets/images/anatomy-of-great-documentation-cover.png" alt="Anatomy of Great Documentation" loading="eager">
+    <div class="blog-featured-banner-overlay"></div>
+  </div>
   <div class="blog-featured-inner">
     <div class="blog-featured-left">
       <div>
@@ -357,7 +364,7 @@ a{color:inherit;text-decoration:none;}
       </a>
 
       <a href="/blog/posts/from-writing-to-documentation-systems/" class="blog-card reveal reveal-d1">
-        <div class="blog-card-banner"><img src="../assets/images/from-writing-to-documentation-systems.jpg" alt="From Writing to Documentation Systems" loading="lazy"></div>
+        <div class="blog-card-banner"><img src="../assets/images/from-writing-to-documentation-systems.jpeg" alt="From Writing to Documentation Systems" loading="lazy"></div>
         <div class="blog-card-body">
           <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 01 &middot; Systems Over Sentences</div>
           <h3 class="blog-card-title">From Writing to Documentation Systems</h3>
@@ -411,8 +418,11 @@ a{color:inherit;text-decoration:none;}
       <p class="blog-newsletter-sub">No newsletter cadence. No content calendar. I write when I have something worth saying &mdash; <strong>usually once or twice a month</strong> &mdash; and you get it when it&rsquo;s done.</p>
     </div>
     <div class="blog-newsletter-form">
-      <a href="mailto:douglas@douglasebhoman.com?subject=Subscribe%20to%20Systems%20Over%20Sentences&body=Hi%20Douglas%2C%0A%0APlease%20add%20me%20to%20your%20mailing%20list." class="btn btn-gold" style="text-align:center;">Subscribe by email &rarr;</a>
-      <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="btn btn-ghost-light" style="text-align:center;" target="_blank" rel="noopener noreferrer">Follow on LinkedIn</a>
+      <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2241731');
+      </script>
+      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
       <p class="blog-newsletter-note">No spam. Unsubscribe any time. Your email is not shared.</p>
     </div>
   </div>

@@ -56,19 +56,147 @@ a{color:inherit;text-decoration:none;}
 .gold-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);width:48px;display:inline-block;flex-shrink:0;}
 
 
-.post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
-.post-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(184,150,46,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(184,150,46,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
-.post-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);}
-.post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
-.post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;transition:color var(--fast);}
-.post-back:hover{color:var(--gold-light);}
-.post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;background:var(--gold-subtle);display:inline-block;margin-bottom:20px;}
-.post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
-.post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
-.post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);}
-.post-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:8px;}
-.post-meta-item::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.5;}
-.post-meta-item:first-child::before{display:none;}
+.
+/* ── Post hero image — performance-first ── */
+.post-hero-img{display:block;width:100%;aspect-ratio:16/6;object-fit:cover;
+  /* Prevent layout shift — browser reserves space before load */
+  background:var(--navy-mid);
+  /* LCP element — no lazy loading */
+  content-visibility:auto;
+}
+
+/* ── Post banner card ── */
+.post-banner-card{background:var(--navy);border-bottom:1px solid var(--border-dark);}
+
+/* Hero image wrapper — fixed ratio prevents CLS */
+.post-banner-img-wrap{
+  width:100%;
+  aspect-ratio:16/6;max-height:400px;
+  overflow:hidden;
+  background:var(--navy-mid);
+  display:block;
+  line-height:0;       /* remove inline-block gap below image */
+}
+.post-banner-img-wrap picture{display:block;width:100%;height:100%;}
+.post-banner-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 6s ease;
+}
+.post-banner-img-wrap:hover img{transform:scale(1.02);}
+
+/* Content block */
+.post-banner-body{
+  padding:clamp(20px,3vw,40px) clamp(20px,5vw,48px);
+  max-width:800px;
+}
+.post-banner-breadcrumb{
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;
+}
+.post-banner-back{
+  font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);text-decoration:none;transition:color var(--fast);
+}
+.post-banner-back:hover{color:var(--gold-light);}
+.post-banner-sep{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.12);}
+.post-banner-tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);display:inline-block;border:1px solid var(--gold-border);
+  padding:3px 10px;margin-bottom:14px;
+}
+.post-banner-title{
+  font-family:var(--serif);font-size:clamp(22px,4vw,40px);font-weight:300;
+  color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px;
+}
+.post-banner-pull{
+  font-family:var(--serif);font-size:clamp(13px,1.6vw,15px);font-style:italic;
+  font-weight:300;color:rgba(255,255,255,.38);line-height:1.75;
+  border-left:2px solid var(--gold-border);padding-left:14px;
+  margin-bottom:18px;max-width:600px;
+}
+.post-banner-meta{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.22);display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.post-banner-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.4;}
+
+/* ── Part nav strip ── */
+.post-part-nav{
+  background:var(--navy-mid);border-bottom:1px solid var(--border-dark);
+  padding:0 clamp(20px,5vw,48px);
+}
+.post-part-nav-inner{
+  max-width:800px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;height:44px;
+}
+.post-part-link{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px;
+  transition:color var(--fast);text-decoration:none;
+}
+.post-part-link:hover{color:var(--gold-light);}
+.post-part-link--disabled{opacity:.18;pointer-events:none;}
+.post-part-series{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.1);
+}
+
+/* ── Related post cards at bottom ── */
+.post-related{
+  background:var(--navy-mid);
+  padding:clamp(40px,6vw,60px) clamp(20px,5vw,48px);
+  border-top:1px solid var(--border-dark);
+}
+.post-related-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);margin-bottom:24px;display:flex;align-items:center;gap:14px;
+}
+.post-related-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
+.post-related-grid{
+  display:grid;gap:1px;background:rgba(255,255,255,.06);
+}
+.post-related-grid--single{grid-template-columns:1fr;max-width:480px;}
+.post-related-grid--double{grid-template-columns:1fr 1fr;}
+.post-related-card{
+  background:var(--navy);text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;transition:background var(--base);
+}
+.post-related-card:hover{background:rgba(255,255,255,.03);}
+
+.post-related-card-body{padding:clamp(14px,2vw,22px);}
+.post-related-card-dir{
+  font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.2);margin-bottom:6px;display:block;
+}
+.post-related-card-tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;display:block;
+}
+.post-related-card-title{
+  font-family:var(--serif);font-size:clamp(14px,1.8vw,18px);font-weight:300;
+  color:rgba(255,255,255,.8);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px;
+}
+.post-related-card-pull{
+  font-family:var(--serif);font-size:12px;font-style:italic;font-weight:300;
+  color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:12px;
+}
+.post-related-card-cta{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);display:inline-flex;align-items:center;gap:6px;
+  transition:gap var(--fast);
+}
+.post-related-card:hover .post-related-card-cta{gap:10px;}
+
+/* Hide old post-hero */
+.post-hero{display:none;}
+
+/* Mobile */
+@media(max-width:600px){
+  .post-related-grid--double{grid-template-columns:1fr;}
+}
+
 .post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
 .post-body{max-width:720px;margin:0 auto;}
 .post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.85;margin-bottom:1.6rem;font-weight:300;}
@@ -131,7 +259,7 @@ a{color:inherit;text-decoration:none;}
   <a href="/" class="nav-logo">Douglas Ebhoman</a>
   <div class="nav-links">
     <a href="/services/" class="nav-text">Services</a>
-    <a href="/#work" class="nav-text">Work</a>
+    <a href="/work/" class="nav-text">Work</a>
     <a href="/#about" class="nav-text">About</a>
     <a href="/blog/" class="nav-text" style="color:var(--gold);">Blog</a>
     <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
@@ -140,19 +268,42 @@ a{color:inherit;text-decoration:none;}
   </div>
 </nav>
 <main>
-  <section class="post-hero">
-    <div class="post-hero-inner">
-      <a href="/blog/" class="post-back">&larr; All posts</a>
-      <span class="post-series-tag">Systems Over Sentences &middot; Part 02 of 10</span>
-      <h1 class="post-title">Your Documentation is a Bakery. Here&rsquo;s How to Build a Supermarket.</h1>
-      <p class="post-subtitle">What good documentation actually means in tech, and why well-written isn&rsquo;t enough.</p>
-      <div class="post-meta">
-        <span class="post-meta-item">Douglas Ebhoman</span>
-        <span class="post-meta-item">April 13, 2026</span>
-        <span class="post-meta-item">9 min read</span>
-      </div>
+  <div class="post-banner-card">
+  <a href="#post-content" class="post-banner-img-wrap" aria-label="Skip to article">
+    <img src="../../assets/images/Your-documentation-is-a-bakery.png"
+         alt=""
+         width="1200" height="675"
+         loading="eager"
+         fetchpriority="high"
+         decoding="async"
+         style="width:100%;height:100%;object-fit:cover;display:block;">
+  </a>
+  <div class="post-banner-body">
+    <div class="post-banner-breadcrumb">
+      <a href="/blog/" class="post-banner-back">&larr; Blog</a>
+      <span class="post-banner-sep">/</span>
+      <span class="post-banner-back">Systems Over Sentences</span>
     </div>
-  </section>
+    <span class="post-banner-tag">Systems Over Sentences &middot; Part 02 of 10</span>
+    <h1 class="post-banner-title">Your Documentation is a Bakery. Here’s How to Build a Supermarket.</h1>
+    <p class="post-banner-pull">&ldquo;You can’t control which page your reader lands on first. You can control whether every page has windows that connect them to what they need next.&rdquo;</p>
+    <div class="post-banner-meta">
+      <span>Douglas Ebhoman</span>
+      <span class="post-banner-meta-dot"></span>
+      <span>April 13, 2026</span>
+      <span class="post-banner-meta-dot"></span>
+      <span>5 min read</span>
+    </div>
+  </div>
+</div>
+<div class="post-part-nav">
+  <div class="post-part-nav-inner">
+    <a href="/blog/posts/from-writing-to-documentation-systems/" class="post-part-link">&larr; Part 01</a>
+    <span class="post-part-series">Systems Over Sentences</span>
+    <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="post-part-link">Part 03 &rarr;</a>
+  </div>
+</div>
+
 <div class="post-body-wrap"><article class="post-body">
 <p class="lead">I was reading through an open-source project&rsquo;s documentation recently. The content was worth it: detailed, accurate, clearly written by people who understood the product deeply. But I kept getting lost.</p>
 <p>Not because the information wasn&rsquo;t there. It was. But every page I landed on felt like it existed in isolation. No sense of where I was in the overall structure, no signal of what came before or what should come next, no way to know whether I was reading a beginner concept or an advanced configuration detail.</p>
@@ -161,16 +312,16 @@ a{color:inherit;text-decoration:none;}
 <h2>The supermarket problem</h2>
 <p>Baker uses a simple metaphor I haven&rsquo;t been able to stop thinking about. A bakery that sells one product, fresh quality bread, will always sell less than a supermarket. Not because the bread is worse. The bread might be exceptional. But the supermarket gives you bread and options. Options keep people coming back.</p>
 <p>Most documentation is a bakery. One product. One shelf. Accurate, useful, well-written, but isolated. A reader arrives looking for one specific thing, finds it or doesn&rsquo;t, and leaves. There&rsquo;s nothing to pull them deeper.</p>
-<p>When I finished my Git and GitHub for Technical Writers series, that&rsquo;s exactly what I had built. Six parts. Clear, practical, well-structured. A bakery. Someone could land on Part 3, get what they needed, and leave. I had no way to show them that if they were also wondering how to think about documentation architecture, that conversation existed too. The bread was good. The jam didn&rsquo;t exist yet. This series is the jam.</p>
+<p>When I finished my Git and GitHub for Technical Writers series, that&rsquo;s exactly what I had built. Six parts. Clear, practical, well-structured. A bakery. Someone could land on Part 3, get what they needed, and leave. I had no way to show them that if they were also wondering how to think about documentation architecture, that conversation existed too. The bread was good. The jam didn&rsquo;t exist yet. The Systems Over Sentences series is the jam.</p>
 <hr>
 <h2>Every Page is Page One</h2>
 <p>Here&rsquo;s the core idea from Baker&rsquo;s book, and why it matters for how you build documentation: you cannot control which page your reader lands on first. They arrive through a Google result, a Slack message, a colleague&rsquo;s bookmark, a link buried in a Stack Overflow answer. They enter anywhere, and wherever they enter, that page becomes their Page One.</p>
 <p>Which means every page must be able to stand alone. Not in isolation, but with enough context, enough orientation, enough connection to the whole that a reader arriving cold can find their footing and know where to go next.</p>
 <div class="pull-quote">
-  <p>Not all documents are relevant to an audience. But every document is relevant to the right audience. Your job is to build the windows that connect them.</p>
+  <p>Not every page will suit every reader. But every page should be findable by the reader it was written for. Your job is to build the connections that make that possible.</p>
 </div>
 <h2>What a window looks like in practice</h2>
-<p>A window isn&rsquo;t a link at the bottom of a page that says &ldquo;see also.&rdquo; A window is a signal, embedded naturally in the content, that tells a reader: there&rsquo;s more here if you need it. Here&rsquo;s where it lives. Here&rsquo;s why it might matter to you.</p>
+<p>A window &mdash; in the Every Page is Page One sense &mdash; is a deliberate connection embedded in content that tells a reader there is more available if they need it. It is not a link at the bottom of a page that says &ldquo;see also.&rdquo; A window is a signal, embedded naturally in the content, that tells a reader: there&rsquo;s more here if you need it. Here&rsquo;s where it lives. Here&rsquo;s why it might matter to you.</p>
 <p>When someone lands on a page about Git branching workflows, a window might say: &ldquo;If you&rsquo;re thinking about how this fits into a larger documentation system, that&rsquo;s a different conversation, and here&rsquo;s where we have it.&rdquo; That reader came for bread. You just showed them the jam.</p>
 <h2>The Every Page is Page One test</h2>
 <p>Pick any page from your current documentation. Not the homepage, not the getting started guide. A random page from somewhere in the middle. Then ask four questions:</p>
@@ -188,10 +339,6 @@ a{color:inherit;text-decoration:none;}
 <hr>
 <p><em>The <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/">Git &amp; GitHub for Technical Writers series</a> is the tooling foundation this series builds on. If you haven&rsquo;t read it, that&rsquo;s the bread. This is the jam.</em></p>
 </article></div>
-<nav class="series-nav">
-  <a href="/blog/posts/from-writing-to-documentation-systems/" class="series-nav-link">&larr; Part 1: From Writing to Documentation Systems</a>
-  <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="series-nav-link series-nav-link--next">Part 3: How Product Teams Actually Handle Documentation &rarr;</a>
-</nav>
 <section class="post-comments">
   <p class="comments-label">Discussion</p>
   <script src="https://giscus.app/client.js"
@@ -211,6 +358,29 @@ a{color:inherit;text-decoration:none;}
     async>
   </script>
 </section>
+<section class="post-related">
+  <p class="post-related-label">Continue the series</p>
+  <div class="post-related-grid post-related-grid--double">
+    <a href="/blog/posts/from-writing-to-documentation-systems/" class="post-related-card">
+      <div class="post-related-card-body">
+      <span class="post-related-card-dir">&larr; Previous</span>
+      <span class="post-related-card-tag">Part 01</span>
+      <h3 class="post-related-card-title">From Writing to Documentation Systems</h3>
+      <p class="post-related-card-pull">&ldquo;Most people think technical writing is about writing. The real job is designing how information works.&rdquo;</p>
+      <span class="post-related-card-cta">Read Part 01 &rarr;</span>
+    </div>
+  </a><a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="post-related-card">
+      <div class="post-related-card-body">
+      <span class="post-related-card-dir">Next &rarr;</span>
+      <span class="post-related-card-tag">Part 03</span>
+      <h3 class="post-related-card-title">How Product Teams Actually Handle Documentation</h3>
+      <p class="post-related-card-pull">&ldquo;Documentation doesn’t break at the writing stage. It breaks when no one clearly owns what happens next.&rdquo;</p>
+      <span class="post-related-card-cta">Read Part 03 &rarr;</span>
+    </div>
+  </a>
+  </div>
+</section>
+
 <section class="post-newsletter">
   <div class="post-newsletter-inner">
     <div>
@@ -219,7 +389,11 @@ a{color:inherit;text-decoration:none;}
       <p class="post-newsletter-desc">No newsletter cadence. No content calendar. I write when I have something worth saying and you get it when it&rsquo;s done.</p>
     </div>
     <div class="post-newsletter-actions">
-      <a href="mailto:douglas@douglasebhoman.com?subject=Subscribe%20to%20Systems%20Over%20Sentences" class="btn btn-gold">Subscribe by email &rarr;</a>
+      <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '2241731');
+      </script>
+      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
       <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-outline-light" style="text-align:center;">Book the Audit &mdash; &euro;300</a>
     </div>
   </div>
@@ -236,8 +410,10 @@ let _t=false;
 window.addEventListener("scroll",()=>{
   if(!_t){requestAnimationFrame(()=>{
     const s=document.documentElement.scrollTop,h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-    document.getElementById("progressBar").style.width=(s/h*100)+"%";
-    document.getElementById("nav").className="nav"+(s>40?" scrolled":"");
+    const pb=document.getElementById("progressBar");
+    const nv=document.getElementById("nav");
+    if(pb) pb.style.width=(s/h*100)+"%";
+    if(nv) nv.className="nav"+(s>40?" scrolled":"");
     _t=false;
   });_t=true;}
 },{passive:true});
