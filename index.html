@@ -240,7 +240,7 @@
       <div class="portrait">
         <div class="portrait-accent"></div>
         <div class="portrait-border">
-          <img class="portrait-img" src="assets/images/douglas.jpg" alt="Douglas Ebhoman &mdash; Documentation Systems Specialist, Prague" onerror="this.closest('.portrait').style.display='none'" />
+          <img class="portrait-img" src="assets/images/douglas.jpg" alt="Douglas Ebhoman &mdash; Documentation Systems Specialist, Prague" onerror="this.style.opacity='0'" />
         </div>
         <div class="portrait-plate">
           <div class="portrait-name">Douglas Ebhoman</div>
@@ -1027,13 +1027,23 @@ if (navHamburger && navLinksEl) {
     navHamburger.classList.toggle('open', isOpen);
     navHamburger.setAttribute('aria-expanded', String(isOpen));
   });
-  // Close on link click
+  // Close on link click — use timeout to let navigation fire first
   navLinksEl.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
+      setTimeout(() => {
+        navLinksEl.classList.remove('open');
+        navHamburger.classList.remove('open');
+        navHamburger.setAttribute('aria-expanded', 'false');
+      }, 50);
+    });
+  });
+  // Close if user taps outside menu
+  document.addEventListener('click', (e) => {
+    if (!navLinksEl.contains(e.target) && !navHamburger.contains(e.target)) {
       navLinksEl.classList.remove('open');
       navHamburger.classList.remove('open');
       navHamburger.setAttribute('aria-expanded', 'false');
-    });
+    }
   });
 }
 
