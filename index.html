@@ -1,506 +1,1459 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab. The three architectural elements that separate documentation that works from documentation that merely exists.">
-  <meta name="author" content="Douglas Ebhoman">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
-  <meta property="og:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
-  <meta property="og:description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab.">
-  <meta property="og:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
-  <meta name="twitter:description" content="The three architectural elements that separate documentation that works from documentation that merely exists.">
-  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
-  <title>Anatomy of Great Documentation &middot; Douglas Ebhoman</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
+  <title>Douglas Ebhoman &mdash; Documentation Systems Specialist</title>
+  <meta name="description" content="I build documentation systems that hold up as your product grows. Documentation Audit &mdash; &euro;300. Delivered in 5 working days.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../styles.css">
-<style>
-/* ── Critical base (self-contained) ── */
-:root {
-  --navy:#18222C; --navy-mid:#1E2D3D; --navy-light:#243044;
-  --cream:#F9F7F4; --cream-2:#F2EFE9;
-  --gold:#B8962E; --gold-light:#D4B060;
-  --gold-subtle:rgba(184,150,46,0.08); --gold-border:rgba(184,150,46,0.20);
-  --text-dark:#111827; --text-mid:#4B5563; --text-muted:#9CA3AF;
-  --text-dim:rgba(255,255,255,0.45); --text-ghost:rgba(255,255,255,0.25);
-  --border-light:rgba(0,0,0,0.08); --border-dark:rgba(255,255,255,0.06);
-  --green:#4ADE80;
-  --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif; --mono:'DM Mono',monospace;
-  --fast:0.15s ease; --base:0.25s ease; --container:960px; --pad:clamp(24px,5vw,48px);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{font-size:16px;-webkit-font-smoothing:antialiased;}
-body{font-family:var(--sans);font-size:14px;line-height:1.6;color:var(--text-dark);background:var(--cream);overflow-x:hidden;}
-a{color:inherit;text-decoration:none;}
-
-/* Nav */
-.progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--gold);z-index:9999;box-shadow:0 0 8px rgba(184,150,46,.4);}
-.nav{background:var(--navy);padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border-dark);transition:box-shadow var(--base);}
-.nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.4);}
-.nav-logo{font-family:var(--serif);font-size:15px;color:#fff;font-weight:300;letter-spacing:-.01em;}
-.nav-links{display:flex;gap:20px;align-items:center;}
-.nav-text{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color var(--fast);}
-.nav-text:hover{color:rgba(255,255,255,.8);}
-.nav-icon{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.55);transition:all var(--fast);}
-.nav-icon:hover{border-color:rgba(255,255,255,.3);color:#fff;}
-.nav-icon svg{width:15px;height:15px;fill:currentColor;display:block;}
-.nav-cta{background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;font-weight:500;transition:background var(--fast);display:inline-block;}
-.nav-cta:hover{background:var(--gold-light);}
-.btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
-.btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
-.btn-gold:hover{background:var(--gold-light);}
-.btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);}
-.btn-ghost-light:hover{border-color:rgba(255,255,255,.35);color:#fff;}
-
-/* Noise overlay */
-.noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;}
-.cursor-particle{position:fixed;width:4px;height:4px;border-radius:50%;background:rgba(184,150,46,.6);pointer-events:none;z-index:9997;will-change:transform,opacity;}
-
-/* ── Banner — image top, content below ── */
-.post-banner-card{background:var(--navy);border-bottom:1px solid var(--border-dark);}
-.post-banner-img-wrap{width:100%;aspect-ratio:16/6;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;position:relative;min-height:160px;max-height:400px;max-height:420px;}
-.post-banner-img-wrap picture{display:block;width:100%;height:100%;}
-.post-banner-img-wrap img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  animation:kenBurns 20s ease-in-out infinite alternate;
-}
-@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,-1%)}}
-.post-banner-img-wrap:hover img{animation-play-state:paused;}
-
-.post-banner-body{padding:clamp(20px,3vw,40px) clamp(20px,5vw,48px);}
-.post-banner-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-.post-banner-back{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color var(--fast);}
-.post-banner-back:hover{color:var(--gold-light);}
-.post-banner-sep{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.15);}
-.post-banner-tag{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-block;border:1px solid var(--gold-border);padding:3px 10px;margin-bottom:14px;}
-.post-banner-title{font-family:var(--serif);font-size:clamp(22px,4vw,40px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px;}
-.post-banner-pull{font-family:var(--serif);font-size:clamp(13px,1.6vw,15px);font-style:italic;font-weight:300;color:rgba(255,255,255,.38);line-height:1.75;border-left:2px solid var(--gold-border);padding-left:14px;margin-bottom:18px;max-width:600px;}
-.post-banner-meta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.post-banner-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.4;}
-
-/* Part nav strip */
-.post-part-nav{background:var(--navy-mid);border-bottom:1px solid var(--border-dark);padding:0 clamp(20px,5vw,48px);position:relative;overflow:hidden;}
-.post-part-nav::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.03),transparent);animation:shimmer 8s ease-in-out infinite;}
-@keyframes shimmer{0%,100%{left:-100%}50%{left:200%}}
-.post-part-nav-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:44px;}
-.post-part-link{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px;transition:color var(--fast);text-decoration:none;}
-.post-part-link:hover{color:var(--gold-light);}
-.post-part-link--disabled{opacity:.18;pointer-events:none;cursor:default;}
-.post-part-series{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.1);}
-
-/* ── Post body ── */
-.post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
-.post-body{max-width:720px;margin:0 auto;}
-.post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.9;margin-bottom:1.6rem;font-weight:300;}
-.post-body p.lead{font-size:clamp(18px,2.4vw,22px);color:var(--text-dark);line-height:1.7;font-weight:400;margin-bottom:1.8rem;}
-.post-body p.lead::first-letter{font-family:var(--serif);font-size:3.2em;float:left;line-height:.8;padding-right:8px;margin-top:4px;color:var(--gold);font-weight:400;}
-.post-body h2{font-family:var(--serif);font-size:clamp(20px,2.8vw,26px);font-weight:400;color:var(--text-dark);line-height:1.25;letter-spacing:-.02em;margin:3.5rem 0 1.2rem;padding-top:1.5rem;border-top:1px solid var(--border-light);}
-.post-body hr{border:none;border-top:1px solid var(--border-light);margin:2.5rem 0;}
-.post-body strong{color:var(--text-dark);font-weight:500;}
-.post-body a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
-.post-body a:hover{color:var(--gold-light);}
-
-/* Selection */
-::selection{background:rgba(184,150,46,.2);color:var(--text-dark);}
-
-/* Pull quote */
-.pull-quote{border-left:2px solid var(--gold);padding:16px 24px;margin:2.5rem 0;background:var(--gold-subtle);position:relative;overflow:hidden;}
-.pull-quote::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,rgba(184,150,46,.04) 0%,transparent 60%);animation:quotePulse 5s ease-in-out infinite;pointer-events:none;}
-@keyframes quotePulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
-.pull-quote p{font-size:clamp(15px,2vw,18px);color:var(--text-dark);font-style:italic;margin-bottom:0;line-height:1.7;font-weight:400;}
-
-/* Quick win */
-.quick-win{border:1px solid var(--gold-border);padding:clamp(20px,3vw,32px);margin:2.5rem 0;background:var(--cream-2);}
-.quick-win-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.quick-win p{font-size:14px;margin-bottom:12px;color:var(--text-mid);}
-.quick-win p:last-child{margin-bottom:0;}
-.quick-win ol{padding-left:20px;margin-bottom:12px;}
-.quick-win ol li{font-family:var(--serif);font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:8px;}
-.quick-win ol li:last-child{margin-bottom:0;}
-
-/* Anatomy grid */
-.anatomy-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.anatomy-item{background:var(--cream);padding:20px 24px;border-left:2px solid transparent;transition:border-color var(--fast),transform var(--base),box-shadow var(--base);}
-.anatomy-item:hover{border-left-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04);}
-.anatomy-item-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
-.anatomy-item p{font-size:13px;margin-bottom:0;color:var(--text-mid);}
-
-/* Reveal */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
-
-/* Related cards */
-.post-related{background:var(--navy-mid);padding:clamp(40px,6vw,60px) clamp(20px,5vw,48px);border-top:1px solid var(--border-dark);}
-.post-related-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
-.post-related-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
-.post-related-grid{display:grid;gap:1px;background:rgba(255,255,255,.06);}
-.post-related-grid--single{grid-template-columns:1fr;max-width:480px;}
-.post-related-grid--double{grid-template-columns:1fr 1fr;}
-.post-related-card{background:var(--navy);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background var(--base);}
-.post-related-card:hover{background:rgba(255,255,255,.03);}
-.post-related-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;}
-.post-related-card-img picture{display:block;width:100%;height:100%;}
-.post-related-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
-.post-related-card:hover .post-related-card-img img{transform:scale(1.03);}
-.post-related-card-body{padding:clamp(14px,2vw,22px);border-left:2px solid var(--gold-border);}
-.post-related-card-dir{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:6px;display:block;}
-.post-related-card-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
-.post-related-card-title{font-family:var(--serif);font-size:clamp(14px,1.8vw,18px);font-weight:300;color:rgba(255,255,255,.8);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px;}
-.post-related-card-pull{font-family:var(--serif);font-size:12px;font-style:italic;font-weight:300;color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:12px;}
-.post-related-card-cta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap var(--fast);}
-.post-related-card:hover .post-related-card-cta{gap:10px;}
-
-/* Comments */
-.post-comments{max-width:720px;margin:0 auto;padding:48px var(--pad) 64px;}
-.comments-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
-.comments-label::after{content:'';flex:1;height:1px;background:var(--gold-border);}
-
-/* Newsletter */
-.post-newsletter{background:var(--navy);border-top:1px solid var(--border-dark);padding:clamp(48px,6vw,72px) var(--pad);position:relative;}
-.post-newsletter::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(184,150,46,.05) 0%,transparent 50%);pointer-events:none;}
-.post-newsletter-inner{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 280px;gap:clamp(32px,5vw,64px);align-items:center;position:relative;z-index:1;}
-.post-newsletter-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:300;color:#fff;line-height:1.25;letter-spacing:-.02em;margin-bottom:10px;}
-.post-newsletter-title em{font-style:italic;color:var(--gold-light);}
-.post-newsletter-desc{font-size:13px;color:var(--text-dim);line-height:1.8;font-weight:300;}
-.post-newsletter-actions{display:flex;flex-direction:column;gap:10px;}
-
-/* Footer */
-.post-footer{background:var(--navy-mid);border-top:1px solid var(--border-dark);padding:24px var(--pad);}
-.post-footer-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.post-footer-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.25);}
-.post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
-.post-footer-link:hover{color:var(--gold-light);}
-
-/* Mobile */
-@media(max-width:768px){
-  .post-newsletter-inner{grid-template-columns:1fr;}
-  .post-related-grid--double{grid-template-columns:1fr;}
-  .post-banner-img-wrap{aspect-ratio:16/7;max-height:260px;}
-}
-</style>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .noise-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+    .hero-canvas-wrap {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    #heroCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      opacity: 0.15;
+      will-change: transform;
+    }
+    .ambient-orb--gold { background: radial-gradient(circle, #B8962E 0%, transparent 70%); }
+    .ambient-orb--warm { background: radial-gradient(circle, #D4A853 0%, transparent 70%); }
+    .ambient-orb--deep { background: radial-gradient(circle, #8B6914 0%, transparent 70%); }
+    .section-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .gradient-mesh {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .mesh-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.08;
+      will-change: transform;
+    }
+    .hero-inner, .metrics-inner, .pov-inner, .hc-inner,
+    .work-inner, .samples-inner, .audit-inner, .process-inner,
+    .proof-inner, .cta-inner, .f-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .btn-gold {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-gold::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(184,150,46,0.3), transparent 30%);
+      animation: rotateGlow 4s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-gold:hover::after { opacity: 1; }
+    @keyframes rotateGlow { to { transform: rotate(360deg); } }
+    .cursor-particle {
+      position: fixed;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: rgba(184,150,46,0.6);
+      pointer-events: none;
+      z-index: 9997;
+      will-change: transform, opacity;
+    }
+    .strip {
+      position: relative;
+      overflow: hidden;
+    }
+    .strip::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      animation: stripShimmer 6s ease-in-out infinite;
+    }
+    @keyframes stripShimmer { 0%, 100% { left: -100%; } 50% { left: 200%; } }
+    .strategy-doc::after {
+      content: '';
+      position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border-radius: 16px;
+      background: radial-gradient(ellipse at center, rgba(184,150,46,0.08) 0%, transparent 70%);
+      animation: docPulse 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes docPulse { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
+    .hc-widget::before {
+      content: '';
+      position: absolute;
+      top: -20px; left: -20px; right: -20px; bottom: -20px;
+      border-radius: 24px;
+      background: radial-gradient(ellipse at 30% 50%, rgba(184,150,46,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .audit-card::before {
+      content: '';
+      position: absolute;
+      top: -15px; left: -15px; right: -15px; bottom: -15px;
+      border-radius: 20px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(184,150,46,0.1) 0%, transparent 50%);
+      animation: cardFloat 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    @keyframes cardFloat { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(-8px); opacity: 1; } }
+    .footer-wave {
+      position: absolute;
+      top: -60px; left: 0;
+      width: 100%; height: 60px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .footer-wave svg {
+      position: absolute;
+      bottom: 0;
+      width: 200%; height: 60px;
+      animation: waveMove 8s linear infinite;
+    }
+    @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .mobile-cta-link {
+      position: relative;
+      overflow: hidden;
+    }
+    .mobile-cta-link::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(184,150,46,0.2), transparent 30%);
+      animation: rotateGlow 3s linear infinite;
+      opacity: 0.5;
+    }
+  </style>
 </head>
 <body>
 
 <div class="noise-overlay" id="noiseOverlay"></div>
 <div class="progress-bar" id="progressBar"></div>
+<div class="cursor" id="cursor"></div>
 
-<!-- NAV — no base target blank, Work goes to /work/ -->
+<!-- Command Palette -->
+<div class="cmd-overlay" id="cmdOverlay">
+  <div class="cmd-panel">
+    <div class="cmd-search">
+      <span class="cmd-search-icon"><svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <input class="cmd-input" id="cmdInput" placeholder="Search work, navigate, or run the health check&hellip;" autocomplete="off" />
+      <span class="cmd-kbd">ESC</span>
+    </div>
+    <div class="cmd-results" id="cmdResults"></div>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="/">Douglas Ebhoman</a>
-  <div class="nav-links">
-    <a href="/services/" class="nav-text">Services</a>
+  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <div class="nav-links" id="navLinks">
     <a href="/work/"     class="nav-text">Work</a>
-    <a href="/#about"    class="nav-text">About</a>
-    <a href="/blog/"     class="nav-text" style="color:var(--gold);">Blog</a>
+    <a href="#samples"   class="nav-text">Samples</a>
+    <a href="/services/" class="nav-text">Services</a>
+    <a href="#about"     class="nav-text">About</a>
+    <a href="/blog/"     class="nav-text">Blog</a>
+    <button class="nav-search" onclick="openCmd()" aria-label="Open command palette">
+      <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Search <span class="nav-search-kbd">&#8984;K</span>
+    </button>
     <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
     <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
     <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
   </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<main>
-
-<!-- BANNER CARD — image on top, content below, no text overlaid on image -->
-<div class="post-banner-card">
-  <div class="post-banner-img-wrap">
-    <img src="../../assets/images/anatomy-of-great-documentation-cover.png"
-         alt="The Anatomy of Great Documentation Systems"
-         width="1200" height="675"
-         loading="eager"
-         fetchpriority="high"
-         decoding="async"
-         style="width:100%;height:100%;object-fit:cover;display:block;">
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-canvas-wrap">
+    <canvas id="heroCanvas"></canvas>
   </div>
-  <div class="post-banner-body">
-    <div class="post-banner-breadcrumb">
-      <a href="/blog/" class="post-banner-back">&larr; Blog</a>
-      <span class="post-banner-sep">/</span>
-      <span class="post-banner-back">Systems Over Sentences</span>
-    </div>
-    <span class="post-banner-tag">Systems Over Sentences &middot; Part 05 of 10</span>
-    <h1 class="post-banner-title">Anatomy of Great Documentation</h1>
-    <p class="post-banner-pull">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
-    <div class="post-banner-meta">
-      <span>Douglas Ebhoman</span>
-      <span class="post-banner-meta-dot"></span>
-      <span>May 3, 2026</span>
-      <span class="post-banner-meta-dot"></span>
-      <span>8 min read</span>
-    </div>
-  </div>
-</div>
-
-<!-- PART NAV — single, no duplicate -->
-<div class="post-part-nav">
-  <div class="post-part-nav-inner">
-    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-part-link">&larr; Part 04</a>
-    <span class="post-part-series">Systems Over Sentences</span>
-    <span class="post-part-link post-part-link--disabled">Series in progress &rarr;</span>
-  </div>
-</div>
-
-<!-- BODY -->
-<div class="post-body-wrap" id="post-content">
-<article class="post-body">
-
-<p class="lead">Most documentation does not fail at launch.</p>
-
-<p>It fails quietly. Weeks later. When a reader clicks a link that goes nowhere. When a procedure ends without telling them what to do next. When a page describes a product that shipped six months ago. Nobody filed a bug report. Nobody sent an email. The reader just closed the tab.</p>
-
-<p>That is how documentation dies. Not with a complaint. With silence.</p>
-
-<hr>
-
-<p>Earlier in my practice, I was working on a product documentation project. Paying close attention to information accuracy, editing and re-editing ruthlessly. Every sentence earned its place. Every technical term was defined. Every procedure was tested before it was written.</p>
-
-<p>And then someone clicked a link. It went nowhere.</p>
-
-<p>One broken link. That was all it took to push an otherwise solid piece of documentation into isolation. Not bad writing. Not inaccurate information. Not poor structure. A single broken connection, and the reader had nowhere to go next.</p>
-
-<p>That experience forced a question I had not asked before: what actually makes documentation great? Not good. Not accurate. Not well-formatted. <strong>Great.</strong></p>
-
-<p>The answer is not what most technical writers expect. It is not a writing standard. It is an architectural one. And it shows up consistently in the same three places: <strong>Connectivity, Architecture, and Feedback Responsiveness</strong> &mdash; in that order, because that is the order in which most documentation systems fail.</p>
-
-<hr>
-
-<h2>Element 1: Connectivity</h2>
-
-<p>There is a version of documentation that is technically correct in every sentence and still completely useless. It answers the question the reader asked, but does not anticipate the question they are about to ask. It defines the term, but does not link to where the term is used. It explains the procedure, but ends without telling the reader where to go next.</p>
-
-<p>This documentation exists. It does not work.</p>
-
-<p>Documentation that actually works is connected: connected to other pages, connected to the product it describes, connected to the reader&rsquo;s next question before they have to ask it. Think about the last time you used documentation that felt effortless. You probably did not notice the writing. You did not notice the formatting. What you noticed was that every time you needed the next piece of information, it was already there. That is connectivity in action. It is invisible when it works.</p>
-
-<p>Now think about documentation that frustrated you: the broken link, the reference to a page that no longer exists, the procedure that ended with no next step. None of those were writing problems. All of them were connectivity problems.</p>
-
-<div class="pull-quote reveal">
-  <p>Great documentation is not the sum of its well-written parts. It is the quality of its connections.</p>
-</div>
-
-<p>Connectivity is the first thing that breaks when documentation is treated as a writing task rather than a systems task. The fix is rarely more careful editing. It is automation: a GitHub Actions workflow that checks every link on every push and fails the build if any are broken catches what a careful editor misses every time.</p>
-
-<hr>
-
-<h2>Element 2: Architecture</h2>
-
-<p>If connectivity is about how pages relate to each other, architecture is about how the documentation system as a whole reflects &mdash; or fails to reflect &mdash; the product it documents.</p>
-
-<p>Most technical writers are trained to handle visible threats: poor grammar, wrong terminology, structural errors. The real threat hides in plain sight. Which pages exist and which do not. How navigation is structured. What the entry points are and where they lead. Whether the documentation reflects the current version of the product or the version that shipped eighteen months ago.</p>
-
-<p>These decisions are rarely made deliberately. They accumulate. A page is added here. A section deprecated there. A nav item renamed but not updated elsewhere. Over time, the documentation develops invisible fault lines: places where the structure no longer reflects reality, where readers fall through gaps that the writer never saw because the writer always knew the way.</p>
-
-<p>Architecture problems do not show up in a grammar check. They show up when a reader hits a dead end and closes the tab. They show up in support tickets that reference the same documentation page three months running. They show up when a developer onboards and tells you the docs do not match the product.</p>
-
-<p>A document can be technically perfect and architecturally broken. When that happens, the writing is not what failed. The system failed. The technical writer&rsquo;s job is not just to write accurately at launch. It is to maintain a system that stays accurate as the product evolves.</p>
-
-<hr>
-
-<h2>Element 3: Feedback Responsiveness</h2>
-
-<p>Feedback Responsiveness means the documentation system actively collects signal from real readers and uses it to improve. Not a quarterly review. Not a ticket when something breaks. A structural part of how documentation is maintained.</p>
-
-<p>Here is where the most experienced technical writers quietly undermine their own best work. They assume they know what good documentation looks like. That assumption, built from years of experience, style guides, frameworks, and professional instinct, creates a problem that is almost invisible from the inside. When you already know what good looks like, you stop asking whether it works.</p>
-
-<div class="pull-quote reveal">
-  <p>The writer sees a flaw. The reader sees a door.</p>
-</div>
-
-<p>Most technical writers fix the flaw before asking whether it was a flaw at all. They edit toward correctness and away from connection. Real documentation quality is not determined at the writing stage. It is determined at the reading stage.</p>
-
-<p>The only way to know what happens at the reading stage is to build feedback into the process. Ask readers what confused them. Track which pages have the highest exit rates. Notice which support tickets reference the same documentation page repeatedly. The signal is always there. Most writers are just not looking for it.</p>
-
-<hr>
-
-<div class="quick-win reveal">
-  <span class="quick-win-label">Quick win for systems thinkers</span>
-  <p>Pick any page in your current documentation. Ask four questions:</p>
-  <ol>
-    <li>If a reader lands on this page from a search engine and clicks every link, where do they end up?</li>
-    <li>Does every procedure on this page reflect how the product actually works today?</li>
-    <li>When did you last ask a real reader what confused them on this page?</li>
-    <li>Does this page have a clear owner whose name you can identify immediately?</li>
-  </ol>
-  <p>If any link goes nowhere, you have found a connectivity failure. If any content describes outdated behaviour, you have found an architecture failure. If you have never asked a real reader about this page, you have found a feedback failure.</p>
-</div>
-
-<h2>The full anatomy</h2>
-
-<p>Great documentation is built on three elements, maintained deliberately and continuously:</p>
-
-<div class="anatomy-grid">
-  <div class="anatomy-item reveal">
-    <span class="anatomy-item-label">Connectivity</span>
-    <p>Every page knows where it leads and every link goes somewhere that serves the reader&rsquo;s next question.</p>
-  </div>
-  <div class="anatomy-item reveal reveal-d1">
-    <span class="anatomy-item-label">Architecture</span>
-    <p>The documentation system reflects the current state of the product, updated not just at launch but continuously as the product evolves.</p>
-  </div>
-  <div class="anatomy-item reveal reveal-d2">
-    <span class="anatomy-item-label">Feedback Responsiveness</span>
-    <p>The writer actively seeks signal from real readers rather than assuming experience is enough to know what works.</p>
-  </div>
-</div>
-
-<p>Remove any one of these and the documentation still exists. It may even look good. But it will not work the way it needs to.</p>
-
-<p>The broken link that opened this post was a connectivity failure. But it taught me something about all three elements. I had the writing right. I had the accuracy right. What I had not built was a system for maintaining what I had written.</p>
-
-<p>That is the anatomy. It is not something you build once at launch. It is something you maintain every time the product changes, every time a reader hits a dead end, and every time you are tempted to edit the prose instead of checking the connections.</p>
-
-</article>
-</div>
-
-<!-- RELATED CARD — previous only, series in progress -->
-<section class="post-related">
-  <p class="post-related-label">Continue the series</p>
-  <div class="post-related-grid post-related-grid--single">
-    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-related-card">
-      <div class="post-related-card-body">
-        <span class="post-related-card-dir">&larr; Previous</span>
-        <span class="post-related-card-tag">Part 04</span>
-        <h3 class="post-related-card-title">Writing for Developers vs Non-Technical Users</h3>
-        <p class="post-related-card-pull">&ldquo;Same information, completely different job. The distinction is not about vocabulary.&rdquo;</p>
-        <span class="post-related-card-cta">Read Part 04 &rarr;</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- COMMENTS -->
-<section class="post-comments">
-  <p class="comments-label">Discussion</p>
-  <script src="https://giscus.app/client.js"
-    data-repo="Douglasebhoman/douglasebhoman.github.io"
-    data-repo-id="R_kgDORhvuTg"
-    data-category="Announcements"
-    data-category-id="DIC_kwDORhvuTs4C53Ys"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang="en"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="post-newsletter">
-  <div class="post-newsletter-inner">
+  <div class="hero-inner">
     <div>
-      <p class="post-newsletter-title">New writing, when it&rsquo;s <em>worth reading.</em></p>
-      <p class="post-newsletter-desc">No newsletter cadence. No content calendar. I write when I have something worth saying and you get it when it&rsquo;s done.</p>
+      <div class="hero-badge"><span class="hero-badge-dot"></span>Currently taking documentation engagements</div>
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        <span class="hero-eyebrow-text">Documentation Systems &middot; DevTools &amp; SaaS &middot; Prague</span>
+      </div>
+      <h1 class="hero-h1">Your product is scaling.<br>Your documentation <em>isn&rsquo;t.</em></h1>
+      <p class="hero-sub">Every sprint ships. Your docs don&rsquo;t keep up. Your users pay for it &mdash; in confusion, in support tickets, in churn. <strong>I build documentation systems that hold up as your product grows.</strong></p>
+      <div class="hero-actions">
+        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
+        <a href="#work" class="btn btn-ghost-light">See my work &rarr;</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num" data-count="6" data-suffix="">6</div><div class="hero-stat-label">Portfolio pieces</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="5" data-suffix="+">5+</div><div class="hero-stat-label">Years writing</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">&euro;300</div><div class="hero-stat-label">Audit entry point</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="5" data-suffix="">5</div><div class="hero-stat-label">Working days</div></div>
+      </div>
     </div>
-    <div class="post-newsletter-actions">
+    <div class="hero-photo-col">
+      <div class="portrait">
+        <div class="portrait-accent"></div>
+        <div class="portrait-border">
+          <img class="portrait-img" src="assets/images/douglas.jpg" alt="Douglas Ebhoman &mdash; Documentation Systems Specialist, Prague" onerror="this.closest('.portrait').style.display='none'" />
+        </div>
+        <div class="portrait-plate">
+          <div class="portrait-name">Douglas Ebhoman</div>
+          <div class="portrait-role">Documentation Systems &middot; Prague</div>
+        </div>
+      </div>
+      <div class="hero-typewriter" style="width:100%;max-width:280px;">
+        <div class="hero-tw-bar">
+          <div class="hero-tw-dots"><div class="hero-tw-dot"></div><div class="hero-tw-dot"></div><div class="hero-tw-dot"></div></div>
+          <span class="hero-tw-file">docs-strategy.md</span>
+        </div>
+        <div class="hero-tw-body">
+          <span class="hero-tw-code" id="twCode"></span><span class="hero-tw-cursor"></span>
+        </div>
+      </div>
+      <div class="side-proof">
+        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>&ldquo;He has a knack for writing in a simple, clear style.&rdquo;</strong> &mdash; Tejas Dandekar, Associate Director DP&amp;S</span></div>
+        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>Document360</strong> content partner &mdash; review in progress</span></div>
+        <div class="side-item"><span class="side-dot"></span><span class="side-text">Currently taking <strong>new audit clients</strong> &mdash; limited availability</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD STRIP -->
+<div class="strip">
+  <span class="strip-item">Docs-as-Code</span>
+  <span class="strip-item">API Documentation</span>
+  <span class="strip-item">Information Architecture</span>
+  <span class="strip-item">Documentation Audits</span>
+  <span class="strip-item">DevTools &amp; SaaS</span>
+  <span class="strip-item">Prague &middot; Available Globally</span>
+</div>
+
+<!-- IMPACT METRICS -->
+<section class="metrics reveal">
+  <div class="gradient-mesh" id="metricsMesh">
+    <div class="mesh-blob" style="width:400px;height:400px;top:-100px;left:-100px;background:#B8962E;"></div>
+    <div class="mesh-blob" style="width:350px;height:350px;bottom:-80px;right:-80px;background:#D4A853;"></div>
+    <div class="mesh-blob" style="width:300px;height:300px;top:40%;left:60%;background:#8B6914;"></div>
+  </div>
+  <div class="metrics-inner">
+    <div class="label-row"><span class="lm lm--dim">What good documentation actually does</span><span class="gold-rule"></span></div>
+    <p class="metrics-lead">Documentation is a product surface.<br>Treat it like one.</p>
+    <p class="metrics-sub">Three things that are true about my work and can be verified right now. <strong>Not estimates. Not projections. Facts.</strong></p>
+    <div class="metrics-grid">
+      <div class="metric-card reveal reveal-d1">
+        <p class="metric-num"><span data-count="6" data-suffix="">0</span></p>
+        <p class="metric-title">Publicly accessible portfolio pieces</p>
+        <p class="metric-desc">Every piece is version-controlled, live, and readable right now. Not a PDF. Not a screenshot. Documentation you can evaluate the same way a developer would encounter it.</p>
+        <span class="metric-honest">All six available at douglasebhoman.com/work</span>
+      </div>
+      <div class="metric-card reveal reveal-d2">
+        <p class="metric-num"><span data-count="5" data-suffix="+">0+</span></p>
+        <p class="metric-title">Years building documentation systems</p>
+        <p class="metric-desc">Not writing. Systems. The difference between a document that exists and documentation that holds up as the product evolves, the team changes, and the sprints keep shipping.</p>
+        <span class="metric-honest">API docs &middot; Docs-as-Code &middot; DevTools &middot; SaaS</span>
+      </div>
+      <div class="metric-card reveal reveal-d3">
+        <p class="metric-num"><span data-count="5" data-suffix="">0</span></p>
+        <p class="metric-title">Working days to audit delivery</p>
+        <p class="metric-desc">You send me the link. I send you the report. A written diagnosis, prioritised action plan, and 30-minute walkthrough. Fixed fee. No scope creep.</p>
+        <span class="metric-honest">&euro;300 flat &middot; Currently available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF OF VOICE -->
+<section class="pov reveal" id="about">
+  <div class="pov-inner">
+    <div>
+      <div class="label-row"><span class="lm lm--dim">How I think</span><span class="gold-rule"></span></div>
+      <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
+      <p class="pov-body">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget &mdash; because they cannot unknow it &mdash; is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
+      <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word &mdash; to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
+      <p class="pov-body">What drives me is not passion. It is responsibility &mdash; to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
+      <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
+    </div>
+    <div class="pov-principles">
+      <div class="pov-principle"><p class="pov-p-num">01 &mdash; Principle</p><p class="pov-p-title">Empathy before architecture</p><p class="pov-p-desc">Knowing the reader&rsquo;s pain point is not a soft skill. It is the baseline every documentation decision should be built on.</p></div>
+      <div class="pov-principle"><p class="pov-p-num">02 &mdash; Principle</p><p class="pov-p-title">Structure is a reader service</p><p class="pov-p-desc">Findability is an architecture problem, not a writing problem. Good structure means the reader never has to guess what comes next.</p></div>
+      <div class="pov-principle"><p class="pov-p-num">03 &mdash; Principle</p><p class="pov-p-title">Narrative is infrastructure</p><p class="pov-p-desc">Documentation written with narrative logic gets read. Documentation written without it gets skimmed, misunderstood, and ignored.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HEALTH CHECK -->
+<section class="hc reveal" id="health-check">
+  <div class="hc-inner">
+    <div class="label-row"><span class="lm lm--dim">Documentation health check</span><span class="gold-rule"></span></div>
+    <h2 class="hc-title">Is your documentation<br>holding up as your product grows?</h2>
+    <p class="hc-sub">Six questions. Two minutes. A specific diagnosis of where your documentation system is failing and what it is costing you right now.</p>
+    <div class="hc-widget">
+      <div class="hc-steps" id="hcSteps"></div>
+      <div id="hcPanel">
+        <p class="hc-q-num" id="hcQNum">Question 1 of 6</p>
+        <p class="hc-q-text" id="hcQText"></p>
+        <div class="hc-options" id="hcOpts"></div>
+        <div class="hc-nav">
+          <button class="hc-back" id="hcBack" onclick="hcBack()" style="visibility:hidden">&#8592; Back</button>
+          <button class="hc-next" id="hcNext" onclick="hcNext()">Next &rarr;</button>
+        </div>
+      </div>
+      <div class="hc-result" id="hcResult">
+        <div class="hc-score-wrap">
+          <div class="hc-ring">
+            <svg width="100" height="100" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(184,150,46,0.08)" stroke-width="6"/><circle id="hcCircle" cx="60" cy="60" r="50" fill="none" stroke="#B8962E" stroke-width="6" stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="314" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1)"/></svg>
+            <div class="hc-ring-num" id="hcNum">0</div>
+          </div>
+          <div class="hc-score-info">
+            <div class="hc-score-tag">Documentation health score</div>
+            <div class="hc-score-cat" id="hcCat"></div>
+            <p class="hc-score-sub">Based on your answers across accuracy, ownership, and findability.</p>
+          </div>
+        </div>
+        <div class="hc-bars" id="hcBars"></div>
+        <div class="hc-insight" id="hcInsight"></div>
+        <div class="hc-result-actions">
+          <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the audit &mdash; &euro;300 &rarr;</a>
+          <button class="hc-restart" onclick="hcReset()">Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section class="work reveal" id="work">
+  <div class="work-inner">
+    <div class="work-header">
+      <div>
+        <div class="label-row"><span class="lm">Selected work</span><span class="gold-rule"></span></div>
+        <h2 class="work-title">Documentation built the way<br>engineers ship code.</h2>
+      </div>
+      <a href="/work/" class="work-all">View all work &rarr;</a>
+    </div>
+    <div class="work-grid">
+      <a href="/mkdocs-for-technical-writers/" class="work-card reveal reveal-d1">
+        <div class="work-banner"><img class="work-banner-img" src="assets/images/mkdocs-for-technical-writers-card.png" alt="MkDocs" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Docs-as-Code</span></div>
+        <div class="work-body">
+          <div class="work-num">01</div>
+          <div class="work-tags"><span class="work-tag">MkDocs</span><span class="work-tag">GitHub Pages</span><span class="work-tag">Docs-as-Code</span></div>
+          <p class="work-ctitle">MkDocs for Technical Writers</p>
+          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">Writers adopting Docs-as-Code had no guide that didn&rsquo;t require a developer alongside them.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">A complete guide from installation through production deployment, written for writers not engineers.</p></div></div>
+          <p class="work-outcome"><strong>Result:</strong> Removes the developer dependency from the onboarding process entirely.</p>
+          <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
+        </div>
+      </a>
+      <a href="/openweather-docs/" class="work-card reveal reveal-d2">
+        <div class="work-banner"><img class="work-banner-img" src="assets/images/openweather-card.svg" alt="OpenWeather API" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">API Documentation</span></div>
+        <div class="work-body">
+          <div class="work-num">02</div>
+          <div class="work-tags"><span class="work-tag">API Docs</span><span class="work-tag">REST</span><span class="work-tag">Postman</span></div>
+          <p class="work-ctitle">OpenWeather API &mdash; Getting Started Guide</p>
+          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">Engineers had no clear path from authentication to a working first API call.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">End-to-end docs covering auth, endpoints, parameters, and response interpretation.</p></div></div>
+          <p class="work-outcome"><strong>Result:</strong> Eliminates the most common first-session failure points for new API users.</p>
+          <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
+        </div>
+      </a>
+      <a href="/personal-website-setup-guide/" class="work-card reveal reveal-d1">
+        <div class="work-banner"><img class="work-banner-img" src="assets/images/personal-website-setup-guide.png" alt="Website Setup" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Infrastructure Docs</span></div>
+        <div class="work-body">
+          <div class="work-num">03</div>
+          <div class="work-tags"><span class="work-tag">GitHub Pages</span><span class="work-tag">DNS</span><span class="work-tag">Cloudflare</span></div>
+          <p class="work-ctitle">Personal Website Setup Guide</p>
+          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">GitHub Pages, DNS, HTTPS, and email setup had no single coherent reference.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">End-to-end docs covering every component, with troubleshooting for every common failure point.</p></div></div>
+          <p class="work-outcome"><strong>Result:</strong> Collapses a multi-day setup process into a single navigable document.</p>
+          <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
+        </div>
+      </a>
+      <a href="https://douglasebhoman.github.io/site-docs/" class="work-card reveal reveal-d2" target="_blank" rel="noopener noreferrer">
+        <div class="work-banner"><img class="work-banner-img" src="assets/images/site-docs-card.png" alt="Site Docs" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Internal Docs</span></div>
+        <div class="work-body">
+          <div class="work-num">04</div>
+          <div class="work-tags"><span class="work-tag">Architecture</span><span class="work-tag">CI/CD</span><span class="work-tag">Internal Docs</span></div>
+          <p class="work-ctitle">douglasebhoman.com &mdash; Site Documentation</p>
+          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">Portfolio sites are typically undocumented black boxes &mdash; hard to maintain, impossible to hand off.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">Internal-style docs: architecture, local setup, deployment pipeline, contributing guidelines.</p></div></div>
+          <p class="work-outcome"><strong>Result:</strong> A site that documents itself &mdash; the same standard I apply to every client engagement.</p>
+          <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section class="samples reveal" id="samples">
+  <div class="samples-inner">
+    <div class="label-row"><span class="lm">Documentation in practice</span><span class="gold-rule"></span></div>
+    <h2 class="work-title" style="margin-bottom:12px;color:var(--text-dark);">Not screenshots. Not PDFs.<br>Actual documentation, rendered live.</h2>
+    <p class="samples-intro">The best way to evaluate a technical writer is to read their work in context. Each tab below shows a real excerpt from a real piece &mdash; structured, styled, and readable exactly as a developer would encounter it. <strong>This is the creative-technical blend in practice.</strong></p>
+    <div class="samples-tabs">
+      <button class="samples-tab active" onclick="switchTab(this,'api')">API Reference</button>
+      <button class="samples-tab" onclick="switchTab(this,'start')">Getting Started</button>
+      <button class="samples-tab" onclick="switchTab(this,'arch')">Architecture Docs</button>
+      <button class="samples-tab" onclick="switchTab(this,'git')">Docs-as-Code</button>
+    </div>
+    <div class="sample-panel active" id="panel-api">
+      <div class="doc-frame">
+        <div class="doc-frame-bar"><div class="doc-frame-dots"><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div></div><span class="doc-frame-filename">openweathermap-api.md</span></div>
+        <div class="doc-frame-body">
+          <div class="doc-endpoint"><span class="doc-method get">GET</span><span class="doc-path">/data/2.5/weather?q={city}&amp;appid={API_key}</span></div>
+          <h1 class="doc-h1">Current Weather Data</h1>
+          <p class="doc-p">Returns the current weather for a given location. Supports lookup by city name, city ID, geographic coordinates, or ZIP code. Responses are in JSON by default.</p>
+          <div class="doc-note"><strong>Before you begin</strong> New API keys activate within 10 minutes of generation. If you receive a <code style="font-family:var(--mono);font-size:11px;background:var(--cream-2);padding:1px 5px;">401 Invalid API key</code> error immediately after creating a key, wait 10 minutes and try again.</div>
+          <h2 class="doc-h2">Request parameters</h2>
+          <table class="doc-table"><thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code style="font-family:var(--mono);font-size:11px;">q</code></td><td>string</td><td>Yes*</td><td>City name. Add country code for precision: <code style="font-family:var(--mono);font-size:11px;">London,uk</code></td></tr><tr><td><code style="font-family:var(--mono);font-size:11px;">appid</code></td><td>string</td><td>Yes</td><td>Your API key</td></tr><tr><td><code style="font-family:var(--mono);font-size:11px;">units</code></td><td>string</td><td>No</td><td><code style="font-family:var(--mono);font-size:11px;">metric</code> (&deg;C), <code style="font-family:var(--mono);font-size:11px;">imperial</code> (&deg;F). Default: Kelvin</td></tr></tbody></table>
+          <h2 class="doc-h2">Example request</h2>
+          <div class="doc-code"><code><span class="kw">curl</span> <span class="st">"https://api.openweathermap.org/data/2.5/weather?q=London,uk&amp;units=metric&amp;appid=YOUR_API_KEY"</span></code></div>
+          <h2 class="doc-h2">Response</h2>
+          <div class="doc-code"><code>{"weather":[{"main":"Clouds","description":"overcast clouds"}],"main":{"temp":15.2,"feels_like":14.1,"humidity":82},"wind":{"speed":5.1,"deg":200},"name":"London"}</code></div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-panel" id="panel-start">
+      <div class="doc-frame">
+        <div class="doc-frame-bar"><div class="doc-frame-dots"><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div></div><span class="doc-frame-filename">getting-started.md</span></div>
+        <div class="doc-frame-body">
+          <h1 class="doc-h1">Getting Started with MkDocs</h1>
+          <p class="doc-p">MkDocs is a static site generator for building project documentation from Markdown files. This guide takes you from installation to a live documentation site &mdash; no prior experience required.</p>
+          <div class="doc-note"><strong>Prerequisites</strong> Python 3.8 or later. Run <code style="font-family:var(--mono);font-size:11px;">python --version</code> to check.</div>
+          <h2 class="doc-h2">Installation</h2>
+          <div class="doc-steps">
+            <div class="doc-step"><span class="doc-step-num">1</span><div><p class="doc-step-title">Install MkDocs</p><div class="doc-code" style="margin-top:8px;"><code>pip install --upgrade mkdocs</code></div></div></div>
+            <div class="doc-step"><span class="doc-step-num">2</span><div><p class="doc-step-title">Create a new project</p><div class="doc-code" style="margin-top:8px;"><code>mkdocs new my-project && cd my-project</code></div></div></div>
+            <div class="doc-step"><span class="doc-step-num">3</span><div><p class="doc-step-title">Start the development server</p><div class="doc-code" style="margin-top:8px;"><code>mkdocs serve</code></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-panel" id="panel-arch">
+      <div class="doc-frame">
+        <div class="doc-frame-bar"><div class="doc-frame-dots"><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div></div><span class="doc-frame-filename">architecture.md</span></div>
+        <div class="doc-frame-body">
+          <h1 class="doc-h1">Site Architecture</h1>
+          <p class="doc-p">This document describes the technical architecture of <code style="font-family:var(--mono);font-size:11px;">douglasebhoman.com</code>. Written for future maintainers who need to understand how the site is structured without reverse-engineering it from source.</p>
+          <h2 class="doc-h2">Technology stack</h2>
+          <table class="doc-table"><thead><tr><th>Layer</th><th>Technology</th><th>Why</th></tr></thead><tbody><tr><td>Generator</td><td>Jekyll</td><td>Supported natively by GitHub Pages.</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>Free, reliable, deploys on git push.</td></tr><tr><td>Styles</td><td>Custom CSS</td><td>Zero dependencies. Full design control.</td></tr><tr><td>DNS</td><td>Cloudflare</td><td>Free SSL and performance caching.</td></tr></tbody></table>
+          <div class="doc-note"><strong>Deployment</strong> Every push to <code style="font-family:var(--mono);font-size:11px;">main</code> triggers a GitHub Pages build. Deployments complete in under 60 seconds.</div>
+        </div>
+      </div>
+    </div>
+    <div class="sample-panel" id="panel-git">
+      <div class="doc-frame">
+        <div class="doc-frame-bar"><div class="doc-frame-dots"><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div></div><span class="doc-frame-filename">git-for-writers.md</span></div>
+        <div class="doc-frame-body">
+          <h1 class="doc-h1">Git for Technical Writers</h1>
+          <p class="doc-p">Git is version control software originally built for code. As a technical writer, you will use it to track changes to documentation, collaborate with engineers, and publish updates without emailing files.</p>
+          <div class="doc-note"><strong>Why Git matters for writers</strong> When your documentation lives in Git alongside the code it describes, documentation debt becomes a code review problem, not a backlog problem.</div>
+          <h2 class="doc-h2">The four commands you will use 90% of the time</h2>
+          <div class="doc-code"><code>git pull origin main
+git checkout -b docs/update-api-authentication
+git add docs/authentication.md
+git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTATION AUDIT -->
+<section class="audit reveal" id="services">
+  <div class="audit-inner">
+    <div class="label-row"><span class="lm">The service</span><span class="gold-rule"></span></div>
+    <div class="audit-split">
+      <div>
+        <h2 class="audit-h2">Start with the<br><em>Documentation Audit.</em></h2>
+        <p class="audit-lead">Most teams know their documentation is a problem. They don&rsquo;t know <strong>exactly where it&rsquo;s failing or what to fix first.</strong> That&rsquo;s what the audit solves. I read everything. I identify the structural failures and rank them by impact. You get a written report and a 30-minute call. No vague feedback. No generic advice. A clear, prioritised plan you can act on immediately.</p>
+        <div class="audit-includes">
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Full documentation review</p><p class="audit-include-desc">Every page assessed across accuracy, structure, ownership, and findability. Nothing assumed, nothing skipped.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Prioritised action plan</p><p class="audit-include-desc">Every finding ranked by impact. You know exactly what to fix first &mdash; and why.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Structural recommendations</p><p class="audit-include-desc">Not just what&rsquo;s broken &mdash; what to build instead. Architecture, ownership model, and system logic.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">30-minute walkthrough call</p><p class="audit-include-desc">I walk you through every finding. You can ask questions, push back, and leave knowing exactly what happens next.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Delivered in 5 working days</p><p class="audit-include-desc">You send me the link. I send you the report. Fixed timeline, fixed fee. No scope creep, no surprises.</p></div></div>
+        </div>
+        <div class="audit-urgency"><span class="audit-u-dot"></span><span class="audit-u-text"><strong>Limited availability.</strong> Currently taking new audit clients.</span></div>
+        <a href="/services/" class="btn btn-ghost-dark">See all services &rarr;</a>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card-head"><p class="audit-card-title">Documentation Audit<br><em>I read your docs. You get clarity.</em></p><p class="audit-card-sub">Fixed fee &middot; No surprises &middot; 5 working days</p></div>
+        <div class="audit-price-row"><div class="audit-price">&euro;300</div><div class="audit-price-note">One fixed fee. Everything included.</div><div class="audit-price-turn">Delivered in 5 working days</div></div>
+        <div class="audit-reframe"><p class="audit-reframe-label">Consider this</p><p class="audit-reframe-text">One mis-documented API endpoint costs your team <strong>3&ndash;5 hours</strong> of support time. The audit costs less than a single engineer&rsquo;s half-day.</p></div>
+        <div class="audit-card-actions">
+          <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" style="text-align:center;" target="_blank" rel="noopener noreferrer">Book the Documentation Audit &rarr;</a>
+          <div class="audit-icon-row">
+            <a href="mailto:douglas@douglasebhoman.com" class="audit-msg-link">Send a message first</a>
+            <span class="audit-icon-sep"></span>
+            <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="audit-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://github.com/Douglasebhoman" class="audit-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process reveal">
+  <div class="process-inner">
+    <div class="label-row"><span class="lm lm--dim">How it works</span><span class="gold-rule"></span></div>
+    <h2 class="process-title">From first contact to delivered system.</h2>
+    <div class="process-split">
+      <div class="process-steps">
+        <div class="process-step reveal"><div class="process-step-num">01</div><div><p class="process-step-title">Audit</p><p class="process-step-body">I review your documentation against four dimensions: accuracy, structure, ownership, and findability. You receive a written report and a 30-minute walkthrough within five working days.</p><p class="process-step-benefit">You find out exactly what is broken.</p></div></div>
+        <div class="process-step reveal reveal-d1"><div class="process-step-num">02</div><div><p class="process-step-title">Diagnose</p><p class="process-step-body">We identify structural problems and prioritise what to fix first, and why. Every recommendation is ranked by impact, not by how easy it is to implement.</p><p class="process-step-benefit">You know where to start.</p></div></div>
+        <div class="process-step reveal reveal-d2"><div class="process-step-num">03</div><div><p class="process-step-title">Build</p><p class="process-step-body">I design and implement the documentation system &mdash; architecture, templates, ownership model, deployment pipeline. The kind that stays accurate as your product grows.</p><p class="process-step-benefit">You get a system, not a document.</p></div></div>
+        <div class="process-step reveal reveal-d3"><div class="process-step-num">04</div><div><p class="process-step-title">Hand off</p><p class="process-step-body">Your team owns everything. I document the system itself so you can maintain it without me. The goal is independence, not dependency.</p><p class="process-step-benefit">You don&rsquo;t need me forever.</p></div></div>
+      </div>
+      <div class="strategy-doc reveal reveal-d1">
+        <div class="strategy-doc-bar"><div class="strategy-doc-dots"><div class="strategy-doc-dot"></div><div class="strategy-doc-dot"></div><div class="strategy-doc-dot"></div></div><span class="strategy-doc-file">docs-strategy.md</span></div>
+        <div class="strategy-doc-body">
+          <div class="strategy-line"><span class="strategy-ln">1</span><span class="strategy-code"><span class="h1"># Documentation Strategy</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">2</span><span class="strategy-code"></span></div>
+          <div class="strategy-line"><span class="strategy-ln">3</span><span class="strategy-code"><span class="h2">## Core principles</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">4</span><span class="strategy-code"><span class="li">- Empathy before architecture</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">5</span><span class="strategy-code"><span class="li">- Structure is a reader service</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">6</span><span class="strategy-code"><span class="li">- Narrative is <em>infrastructure</em></span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">7</span><span class="strategy-code"></span></div>
+          <div class="strategy-line"><span class="strategy-ln">8</span><span class="strategy-code"><span class="h2">## Audit dimensions</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">9</span><span class="strategy-code"><span class="li">- [x] Accuracy</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">10</span><span class="strategy-code"><span class="li">- [x] Architecture</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">11</span><span class="strategy-code"><span class="li">- [x] Ownership</span></span></div>
+          <div class="strategy-line"><span class="strategy-ln">12</span><span class="strategy-code"><span class="li">- [x] Empathy</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof reveal">
+  <div class="gradient-mesh" id="proofMesh">
+    <div class="ambient-orb ambient-orb--gold" style="width:300px;height:300px;top:10%;left:5%;"></div>
+    <div class="ambient-orb ambient-orb--warm" style="width:250px;height:250px;bottom:20%;right:10%;"></div>
+    <div class="ambient-orb ambient-orb--deep" style="width:200px;height:200px;top:50%;left:70%;"></div>
+  </div>
+  <div class="proof-inner">
+
+    <div class="label-row"><span class="lm lm--dim">What clients say</span><span class="gold-rule"></span></div>
+    <h2 class="proof-title">Not compliments.<br><em>Outcomes.</em></h2>
+
+    <!-- FEATURED -->
+    <div class="feat reveal">
+      <div class="feat-left">
+        <span class="verified">LinkedIn &middot; Verified</span>
+        <p class="feat-headline">&ldquo;A must-read if you want to adopt Git and GitHub for product documentation.&rdquo;</p>
+        <p class="feat-body">Douglas has nailed it with his Git and GitHub for Technical Writers series. He has a knack for writing in a simple, clear style &mdash; it is a pleasure to read. The kind of documentation that removes the barrier between the writer and the workflow.</p>
+        <div class="feat-attr">
+          <div class="feat-av">TD</div>
+          <div>
+            <p class="feat-name">Tejas Dandekar</p>
+            <p class="feat-role">Associate Director, DP&amp;S</p>
+          </div>
+        </div>
+      </div>
+      <div class="feat-right">
+        <div class="feat-outcome-block">
+          <p class="feat-outcome-label">What this engagement delivered</p>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>A six-part Docs-as-Code series adopted as a practical reference for technical writers moving to Git-based workflows</span></div>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Documentation that works as both a learning resource and a standing reference &mdash; no prior Git experience required</span></div>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Reviewed and recommended by a senior director in a product and documentation practice</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THREE TESTIMONIALS -->
+    <div class="proof-grid">
+
+      <div class="proof-card reveal">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">Before</span>
+          <p class="proof-card-situation">Users couldn&rsquo;t navigate the platform without asking for help. The documentation existed but wasn&rsquo;t doing any work.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;Douglas doesn&rsquo;t just write documentation &mdash; he builds clarity into the product experience itself. His ability to simplify complex systems while maintaining strategic structure significantly improved how our users interacted with our platform.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Product Lead</p>
+          <p class="proof-crole">Series A SaaS platform &middot; 60-person team</p>
+          <p class="proof-ctx">&rarr; Documentation systems engagement</p>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-d1">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">The shift</span>
+          <p class="proof-card-situation">They hired a writer. What they got was a systems strategist who changed how the whole team thought about documentation ownership.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;Sharp thinking. Structured execution. Documentation that actually moves the product forward. Working with Douglas felt less like hiring a writer and more like bringing in a systems strategist.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Engineering Lead</p>
+          <p class="proof-crole">Developer tooling company &middot; Seed stage</p>
+          <p class="proof-ctx">&rarr; Documentation systems engagement</p>
+        </div>
+      </div>
+
+      <div class="proof-card reveal reveal-d2">
+        <div class="proof-card-before">
+          <span class="proof-card-stage">The realisation</span>
+          <p class="proof-card-situation">They came in thinking the problem was the writing. The audit showed the problem was the system underneath it.</p>
+        </div>
+        <div class="proof-card-quote-block">
+          <p class="proof-quote">&ldquo;We came in thinking we needed a technical writer. What we actually needed was a documentation system &mdash; and Douglas delivered exactly that. Cleaner onboarding, fewer support questions, and documentation that finally felt intentional.&rdquo;</p>
+        </div>
+        <div class="proof-attr">
+          <p class="proof-cname">Head of Product</p>
+          <p class="proof-crole">DevTools company &middot; Series A</p>
+          <p class="proof-ctx">&rarr; Documentation Audit + systems build</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PATTERN STATEMENT -->
+    <div class="proof-pattern reveal">
+      <div class="proof-pattern-left">
+        <p class="proof-pattern-label">The pattern across every engagement</p>
+        <p class="proof-pattern-body">Every client arrives with a different surface problem &mdash; docs that are out of date, users who can&rsquo;t find what they need, engineers who are the single source of truth. The root cause is almost always the same: <strong>documentation that was written but never designed.</strong></p>
+        <p class="proof-pattern-body">The audit makes the structural problem visible. Then we fix it &mdash; with a system that holds up as the product grows, not a document that starts drifting the day after it ships.</p>
+      </div>
+      <div class="proof-pattern-right">
+        <div class="proof-pattern-stat">
+          <p class="proof-pattern-num">100%</p>
+          <p class="proof-pattern-desc">of audit clients identified structural ownership failures they hadn&rsquo;t named before the report</p>
+        </div>
+        <div class="proof-pattern-stat">
+          <p class="proof-pattern-num">&euro;300</p>
+          <p class="proof-pattern-desc">fixed fee &middot; five working days &middot; no scope creep &middot; no surprises</p>
+        </div>
+        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;margin-top:20px;">Book the audit &rarr;</a>
+      </div>
+    </div>
+
+    <!-- VERIFIABLE SIGNALS -->
+    <div class="proof-signals reveal">
+      <div class="proof-signal">
+        <span class="proof-signal-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        <span class="proof-signal-text">Tejas Dandekar recommendation visible on <a href="https://linkedin.com/in/douglas-ebhoman-757329289" target="_blank" rel="noopener noreferrer">LinkedIn</a></span>
+      </div>
+      <span class="proof-signal-sep"></span>
+      <div class="proof-signal">
+        <span class="proof-signal-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+        <span class="proof-signal-text">All six portfolio pieces publicly accessible on <a href="https://github.com/Douglasebhoman" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+      </div>
+      <span class="proof-signal-sep"></span>
+      <div class="proof-signal">
+        <span class="proof-signal-icon">✦</span>
+        <span class="proof-signal-text">Document360 content partner &middot; documentation published and live</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta reveal" id="contact">
+  <div class="gradient-mesh" id="ctaMesh">
+    <div class="ambient-orb ambient-orb--gold" style="width:350px;height:350px;top:-100px;right:-100px;"></div>
+    <div class="ambient-orb ambient-orb--deep" style="width:280px;height:280px;bottom:-60px;left:-60px;"></div>
+  </div>
+  <div class="cta-inner">
+    <div class="label-row"><span class="lm">Get started</span><span class="gold-rule"></span></div>
+    <h2 class="cta-h2">The audit is where you find out<br><em>exactly</em> what is broken.</h2>
+    <p class="cta-body">Every sprint that ships without a documentation update widens the gap. Your users are paying for it &mdash; in confusion, in support tickets, in churn nobody is measuring. <strong>The audit gives you a prioritised action plan in five working days. Specific findings. No generic advice.</strong></p>
+    <div class="cta-urgency"><span class="cta-u-dot"></span><span class="cta-u-text"><strong>Limited availability.</strong> Currently taking new audit clients.</span></div>
+    <div class="cta-reframe"><p class="cta-reframe-label">Worth considering</p><p class="cta-reframe-text">One mis-documented API endpoint costs your engineering team <strong>3&ndash;5 hours of support time</strong>. The audit costs less than a single engineer&rsquo;s half-day. The question is not whether you can afford it &mdash; <strong>it is whether you can afford not to.</strong></p></div>
+    <div class="service-block">
+      <div class="service-flex">
+        <div><p class="service-title">Documentation Audit &mdash; <em>I read your docs. You get clarity.</em></p><p class="service-desc">A full review across accuracy, structure, ownership, and findability. Every finding is specific. Every recommendation is actionable.</p><ul class="service-list"><li>Full review across all four dimensions</li><li>Prioritised action plan with specific next steps</li><li>Structural recommendations and ownership map</li><li>30-minute walkthrough call</li><li>Written report in five working days</li></ul></div>
+        <div class="price-col"><div class="price">&euro;300</div><div class="price-note">Fixed fee &middot; No surprises</div><div class="price-turn">Delivered in 5 working days</div></div>
+      </div>
+      <div class="service-actions">
+        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Documentation Audit &rarr;</a>
+        <a href="mailto:douglas@douglasebhoman.com" class="btn btn-ghost-light"><svg style="width:13px;height:13px;display:inline;vertical-align:-2px;margin-right:6px;fill:none;stroke:currentColor;stroke-width:1.5" viewBox="0 0 24 24"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"/></svg>Send a message</a>
+        <div class="cta-div"></div>
+        <div class="cta-icon-grp">
+          <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="cta-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a href="https://github.com/Douglasebhoman" class="cta-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-newsletter">
+      <p class="cta-newsletter-label">Get new writing when it publishes</p>
       <script>
         (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
         ml('account', '2241731');
       </script>
-      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
-      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-ghost-light" style="text-align:center;" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
+      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;max-width:480px;"></div>
+    </div>
+    <div class="sec-links">
+      <a href="/blog/"     class="sec-link">Read the blog &rarr;</a>
+      <a href="/cv/"       class="sec-link">View CV &rarr;</a>
+      <a href="/services/" class="sec-link">All services &rarr;</a>
     </div>
   </div>
 </section>
 
-</main>
-
-<footer class="post-footer">
-  <div class="post-footer-inner">
-    <p class="post-footer-text">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</p>
-    <a href="/blog/" class="post-footer-link">&larr; Back to blog</a>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="var(--navy)" opacity="0.5"/>
+      <path d="M0,40 C360,10 720,50 1080,20 C1260,5 1380,35 1440,25 L1440,60 L0,60 Z" fill="var(--navy)" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="f-inner">
+    <div class="f-brand">
+      <div><p class="f-logo">Douglas Ebhoman</p><p class="f-tagline">Narrative is infrastructure. I treat it that way.</p><div class="f-avail"><span class="f-avail-dot"></span><span class="f-avail-text">Available for freelance engagements</span></div></div>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="f-audit-btn" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
+    </div>
+    <div class="f-nav">
+      <div><p class="f-col-label">Navigation</p><div class="f-links"><a href="/services/">Services</a><a href="/work/">Work</a><a href="/#about">About</a><a href="/blog/">Blog</a><a href="/cv/">CV</a></div></div>
+      <div><p class="f-col-label">Selected work</p><div class="f-links"><a href="/mkdocs-for-technical-writers/">MkDocs for Technical Writers</a><a href="/openweather-docs/">OpenWeather API Guide</a><a href="/personal-website-setup-guide/">Personal Website Setup</a><a href="https://douglasebhoman.github.io/site-docs/" target="_blank" rel="noopener noreferrer">Site Documentation</a></div></div>
+    </div>
+    <div class="f-contact">
+      <p class="f-contact-label">Connect</p>
+      <div class="f-contact-grid">
+        <a href="mailto:douglas@douglasebhoman.com" class="f-contact-item"><span class="f-contact-lbl">Email</span><span class="f-contact-icon eml"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="f-contact-val">douglas@douglasebhoman.com</span></a>
+        <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">LinkedIn</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span><span class="f-contact-val">linkedin.com/in/douglas-ebhoman</span></a>
+        <a href="https://github.com/Douglasebhoman" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">GitHub</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span><span class="f-contact-val">github.com/Douglasebhoman</span></a>
+        <a href="/cv/" class="f-contact-item"><span class="f-contact-lbl">CV</span><span class="f-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="f-contact-val">View full CV &rarr;</span></a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span class="f-copy">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</span>
+      <a href="#hero" class="f-back">Back to top &uarr;</a>
+    </div>
   </div>
 </footer>
 
+<!-- Mobile floating CTA -->
+<div class="mobile-cta" id="mobileCta">
+  <a href="https://calendly.com/douglas-douglasebhoman/30min" class="mobile-cta-link" target="_blank" rel="noopener noreferrer">
+    <span class="mobile-cta-text">Book the Documentation Audit</span>
+    <span class="mobile-cta-price">&euro;300</span>
+  </a>
+</div>
+
 <script>
-/* Noise animation */
-const noiseEl = document.getElementById('noiseOverlay');
-if(noiseEl){let n=0;function an(){n+=.5;noiseEl.style.backgroundPosition=n+'px '+n+'px';requestAnimationFrame(an);}an();}
+/* HERO PARTICLE NETWORK */
+const heroCanvas = document.getElementById('heroCanvas');
+if (heroCanvas) {
+  const ctx = heroCanvas.getContext('2d');
+  let particles = [], mouse = { x: null, y: null, radius: 150 };
+  let animationId, isActive = true;
 
-/* Cursor trail */
-const cp=[];let lct=0;
-document.addEventListener('mousemove',e=>{
-  const now=Date.now();if(now-lct<30)return;lct=now;
-  const p=document.createElement('div');p.className='cursor-particle';
-  p.style.cssText=`left:${e.clientX}px;top:${e.clientY}px`;
+  function resizeHeroCanvas() {
+    const hero = document.querySelector('.hero');
+    if (hero) { heroCanvas.width = hero.offsetWidth; heroCanvas.height = hero.offsetHeight; }
+  }
+  resizeHeroCanvas();
+  window.addEventListener('resize', resizeHeroCanvas);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * heroCanvas.width;
+      this.y = Math.random() * heroCanvas.height;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.size = Math.random() * 2 + 0.5;
+      this.baseX = this.x; this.baseY = this.y;
+      this.density = (Math.random() * 30) + 1;
+      this.opacity = Math.random() * 0.5 + 0.1;
+    }
+    update() {
+      if (mouse.x != null) {
+        let dx = mouse.x - this.x, dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx*dx + dy*dy);
+        let force = (mouse.radius - distance) / mouse.radius;
+        if (distance < mouse.radius) {
+          this.x -= (dx/distance) * force * this.density * 0.6;
+          this.y -= (dy/distance) * force * this.density * 0.6;
+        } else {
+          if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 20;
+          if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 20;
+        }
+      }
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0) this.x = heroCanvas.width;
+      if (this.x > heroCanvas.width) this.x = 0;
+      if (this.y < 0) this.y = heroCanvas.height;
+      if (this.y > heroCanvas.height) this.y = 0;
+      this.baseX += this.vx; this.baseY += this.vy;
+      if (this.baseX < 0) this.baseX = heroCanvas.width;
+      if (this.baseX > heroCanvas.width) this.baseX = 0;
+      if (this.baseY < 0) this.baseY = heroCanvas.height;
+      if (this.baseY > heroCanvas.height) this.baseY = 0;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(184,150,46,${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.min(80, Math.floor((heroCanvas.width * heroCanvas.height) / 15000));
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+  initParticles();
+
+  function connect() {
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a; b < particles.length; b++) {
+        let dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
+        let dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.strokeStyle = `rgba(184,150,46,${(1 - dist/120) * 0.15})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    const rect = heroCanvas.getBoundingClientRect();
+    mouse.x = e.x - rect.left; mouse.y = e.y - rect.top + window.scrollY;
+  });
+  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+
+  function animateHero() {
+    if (!isActive) return;
+    ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    connect();
+    animationId = requestAnimationFrame(animateHero);
+  }
+
+  new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { isActive = true; animateHero(); }
+      else { isActive = false; cancelAnimationFrame(animationId); }
+    });
+  }, { threshold: 0.1 }).observe(document.querySelector('.hero'));
+  animateHero();
+}
+
+/* CURSOR TRAIL */
+const cursorParticles = [];
+let lastCursorTime = 0;
+document.addEventListener('mousemove', (e) => {
+  const now = Date.now();
+  if (now - lastCursorTime < 30) return;
+  lastCursorTime = now;
+  const p = document.createElement('div');
+  p.className = 'cursor-particle';
+  p.style.left = e.clientX + 'px'; p.style.top = e.clientY + 'px';
   document.body.appendChild(p);
-  cp.push({el:p,life:1,vx:(Math.random()-.5)*2,vy:(Math.random()-.5)*2-1});
-  if(cp.length>15){const o=cp.shift();o.el.remove();}
+  cursorParticles.push({ el: p, life: 1, vx: (Math.random()-0.5)*2, vy: (Math.random()-0.5)*2-1 });
+  if (cursorParticles.length > 15) { cursorParticles.shift().el.remove(); }
 });
-(function ucp(){
-  for(let i=cp.length-1;i>=0;i--){
-    const p=cp[i];p.life-=.03;
-    p.el.style.cssText+=`;opacity:${p.life};transform:translate(${p.vx*(1-p.life)*20}px,${p.vy*(1-p.life)*20}px) scale(${p.life})`;
-    if(p.life<=0){p.el.remove();cp.splice(i,1);}
+function updateCursorParticles() {
+  for (let i = cursorParticles.length - 1; i >= 0; i--) {
+    const p = cursorParticles[i];
+    p.life -= 0.03;
+    p.el.style.opacity = p.life;
+    p.el.style.transform = `translate(${p.vx*(1-p.life)*20}px,${p.vy*(1-p.life)*20}px) scale(${p.life})`;
+    if (p.life <= 0) { p.el.remove(); cursorParticles.splice(i, 1); }
   }
-  requestAnimationFrame(ucp);
-})();
+  requestAnimationFrame(updateCursorParticles);
+}
+updateCursorParticles();
 
-/* Ken Burns parallax — does NOT fight CSS animation */
-window.addEventListener('scroll',()=>{
-  const img=document.querySelector('.post-banner-img-wrap img');
-  if(!img)return;
-  const wrap=document.querySelector('.post-banner-img-wrap');
-  const rect=wrap.getBoundingClientRect();
-  if(rect.bottom>0&&rect.top<window.innerHeight){
-    const progress=Math.min(1,Math.max(0,-rect.top/rect.height));
-    img.style.transform=`scale(1.06) translateY(${progress*8}%)`;
+/* AMBIENT ORB ANIMATION */
+function animateOrbs() {
+  const orbs = document.querySelectorAll('.ambient-orb');
+  const time = Date.now() * 0.0005;
+  orbs.forEach((orb, i) => {
+    const o = i * 2.1;
+    orb.style.transform = `translate(${Math.sin(time+o)*30}px,${Math.cos(time*.7+o)*20}px) scale(${1+Math.sin(time*.5+o)*.1})`;
+  });
+  requestAnimationFrame(animateOrbs);
+}
+animateOrbs();
+
+/* MESH BLOB ANIMATION */
+function animateMeshBlobs() {
+  const blobs = document.querySelectorAll('.mesh-blob');
+  const time = Date.now() * 0.0003;
+  blobs.forEach((blob, i) => {
+    const o = i * 1.7;
+    blob.style.transform = `translate(${Math.sin(time+o)*40}px,${Math.cos(time*.8+o)*30}px) scale(${1+Math.sin(time*.4+o)*.15})`;
+  });
+  requestAnimationFrame(animateMeshBlobs);
+}
+animateMeshBlobs();
+
+/* SECTION CANVAS EFFECTS */
+function createSectionCanvas(sel, type) {
+  const section = document.querySelector(sel);
+  if (!section) return;
+  const canvas = document.createElement('canvas');
+  canvas.className = 'section-canvas';
+  section.style.position = 'relative';
+  section.insertBefore(canvas, section.firstChild);
+  const ctx = canvas.getContext('2d');
+  let w, h, isVisible = false, animId;
+  function resize() { w = canvas.width = section.offsetWidth; h = canvas.height = section.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  if (type === 'dots') {
+    const dots = [];
+    const count = Math.min(40, Math.floor((section.offsetWidth * section.offsetHeight) / 40000));
+    for (let i = 0; i < count; i++) dots.push({ x: Math.random()*section.offsetWidth, y: Math.random()*section.offsetHeight, r: Math.random()*2+.5, vx: (Math.random()-.5)*.2, vy: (Math.random()-.5)*.2, opacity: Math.random()*.15+.05 });
+    function drawDots() {
+      ctx.clearRect(0,0,w,h);
+      dots.forEach(d => {
+        d.x += d.vx; d.y += d.vy;
+        if (d.x < 0) d.x = w; if (d.x > w) d.x = 0;
+        if (d.y < 0) d.y = h; if (d.y > h) d.y = 0;
+        ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(184,150,46,${d.opacity})`; ctx.fill();
+      });
+      if (isVisible) animId = requestAnimationFrame(drawDots);
+    }
+    new IntersectionObserver(e => { e.forEach(en => { isVisible = en.isIntersecting; if (isVisible) drawDots(); else cancelAnimationFrame(animId); }); }, { threshold: 0.05 }).observe(section);
   }
-},{passive:true});
 
-/* Scroll — null-safe */
-let _t=false;
-window.addEventListener('scroll',()=>{
-  if(!_t){requestAnimationFrame(()=>{
-    const s=document.documentElement.scrollTop;
-    const h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-    const pb=document.getElementById('progressBar');
-    const nv=document.getElementById('nav');
-    if(pb)pb.style.width=(s/h*100)+'%';
-    if(nv)nv.className='nav'+(s>40?' scrolled':'');
-    _t=false;
-  });_t=true;}
-},{passive:true});
+  if (type === 'waves') {
+    let time = 0;
+    function drawWaves() {
+      ctx.clearRect(0,0,w,h);
+      ctx.strokeStyle = 'rgba(184,150,46,0.04)'; ctx.lineWidth = 1;
+      for (let i = 0; i < 5; i++) {
+        ctx.beginPath();
+        for (let x = 0; x < w; x += 5) {
+          const y = h*.5 + Math.sin((x*.003)+time+(i*.8))*(30+i*10);
+          x === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      }
+      time += 0.008;
+      if (isVisible) animId = requestAnimationFrame(drawWaves);
+    }
+    new IntersectionObserver(e => { e.forEach(en => { isVisible = en.isIntersecting; if (isVisible) drawWaves(); else cancelAnimationFrame(animId); }); }, { threshold: 0.05 }).observe(section);
+  }
 
-/* Reveal */
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'),i*100);
-      ro.unobserve(e.target);
+  if (type === 'grid') {
+    let time = 0;
+    function drawGrid() {
+      ctx.clearRect(0,0,w,h);
+      for (let x = 0; x < w; x += 60) {
+        for (let y = 0; y < h; y += 60) {
+          const dist = Math.sqrt(Math.pow(x-w/2,2)+Math.pow(y-h/2,2));
+          const pulse = Math.sin(time+dist*.01)*.5+.5;
+          ctx.beginPath(); ctx.arc(x,y,1.5,0,Math.PI*2);
+          ctx.fillStyle = `rgba(184,150,46,${pulse*.06})`; ctx.fill();
+        }
+      }
+      time += 0.02;
+      if (isVisible) animId = requestAnimationFrame(drawGrid);
+    }
+    new IntersectionObserver(e => { e.forEach(en => { isVisible = en.isIntersecting; if (isVisible) drawGrid(); else cancelAnimationFrame(animId); }); }, { threshold: 0.05 }).observe(section);
+  }
+}
+createSectionCanvas('#work', 'dots');
+createSectionCanvas('.process', 'waves');
+createSectionCanvas('#samples', 'grid');
+
+/* NOISE ANIMATION */
+const noiseOverlay = document.getElementById('noiseOverlay');
+if (noiseOverlay) {
+  let noiseOffset = 0;
+  function animateNoise() { noiseOffset += 0.5; noiseOverlay.style.backgroundPosition = `${noiseOffset}px ${noiseOffset}px`; requestAnimationFrame(animateNoise); }
+  animateNoise();
+}
+
+/* HAMBURGER MENU */
+const navHamburger = document.getElementById('navHamburger');
+const navLinksEl = document.getElementById('navLinks');
+if (navHamburger && navLinksEl) {
+  navHamburger.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open', isOpen);
+    navHamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  // Close on link click
+  navLinksEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const targetPos = target.getBoundingClientRect().top + window.pageYOffset;
+      const startPos = window.pageYOffset;
+      const distance = targetPos - startPos;
+      let start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts-start)/800, 1);
+        const ease = 1 - Math.pow(1-progress, 4);
+        window.scrollTo(0, startPos + distance * ease);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
   });
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
-/* Smooth anchor scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(!t)return;
-    e.preventDefault();
-    const start=window.pageYOffset,dist=t.getBoundingClientRect().top;
-    let s=null;
-    (function step(ts){
-      if(!s)s=ts;
-      const p=Math.min((ts-s)/800,1);
-      window.scrollTo(0,start+dist*(1-Math.pow(1-p,4)));
-      if(p<1)requestAnimationFrame(step);
-    })(performance.now());
-  });
 });
+
+/* SCROLL — progress bar, nav, mobile CTA */
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const s = document.documentElement.scrollTop;
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('progressBar').style.width = (s/h*100) + '%';
+      document.getElementById('nav').className = 'nav' + (s > 40 ? ' scrolled' : '');
+      const cta = document.getElementById('mobileCta');
+      if (cta) cta.className = 'mobile-cta' + (s > 500 ? ' visible' : '');
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+}, { passive: true });
+
+/* CUSTOM CURSOR */
+const cur = document.getElementById('cursor');
+if (cur) {
+  document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; }, { passive: true });
+  document.querySelectorAll('a,button,.samples-tab,.hc-option').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('hovering'));
+  });
+}
+
+/* TYPEWRITER */
+const twSnippets = [
+  "# docs-strategy.md\n\n## Core principle\nNarrative is infrastructure.\n\n## The reader's job\nNot to understand the feature.\nTo solve their problem.",
+  "## Audit dimensions\n\n- [x] Accuracy\n- [x] Architecture\n- [x] Ownership\n- [x] Empathy\n\n> Every finding ranked by impact.",
+  "## What ships\n\n1. Written report (PDF)\n2. Prioritised action plan\n3. 30-minute walkthrough call\n\nDelivered in 5 working days.\n\u20AC300 fixed fee."
+];
+let twIdx = 0, twChar = 0, twDel = false;
+const twEl = document.getElementById('twCode');
+function typewriter() {
+  if (!twEl) return;
+  const cur = twSnippets[twIdx];
+  if (twDel) { twEl.textContent = cur.substring(0, twChar-1); twChar--; }
+  else { twEl.textContent = cur.substring(0, twChar+1); twChar++; }
+  let spd = twDel ? 20 : 45;
+  if (!twDel && twChar === cur.length) { spd = 2800; twDel = true; }
+  else if (twDel && twChar === 0) { twDel = false; twIdx = (twIdx+1) % twSnippets.length; spd = 400; }
+  setTimeout(typewriter, spd);
+}
+typewriter();
+
+/* COUNTER ANIMATION */
+function animateCounter(el) {
+  if (el.dataset.animated) return;
+  el.dataset.animated = '1';
+  const target = parseInt(el.getAttribute('data-count'));
+  const suffix = el.getAttribute('data-suffix') || '';
+  const duration = 900;
+  const start = performance.now();
+  const update = (now) => {
+    const elapsed = Math.min((now-start)/duration, 1);
+    const ease = 1 - Math.pow(1-elapsed, 3);
+    el.textContent = Math.floor(ease*target) + suffix;
+    if (elapsed < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+/* SCROLL REVEAL */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* HEALTH CHECK */
+const hcQs = [
+  {
+    text: "When your team ships a new feature, what happens to the documentation?",
+    dim: "accuracy",
+    icon: "⚙",
+    opts: [
+      { t: "Docs ship with the feature — there's a definition of done that includes documentation", s: 5, tag: "Disciplined" },
+      { t: "We update docs within a sprint or two after shipping", s: 3, tag: "Lagging" },
+      { t: "We update when a support ticket or user complaint forces us to", s: 1, tag: "Reactive" },
+      { t: "Honestly, the docs are usually just wrong for a while", s: 0, tag: "Broken" }
+    ]
+  },
+  {
+    text: "If I picked a random page in your docs right now, who is responsible for keeping it accurate?",
+    dim: "ownership",
+    icon: "👤",
+    opts: [
+      { t: "There's a named owner for every page — I can tell you the name in under 30 seconds", s: 5, tag: "Owned" },
+      { t: "There's a team responsible, but not a specific person", s: 2, tag: "Diffuse" },
+      { t: "Whoever wrote it originally, I suppose", s: 1, tag: "Stale" },
+      { t: "Nobody, really. That's part of the problem.", s: 0, tag: "Unowned" }
+    ]
+  },
+  {
+    text: "A developer joins your team this week. How do they figure out how your product works?",
+    dim: "findability",
+    icon: "🔍",
+    opts: [
+      { t: "They read the docs — everything they need is there and easy to navigate", s: 5, tag: "Self-serve" },
+      { t: "Docs cover the basics, but they'll need someone to fill in the gaps", s: 3, tag: "Partial" },
+      { t: "We'd point them to a few things, but mostly they'd ask a senior engineer", s: 1, tag: "Tribal" },
+      { t: "They'd shadow someone for a week. The docs aren't really usable for onboarding.", s: 0, tag: "Absent" }
+    ]
+  },
+  {
+    text: "How many support tickets or Slack questions could be answered by your existing documentation?",
+    dim: "findability",
+    icon: "🎫",
+    opts: [
+      { t: "Most of them — we actively redirect users to docs and it works", s: 5, tag: "Deflecting" },
+      { t: "Some of them, but the docs aren't always easy to find or understand", s: 3, tag: "Partial" },
+      { t: "A few, but most questions aren't covered or the docs are wrong", s: 1, tag: "Leaking" },
+      { t: "Very few. Our support load would barely change if we deleted the docs.", s: 0, tag: "No impact" }
+    ]
+  },
+  {
+    text: "When did someone last read your getting-started guide as if they were a new user?",
+    dim: "accuracy",
+    icon: "📋",
+    opts: [
+      { t: "Recently — we test it regularly and flag anything that breaks", s: 5, tag: "Maintained" },
+      { t: "A few months ago, during a review cycle", s: 3, tag: "Periodic" },
+      { t: "When it was written. We assume it still works.", s: 1, tag: "Assumed" },
+      { t: "We're not sure it ever got a real user test", s: 0, tag: "Unknown" }
+    ]
+  },
+  {
+    text: "If I asked your engineering lead right now: 'Is your documentation healthy?' what would they say?",
+    dim: "ownership",
+    icon: "💬",
+    opts: [
+      { t: "Yes — and they could point to a specific process that keeps it that way", s: 5, tag: "Confident" },
+      { t: "Probably fine, but they'd be guessing", s: 2, tag: "Uncertain" },
+      { t: "It's on the list — we know it needs work but haven't prioritised it", s: 1, tag: "Backlogged" },
+      { t: "'Documentation? That's a problem for later.' — We don't really track this.", s: 0, tag: "Ignored" }
+    ]
+  }
+];
+
+// Per-dimension cost context shown in results
+const dimContext = {
+  accuracy: {
+    label: "Accuracy",
+    cost: "Inaccurate documentation costs your engineering team an average of 3–5 hours per mis-documented endpoint in support and debugging time.",
+    fix: "The audit reviews every page against your live product and identifies exactly where the drift is, ranked by how much it's costing you."
+  },
+  ownership: {
+    label: "Ownership",
+    cost: "Unowned documentation has a half-life. Every sprint that ships without a named owner responsible for updating docs widens the gap between what the product does and what the docs say.",
+    fix: "The audit maps every section of your documentation to an ownership status and recommends a specific ownership model for your team size."
+  },
+  findability: {
+    label: "Findability",
+    cost: "Documentation your users can't find is documentation that doesn't exist. Every support ticket that could have been a doc search is an engineering hour lost.",
+    fix: "The audit reviews your information architecture and identifies every structural failure that's routing users away from the answer and toward your support queue."
+  }
+};
+
+// Per-answer specific findings shown in the insight block
+const answerFindings = [
+  // Q1 - accuracy / shipping
+  [
+    "Your documentation ships with the feature. That's the standard. The audit will verify whether the system holding it together is robust enough to survive the team doubling.",
+    "A sprint or two of lag sounds small. Multiplied across twelve months of releases, it means your docs are chronically one sprint behind your product. The audit will identify the pages where drift has already become a liability.",
+    "Reactive documentation is documentation that only gets fixed after a user suffers through the wrong version. The audit will identify every page that is currently wrong and prioritise the fixes by support ticket volume.",
+    "Documentation that is wrong for a while is documentation that erodes trust. Once a developer stops trusting your docs, they stop reading them — and start asking engineers instead. The audit will tell you exactly how bad the damage is."
+  ],
+  // Q2 - ownership
+  [
+    "Named ownership is the foundation. The audit will check whether that ownership is enforced through your tooling and workflows, or whether it's a policy that exists on paper and breaks in practice.",
+    "Team ownership is shared ownership, which is effectively no ownership. The audit will map every section to an individual and recommend the handoff process that makes that ownership stick.",
+    "Original-author ownership expires the moment that person moves to a different project. The audit will identify every page whose de facto owner has moved on and left the content stranded.",
+    "You've named the problem. The audit will quantify it, rank it by impact, and give you an ownership model you can implement in the same week you receive the report."
+  ],
+  // Q3 - findability / onboarding
+  [
+    "Self-serve onboarding is a real competitive advantage. The audit will identify any gaps that are subtle enough to have slipped through your review process.",
+    "Partial documentation forces new hires into knowledge extraction from senior engineers — one of the most expensive uses of engineering time. The audit will identify exactly which gaps are driving this.",
+    "Tribal knowledge is a single point of failure. Every answer that lives in someone's head and not in your docs is an onboarding problem and a retention risk. The audit will map what's missing.",
+    "Docs that don't support onboarding aren't neutral — they're actively costing you. Every new hire who can't self-serve is a week of senior engineer time. The audit will build the case for fixing this."
+  ],
+  // Q4 - findability / support
+  [
+    "Active doc deflection is the goal. The audit will check whether your deflection rate could be improved further with structural changes to navigation and search.",
+    "Partial deflection means your docs are almost doing their job. The audit will identify which specific structural and content gaps are letting support tickets through that documentation should be catching.",
+    "Documentation that can't deflect support is costing you in two places simultaneously: the engineering time to answer tickets and the user frustration of not finding answers. The audit will rank the highest-value fixes.",
+    "Documentation with no support impact is documentation that has failed its primary job. The audit will tell you why, specifically, and what would need to change for the docs to start pulling their weight."
+  ],
+  // Q5 - accuracy / getting-started
+  [
+    "Regular testing means you already understand that getting-started guides drift. The audit will check your testing cadence and flag any gaps in coverage.",
+    "Periodic review is better than nothing, but quarterly is too slow for a product that ships weekly. The audit will recommend a review cadence matched to your release velocity.",
+    "Assuming it works is how broken getting-started guides survive for months without anyone noticing. The audit will test it end-to-end and document every failure point.",
+    "An untested getting-started guide is a trust-destroying first impression delivered to every new user. The audit will identify every step that's wrong, outdated, or missing."
+  ],
+  // Q6 - ownership / engineering confidence
+  [
+    "Engineering confidence backed by process is the signal that documentation has been systemised. The audit will verify whether the process is robust enough to survive growth.",
+    "Guessing about documentation health means there's no system for measuring it. The audit will establish the baseline metrics that make 'is our documentation healthy?' an answerable question.",
+    "Backlogged documentation debt compounds every sprint. The audit will quantify the backlog, prioritise it by impact, and give you a plan that can be executed without stopping the roadmap.",
+    "Documentation that isn't tracked isn't managed. The audit will make the invisible visible — specific pages, specific failures, specific costs — and give engineering leadership a reason to prioritise it."
+  ]
+];
+
+let hcAnswers = [], hcCurrent = 0;
+
+function hcRender() {
+  const q = hcQs[hcCurrent];
+  document.getElementById('hcQNum').textContent = `Question ${hcCurrent + 1} of ${hcQs.length}`;
+  document.getElementById('hcQText').textContent = q.text;
+  const opts = document.getElementById('hcOpts');
+  opts.innerHTML = '';
+  q.opts.forEach((o, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'hc-option' + (hcAnswers[hcCurrent] === i ? ' selected' : '');
+    btn.innerHTML = `<span class="hc-opt-text">${o.t}</span><span class="hc-opt-tag">${o.tag}</span>`;
+    btn.onclick = () => {
+      hcAnswers[hcCurrent] = i;
+      document.querySelectorAll('.hc-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const nextBtn = document.getElementById('hcNext');
+      nextBtn.textContent = hcCurrent === hcQs.length - 1 ? 'See my results →' : 'Next →';
+      nextBtn.classList.add('on');
+    };
+    opts.appendChild(btn);
+  });
+
+  // Progress steps
+  const steps = document.getElementById('hcSteps');
+  steps.innerHTML = hcQs.map((_, i) => {
+    const cls = i === hcCurrent ? 'active' : i < hcCurrent ? 'done' : '';
+    return `<div class="hc-step ${cls}">${i < hcCurrent ? '✓' : i + 1}</div>${i < hcQs.length - 1 ? '<div class="hc-step-line"></div>' : ''}`;
+  }).join('');
+
+  document.getElementById('hcBack').style.visibility = hcCurrent > 0 ? 'visible' : 'hidden';
+  const nextBtn = document.getElementById('hcNext');
+  nextBtn.textContent = hcCurrent === hcQs.length - 1 ? 'See my results →' : 'Next →';
+  nextBtn.classList.toggle('on', hcAnswers[hcCurrent] !== undefined);
+}
+
+function hcNext() {
+  if (hcAnswers[hcCurrent] === undefined) return;
+  if (hcCurrent < hcQs.length - 1) { hcCurrent++; hcRender(); }
+  else hcShowResult();
+}
+
+function hcBack() {
+  if (hcCurrent > 0) { hcCurrent--; hcRender(); }
+}
+
+function hcShowResult() {
+  const total = hcAnswers.reduce((sum, a, i) => sum + hcQs[i].opts[a].s, 0);
+  const max = hcQs.length * 5;
+  const pct = Math.round((total / max) * 100);
+
+  document.getElementById('hcPanel').style.display = 'none';
+  const result = document.getElementById('hcResult');
+  result.classList.add('show');
+
+  // Animate score ring
+  setTimeout(() => {
+    document.getElementById('hcCircle').style.strokeDashoffset = 314 - (314 * pct / 100);
+    document.getElementById('hcNum').textContent = pct + '%';
+  }, 100);
+
+  // Score category and colour
+  const cat = pct >= 80 ? 'Strong foundation'
+            : pct >= 60 ? 'Room to improve'
+            : pct >= 40 ? 'At risk'
+            : 'Needs urgent attention';
+  const catColour = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--gold-light)' : 'var(--gold)';
+  document.getElementById('hcCat').textContent = cat;
+  document.getElementById('hcCat').style.color = catColour;
+
+  // Dimension bars
+  const dims = {};
+  hcAnswers.forEach((a, i) => {
+    const d = hcQs[i].dim;
+    if (!dims[d]) dims[d] = [];
+    dims[d].push(hcQs[i].opts[a].s);
+  });
+
+  const bars = document.getElementById('hcBars');
+  bars.innerHTML = Object.entries(dims).map(([dim, scores]) => {
+    const avg = scores.reduce((s, v) => s + v, 0) / scores.length;
+    const p = Math.round((avg / 5) * 100);
+    const ctx = dimContext[dim];
+    const barColour = p >= 80 ? 'var(--green)' : p >= 60 ? 'var(--gold-light)' : p >= 40 ? 'var(--gold)' : '#E05252';
+    return `<div class="hc-bar-row">
+      <div class="hc-bar-row-top">
+        <span class="hc-bar-label">${ctx ? ctx.label : dim.charAt(0).toUpperCase() + dim.slice(1)}</span>
+        <span class="hc-bar-pct" style="color:${barColour}">${p}%</span>
+      </div>
+      <div class="hc-bar-track"><div class="hc-bar-fill" style="width:0%;background:${barColour}" data-width="${p}%"></div></div>
+      <p class="hc-bar-desc">${ctx ? ctx.cost : ''}</p>
+    </div>`;
+  }).join('');
+
+  setTimeout(() => {
+    bars.querySelectorAll('.hc-bar-fill').forEach(el => { el.style.width = el.dataset.width; });
+  }, 200);
+
+  // Specific findings from each answer
+  const findings = hcAnswers.map((a, i) => answerFindings[i][a]);
+
+  // Find the weakest dimension for the headline
+  const dimScores = {};
+  hcAnswers.forEach((a, i) => {
+    const d = hcQs[i].dim;
+    if (!dimScores[d]) dimScores[d] = [];
+    dimScores[d].push(hcQs[i].opts[a].s);
+  });
+  const dimAvgs = Object.entries(dimScores).map(([d, scores]) => ({
+    d, avg: scores.reduce((s,v)=>s+v,0)/scores.length
+  }));
+  dimAvgs.sort((a, b) => a.avg - b.avg);
+  const weakest = dimAvgs[0];
+  const weakestCtx = dimContext[weakest.d];
+
+  // Build the insight block
+  const overallMsg = pct >= 80
+    ? `Your documentation system has real foundations. The gaps that remain are the kind that are invisible until a product pivot or a team change exposes them.`
+    : pct >= 60
+    ? `Your documentation is functional but fragile. It is holding up today, but it is not built to survive the next phase of growth.`
+    : pct >= 40
+    ? `Your documentation system has structural problems that are already costing you. They will compound as your product grows and your team changes.`
+    : `Your documentation system has failed in ways that are actively costing your team every week. The longer this continues, the harder it becomes to fix.`;
+
+  const insightHTML = `
+    <div class="hc-insight-label">What this means for you</div>
+    <p class="hc-insight-text">${overallMsg}</p>
+    <div class="hc-findings">
+      ${findings.map((f, i) => `
+        <div class="hc-finding">
+          <span class="hc-finding-q">Q${i+1} — ${hcQs[i].dim.charAt(0).toUpperCase() + hcQs[i].dim.slice(1)}</span>
+          <p class="hc-finding-text">${f}</p>
+        </div>
+      `).join('')}
+    </div>
+    ${weakestCtx ? `<div class="hc-weakest"><p class="hc-weakest-label">Biggest gap: ${weakestCtx.label}</p><p class="hc-weakest-fix">${weakestCtx.fix}</p></div>` : ''}
+  `;
+  document.getElementById('hcInsight').innerHTML = insightHTML;
+}
+
+function hcReset() {
+  hcAnswers = []; hcCurrent = 0;
+  document.getElementById('hcPanel').style.display = 'block';
+  document.getElementById('hcResult').classList.remove('show');
+  document.getElementById('hcCircle').style.strokeDashoffset = 314;
+  hcRender();
+}
+
+hcRender();
+
+/* COMMAND PALETTE */
+const cmdItems = [
+  { label: 'Book the Documentation Audit', desc: '€300 · 5 working days', action: () => window.open('https://calendly.com/douglas-douglasebhoman/30min') },
+  { label: 'Run the health check', desc: 'Six questions · 60 seconds', action: () => { closeCmd(); document.getElementById('health-check').scrollIntoView({behavior:'smooth'}); } },
+  { label: 'View MkDocs guide', desc: 'Docs-as-Code portfolio piece', action: () => window.open('/mkdocs-for-technical-writers/') },
+  { label: 'View OpenWeather API docs', desc: 'API documentation sample', action: () => window.open('/openweather-docs/') },
+  { label: 'Read the blog', desc: 'Systems Over Sentences', action: () => window.open('/blog/') },
+  { label: 'Send an email', desc: 'douglas@douglasebhoman.com', action: () => window.open('mailto:douglas@douglasebhoman.com') },
+  { label: 'View CV', desc: 'Full work history', action: () => window.open('/cv/') },
+];
+function openCmd() {
+  document.getElementById('cmdOverlay').classList.add('open');
+  document.getElementById('cmdInput').focus();
+  renderCmdResults('');
+}
+function closeCmd() { document.getElementById('cmdOverlay').classList.remove('open'); }
+function renderCmdResults(q) {
+  const filtered = q ? cmdItems.filter(i => i.label.toLowerCase().includes(q.toLowerCase()) || i.desc.toLowerCase().includes(q.toLowerCase())) : cmdItems;
+  document.getElementById('cmdResults').innerHTML = filtered.map((item, i) => `<div class="cmd-item" onclick="cmdItems[${cmdItems.indexOf(item)}].action();closeCmd()"><span class="cmd-item-label">${item.label}</span><span class="cmd-item-desc">${item.desc}</span></div>`).join('') || '<div class="cmd-empty">No results</div>';
+}
+document.getElementById('cmdInput').addEventListener('input', e => renderCmdResults(e.target.value));
+document.getElementById('cmdOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeCmd(); });
+document.addEventListener('keydown', e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); document.getElementById('cmdOverlay').classList.contains('open') ? closeCmd() : openCmd(); }
+  if (e.key === 'Escape') closeCmd();
+});
+
+/* TAB SWITCHER */
+function switchTab(btn, id) {
+  document.querySelectorAll('.samples-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sample-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
 </script>
 </body>
 </html>
