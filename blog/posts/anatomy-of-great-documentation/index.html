@@ -66,7 +66,7 @@ a{color:inherit;text-decoration:none;}
 
 /* ── Banner — image top, content below ── */
 .post-banner-card{background:var(--navy);border-bottom:1px solid var(--border-dark);}
-.post-banner-img-wrap{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;position:relative;}
+.post-banner-img-wrap{width:100%;aspect-ratio:16/6;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;position:relative;min-height:160px;max-height:400px;max-height:420px;}
 .post-banner-img-wrap picture{display:block;width:100%;height:100%;}
 .post-banner-img-wrap img{
   width:100%;height:100%;object-fit:cover;display:block;
@@ -147,11 +147,8 @@ a{color:inherit;text-decoration:none;}
 .post-related-grid--double{grid-template-columns:1fr 1fr;}
 .post-related-card{background:var(--navy);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background var(--base);}
 .post-related-card:hover{background:rgba(255,255,255,.03);}
-.post-related-card-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;}
-.post-related-card-img picture{display:block;width:100%;height:100%;}
-.post-related-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
-.post-related-card:hover .post-related-card-img img{transform:scale(1.03);}
-.post-related-card-body{padding:clamp(14px,2vw,22px);}
+
+.post-related-card-body{padding:clamp(14px,2vw,22px);border-left:2px solid var(--gold-border);}
 .post-related-card-dir{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:6px;display:block;}
 .post-related-card-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
 .post-related-card-title{font-family:var(--serif);font-size:clamp(14px,1.8vw,18px);font-weight:300;color:rgba(255,255,255,.8);line-height:1.3;letter-spacing:-.01em;margin-bottom:8px;}
@@ -184,7 +181,7 @@ a{color:inherit;text-decoration:none;}
 @media(max-width:768px){
   .post-newsletter-inner{grid-template-columns:1fr;}
   .post-related-grid--double{grid-template-columns:1fr;}
-  .post-banner-img-wrap{aspect-ratio:16/10;}
+  .post-banner-img-wrap{aspect-ratio:16/7;max-height:260px;}
 }
 </style>
 </head>
@@ -212,17 +209,13 @@ a{color:inherit;text-decoration:none;}
 <!-- BANNER CARD — image on top, content below, no text overlaid on image -->
 <div class="post-banner-card">
   <div class="post-banner-img-wrap">
-    <picture>
-      <source type="image/webp" srcset="../../assets/images/anatomy-of-great-documentation-cover.webp">
-      <img src="../../assets/images/anatomy-of-great-documentation-cover.png"
-           srcset="../../assets/images/anatomy-of-great-documentation-cover.png 1200w, ../../assets/images/anatomy-of-great-documentation-cover.png 600w"
-           sizes="(max-width:600px) 100vw, 100vw"
-           alt="The Anatomy of Great Documentation Systems — a framework showing five elements: Understand Your Users, Structure With Purpose, Write for Clarity, Make It Findable, and Keep It Alive"
-           width="1200" height="675"
-           loading="eager"
-           fetchpriority="high"
-           onerror="this.closest('.post-banner-img-wrap').style.background='var(--navy-mid)';this.remove()">
-    </picture>
+    <img src="../../assets/images/anatomy-of-great-documentation-cover.png"
+         alt="The Anatomy of Great Documentation Systems"
+         width="1200" height="675"
+         loading="eager"
+         fetchpriority="high"
+         decoding="async"
+         style="width:100%;height:100%;object-fit:cover;display:block;">
   </div>
   <div class="post-banner-body">
     <div class="post-banner-breadcrumb">
@@ -369,16 +362,6 @@ a{color:inherit;text-decoration:none;}
   <p class="post-related-label">Continue the series</p>
   <div class="post-related-grid post-related-grid--single">
     <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-related-card">
-      <div class="post-related-card-img">
-        <picture>
-          <source type="image/webp" srcset="../../assets/images/writing-for-developers-vs-non-technical-users-cover.webp">
-          <img src="../../assets/images/writing-for-developers-vs-non-technical-users-cover.png"
-               alt="Writing for Developers vs Non-Technical Users"
-               width="800" height="450"
-               loading="lazy"
-               onerror="this.closest('.post-related-card-img').style.background='var(--navy-mid)';this.remove()">
-        </picture>
-      </div>
       <div class="post-related-card-body">
         <span class="post-related-card-dir">&larr; Previous</span>
         <span class="post-related-card-tag">Part 04</span>
