@@ -141,20 +141,6 @@
       z-index: -1;
     }
     @keyframes cardFloat { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(-8px); opacity: 1; } }
-    .footer-wave {
-      position: absolute;
-      top: -60px; left: 0;
-      width: 100%; height: 60px;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .footer-wave svg {
-      position: absolute;
-      bottom: 0;
-      width: 200%; height: 60px;
-      animation: waveMove 8s linear infinite;
-    }
-    @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .mobile-cta-link {
       position: relative;
       overflow: hidden;
@@ -167,6 +153,16 @@
       background: conic-gradient(from 0deg, transparent, rgba(184,150,46,0.2), transparent 30%);
       animation: rotateGlow 3s linear infinite;
       opacity: 0.5;
+    }
+    /* Mobile hero portrait — byline photo, hidden on desktop */
+    .hero-mobile-portrait{display:none;}
+    /* About section portrait */
+    .pov-left{display:flex;gap:28px;align-items:flex-start;}
+    .pov-portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 5px rgba(184,150,46,.12),0 8px 24px rgba(0,0,0,.15);flex-shrink:0;}
+    @media(max-width:768px){
+      .hero-mobile-portrait{display:block;width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(184,150,46,.12);margin:16px auto 20px;}
+      .pov-left{flex-direction:column;align-items:center;}
+      .pov-portrait{width:80px;height:80px;}
     }
   </style>
 </head>
@@ -225,6 +221,7 @@
       </div>
       <h1 class="hero-h1">Your product is scaling.<br>Your documentation <em>isn&rsquo;t.</em></h1>
       <p class="hero-sub">Every sprint ships. Your docs don&rsquo;t keep up. Your users pay for it &mdash; in confusion, in support tickets, in churn. <strong>I build documentation systems that hold up as your product grows.</strong></p>
+      <img class="hero-mobile-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="80" height="80" loading="eager">
       <div class="hero-actions">
         <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
         <a href="#work" class="btn btn-ghost-light">See my work &rarr;</a>
@@ -312,13 +309,17 @@
 <!-- PROOF OF VOICE -->
 <section class="pov reveal" id="about">
   <div class="pov-inner">
-    <div>
-      <div class="label-row"><span class="lm lm--dim">How I think</span><span class="gold-rule"></span></div>
-      <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
-      <p class="pov-body">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget &mdash; because they cannot unknow it &mdash; is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
-      <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word &mdash; to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
-      <p class="pov-body">What drives me is not passion. It is responsibility &mdash; to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
-      <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
+    <div class="pov-left">
+      <img class="pov-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="120" height="120" loading="lazy">
+      <div>
+        <div class="label-row"><span class="lm lm--dim">How I think</span><span class="gold-rule"></span></div>
+        <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
+        <p class="pov-body">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget &mdash; because they cannot unknow it &mdash; is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
+        <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word &mdash; to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
+        <p class="pov-body">What drives me is not passion. It is responsibility &mdash; to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
+        <p class="pov-body">I write fiction in Prague in the evenings &mdash; the same discipline as documentation, at its core: imagine the reader you have never met, understand what they need to know, and build something they can move through without getting lost.</p>
+        <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
+      </div>
     </div>
     <div class="pov-principles">
       <div class="pov-principle"><p class="pov-p-num">01 &mdash; Principle</p><p class="pov-p-title">Empathy before architecture</p><p class="pov-p-desc">Knowing the reader&rsquo;s pain point is not a soft skill. It is the baseline every documentation decision should be built on.</p></div>
@@ -743,12 +744,6 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-wave">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="var(--navy)" opacity="0.5"/>
-      <path d="M0,40 C360,10 720,50 1080,20 C1260,5 1380,35 1440,25 L1440,60 L0,60 Z" fill="var(--navy)" opacity="0.3"/>
-    </svg>
-  </div>
   <div class="f-inner">
     <div class="f-brand">
       <div><p class="f-logo">Douglas Ebhoman</p><p class="f-tagline">Narrative is infrastructure. I treat it that way.</p><div class="f-avail"><span class="f-avail-dot"></span><span class="f-avail-text">Available for freelance engagements</span></div></div>
