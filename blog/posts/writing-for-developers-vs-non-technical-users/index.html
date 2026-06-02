@@ -11,6 +11,11 @@
   <meta property="og:url" content="https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/">
   <meta property="og:title" content="Writing for Developers vs Non-Technical Users &middot; Douglas Ebhoman">
   <meta property="og:description" content="Writing for developers and non-technical readers aren't just different tones — they're different jobs. Here's what that distinction actually means in practice.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/writing-for-developers-vs-non-technical-users-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Writing for Developers vs Non-Technical Users &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="Writing for developers and non-technical readers aren't just different tones — they're different jobs.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/writing-for-developers-vs-non-technical-users-cover.png">
   <title>Writing for Developers vs Non-Technical Users &middot; Douglas Ebhoman</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +61,6 @@ a{color:inherit;text-decoration:none;}
 .gold-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);width:48px;display:inline-block;flex-shrink:0;}
 
 
-.
 /* ── Post hero image — performance-first ── */
 .post-hero-img{display:block;width:100%;aspect-ratio:16/6;object-fit:cover;
   /* Prevent layout shift — browser reserves space before load */
@@ -77,7 +81,6 @@ a{color:inherit;text-decoration:none;}
   display:block;
   line-height:0;       /* remove inline-block gap below image */
 }
-.post-banner-img-wrap picture{display:block;width:100%;height:100%;}
 .post-banner-img-wrap img{
   width:100%;
   height:100%;
@@ -247,6 +250,7 @@ a{color:inherit;text-decoration:none;}
 .post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
 .post-footer-link:hover{color:var(--gold-light);}
 @media(max-width:768px){
+  .post-banner-img-wrap{aspect-ratio:16/7;max-height:260px;}
   .audience-comparison,.post-newsletter-inner{grid-template-columns:1fr;}
   .series-nav{flex-direction:column;align-items:flex-start;}
   .series-nav-link--next{margin-left:0;}
