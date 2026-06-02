@@ -64,7 +64,7 @@ a{color:inherit;text-decoration:none;}
 /* ── Post hero ── */
 .post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
 .post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
-.post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;}
+.post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;min-height:44px;}
 .post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;display:inline-block;margin-bottom:20px;}
 .post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
 .post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none;}
 .post-part-link{
   font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
   color:rgba(255,255,255,.25);display:flex;align-items:center;gap:8px;
-  transition:color var(--fast);text-decoration:none;
+  transition:color var(--fast);text-decoration:none;align-self:stretch;padding:0 4px;
 }
 .post-part-link:hover{color:var(--gold-light);}
 .post-part-link--disabled{opacity:.18;pointer-events:none;}
@@ -194,6 +194,12 @@ a{color:inherit;text-decoration:none;}
 .post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
 .post-footer-link:hover{color:var(--gold-light);}
 @media(max-width:768px){
+  .nav-hamburger{display:flex;}
+  .nav-links{display:none;position:fixed;top:58px;left:0;right:0;background:var(--navy);border-bottom:1px solid var(--border-dark);flex-direction:column;padding:16px var(--pad) 24px;gap:0;z-index:99;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+  .nav-links.open{display:flex;}
+  .nav-links .nav-text{display:block;font-size:11px;padding:14px 0;border-bottom:1px solid var(--border-dark);}
+  .nav-links .nav-icon{display:none;}
+  .nav-links .nav-cta{margin-top:12px;text-align:center;width:100%;padding:13px;}
   .audience-comparison,.post-newsletter-inner{grid-template-columns:1fr;}
   .series-nav{flex-direction:column;align-items:flex-start;}
   .series-nav-link--next{margin-left:0;}
@@ -204,7 +210,7 @@ a{color:inherit;text-decoration:none;}
 <div class="progress-bar" id="progressBar"></div>
 <nav class="nav" id="nav">
   <a href="/" class="nav-logo">Douglas Ebhoman</a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="/services/" class="nav-text">Services</a>
     <a href="/work/" class="nav-text">Work</a>
     <a href="/#about" class="nav-text">About</a>
@@ -213,6 +219,9 @@ a{color:inherit;text-decoration:none;}
     <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
     <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta">Book the Audit</a>
   </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <main>
 <section class="post-hero">
@@ -347,6 +356,13 @@ window.addEventListener("scroll",()=>{
     _t=false;
   });_t=true;}
 },{passive:true});
+const navHamburger=document.getElementById('navHamburger');
+const navLinksEl=document.getElementById('navLinks');
+if(navHamburger&&navLinksEl){
+  navHamburger.addEventListener('click',()=>{const isOpen=navLinksEl.classList.toggle('open');navHamburger.classList.toggle('open',isOpen);navHamburger.setAttribute('aria-expanded',String(isOpen));});
+  navLinksEl.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{setTimeout(()=>{navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');},50);});});
+  document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
+}
 </script>
 </body>
 </html>
