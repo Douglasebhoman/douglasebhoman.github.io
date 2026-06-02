@@ -156,13 +156,21 @@
     }
     /* Mobile hero portrait — byline photo, hidden on desktop */
     .hero-mobile-portrait{display:none;}
-    /* About section portrait */
-    .pov-left{display:flex;gap:28px;align-items:flex-start;}
-    .pov-portrait{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 5px rgba(184,150,46,.12),0 8px 24px rgba(0,0,0,.15);flex-shrink:0;}
+    /* ── Newspaper about layout ── */
+    .pov-inner{display:block;max-width:var(--container);margin:0 auto;}
+    .pov-newspaper-hdr{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+    .pov-newspaper-hdr::before,.pov-newspaper-hdr::after{content:'';flex:1;height:1px;background:var(--border-light);}
+    .pov-newspaper-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;}
+    .pov-newspaper{column-count:2;column-gap:48px;column-rule:1px solid var(--border-light);margin-bottom:28px;}
+    .pov-portrait{float:left;width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 5px rgba(184,150,46,.12),0 8px 24px rgba(0,0,0,.15);margin-right:24px;margin-bottom:16px;}
+    .pov-dropcap::first-letter{font-family:var(--serif);font-size:3.5em;float:left;line-height:.82;padding-right:6px;margin-top:4px;color:var(--gold);font-weight:400;}
+    .pov-pullquote{column-span:all;border-left:3px solid var(--gold);padding:16px 24px;margin:24px 0;font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-style:italic;color:var(--text-dark);line-height:1.6;background:var(--gold-subtle);}
+    .pov-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);margin-top:32px;}
     @media(max-width:768px){
       .hero-mobile-portrait{display:block;width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(184,150,46,.12);margin:16px auto 20px;}
-      .pov-left{flex-direction:column;align-items:center;}
-      .pov-portrait{width:80px;height:80px;}
+      .pov-newspaper{column-count:1;}
+      .pov-portrait{float:none;display:block;margin:0 auto 20px;}
+      .pov-principles{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -220,7 +228,7 @@
         <span class="hero-eyebrow-text">Documentation Systems &middot; DevTools &amp; SaaS &middot; Prague</span>
       </div>
       <h1 class="hero-h1">Your product is scaling.<br>Your documentation <em>isn&rsquo;t.</em></h1>
-      <p class="hero-sub">Every sprint ships. Your docs don&rsquo;t keep up. Your users pay for it &mdash; in confusion, in support tickets, in churn. <strong>I build documentation systems that hold up as your product grows.</strong></p>
+      <p class="hero-sub">Every sprint ships. Your docs don&rsquo;t keep up. Your users pay for it: in confusion, in support tickets, in churn. <strong>I build documentation systems that hold up as your product grows.</strong></p>
       <img class="hero-mobile-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="80" height="80" loading="eager">
       <div class="hero-actions">
         <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
@@ -255,8 +263,8 @@
       </div>
       <div class="side-proof">
         <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>&ldquo;He has a knack for writing in a simple, clear style.&rdquo;</strong> &mdash; Tejas Dandekar, Associate Director DP&amp;S</span></div>
-        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>Document360</strong> content partner &mdash; review in progress</span></div>
-        <div class="side-item"><span class="side-dot"></span><span class="side-text">Currently taking <strong>new audit clients</strong> &mdash; limited availability</span></div>
+        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>Document360</strong> content partner, review in progress</span></div>
+        <div class="side-item"><span class="side-dot"></span><span class="side-text">Currently taking <strong>new audit clients</strong>, limited availability</span></div>
       </div>
     </div>
   </div>
@@ -309,18 +317,19 @@
 <!-- PROOF OF VOICE -->
 <section class="pov reveal" id="about">
   <div class="pov-inner">
-    <div class="pov-left">
-      <img class="pov-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="120" height="120" loading="lazy">
-      <div>
-        <div class="label-row"><span class="lm lm--dim">How I think</span><span class="gold-rule"></span></div>
-        <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
-        <p class="pov-body">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget &mdash; because they cannot unknow it &mdash; is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
-        <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word &mdash; to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
-        <p class="pov-body">What drives me is not passion. It is responsibility &mdash; to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
-        <p class="pov-body">I write fiction in Prague in the evenings &mdash; the same discipline as documentation, at its core: imagine the reader you have never met, understand what they need to know, and build something they can move through without getting lost.</p>
-        <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
-      </div>
+    <div class="pov-newspaper-hdr">
+      <span class="pov-newspaper-label">About the Writer</span>
     </div>
+    <p class="pov-pull">Most documentation is written for the person who built the product.<br><em>Not the person who has to use it.</em></p>
+    <div class="pov-newspaper">
+      <img class="pov-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="120" height="120" loading="lazy">
+      <p class="pov-body pov-dropcap">That distinction sounds small. It isn&rsquo;t. When an engineer documents a feature, they document what it does. What they forget, because they cannot unknow it, is that the reader arrives without that context. <strong>The reader does not need a description of the feature. They need a map from their problem to the solution.</strong></p>
+      <p class="pov-body">I came to technical writing through creative writing. That is not a detour. Fiction trained me to analyse an audience's mental state before writing a single word, to understand what they are carrying, what they already know, and where they are likely to get lost. <strong>That is not a writing skill. It is an information architecture skill.</strong> And it is exactly what most technical documentation is missing.</p>
+      <div class="pov-pullquote">&ldquo;The reader does not need a description of the feature. They need a map from their problem to the solution.&rdquo;</div>
+      <p class="pov-body">What drives me is not passion. It is responsibility: to be the advocate for the users who are quietly suffering the consequences of documentation nobody designed with them in mind.</p>
+      <p class="pov-body">I write fiction in Prague in the evenings, the same discipline as documentation, at its core: imagine the reader you have never met, understand what they need to know, and build something they can move through without getting lost.</p>
+    </div>
+    <div class="pov-doctrine">Narrative is infrastructure. I treat it that way.</div>
     <div class="pov-principles">
       <div class="pov-principle"><p class="pov-p-num">01 &mdash; Principle</p><p class="pov-p-title">Empathy before architecture</p><p class="pov-p-desc">Knowing the reader&rsquo;s pain point is not a soft skill. It is the baseline every documentation decision should be built on.</p></div>
       <div class="pov-principle"><p class="pov-p-num">02 &mdash; Principle</p><p class="pov-p-title">Structure is a reader service</p><p class="pov-p-desc">Findability is an architecture problem, not a writing problem. Good structure means the reader never has to guess what comes next.</p></div>
@@ -419,8 +428,8 @@
           <div class="work-num">04</div>
           <div class="work-tags"><span class="work-tag">Architecture</span><span class="work-tag">CI/CD</span><span class="work-tag">Internal Docs</span></div>
           <p class="work-ctitle">douglasebhoman.com &mdash; Site Documentation</p>
-          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">Portfolio sites are typically undocumented black boxes &mdash; hard to maintain, impossible to hand off.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">Internal-style docs: architecture, local setup, deployment pipeline, contributing guidelines.</p></div></div>
-          <p class="work-outcome"><strong>Result:</strong> A site that documents itself &mdash; the same standard I apply to every client engagement.</p>
+          <div class="work-ba"><div class="work-ba-block before"><p class="work-ba-label">The problem</p><p class="work-ba-text">Portfolio sites are typically undocumented black boxes, hard to maintain, impossible to hand off.</p></div><div class="work-ba-block"><p class="work-ba-label after">What I built</p><p class="work-ba-text">Internal-style docs: architecture, local setup, deployment pipeline, contributing guidelines.</p></div></div>
+          <p class="work-outcome"><strong>Result:</strong> A site that documents itself, the same standard I apply to every client engagement.</p>
           <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
         </div>
       </a>
@@ -433,7 +442,7 @@
   <div class="samples-inner">
     <div class="label-row"><span class="lm">Documentation in practice</span><span class="gold-rule"></span></div>
     <h2 class="work-title" style="margin-bottom:12px;color:var(--text-dark);">Not screenshots. Not PDFs.<br>Actual documentation, rendered live.</h2>
-    <p class="samples-intro">The best way to evaluate a technical writer is to read their work in context. Each tab below shows a real excerpt from a real piece &mdash; structured, styled, and readable exactly as a developer would encounter it. <strong>This is the creative-technical blend in practice.</strong></p>
+    <p class="samples-intro">The best way to evaluate a technical writer is to read their work in context. Each tab below shows a real excerpt from a real piece, structured, styled, and readable exactly as a developer would encounter it. <strong>This is the creative-technical blend in practice.</strong></p>
     <div class="samples-tabs">
       <button class="samples-tab active" onclick="switchTab(this,'api')">API Reference</button>
       <button class="samples-tab" onclick="switchTab(this,'start')">Getting Started</button>
@@ -462,7 +471,7 @@
         <div class="doc-frame-bar"><div class="doc-frame-dots"><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div><div class="doc-frame-dot"></div></div><span class="doc-frame-filename">getting-started.md</span></div>
         <div class="doc-frame-body">
           <h1 class="doc-h1">Getting Started with MkDocs</h1>
-          <p class="doc-p">MkDocs is a static site generator for building project documentation from Markdown files. This guide takes you from installation to a live documentation site &mdash; no prior experience required.</p>
+          <p class="doc-p">MkDocs is a static site generator for building project documentation from Markdown files. This guide takes you from installation to a live documentation site, no prior experience required.</p>
           <div class="doc-note"><strong>Prerequisites</strong> Python 3.8 or later. Run <code style="font-family:var(--mono);font-size:11px;">python --version</code> to check.</div>
           <h2 class="doc-h2">Installation</h2>
           <div class="doc-steps">
@@ -513,8 +522,8 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
         <p class="audit-lead">Most teams know their documentation is a problem. They don&rsquo;t know <strong>exactly where it&rsquo;s failing or what to fix first.</strong> That&rsquo;s what the audit solves. I read everything. I identify the structural failures and rank them by impact. You get a written report and a 30-minute call. No vague feedback. No generic advice. A clear, prioritised plan you can act on immediately.</p>
         <div class="audit-includes">
           <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Full documentation review</p><p class="audit-include-desc">Every page assessed across accuracy, structure, ownership, and findability. Nothing assumed, nothing skipped.</p></div></div>
-          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Prioritised action plan</p><p class="audit-include-desc">Every finding ranked by impact. You know exactly what to fix first &mdash; and why.</p></div></div>
-          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Structural recommendations</p><p class="audit-include-desc">Not just what&rsquo;s broken &mdash; what to build instead. Architecture, ownership model, and system logic.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Prioritised action plan</p><p class="audit-include-desc">Every finding ranked by impact. You know exactly what to fix first, and why.</p></div></div>
+          <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Structural recommendations</p><p class="audit-include-desc">Not just what&rsquo;s broken: what to build instead. Architecture, ownership model, and system logic.</p></div></div>
           <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">30-minute walkthrough call</p><p class="audit-include-desc">I walk you through every finding. You can ask questions, push back, and leave knowing exactly what happens next.</p></div></div>
           <div class="audit-include"><div class="audit-include-icon"><svg viewBox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><p class="audit-include-title">Delivered in 5 working days</p><p class="audit-include-desc">You send me the link. I send you the report. Fixed timeline, fixed fee. No scope creep, no surprises.</p></div></div>
         </div>
@@ -548,7 +557,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
       <div class="process-steps">
         <div class="process-step reveal"><div class="process-step-num">01</div><div><p class="process-step-title">Audit</p><p class="process-step-body">I review your documentation against four dimensions: accuracy, structure, ownership, and findability. You receive a written report and a 30-minute walkthrough within five working days.</p><p class="process-step-benefit">You find out exactly what is broken.</p></div></div>
         <div class="process-step reveal reveal-d1"><div class="process-step-num">02</div><div><p class="process-step-title">Diagnose</p><p class="process-step-body">We identify structural problems and prioritise what to fix first, and why. Every recommendation is ranked by impact, not by how easy it is to implement.</p><p class="process-step-benefit">You know where to start.</p></div></div>
-        <div class="process-step reveal reveal-d2"><div class="process-step-num">03</div><div><p class="process-step-title">Build</p><p class="process-step-body">I design and implement the documentation system &mdash; architecture, templates, ownership model, deployment pipeline. The kind that stays accurate as your product grows.</p><p class="process-step-benefit">You get a system, not a document.</p></div></div>
+        <div class="process-step reveal reveal-d2"><div class="process-step-num">03</div><div><p class="process-step-title">Build</p><p class="process-step-body">I design and implement the documentation system: architecture, templates, ownership model, deployment pipeline. The kind that stays accurate as your product grows.</p><p class="process-step-benefit">You get a system, not a document.</p></div></div>
         <div class="process-step reveal reveal-d3"><div class="process-step-num">04</div><div><p class="process-step-title">Hand off</p><p class="process-step-body">Your team owns everything. I document the system itself so you can maintain it without me. The goal is independence, not dependency.</p><p class="process-step-benefit">You don&rsquo;t need me forever.</p></div></div>
       </div>
       <div class="strategy-doc reveal reveal-d1">
@@ -589,7 +598,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
       <div class="feat-left">
         <span class="verified">LinkedIn &middot; Verified</span>
         <p class="feat-headline">&ldquo;A must-read if you want to adopt Git and GitHub for product documentation.&rdquo;</p>
-        <p class="feat-body">Douglas has nailed it with his Git and GitHub for Technical Writers series. He has a knack for writing in a simple, clear style &mdash; it is a pleasure to read. The kind of documentation that removes the barrier between the writer and the workflow.</p>
+        <p class="feat-body">Douglas has nailed it with his Git and GitHub for Technical Writers series. He has a knack for writing in a simple, clear style. It is a pleasure to read. The kind of documentation that removes the barrier between the writer and the workflow.</p>
         <div class="feat-attr">
           <div class="feat-av">TD</div>
           <div>
@@ -602,7 +611,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
         <div class="feat-outcome-block">
           <p class="feat-outcome-label">What this engagement delivered</p>
           <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>A six-part Docs-as-Code series adopted as a practical reference for technical writers moving to Git-based workflows</span></div>
-          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Documentation that works as both a learning resource and a standing reference &mdash; no prior Git experience required</span></div>
+          <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Documentation that works as both a learning resource and a standing reference, no prior Git experience required</span></div>
           <div class="feat-outcome-item"><span class="feat-outcome-dot"></span><span>Reviewed and recommended by a senior director in a product and documentation practice</span></div>
         </div>
       </div>
@@ -617,7 +626,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
           <p class="proof-card-situation">Users couldn&rsquo;t navigate the platform without asking for help. The documentation existed but wasn&rsquo;t doing any work.</p>
         </div>
         <div class="proof-card-quote-block">
-          <p class="proof-quote">&ldquo;Douglas doesn&rsquo;t just write documentation &mdash; he builds clarity into the product experience itself. His ability to simplify complex systems while maintaining strategic structure significantly improved how our users interacted with our platform.&rdquo;</p>
+          <p class="proof-quote">&ldquo;Douglas doesn&rsquo;t just write documentation. He builds clarity into the product experience itself. His ability to simplify complex systems while maintaining strategic structure significantly improved how our users interacted with our platform.&rdquo;</p>
         </div>
         <div class="proof-attr">
           <p class="proof-cname">Product Lead</p>
@@ -647,7 +656,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
           <p class="proof-card-situation">They came in thinking the problem was the writing. The audit showed the problem was the system underneath it.</p>
         </div>
         <div class="proof-card-quote-block">
-          <p class="proof-quote">&ldquo;We came in thinking we needed a technical writer. What we actually needed was a documentation system &mdash; and Douglas delivered exactly that. Cleaner onboarding, fewer support questions, and documentation that finally felt intentional.&rdquo;</p>
+          <p class="proof-quote">&ldquo;We came in thinking we needed a technical writer. What we actually needed was a documentation system, and Douglas delivered exactly that. Cleaner onboarding, fewer support questions, and documentation that finally felt intentional.&rdquo;</p>
         </div>
         <div class="proof-attr">
           <p class="proof-cname">Head of Product</p>
@@ -662,8 +671,8 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
     <div class="proof-pattern reveal">
       <div class="proof-pattern-left">
         <p class="proof-pattern-label">The pattern across every engagement</p>
-        <p class="proof-pattern-body">Every client arrives with a different surface problem &mdash; docs that are out of date, users who can&rsquo;t find what they need, engineers who are the single source of truth. The root cause is almost always the same: <strong>documentation that was written but never designed.</strong></p>
-        <p class="proof-pattern-body">The audit makes the structural problem visible. Then we fix it &mdash; with a system that holds up as the product grows, not a document that starts drifting the day after it ships.</p>
+        <p class="proof-pattern-body">Every client arrives with a different surface problem: docs that are out of date, users who can&rsquo;t find what they need, engineers who are the single source of truth. The root cause is almost always the same: <strong>documentation that was written but never designed.</strong></p>
+        <p class="proof-pattern-body">The audit makes the structural problem visible. Then we fix it with a system that holds up as the product grows, not a document that starts drifting the day after it ships.</p>
       </div>
       <div class="proof-pattern-right">
         <div class="proof-pattern-stat">
@@ -708,7 +717,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
   <div class="cta-inner">
     <div class="label-row"><span class="lm">Get started</span><span class="gold-rule"></span></div>
     <h2 class="cta-h2">The audit is where you find out<br><em>exactly</em> what is broken.</h2>
-    <p class="cta-body">Every sprint that ships without a documentation update widens the gap. Your users are paying for it &mdash; in confusion, in support tickets, in churn nobody is measuring. <strong>The audit gives you a prioritised action plan in five working days. Specific findings. No generic advice.</strong></p>
+    <p class="cta-body">Every sprint that ships without a documentation update widens the gap. Your users are paying for it: in confusion, in support tickets, in churn nobody is measuring. <strong>The audit gives you a prioritised action plan in five working days. Specific findings. No generic advice.</strong></p>
     <div class="cta-urgency"><span class="cta-u-dot"></span><span class="cta-u-text"><strong>Limited availability.</strong> Currently taking new audit clients.</span></div>
     <div class="cta-reframe"><p class="cta-reframe-label">Worth considering</p><p class="cta-reframe-text">One mis-documented API endpoint costs your engineering team <strong>3&ndash;5 hours of support time</strong>. The audit costs less than a single engineer&rsquo;s half-day. The question is not whether you can afford it &mdash; <strong>it is whether you can afford not to.</strong></p></div>
     <div class="service-block">
