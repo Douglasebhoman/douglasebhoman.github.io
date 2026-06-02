@@ -110,6 +110,9 @@
       animation: stripShimmer 6s ease-in-out infinite;
     }
     @keyframes stripShimmer { 0%, 100% { left: -100%; } 50% { left: 200%; } }
+    .strip-track{display:inline-flex;align-items:center;min-width:max-content;flex-shrink:0;animation:stripScroll 30s linear infinite;}
+    .strip-item:first-child{padding-left:24px;}
+    @keyframes stripScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .strategy-doc::after {
       content: '';
       position: absolute;
@@ -272,12 +275,20 @@
 
 <!-- GOLD STRIP -->
 <div class="strip">
-  <span class="strip-item">Docs-as-Code</span>
-  <span class="strip-item">API Documentation</span>
-  <span class="strip-item">Information Architecture</span>
-  <span class="strip-item">Documentation Audits</span>
-  <span class="strip-item">DevTools &amp; SaaS</span>
-  <span class="strip-item">Prague &middot; Available Globally</span>
+  <div class="strip-track">
+    <span class="strip-item">Docs-as-Code</span>
+    <span class="strip-item">API Documentation</span>
+    <span class="strip-item">Information Architecture</span>
+    <span class="strip-item">Documentation Audits</span>
+    <span class="strip-item">DevTools &amp; SaaS</span>
+    <span class="strip-item">Prague &middot; Available Globally</span>
+    <span class="strip-item">Docs-as-Code</span>
+    <span class="strip-item">API Documentation</span>
+    <span class="strip-item">Information Architecture</span>
+    <span class="strip-item">Documentation Audits</span>
+    <span class="strip-item">DevTools &amp; SaaS</span>
+    <span class="strip-item">Prague &middot; Available Globally</span>
+  </div>
 </div>
 
 <!-- IMPACT METRICS -->
