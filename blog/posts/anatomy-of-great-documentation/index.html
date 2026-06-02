@@ -65,26 +65,15 @@ a{color:inherit;text-decoration:none;}
 .noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;}
 .cursor-particle{position:fixed;width:4px;height:4px;border-radius:50%;background:rgba(184,150,46,.6);pointer-events:none;z-index:9997;will-change:transform,opacity;}
 
-/* ── Banner — image top, content below ── */
-.post-banner-card{background:var(--navy);border-bottom:1px solid var(--border-dark);}
-.post-banner-img-wrap{width:100%;aspect-ratio:16/6;overflow:hidden;background:var(--navy-mid);display:block;line-height:0;position:relative;min-height:160px;max-height:400px;}
-.post-banner-img-wrap img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  animation:kenBurns 20s ease-in-out infinite alternate;
-}
-@keyframes kenBurns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.06) translate(-1%,-1%)}}
-.post-banner-img-wrap:hover img{animation-play-state:paused;}
-
-.post-banner-body{padding:clamp(20px,3vw,40px) clamp(20px,5vw,48px);}
-.post-banner-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
-.post-banner-back{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;transition:color var(--fast);}
-.post-banner-back:hover{color:var(--gold-light);}
-.post-banner-sep{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.15);}
-.post-banner-tag{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:inline-block;border:1px solid var(--gold-border);padding:3px 10px;margin-bottom:14px;}
-.post-banner-title{font-family:var(--serif);font-size:clamp(22px,4vw,40px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:14px;}
-.post-banner-pull{font-family:var(--serif);font-size:clamp(13px,1.6vw,15px);font-style:italic;font-weight:300;color:rgba(255,255,255,.38);line-height:1.75;border-left:2px solid var(--gold-border);padding-left:14px;margin-bottom:18px;max-width:600px;}
-.post-banner-meta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.post-banner-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.4;}
+/* ── Post hero ── */
+.post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
+.post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;}
+.post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;display:inline-block;margin-bottom:20px;}
+.post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
+.post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
+.post-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);}
+.post-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);}
 
 /* Part nav strip */
 .post-part-nav{background:var(--navy-mid);border-bottom:1px solid var(--border-dark);padding:0 clamp(20px,5vw,48px);position:relative;overflow:hidden;}
@@ -181,7 +170,6 @@ a{color:inherit;text-decoration:none;}
 @media(max-width:768px){
   .post-newsletter-inner{grid-template-columns:1fr;}
   .post-related-grid--double{grid-template-columns:1fr;}
-  .post-banner-img-wrap{aspect-ratio:16/7;max-height:260px;}
 }
 </style>
 </head>
@@ -206,35 +194,19 @@ a{color:inherit;text-decoration:none;}
 
 <main>
 
-<!-- BANNER CARD — image on top, content below, no text overlaid on image -->
-<div class="post-banner-card">
-  <div class="post-banner-img-wrap">
-    <img src="../../assets/images/anatomy-of-great-documentation-cover.png"
-         alt="The Anatomy of Great Documentation Systems"
-         width="1200" height="675"
-         loading="eager"
-         fetchpriority="high"
-         decoding="async"
-         style="width:100%;height:100%;object-fit:cover;display:block;">
-  </div>
-  <div class="post-banner-body">
-    <div class="post-banner-breadcrumb">
-      <a href="/blog/" class="post-banner-back">&larr; Blog</a>
-      <span class="post-banner-sep">/</span>
-      <span class="post-banner-back">Systems Over Sentences</span>
-    </div>
-    <span class="post-banner-tag">Systems Over Sentences &middot; Part 05 of 10</span>
-    <h1 class="post-banner-title">Anatomy of Great Documentation</h1>
-    <p class="post-banner-pull">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
-    <div class="post-banner-meta">
-      <span>Douglas Ebhoman</span>
-      <span class="post-banner-meta-dot"></span>
-      <span>May 3, 2026</span>
-      <span class="post-banner-meta-dot"></span>
-      <span>8 min read</span>
+<section class="post-hero">
+  <div class="post-hero-inner">
+    <a href="/blog/" class="post-back">&larr; Blog</a>
+    <span class="post-series-tag">Systems Over Sentences &middot; Part 05 of 10</span>
+    <h1 class="post-title">Anatomy of Great Documentation</h1>
+    <p class="post-subtitle">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
+    <div class="post-meta">
+      <span class="post-meta-item">Douglas Ebhoman</span>
+      <span class="post-meta-item">May 3, 2026</span>
+      <span class="post-meta-item">8 min read</span>
     </div>
   </div>
-</div>
+</section>
 
 <!-- PART NAV — single, no duplicate -->
 <div class="post-part-nav">
