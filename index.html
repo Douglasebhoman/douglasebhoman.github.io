@@ -159,6 +159,13 @@
     }
     /* Mobile hero portrait — byline photo, hidden on desktop */
     .hero-mobile-portrait{display:none;}
+    /* ── Social proof carousel ── */
+    .side-carousel-track{position:relative;overflow:hidden;min-height:76px;}
+    .side-carousel-item{position:absolute;top:0;left:0;width:100%;opacity:0;transition:opacity 0.6s ease;pointer-events:none;}
+    .side-carousel-item.active{opacity:1;pointer-events:auto;}
+    .side-carousel-dots{display:flex;gap:7px;justify-content:center;padding-top:10px;}
+    .side-carousel-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.18);cursor:pointer;border:none;padding:0;flex-shrink:0;transition:background 0.3s ease;}
+    .side-carousel-dot.active{background:var(--gold);}
     /* ── Newspaper about layout ── */
     .pov-inner{display:block;max-width:var(--container);margin:0 auto;}
     .pov-newspaper-hdr{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
@@ -171,6 +178,12 @@
     .pov-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);margin-top:32px;}
     @media(max-width:768px){
       .hero-mobile-portrait{display:block;width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(184,150,46,.12);margin:16px auto 20px;}
+      /* Hero stats: dashboard-style 2×2 grid */
+      .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(184,150,46,.35);padding:0;border-top:none;margin-top:28px;}
+      .hero-stat{background:var(--navy);padding:20px 16px;flex:unset;min-width:unset;}
+      .hero-stat::after{display:none !important;}
+      .hero-stat-num{font-size:clamp(32px,10vw,48px);}
+      .hero-stat-label{font-size:11px;letter-spacing:.1em;}
       .pov-newspaper{column-count:1;}
       .pov-portrait{float:none;display:block;margin:0 auto 20px;}
       .pov-principles{grid-template-columns:1fr;}
@@ -265,9 +278,16 @@
         </div>
       </div>
       <div class="side-proof">
-        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>&ldquo;He has a knack for writing in a simple, clear style.&rdquo;</strong> &mdash; Tejas Dandekar, Associate Director DP&amp;S</span></div>
-        <div class="side-item"><span class="side-dot"></span><span class="side-text"><strong>Document360</strong> content partner, review in progress</span></div>
-        <div class="side-item"><span class="side-dot"></span><span class="side-text">Currently taking <strong>new audit clients</strong>, limited availability</span></div>
+        <div class="side-carousel-track" id="sideCarouselTrack">
+          <div class="side-item side-carousel-item active"><span class="side-dot"></span><span class="side-text"><strong>&ldquo;He has a knack for writing in a simple, clear style.&rdquo;</strong> &mdash; Tejas Dandekar, Associate Director DP&amp;S</span></div>
+          <div class="side-item side-carousel-item"><span class="side-dot"></span><span class="side-text"><strong>Document360</strong> content partner, review in progress</span></div>
+          <div class="side-item side-carousel-item"><span class="side-dot"></span><span class="side-text">Currently taking <strong>new audit clients</strong>, limited availability</span></div>
+        </div>
+        <div class="side-carousel-dots" id="sideCarouselDots">
+          <button class="side-carousel-dot active" aria-label="Item 1"></button>
+          <button class="side-carousel-dot" aria-label="Item 2"></button>
+          <button class="side-carousel-dot" aria-label="Item 3"></button>
+        </div>
       </div>
     </div>
   </div>
@@ -1479,6 +1499,46 @@ function switchTab(btn, id) {
   btn.classList.add('active');
   document.getElementById('panel-' + id).classList.add('active');
 }
+
+/* SOCIAL PROOF CAROUSEL */
+(function(){
+  const track = document.getElementById('sideCarouselTrack');
+  const dotsWrap = document.getElementById('sideCarouselDots');
+  if(!track || !dotsWrap) return;
+  const items = track.querySelectorAll('.side-carousel-item');
+  const dots  = dotsWrap.querySelectorAll('.side-carousel-dot');
+  if(!items.length) return;
+
+  /* Measure max natural height so the track never jumps */
+  let maxH = 0;
+  items.forEach(item => {
+    item.style.position = 'relative';
+    item.style.opacity  = '1';
+    void track.offsetHeight; /* force reflow */
+    maxH = Math.max(maxH, item.offsetHeight);
+    item.style.position = '';
+    item.style.opacity  = '';
+  });
+  if(maxH > 0) track.style.height = maxH + 'px';
+
+  let idx = 0;
+
+  function show(n) {
+    items[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx = ((n % items.length) + items.length) % items.length;
+    items[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => {
+    clearInterval(timer);
+    show(i);
+    timer = setInterval(() => show(idx + 1), 4000);
+  }));
+
+  let timer = setInterval(() => show(idx + 1), 4000);
+})();
 </script>
 </body>
 </html>
