@@ -198,6 +198,8 @@ a{color:inherit;text-decoration:none;}
   .series-nav{flex-direction:column;align-items:flex-start;}
   .series-nav-link--next{margin-left:0;}
 }
+.post-diagram{margin:2.5rem 0;padding:clamp(20px,3vw,32px);background:var(--cream-2);border:1px solid var(--border-light);}
+.post-diagram .mermaid{margin-top:16px;}
 
 /* Mobile nav */
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
@@ -245,7 +247,7 @@ a{color:inherit;text-decoration:none;}
     <div class="post-meta">
       <span class="post-meta-item">Douglas Ebhoman</span>
       <span class="post-meta-item">April 8, 2026</span>
-      <span class="post-meta-item">5 min read</span>
+      <span class="post-meta-item">4 min read</span>
     </div>
   </div>
 </section>
@@ -258,8 +260,10 @@ a{color:inherit;text-decoration:none;}
 </div>
 
 <div class="post-body-wrap"><article class="post-body">
-<p class="lead">Most people think technical writing is about writing.</p>
-<p>Clear sentences. Good grammar. Well-structured paragraphs. That&rsquo;s part of it. But it&rsquo;s not the real job. The real job is designing how information works.</p>
+<p class="lead">When I started my Git and GitHub for Technical Writers series, I had a plan. The content would be accurate, the structure sound, and the logic clean. I would write each part, host it on a GitHub repo, and use LinkedIn to drive the traffic.</p>
+<p>The content was accurate. The structure was technically sound. And yet something was wrong. A reader landing on Part 3 had to orient themselves before they could learn anything. The information was there. The experience of moving through it was friction, not flow.</p>
+<p>That was not a writing problem. I had not written a single bad sentence. It was a system problem.</p>
+<p>The real job of a technical writer is not writing. It is designing how information works.</p>
 <hr>
 <h2>The symptom nobody names correctly</h2>
 <p>At some point, every documentation team hits the same wall. The guides are well-written. The grammar is clean. The tone is consistent. And yet users still can&rsquo;t find what they need. Engineers still get the same questions in Slack. Onboarding still takes longer than it should.</p>
@@ -267,16 +271,69 @@ a{color:inherit;text-decoration:none;}
 <h2>What a system problem looks like in practice</h2>
 <p>You&rsquo;ve seen this before, even if you didn&rsquo;t have a name for it. Guides that contradict each other because two writers worked in isolation. Installation docs missing a step that everyone on the team knows but nobody wrote down. A getting-started page referencing a feature deprecated eight months ago, with no named owner to fix it. Content scattered across Notion, Confluence, a GitHub wiki, and a PDF someone emailed in 2022.</p>
 <p>None of that is a writing failure. Every individual document might be perfectly written. It&rsquo;s a system failure. Academics call it Information Architecture. I call it Documentation Entropy: the slow, compounding drift that happens when documentation is written but never designed as a system. Every page that becomes stale, every link that breaks, every step that goes missing is entropy accumulating. A writer who can only fix sentences cannot fix it. A writer who can only fix sentences can&rsquo;t fix it.</p>
-<h2>What the process revealed that planning couldn’t</h2>
-<p>When I started my Git and GitHub for Technical Writers series, I had a plan. Write the content. Host it on a GitHub repo. Publish each part on Hashnode. Use LinkedIn to drive traffic. Clean. Simple. Logical.</p>
-<p>But the process revealed what the plan couldn&rsquo;t see. The GitHub repo was professional, but complex to navigate. A reader landing there for the first time had to orient themselves before they could learn anything. The information was accurate. The structure was technically sound. But the <em>experience</em> of moving through it was friction, not flow.</p>
-<p>That&rsquo;s when I understood the difference between a document and a documentation system. The solution wasn&rsquo;t to rewrite the content. It was to change the infrastructure: host it as a live static site where a reader could move through six parts the way you move through a story, with direction, with context, with a sense of where you are and where you&rsquo;re going.</p>
-<p>Rebuilding the infrastructure as a live static site also became content in itself. Documenting the process of building that system gave my audience something no amount of accurate writing could: a window into how documentation decisions actually get made. I wasn&rsquo;t just thinking about whether the information was correct. I was thinking about how a reader moves through it.</p>
-<p>That&rsquo;s the shift. From writing to systems thinking. And I didn&rsquo;t plan my way into it. The process revealed it.</p>
+<h2>What the process revealed</h2>
+<p>The solution was not to rewrite the content. It was to change the infrastructure: host it as a live static site where a reader could move through six parts the way you move through a story, with direction, with context, with a sense of where they are and where they are going.</p>
+<p>Rebuilding the infrastructure also became content in itself. Documenting the process gave my audience something no amount of accurate writing could: a window into how documentation decisions actually get made. I was not just thinking about whether the information was correct. I was thinking about how a reader moves through it.</p>
+<p>That is the shift. From writing to systems thinking.</p>
 <h2>The difference between writing and systems thinking</h2>
 <p><em>Writing</em> asks: is this clear? Is this accurate? Is this readable?</p>
 <p><em>Documentation systems</em> ask: where does this live? Who owns it? How does it get updated when the product changes? Can any part of it be reused? What happens to it at scale?</p>
 <p>One is about the quality of a document. The other is about the health of an entire information architecture. Most writers are trained for the first. Most product teams desperately need the second.</p>
+<div class="post-diagram">
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+  startOnLoad:true,
+  theme:'default',
+  themeVariables:{
+    primaryColor:'#F2EFE9',
+    primaryTextColor:'#111827',
+    primaryBorderColor:'rgba(184,150,46,0.4)',
+    lineColor:'#B8962E',
+    secondaryColor:'#F9F7F4',
+    tertiaryColor:'#F9F7F4',
+    background:'#F2EFE9',
+    mainBkg:'#F2EFE9',
+    nodeBorder:'rgba(184,150,46,0.4)',
+    clusterBkg:'rgba(184,150,46,0.06)',
+    clusterBorder:'rgba(184,150,46,0.3)',
+    titleColor:'#111827',
+    edgeLabelBackground:'#F2EFE9',
+    fontFamily:'DM Sans, sans-serif',
+    fontSize:'16px'
+  }
+});
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    document.querySelectorAll('.post-diagram .mermaid svg text').forEach(function(el){
+      el.style.setProperty('font-size','15px','important');
+      el.style.setProperty('font-family','DM Sans, sans-serif','important');
+    });
+    document.querySelectorAll('.post-diagram .mermaid svg .label div').forEach(function(el){
+      el.style.setProperty('font-size','15px','important');
+      el.style.setProperty('font-family','DM Sans, sans-serif','important');
+      el.style.setProperty('color','#111827','important');
+    });
+  }, 1000);
+});
+</script>
+<div class="mermaid">
+flowchart LR
+  subgraph W ["Writing asks"]
+    W1["Is this clear?"]
+    W2["Is this accurate?"]
+    W3["Is this readable?"]
+  end
+  subgraph S ["Systems thinking asks"]
+    S1["Where does this live?"]
+    S2["Who owns it?"]
+    S3["How does it get updated?"]
+    S4["Can any part be reused?"]
+    S5["What happens at scale?"]
+  end
+  W -->|"not enough"| S
+</div>
+</div>
 <h2>The same content. Two completely different levels of thinking.</h2>
 <p>Take an installation guide. A writing-focused approach produces clear, accurate, well-formatted steps. A systems-focused approach asks different questions before a single word is written: Should prerequisites be a separate reusable section or embedded in this guide? How does this guide connect to the configuration guide that follows it? What&rsquo;s the versioning strategy when v2 ships? Who is the subject matter expert and what&rsquo;s the review cadence?</p>
 <p>The output might look similar on the surface. But the second approach produces documentation that survives the product, and the team, changing around it. That&rsquo;s the difference between documentation that works on launch day and documentation that still works two years later.</p>
@@ -287,16 +344,16 @@ a{color:inherit;text-decoration:none;}
 <p>Modern product teams move fast. Features ship in weeks. APIs change. Products pivot. In that environment, documentation that isn&rsquo;t designed as a system becomes a liability almost immediately. It goes stale. It fragments. It contradicts itself. The cost of fixing it compounds every sprint.</p>
 <p>Teams that understand this aren&rsquo;t just looking for writers. They&rsquo;re looking for people who can think about information architecture, work alongside engineers in Git-based workflows, own content strategy across a product, and make decisions about structure and reuse that a product manager doesn&rsquo;t have the context to make.</p>
 <h2>Where this series is going</h2>
-<p>This is the opening argument. Everything that follows builds on it. How do real product teams actually handle documentation? What separates writing for developers from writing for everyone else? What makes a great installation guide different from a great API reference? How do structured writing, Docs-as-Code workflows, and tools like Git fit into a system that actually holds together under pressure?</p>
-<p>If that question matters to you, the next post is where we get into it.</p>
+<p>That is the opening argument. Part 02 makes it concrete. Most documentation is built like a bakery: one product, one shelf, accurate and useful but isolated. A reader arrives, finds what they need or doesn&rsquo;t, and leaves. There is nothing to pull them deeper.</p>
+<p>Building a supermarket is a different job entirely. That is what Part 02 is about.</p>
 <div class="quick-win">
   <span class="quick-win-label">Quick win for systems thinkers</span>
   <p>Next time you&rsquo;re asked to fix a typo, pause for one second and ask yourself: does this error exist in five other places?</p>
-  <p>If yes, you don&rsquo;t have a typo problem. You have a system problem. That question alone is the difference between a writer and a systems thinker.</p>
+  <p>If yes, you don&rsquo;t have a typo problem. You have a system problem. A systems thinker does not fix the five instances. They find the source &mdash; the template, the shared component, the unowned page &mdash; and fix it once.</p>
 </div>
-<h2>A word to whoever needs to hear this</h2>
-<p>If you&rsquo;re just starting out in technical writing, or somewhere in the middle feeling like there&rsquo;s a gap between what you were taught and what the work actually demands, this is for you. Your audience lives in a world of complexity. They come to documentation already frustrated, already stuck, already short on time. Understanding that pain point isn&rsquo;t a soft skill. It&rsquo;s the foundation of every structural decision you make.</p>
-<p>You don&rsquo;t have to figure all of this out before you start. I didn&rsquo;t. The system reveals itself through the work. Your job is to pay attention when it does, and be willing to change the infrastructure, not just the sentences, when something isn&rsquo;t working.</p>
+<h2>The system always tells you what it needs</h2>
+<p>The shift from writing to systems thinking rarely happens in planning. It happens in the work itself; when a broken link reveals a connectivity failure, when a stale page reveals an ownership gap, when a support ticket reveals a findability problem that no amount of careful writing could have prevented.</p>
+<p>The system always tells you what it needs. The question is whether you are looking at the sentences or at the structure.</p>
 <hr>
 <p><em>Already thinking about the tooling layer? My <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/">Git &amp; GitHub for Technical Writers series</a> covers the Git-based workflows that modern documentation systems run on.</em></p>
 </article></div>
