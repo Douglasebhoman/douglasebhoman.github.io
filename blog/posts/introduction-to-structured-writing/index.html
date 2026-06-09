@@ -1,23 +1,48 @@
-<!-- updated -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab. The three architectural elements that separate documentation that works from documentation that merely exists.">
+  <meta name="description" content="Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.">
   <meta name="author" content="Douglas Ebhoman">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/introduction-to-structured-writing">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/">
-  <meta property="og:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
-  <meta property="og:description" content="Most documentation fails silently. Not at launch — weeks later, when a reader clicks a broken link and closes the tab.">
-  <meta property="og:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/introduction-to-structured-writing">
+  <meta property="og:title" content="Introduction to Structured Writing | Systems Over Sentences &middot; Part 6">
+  <meta property="og:description" content="Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/introduction-to-structured-writing.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anatomy of Great Documentation &middot; Douglas Ebhoman">
-  <meta name="twitter:description" content="The three architectural elements that separate documentation that works from documentation that merely exists.">
-  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/anatomy-of-great-documentation-cover.png">
-  <title>Anatomy of Great Documentation &middot; Douglas Ebhoman</title>
+  <meta name="twitter:title" content="Introduction to Structured Writing &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="Most documentation problems are not writing problems. They are thinking problems.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/introduction-to-structured-writing.png">
+  <title>Introduction to Structured Writing | Systems Over Sentences &middot; Part 6 | Douglas Ebhoman</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Introduction to Structured Writing",
+    "description": "Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.",
+    "datePublished": "2026-06-10",
+    "url": "https://douglasebhoman.com/blog/posts/introduction-to-structured-writing",
+    "author": {
+      "@type": "Person",
+      "name": "Douglas Ebhoman",
+      "url": "https://douglasebhoman.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Douglas Ebhoman",
+      "url": "https://douglasebhoman.com"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "Systems Over Sentences",
+      "url": "https://douglasebhoman.com/blog/"
+    },
+    "keywords": ["structured writing", "technical writing", "information architecture", "documentation process", "documentation systems"]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,8 +81,6 @@ a{color:inherit;text-decoration:none;}
 .nav-cta{background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;font-weight:500;transition:background var(--fast);display:inline-block;}
 .nav-cta:hover{background:var(--gold-light);}
 .btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
-.btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
-.btn-gold:hover{background:var(--gold-light);}
 .btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);}
 .btn-ghost-light:hover{border-color:rgba(255,255,255,.35);color:#fff;}
 
@@ -65,10 +88,11 @@ a{color:inherit;text-decoration:none;}
 .noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;}
 .cursor-particle{position:fixed;width:4px;height:4px;border-radius:50%;background:rgba(184,150,46,.6);pointer-events:none;z-index:9997;will-change:transform,opacity;}
 
-/* ── Post hero ── */
+/* Post hero */
 .post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
 .post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
 .post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;min-height:44px;}
+.post-back:hover{color:rgba(255,255,255,.6);}
 .post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;display:inline-block;margin-bottom:20px;}
 .post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
 .post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
@@ -85,7 +109,7 @@ a{color:inherit;text-decoration:none;}
 .post-part-link--disabled{opacity:.18;pointer-events:none;cursor:default;}
 .post-part-series{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.1);}
 
-/* ── Post body ── */
+/* Post body */
 .post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
 .post-body{max-width:720px;margin:0 auto;}
 .post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.9;margin-bottom:1.6rem;font-weight:300;}
@@ -96,8 +120,6 @@ a{color:inherit;text-decoration:none;}
 .post-body strong{color:var(--text-dark);font-weight:500;}
 .post-body a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
 .post-body a:hover{color:var(--gold-light);}
-
-/* Selection */
 ::selection{background:rgba(184,150,46,.2);color:var(--text-dark);}
 
 /* Pull quote */
@@ -106,37 +128,49 @@ a{color:inherit;text-decoration:none;}
 @keyframes quotePulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
 .pull-quote p{font-size:clamp(15px,2vw,18px);color:var(--text-dark);font-style:italic;margin-bottom:0;line-height:1.7;font-weight:400;}
 
-/* Quick win */
-.quick-win{border:1px solid var(--gold-border);padding:clamp(20px,3vw,32px);margin:2.5rem 0;background:var(--cream-2);}
-.quick-win-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.quick-win p{font-size:14px;margin-bottom:12px;color:var(--text-mid);}
-.quick-win p:last-child{margin-bottom:0;}
-.quick-win ol{padding-left:20px;margin-bottom:12px;}
-.quick-win ol li{font-family:var(--serif);font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:8px;}
-.quick-win ol li:last-child{margin-bottom:0;}
+/* Sentience vs System contrast block */
+.contrast-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin:2.5rem 0;}
+.contrast-col{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;}
+.contrast-col--left{background:var(--navy);}
+.contrast-col--right{background:var(--gold);}
+.contrast-col-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:4px;}
+.contrast-col--left .contrast-col-title{color:#fff;}
+.contrast-col--right .contrast-col-title{color:var(--navy);}
+.contrast-col-subtitle{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:20px;}
+.contrast-col--left .contrast-col-subtitle{color:rgba(255,255,255,.3);}
+.contrast-col--right .contrast-col-subtitle{color:rgba(24,34,44,.6);}
+.contrast-col-quote{font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-style:italic;font-weight:300;line-height:1.75;flex:1;margin-bottom:20px;}
+.contrast-col--left .contrast-col-quote{color:rgba(255,255,255,.75);}
+.contrast-col--right .contrast-col-quote{color:var(--navy);}
+.contrast-col-result{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding-top:16px;}
+.contrast-col--left .contrast-col-result{color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);}
+.contrast-col--right .contrast-col-result{color:rgba(24,34,44,.65);border-top:1px solid rgba(24,34,44,.15);}
 
-/* Anatomy grid */
-.anatomy-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.anatomy-item{background:var(--cream);padding:20px 24px;border-left:2px solid transparent;transition:border-color var(--fast),transform var(--base),box-shadow var(--base);}
-.anatomy-item:hover{border-left-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04);}
-.anatomy-item-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
-.anatomy-item p{font-size:13px;margin-bottom:0;color:var(--text-mid);}
+/* Homework callout */
+.callout-gold{border-left:4px solid var(--gold);background:var(--gold-subtle);padding:clamp(20px,3vw,32px);margin:2.5rem 0;}
+.callout-gold-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+.post-body .callout-gold p{font-family:var(--sans);font-size:14px;color:var(--text-mid);line-height:1.85;margin-bottom:0;font-weight:300;}
+
+/* Author bio */
+.post-author-bio{border-top:1px solid var(--border-light);padding-top:2rem;margin-top:3rem;}
+.post-author-bio-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.post-body .post-author-bio p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.85;font-weight:300;font-style:italic;margin-bottom:0;}
+.post-author-bio a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
+.post-author-bio a:hover{color:var(--gold-light);}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
 
-/* Related cards */
+/* Related */
 .post-related{background:var(--navy-mid);padding:clamp(40px,6vw,60px) clamp(20px,5vw,48px);border-top:1px solid var(--border-dark);}
 .post-related-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
 .post-related-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
 .post-related-grid{display:grid;gap:1px;background:rgba(255,255,255,.06);}
 .post-related-grid--single{grid-template-columns:1fr;max-width:480px;}
-.post-related-grid--double{grid-template-columns:1fr 1fr;}
 .post-related-card{background:var(--navy);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background var(--base);}
 .post-related-card:hover{background:rgba(255,255,255,.03);}
-
 .post-related-card-body{padding:clamp(14px,2vw,22px);border-left:2px solid var(--gold-border);}
 .post-related-card-dir{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:6px;display:block;}
 .post-related-card-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
@@ -166,6 +200,13 @@ a{color:inherit;text-decoration:none;}
 .post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
 .post-footer-link:hover{color:var(--gold-light);}
 
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
+.nav-hamburger span{display:block;height:1.5px;background:#fff;border-radius:2px;transition:transform var(--base),opacity var(--base);}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
 /* Mobile */
 @media(max-width:768px){
   .nav-hamburger{display:flex;}
@@ -173,9 +214,12 @@ a{color:inherit;text-decoration:none;}
   .nav-links.open{display:flex;}
   .nav-links .nav-text{display:block;font-size:11px;padding:14px 0;border-bottom:1px solid var(--border-dark);}
   .nav-links .nav-icon{display:none;}
-  .nav-links .nav-cta{margin-top:12px;text-align:center;width:100%;padding:13px;}
+  .nav-links .nav-cta{margin-top:12px;text-align:center;width:100%;padding:13px;display:block;}
   .post-newsletter-inner{grid-template-columns:1fr;}
-  .post-related-grid--double{grid-template-columns:1fr;}
+  .contrast-block{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .post-part-series{display:none;}
 }
 </style>
 </head>
@@ -184,10 +228,9 @@ a{color:inherit;text-decoration:none;}
 <div class="noise-overlay" id="noiseOverlay"></div>
 <div class="progress-bar" id="progressBar"></div>
 
-<!-- NAV — no base target blank, Work goes to /work/ -->
 <nav class="nav" id="nav">
-  <a href="/">Douglas Ebhoman</a>
-  <div class="nav-links">
+  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <div class="nav-links" id="navLinks">
     <a href="/services/" class="nav-text">Services</a>
     <a href="/audit/"    class="nav-text">Audit</a>
     <a href="/work/"     class="nav-text">Work</a>
@@ -207,163 +250,137 @@ a{color:inherit;text-decoration:none;}
 <section class="post-hero">
   <div class="post-hero-inner">
     <a href="/blog/" class="post-back">&larr; Blog</a>
-    <span class="post-series-tag">Systems Over Sentences &middot; Part 05 of 10</span>
-    <h1 class="post-title">Anatomy of Great Documentation</h1>
-    <p class="post-subtitle">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
+    <span class="post-series-tag">Systems Over Sentences &middot; Part 06 of 10</span>
+    <h1 class="post-title">Introduction to Structured Writing</h1>
+    <p class="post-subtitle">Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies.</p>
     <div class="post-meta">
       <span class="post-meta-item">Douglas Ebhoman</span>
-      <span class="post-meta-item">May 3, 2026</span>
-      <span class="post-meta-item">8 min read</span>
+      <span class="post-meta-item">June 10, 2026</span>
+      <span class="post-meta-item">5 min read</span>
     </div>
   </div>
 </section>
 
-<!-- PART NAV — single, no duplicate -->
 <div class="post-part-nav">
   <div class="post-part-nav-inner">
-    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-part-link">&larr; Part 04</a>
+    <a href="/blog/posts/anatomy-of-great-documentation/" class="post-part-link">&larr; Part 05</a>
     <span class="post-part-series">Systems Over Sentences</span>
-    <a href="/blog/posts/introduction-to-structured-writing/" class="post-part-link">Part 06 &rarr;</a>
+    <span class="post-part-link post-part-link--disabled">Series in progress &rarr;</span>
   </div>
 </div>
 
-<!-- BODY -->
 <div class="post-body-wrap" id="post-content">
 <article class="post-body">
 
-<p class="lead">Most documentation does not fail at launch.</p>
+<p class="lead">There were words on the page, but the page lacked the information needed.</p>
 
-<p>It fails quietly. Weeks later. When a reader clicks a link that goes nowhere. When a procedure ends without telling them what to do next. When a page describes a product that shipped six months ago. Nobody filed a bug report. Nobody sent an email. The reader just closed the tab.</p>
+<p>I did not realise this immediately. I had come from creative writing, where the world you build is entirely your own. You invent the characters, the rules, the logic. If a detail does not exist, you create it. Research, when it happens at all, serves the story you have already decided to tell.</p>
 
-<p>That is how documentation dies. Not with a complaint. With silence.</p>
+<p>So when I was commissioned to write a review for a product I had never used, I approached it the same way. I gathered what I could from the surface, found the right words, and arranged them into something that looked like documentation. It read well. The grammar was clean. The structure was there.</p>
 
-<hr>
+<p>But I had documented a product I did not fully understand. And that meant every reader who followed my words was walking a path I had not actually walked myself. I was not guiding them through the product. I was leading them toward a dead end, confidently.</p>
 
-<p>Earlier in my practice, I was working on a product documentation project. Paying close attention to information accuracy, editing and re-editing ruthlessly. Every sentence earned its place. Every technical term was defined. Every procedure was tested before it was written.</p>
+<p>The moment I understood this was the moment I understood the difference between creative writing and technical writing. In creative writing, you build the world. In technical writing, you step into a world that already exists, fully formed, with rules you did not make and details that are not yours to invent. Every assumption you bring with you is a risk your audience will pay for.</p>
 
-<p>And then someone clicked a link. It went nowhere.</p>
-
-<p>One broken link. That was all it took to push an otherwise solid piece of documentation into isolation. Not bad writing. Not inaccurate information. Not poor structure. A single broken connection, and the reader had nowhere to go next.</p>
-
-<p>That experience forced a question I had not asked before: what actually makes documentation great? Not good. Not accurate. Not well-formatted. <strong>Great.</strong></p>
-
-<p>The answer is not what most technical writers expect. It is not a writing standard. It is an architectural one. And it shows up consistently in the same three places: <strong>Connectivity, Architecture, and Feedback Responsiveness</strong>, in that order, because that is the order in which most documentation systems fail.</p>
+<p>This is where structured writing begins. Not with a template. Not with a style guide. It begins with the discipline of understanding before you document.</p>
 
 <hr>
 
-<h2>Element 1: Connectivity</h2>
+<h2>What Structured Writing Actually Is</h2>
 
-<p>There is a version of documentation that is technically correct in every sentence and still completely useless. It answers the question the reader asked, but does not anticipate the question they are about to ask. It defines the term, but does not link to where the term is used. It explains the procedure, but ends without telling the reader where to go next.</p>
+<p>Most people hear &ldquo;structured writing&rdquo; and think about formatting. Headings, bullet points, numbered lists, style guides. And while those things matter, they are not structure. They are the surface of structure. Confusing the two is like mistaking a painted wall for the foundation of a house.</p>
 
-<p>This documentation exists. It does not work.</p>
+<p>Structured writing is the discipline of organising information before you organise words. It is the decision, made before you open a blank document, about what your reader needs to know, in what order, and why. It is the understanding that documentation is not writing about a product: it is building a path through it.</p>
 
-<p>Documentation that actually works is connected: connected to other pages, connected to the product it describes, connected to the reader&rsquo;s next question before they have to ask it. Think about the last time you used documentation that felt effortless. You probably did not notice the writing. You did not notice the formatting. What you noticed was that every time you needed the next piece of information, it was already there. That is connectivity in action. It is invisible when it works.</p>
+<p>This distinction matters because most documentation problems are not writing problems. They are thinking problems. When a user gets lost in a help article, it is rarely because the sentences were unclear. It is because the person who wrote it had not fully mapped the territory before drawing the map. And the reason they had not mapped the territory is because they started with words instead of understanding.</p>
 
-<p>Now think about documentation that frustrated you: the broken link, the reference to a page that no longer exists, the procedure that ended with no next step. None of those were writing problems. All of them were connectivity problems.</p>
+<p>Technical writing carries a responsibility that most other forms of writing do not. When someone reads a novel and misunderstands a scene, they lose a moment of pleasure. When someone reads a technical document and misunderstands a step, they lose time, money, or trust in the product entirely. The stakes are different. Which means the preparation has to be different.</p>
 
 <div class="pull-quote reveal">
-  <p>Great documentation is not the sum of its well-written parts. It is the quality of its connections.</p>
+  <p>Assumption is the enemy of accurate documentation. Not bad grammar. Not poor formatting. Assumption.</p>
 </div>
 
-<p>Connectivity is the first thing that breaks when documentation is treated as a writing task rather than a systems task. The fix is rarely more careful editing. It is automation: a GitHub Actions workflow that checks every link on every push and fails the build if any are broken catches what a careful editor misses every time.</p>
+<p>Because assumption means you are documenting what you think is true rather than what is true. And in technical writing, the gap between those two things is where your audience gets lost.</p>
 
 <hr>
 
-<h2>Element 2: Architecture</h2>
+<h2>The Shift: Sentience vs. System</h2>
 
-<p>If connectivity is about how pages relate to each other, architecture is about how the documentation system as a whole reflects, or fails to reflect, the product it documents.</p>
-
-<p>Most technical writers are trained to handle visible threats: poor grammar, wrong terminology, structural errors. The real threat hides in plain sight. Which pages exist and which do not. How navigation is structured. What the entry points are and where they lead. Whether the documentation reflects the current version of the product or the version that shipped eighteen months ago.</p>
-
-<p>These decisions are rarely made deliberately. They accumulate. A page is added here. A section deprecated there. A nav item renamed but not updated elsewhere. Over time, the documentation develops invisible fault lines: places where the structure no longer reflects reality, where readers fall through gaps that the writer never saw because the writer always knew the way.</p>
-
-<p>Architecture problems do not show up in a grammar check. They show up when a reader hits a dead end and closes the tab. They show up in support tickets that reference the same documentation page three months running. They show up when a developer onboards and tells you the docs do not match the product.</p>
-
-<p>A document can be technically perfect and architecturally broken. When that happens, the writing is not what failed. The system failed. The technical writer&rsquo;s job is not just to write accurately at launch. It is to maintain a system that stays accurate as the product evolves.</p>
+<div class="contrast-block reveal">
+  <div class="contrast-col contrast-col--left">
+    <span class="contrast-col-title">Sentience</span>
+    <span class="contrast-col-subtitle">The Creative Impulse</span>
+    <p class="contrast-col-quote">&ldquo;I will start writing and figure out the structure as the words flow.&rdquo;</p>
+    <span class="contrast-col-result">Result: A beautiful path to a dead end.</span>
+  </div>
+  <div class="contrast-col contrast-col--right">
+    <span class="contrast-col-title">System</span>
+    <span class="contrast-col-subtitle">The Structured Discipline</span>
+    <p class="contrast-col-quote">&ldquo;I will map the territory, define the audience, and lock the architecture before typing a single sentence.&rdquo;</p>
+    <span class="contrast-col-result">Result: Functional, reliable documentation.</span>
+  </div>
+</div>
 
 <hr>
 
-<h2>Element 3: Feedback Responsiveness</h2>
+<h2>The Three Stages Before You Write</h2>
 
-<p>Feedback Responsiveness means the documentation system actively collects signal from real readers and uses it to improve. Not a quarterly review. Not a ticket when something breaks. A structural part of how documentation is maintained.</p>
+<p>Structured writing is not a single action. It is a sequence. And that sequence begins long before you open a document.</p>
 
-<p>Here is where the most experienced technical writers quietly undermine their own best work. They assume they know what good documentation looks like. That assumption, built from years of experience, style guides, frameworks, and professional instinct, creates a problem that is almost invisible from the inside. When you already know what good looks like, you stop asking whether it works.</p>
+<p>In the posts that follow this one, we will go deep into each stage. But here is the foundation you need to understand first.</p>
 
-<div class="pull-quote reveal">
-  <p>The writer sees a flaw. The reader sees a door.</p>
-</div>
+<p><strong>The first stage is research.</strong> This is where you close the gap between assumption and accuracy. You use the product. You walk the process. You ask the questions your audience will ask. You do not move forward until you understand what you are documenting well enough to explain it to someone who has never seen it before.</p>
 
-<p>Most technical writers fix the flaw before asking whether it was a flaw at all. They edit toward correctness and away from connection. Real documentation quality is not determined at the writing stage. It is determined at the reading stage.</p>
+<p><strong>The second stage is audience analysis.</strong> Research tells you what is true. Audience analysis tells you what is relevant. Not everything you learn belongs in the document. The question is not what does this product do: it is what does this specific reader need to know, at this specific moment, to complete this specific task. Answering that question shapes everything that follows.</p>
 
-<p>The only way to know what happens at the reading stage is to build feedback into the process. Ask readers what confused them. Track which pages have the highest exit rates. Notice which support tickets reference the same documentation page repeatedly. The signal is always there. Most writers are just not looking for it.</p>
+<p><strong>The third stage is information architecture.</strong> This is where you decide the order. What comes first, what comes next, and why. A document that contains the right information in the wrong order is still a document that fails. Architecture is the discipline of arranging what you know into a sequence your reader can follow without effort.</p>
+
+<p>These three stages are the skeleton of every document you will ever write. Master them, and the writing becomes the easiest part of the process.</p>
 
 <hr>
 
-<div class="quick-win reveal">
-  <span class="quick-win-label">Quick win for systems thinkers</span>
-  <p>Pick any page in your current documentation. Ask four questions:</p>
-  <ol>
-    <li>If a reader lands on this page from a search engine and clicks every link, where do they end up?</li>
-    <li>Does every procedure on this page reflect how the product actually works today?</li>
-    <li>When did you last ask a real reader what confused them on this page?</li>
-    <li>Does this page have a clear owner whose name you can identify immediately?</li>
-  </ol>
-  <p>If any link goes nowhere, you have found a connectivity failure. If any content describes outdated behaviour, you have found an architecture failure. If you have never asked a real reader about this page, you have found a feedback failure.</p>
+<h2>The Work Before the Work</h2>
+
+<p>There is a reason experienced technical writers spend more time before the document than inside it. It is not perfectionism. It is not overthinking. It is the understanding that a document built on a weak foundation cannot be saved by strong sentences.</p>
+
+<p>When I sat down to write that product review without fully understanding the product, I was not being lazy. I was being unconscious. I did not yet know that the work before the work was the work. I thought documentation began when you started typing. It does not. It begins when you start understanding.</p>
+
+<p>That shift in thinking is what separates documentation that informs from documentation that merely exists. And it is the shift this series is built around.</p>
+
+<div class="callout-gold reveal">
+  <span class="callout-gold-label">Before you move on to Part 7</span>
+  <p>Pick a product, tool, or process you think you already understand well. Write down three assumptions you are currently making about it: things you believe to be true but have not actually verified. That list is where your next document either earns your reader&rsquo;s trust or loses it.</p>
 </div>
 
-<h2>The full anatomy</h2>
+<p>In the next post, we go into the first stage in depth. Research: not as a preliminary checkbox, but as the foundation of everything accurate you will ever write.</p>
 
-<p>Great documentation is built on three elements, maintained deliberately and continuously:</p>
+<p><em>The words come later. First, you have to understand.</em></p>
 
-<div class="anatomy-grid">
-  <div class="anatomy-item reveal">
-    <span class="anatomy-item-label">Connectivity</span>
-    <p>Every page knows where it leads and every link goes somewhere that serves the reader&rsquo;s next question.</p>
-  </div>
-  <div class="anatomy-item reveal reveal-d1">
-    <span class="anatomy-item-label">Architecture</span>
-    <p>The documentation system reflects the current state of the product, updated not just at launch but continuously as the product evolves.</p>
-  </div>
-  <div class="anatomy-item reveal reveal-d2">
-    <span class="anatomy-item-label">Feedback Responsiveness</span>
-    <p>The writer actively seeks signal from real readers rather than assuming experience is enough to know what works.</p>
-  </div>
+<hr>
+
+<div class="post-author-bio reveal">
+  <span class="post-author-bio-label">About the author</span>
+  <p>Douglas Ebhoman is a freelance technical writer and documentation systems specialist based in Prague. He works with DevTools and SaaS companies under his brand KBD Creative. Read more at <a href="https://douglasebhoman.com">douglasebhoman.com</a>.</p>
 </div>
-
-<p>Remove any one of these and the documentation still exists. It may even look good. But it will not work the way it needs to.</p>
-
-<p>The broken link that opened this post was a connectivity failure. But it taught me something about all three elements. I had the writing right. I had the accuracy right. What I had not built was a system for maintaining what I had written.</p>
-
-<p>That is the anatomy. It is not something you build once at launch. It is something you maintain every time the product changes, every time a reader hits a dead end, and every time you are tempted to edit the prose instead of checking the connections.</p>
 
 </article>
 </div>
 
 <section class="post-related">
   <p class="post-related-label">Continue the series</p>
-  <div class="post-related-grid">
-    <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="post-related-card">
+  <div class="post-related-grid post-related-grid--single">
+    <a href="/blog/posts/anatomy-of-great-documentation/" class="post-related-card">
       <div class="post-related-card-body">
         <span class="post-related-card-dir">&larr; Previous</span>
-        <span class="post-related-card-tag">Part 04</span>
-        <h3 class="post-related-card-title">Writing for Developers vs Non-Technical Users</h3>
-        <p class="post-related-card-pull">&ldquo;Same information, completely different job. The distinction is not about vocabulary.&rdquo;</p>
-        <span class="post-related-card-cta">Read Part 04 &rarr;</span>
-      </div>
-    </a>
-    <a href="/blog/posts/introduction-to-structured-writing/" class="post-related-card">
-      <div class="post-related-card-body">
-        <span class="post-related-card-dir">Next &rarr;</span>
-        <span class="post-related-card-tag">Part 06</span>
-        <h3 class="post-related-card-title">Introduction to Structured Writing</h3>
-        <p class="post-related-card-pull">&ldquo;Structure is not a constraint on good writing. It is the condition that makes good writing possible at scale.&rdquo;</p>
-        <span class="post-related-card-cta">Read Part 06 &rarr;</span>
+        <span class="post-related-card-tag">Part 05</span>
+        <h3 class="post-related-card-title">Anatomy of Great Documentation</h3>
+        <p class="post-related-card-pull">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
+        <span class="post-related-card-cta">Read Part 05 &rarr;</span>
       </div>
     </a>
   </div>
 </section>
 
-<!-- COMMENTS -->
 <section class="post-comments">
   <p class="comments-label">Discussion</p>
   <script src="https://giscus.app/client.js"
@@ -384,7 +401,6 @@ a{color:inherit;text-decoration:none;}
   </script>
 </section>
 
-<!-- NEWSLETTER -->
 <section class="post-newsletter">
   <div class="post-newsletter-inner">
     <div>
@@ -413,7 +429,7 @@ a{color:inherit;text-decoration:none;}
 
 <script>
 /* Noise animation */
-const noiseEl = document.getElementById('noiseOverlay');
+const noiseEl=document.getElementById('noiseOverlay');
 if(noiseEl){let n=0;function an(){n+=.5;noiseEl.style.backgroundPosition=n+'px '+n+'px';requestAnimationFrame(an);}an();}
 
 /* Cursor trail */
@@ -435,19 +451,7 @@ document.addEventListener('mousemove',e=>{
   requestAnimationFrame(ucp);
 })();
 
-/* Ken Burns parallax — does NOT fight CSS animation */
-window.addEventListener('scroll',()=>{
-  const img=document.querySelector('.post-banner-img-wrap img');
-  if(!img)return;
-  const wrap=document.querySelector('.post-banner-img-wrap');
-  const rect=wrap.getBoundingClientRect();
-  if(rect.bottom>0&&rect.top<window.innerHeight){
-    const progress=Math.min(1,Math.max(0,-rect.top/rect.height));
-    img.style.transform=`scale(1.06) translateY(${progress*8}%)`;
-  }
-},{passive:true});
-
-/* Scroll — null-safe */
+/* Scroll progress + nav shadow */
 let _t=false;
 window.addEventListener('scroll',()=>{
   if(!_t){requestAnimationFrame(()=>{
@@ -461,41 +465,43 @@ window.addEventListener('scroll',()=>{
   });_t=true;}
 },{passive:true});
 
-/* Reveal */
+/* Reveal on scroll */
 const ro=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
     if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'),i*100);
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
       ro.unobserve(e.target);
     }
   });
 },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
+/* Mobile nav toggle */
 const navHamburger=document.getElementById('navHamburger');
 const navLinksEl=document.getElementById('navLinks');
 if(navHamburger&&navLinksEl){
-  navHamburger.addEventListener('click',()=>{const isOpen=navLinksEl.classList.toggle('open');navHamburger.classList.toggle('open',isOpen);navHamburger.setAttribute('aria-expanded',String(isOpen));});
-  navLinksEl.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{setTimeout(()=>{navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');},50);});});
-  document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
-}
-
-/* Smooth anchor scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(!t)return;
-    e.preventDefault();
-    const start=window.pageYOffset,dist=t.getBoundingClientRect().top;
-    let s=null;
-    (function step(ts){
-      if(!s)s=ts;
-      const p=Math.min((ts-s)/800,1);
-      window.scrollTo(0,start+dist*(1-Math.pow(1-p,4)));
-      if(p<1)requestAnimationFrame(step);
-    })(performance.now());
+  navHamburger.addEventListener('click',()=>{
+    const isOpen=navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open',isOpen);
+    navHamburger.setAttribute('aria-expanded',String(isOpen));
   });
-});
+  navLinksEl.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      setTimeout(()=>{
+        navLinksEl.classList.remove('open');
+        navHamburger.classList.remove('open');
+        navHamburger.setAttribute('aria-expanded','false');
+      },50);
+    });
+  });
+  document.addEventListener('click',e=>{
+    if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded','false');
+    }
+  });
+}
 </script>
 </body>
 </html>
