@@ -583,6 +583,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 }
 @media (max-width:480px){
   .proof-metrics{grid-template-columns:1fr;}
-  .f-contact-grid{grid-template-columns:1fr;}
+  .f-contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;}
   .post-part-series{display:none;}
 }
