@@ -1,15 +1,15 @@
 # douglasebhoman.com
 
-Portfolio, blog, and live CV for Douglas Ebhoman, a documentation systems specialist based in Prague. The site serves three audiences: engineering teams evaluating a freelance documentation engagement, hiring managers reviewing a technical writer candidate, and technical writers looking for content on documentation architecture and Docs-as-Code workflows. It is built in pure HTML, CSS, and vanilla JavaScript with no build process or framework dependencies — the repository contents are the deployment artefact.
+Personal website and freelance practice for Douglas Ebhoman, a documentation systems specialist based in Prague. The site serves two audiences: engineering teams and product leads evaluating a freelance documentation engagement, and technical writers looking for content on documentation architecture and Docs-as-Code workflows. It is built in pure HTML, CSS, and vanilla JavaScript with no build process or framework dependencies — the repository contents are the deployment artefact.
 
 ---
 
 ## Site structure
 
 | URL | Page | Contents |
-|-----|------|----------|
-| `/` | Homepage | Hero, scrolling ticker, documentation health check widget, selected portfolio, writing samples (tabbed), Documentation Audit service, process steps, social proof, final CTA, newsletter signup |
-| `/work/` | Portfolio | Full grid of six documentation portfolio pieces with filter bar, writing preview strip |
+| --- | --- | --- |
+| `/` | Homepage | Hero, scrolling ticker, documentation health check widget, selected work, writing samples (tabbed), Documentation Audit service, process steps, social proof, final CTA, newsletter signup |
+| `/work/` | Work | Full grid of documentation portfolio pieces with writing preview strip |
 | `/services/` | Services | Documentation Audit — full detail on the €300, five-working-day audit service, pricing, FAQ |
 | `/blog/` | Blog index | Systems Over Sentences series — featured article, series navigation strip, full article grid, newsletter |
 | `/blog/posts/from-writing-to-documentation-systems/` | Post — Part 01 | From Writing to Documentation Systems |
@@ -18,16 +18,14 @@ Portfolio, blog, and live CV for Douglas Ebhoman, a documentation systems specia
 | `/blog/posts/writing-for-developers-vs-non-technical-users/` | Post — Part 04 | Writing for Developers vs Non-Technical Users |
 | `/blog/posts/anatomy-of-great-documentation/` | Post — Part 05 | Anatomy of Great Documentation |
 | `/blog/posts/introduction-to-structured-writing/` | Post — Part 06 | Introduction to Structured Writing |
-| `/cv/` | CV | Version-controlled live CV: metrics strip, two-column layout with sticky sidebar, outcome-led portfolio entries, changelog, PDF download |
 | `/404.html` | 404 | Custom error page with navigation back to the homepage |
 
 ### Supporting files
 
 | File / directory | Purpose |
-|-----------------|---------|
+| --- | --- |
 | `styles.css` | Global stylesheet shared across all pages |
 | `assets/images/` | All site images: portfolio cards, blog post covers, headshots |
-| `assets/files/Douglas_Ebhoman_CV.pdf` | Downloadable CV linked from the CV page and contact section |
 | `site-docs/` | Internal documentation: architecture, deployment, content guide, contributing |
 | `CNAME` | Custom domain record for GitHub Pages (`douglasebhoman.com`) |
 | `sitemap.xml` | XML sitemap for search engine indexing |
@@ -39,28 +37,28 @@ Portfolio, blog, and live CV for Douglas Ebhoman, a documentation systems specia
 ## Technology stack
 
 | Layer | Technology |
-|-------|-----------|
+| --- | --- |
 | Markup | HTML5 |
 | Styles | CSS3 — custom properties, Grid, Flexbox, `clamp()`, multi-column layout, CSS animations |
 | Scripts | Vanilla JavaScript — no frameworks or libraries |
 | Hosting | GitHub Pages, served directly from `main` |
 | DNS | Cloudflare — DNS-only mode (no proxy), CNAME pointing to `douglasebhoman.github.io` |
 | HTTPS | Let's Encrypt via GitHub Pages automatic certificate issuance |
-| Fonts | Google Fonts — Fraunces, DM Sans, DM Mono (CV page: Lora, DM Mono) |
-| Comments | [Giscus](https://giscus.app) — GitHub Discussions as comment backend on all blog posts |
-| Newsletter | [MailerLite](https://www.mailerlite.com) — embedded form widget (account `2241731`, form `8iCjwu`) |
-| Booking | [Calendly](https://calendly.com/douglas-douglasebhoman/30min) — booking link for the Documentation Audit |
+| Fonts | Google Fonts — Fraunces, DM Sans, DM Mono |
+| Comments | Giscus — GitHub Discussions as comment backend on all blog posts |
+| Newsletter | MailerLite — embedded form widget |
+| Booking | Calendly — booking link for the Documentation Audit |
 
 ### Vanilla JavaScript interactions (homepage)
 
 All interactions live in a single `<script>` block at the bottom of `index.html`.
 
 | Interaction | Description |
-|-------------|-------------|
+| --- | --- |
 | Particle network canvas | Animated gold particle field on the hero section |
 | Cursor trail | Gold particles follow the cursor |
 | Scrolling ticker | CSS marquee animation, duplicated content for seamless looping |
-| Social proof carousel | Auto-rotating three-item carousel with dot indicators, 4 s per item |
+| Social proof carousel | Auto-rotating three-item carousel with dot indicators, 4s per item |
 | Scroll-progress bar | Gold bar across the top of the viewport tracking scroll depth |
 | Scroll reveals | IntersectionObserver fades elements up as they enter the viewport |
 | Animated counters | Stat numbers count up when visible |
@@ -86,7 +84,7 @@ The site deploys automatically on every push to `main`. There is no build step �
 ### Custom domain setup
 
 | Step | Detail |
-|------|--------|
+| --- | --- |
 | `CNAME` file | Declares `douglasebhoman.com` as the custom domain |
 | Cloudflare DNS | CNAME record: `douglasebhoman.com` → `douglasebhoman.github.io`, DNS-only (proxy disabled) |
 | GitHub Pages settings | Custom domain confirmed in repository settings |
@@ -105,16 +103,16 @@ After pushing, open the **Actions** tab in the repository. The `pages-build-depl
 *Systems Over Sentences* is a 10-part series on documentation architecture, ownership, and craft for DevTools and SaaS teams. Six parts are published.
 
 | Part | Title | Date |
-|------|-------|------|
+| --- | --- | --- |
 | 01 | [From Writing to Documentation Systems](https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/) | April 8, 2026 |
 | 02 | [Your Documentation is a Bakery. Here's How to Build a Supermarket.](https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/) | April 13, 2026 |
 | 03 | [How Product Teams Actually Handle Documentation](https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/) | April 20, 2026 |
 | 04 | [Writing for Developers vs Non-Technical Users](https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/) | April 27, 2026 |
 | 05 | [Anatomy of Great Documentation](https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/) | May 3, 2026 |
-| 06 | [Introduction to Structured Writing](https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/) | June 10, 2026 |
+| 06 | [Introduction to Structured Writing](https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/) | — |
 | 07–10 | *In progress* | — |
 
-Each post is self-contained and part of a connected series. Every post includes a part-navigation strip, related posts section, Giscus comment thread, and newsletter signup. Open Graph and Twitter Card meta tags are set on all five posts.
+Each post is self-contained and part of a connected series. Every post includes a part-navigation strip, related posts section, Giscus comment thread, and newsletter signup. Open Graph and Twitter Card meta tags are set on all published posts.
 
 ---
 
@@ -123,7 +121,7 @@ Each post is self-contained and part of a connected series. Every post includes 
 ### Colour palette
 
 | Token | Hex / value | Usage |
-|-------|-------------|-------|
+| --- | --- | --- |
 | `--navy` | `#18222C` | Primary dark background, nav, footer |
 | `--navy-mid` | `#1E2D3D` | Secondary dark surface |
 | `--navy-light` | `#243044` | Tertiary dark surface |
@@ -141,17 +139,15 @@ Each post is self-contained and part of a connected series. Every post includes 
 ### Typography
 
 | Token | Value | Usage |
-|-------|-------|-------|
+| --- | --- | --- |
 | `--serif` | `'Fraunces', Georgia, serif` | Headlines, pull quotes, drop caps, blog body text |
 | `--sans` | `'DM Sans', system-ui, sans-serif` | Body text, UI copy |
 | `--mono` | `'DM Mono', monospace` | Labels, tags, metadata, navigation, code samples |
 
-The CV page loads **Lora** and **DM Mono** separately via its own `<link>` tag.
-
 ### Layout variables
 
 | Token | Value | Purpose |
-|-------|-------|---------|
+| --- | --- | --- |
 | `--container` | `960px` | Maximum content width |
 | `--pad` | `clamp(24px, 5vw, 48px)` | Responsive horizontal section padding |
 | `--fast` | `0.15s ease` | Quick UI transitions (hover states) |
@@ -171,10 +167,10 @@ The CV page loads **Lora** and **DM Mono** separately via its own `<link>` tag.
 ## Contact and booking
 
 | | |
-|--|--|
+| --- | --- |
 | **Book the Documentation Audit** | [calendly.com/douglas-douglasebhoman/30min](https://calendly.com/douglas-douglasebhoman/30min) |
 | **Email** | douglas@douglasebhoman.com |
-| **LinkedIn** | [linkedin.com/in/douglas-ebhoman-757329289](https://linkedin.com/in/douglas-ebhoman-757329289) |
+| **LinkedIn** | [linkedin.com/in/douglas-ebhoman](https://linkedin.com/in/douglas-ebhoman-757329289) |
 | **GitHub** | [github.com/Douglasebhoman](https://github.com/Douglasebhoman) |
 
 The Documentation Audit is a fixed-fee service: €300, delivered in five working days. It covers accuracy, architecture, ownership, and findability across the client's documentation system, with a written report and a 30-minute walkthrough call.
