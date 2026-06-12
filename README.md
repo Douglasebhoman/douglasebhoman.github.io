@@ -17,6 +17,7 @@ Portfolio, blog, and live CV for Douglas Ebhoman, a documentation systems specia
 | `/blog/posts/how-product-teams-actually-handle-documentation/` | Post — Part 03 | How Product Teams Actually Handle Documentation |
 | `/blog/posts/writing-for-developers-vs-non-technical-users/` | Post — Part 04 | Writing for Developers vs Non-Technical Users |
 | `/blog/posts/anatomy-of-great-documentation/` | Post — Part 05 | Anatomy of Great Documentation |
+| `/blog/posts/introduction-to-structured-writing/` | Post — Part 06 | Introduction to Structured Writing |
 | `/cv/` | CV | Version-controlled live CV: metrics strip, two-column layout with sticky sidebar, outcome-led portfolio entries, changelog, PDF download |
 | `/404.html` | 404 | Custom error page with navigation back to the homepage |
 
@@ -101,7 +102,7 @@ After pushing, open the **Actions** tab in the repository. The `pages-build-depl
 
 ## Blog series: Systems Over Sentences
 
-*Systems Over Sentences* is a 10-part series on documentation architecture, ownership, and craft for DevTools and SaaS teams. Five parts are published.
+*Systems Over Sentences* is a 10-part series on documentation architecture, ownership, and craft for DevTools and SaaS teams. Six parts are published.
 
 | Part | Title | Date |
 |------|-------|------|
@@ -110,7 +111,8 @@ After pushing, open the **Actions** tab in the repository. The `pages-build-depl
 | 03 | [How Product Teams Actually Handle Documentation](https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/) | April 20, 2026 |
 | 04 | [Writing for Developers vs Non-Technical Users](https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/) | April 27, 2026 |
 | 05 | [Anatomy of Great Documentation](https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/) | May 3, 2026 |
-| 06–10 | *In progress* | — |
+| 06 | [Introduction to Structured Writing](https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/) | June 10, 2026 |
+| 07–10 | *In progress* | — |
 
 Each post is self-contained and part of a connected series. Every post includes a part-navigation strip, related posts section, Giscus comment thread, and newsletter signup. Open Graph and Twitter Card meta tags are set on all five posts.
 
