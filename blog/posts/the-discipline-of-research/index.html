@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.">
+  <meta name="description" content="Accurate documentation is not written from one point of view. It is assembled from many. Part 7 of Systems Over Sentences, on research as consultation.">
   <meta name="author" content="Douglas Ebhoman">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/introduction-to-structured-writing">
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/the-discipline-of-research">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/introduction-to-structured-writing">
-  <meta property="og:title" content="Introduction to Structured Writing | Systems Over Sentences &middot; Part 6">
-  <meta property="og:description" content="Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.">
-  <meta property="og:image" content="https://douglasebhoman.com/assets/images/introduction-to-structured-writing.png">
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/the-discipline-of-research">
+  <meta property="og:title" content="Your Documentation Only Knows What One Person Noticed | Systems Over Sentences &middot; Part 7">
+  <meta property="og:description" content="Accurate documentation is not written from one point of view. It is assembled from many. Part 7 of Systems Over Sentences, on research as consultation.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/the-discipline-of-research.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Introduction to Structured Writing &middot; Douglas Ebhoman">
-  <meta name="twitter:description" content="Most documentation problems are not writing problems. They are thinking problems.">
-  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/introduction-to-structured-writing.png">
-  <title>Introduction to Structured Writing | Systems Over Sentences &middot; Part 6 | Douglas Ebhoman</title>
+  <meta name="twitter:title" content="Your Documentation Only Knows What One Person Noticed &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="Accurate documentation is not written from one point of view. It is assembled from many.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/the-discipline-of-research.png">
+  <title>Your Documentation Only Knows What One Person Noticed | Systems Over Sentences &middot; Part 7 | Douglas Ebhoman</title>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Introduction to Structured Writing",
-    "description": "Most documentation problems are not writing problems. They are thinking problems. Part 6 of Systems Over Sentences breaks down structured writing.",
-    "datePublished": "2026-06-10",
-    "url": "https://douglasebhoman.com/blog/posts/introduction-to-structured-writing",
+    "headline": "Your Documentation Only Knows What One Person Noticed",
+    "description": "Accurate documentation is not written from one point of view. It is assembled from many. Part 7 of Systems Over Sentences, on research as consultation.",
+    "datePublished": "2026-06-26",
+    "url": "https://douglasebhoman.com/blog/posts/the-discipline-of-research",
     "author": {
       "@type": "Person",
       "name": "Douglas Ebhoman",
@@ -40,7 +40,7 @@
       "name": "Systems Over Sentences",
       "url": "https://douglasebhoman.com/blog/"
     },
-    "keywords": ["structured writing", "technical writing", "information architecture", "documentation process", "documentation systems"]
+    "keywords": ["documentation research", "technical writing", "stakeholder consultation", "subject matter experts", "audience analysis", "documentation systems"]
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none;}
 @keyframes quotePulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
 .pull-quote p{font-size:clamp(15px,2vw,18px);color:var(--text-dark);font-style:italic;margin-bottom:0;line-height:1.7;font-weight:400;}
 
-/* Sentience vs System contrast block */
+/* Observation vs Inquiry contrast block */
 .contrast-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin:2.5rem 0;}
 .contrast-col{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;}
 .contrast-col--left{background:var(--navy);}
@@ -150,6 +150,11 @@ a{color:inherit;text-decoration:none;}
 .callout-gold{border-left:4px solid var(--gold);background:var(--gold-subtle);padding:clamp(20px,3vw,32px);margin:2.5rem 0;}
 .callout-gold-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
 .post-body .callout-gold p{font-family:var(--sans);font-size:14px;color:var(--text-mid);line-height:1.85;margin-bottom:0;font-weight:300;}
+
+/* Further reading */
+.further-reading{border-top:1px solid var(--border-light);margin-top:2.5rem;padding-top:1.5rem;}
+.further-reading-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.post-body .further-reading p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:0;}
 
 /* Author bio */
 .post-author-bio{border-top:1px solid var(--border-light);padding-top:2rem;margin-top:3rem;}
@@ -250,111 +255,114 @@ a{color:inherit;text-decoration:none;}
 <section class="post-hero">
   <div class="post-hero-inner">
     <a href="/blog/" class="post-back">&larr; Blog</a>
-    <span class="post-series-tag">Systems Over Sentences &middot; Part 06 of 10</span>
-    <h1 class="post-title">Introduction to Structured Writing</h1>
+    <span class="post-series-tag">Systems Over Sentences &middot; Part 07 of 10</span>
+    <h1 class="post-title">Your Documentation Only Knows What One Person Noticed</h1>
     <p class="post-subtitle">Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies.</p>
     <div class="post-meta">
       <span class="post-meta-item">Douglas Ebhoman</span>
-      <span class="post-meta-item">June 10, 2026</span>
-      <span class="post-meta-item">5 min read</span>
+      <span class="post-meta-item">June 26, 2026</span>
+      <span class="post-meta-item">7 min read</span>
     </div>
   </div>
 </section>
 
 <div class="post-part-nav">
   <div class="post-part-nav-inner">
-    <a href="/blog/posts/anatomy-of-great-documentation/" class="post-part-link">&larr; Part 05</a>
+    <a href="/blog/posts/introduction-to-structured-writing/" class="post-part-link">&larr; Part 06</a>
     <span class="post-part-series">Systems Over Sentences</span>
-    <a href="/blog/posts/the-discipline-of-research/" class="post-part-link">Part 07 &rarr;</a>
+    <span class="post-part-link post-part-link--disabled">Series in progress &rarr;</span>
   </div>
 </div>
 
 <div class="post-body-wrap" id="post-content">
 <article class="post-body">
 
-<p class="lead">There were words on the page, but the page lacked the information needed.</p>
+<p class="lead">Thirty of us went on the same picnic. Only a few came back with the real story.</p>
 
-<p>I did not realise this immediately. I had come from creative writing, where the world you build is entirely your own. You invent the characters, the rules, the logic. If a detail does not exist, you create it. Research, when it happens at all, serves the story you have already decided to tell.</p>
+<p>I must have been twelve. We spent a day out as a class, and afterwards the teacher set us an assignment: write a story about the picnic. We had all been there. We had all seen the same day.</p>
 
-<p>So when I was commissioned to write a review for a product I had never used, I approached it the same way. I gathered what I could from the surface, found the right words, and arranged them into something that looked like documentation. It read well. The grammar was clean. The structure was there.</p>
+<p>Most of the class wrote from memory. The food, the field, the long bus ride home. Some of it was lovely. But every story was the same size, bounded by what one child could notice in a single afternoon. A few students did something different. They went around asking. They asked classmates what had happened at the far end of the field. They asked the guides why the schedule changed. They even asked strangers who happened to be there.</p>
 
-<p>But I had documented a product I did not fully understand. And that meant every reader who followed my words was walking a path I had not actually walked myself. I was not guiding them through the product. I was leading them toward a dead end, confidently.</p>
+<p>Those students came back with things no single pair of eyes could have caught: the reason behind the delay, the moment that happened while everyone else was looking the other way. Same day. Same hours. Completely different documents. The difference was not talent, and it was not better sentences. It was research.</p>
 
-<p>The moment I understood this was the moment I understood the difference between creative writing and technical writing. In creative writing, you build the world. In technical writing, you step into a world that already exists, fully formed, with rules you did not make and details that are not yours to invent. Every assumption you bring with you is a risk your audience will pay for.</p>
+<p>Most people think research means finding out more about a thing you already broadly understand. That is part of it, the smaller part. Research is the act of treating your own view as incomplete on purpose, then going to find the rest of it. The students who wrote from memory were not lazy. They simply trusted that their one view of the day was the whole day. It never is.</p>
 
-<p>This is where structured writing begins. Not with a template. Not with a style guide. It begins with the discipline of understanding before you document.</p>
+<p>In Part 6, I argued that assumption is the enemy of accurate documentation. This post is about the antidote. Research is the first of the three stages that come before you write a single sentence, and it is the one everything accurate is built on. Not because it is a box to tick, but because a document is only ever as complete as the sources standing behind it.</p>
 
 <hr>
 
-<h2>What Structured Writing Actually Is</h2>
+<h2>What Research Actually Is</h2>
 
-<p>Most people hear &ldquo;structured writing&rdquo; and think about formatting. Headings, bullet points, numbered lists, style guides. And while those things matter, they are not structure. They are the surface of structure. Confusing the two is like mistaking a painted wall for the foundation of a house.</p>
+<p>When most writers research, they go looking for confirmation. They already sense what the document will say, and they collect the facts that agree. This feels productive. It is mostly decoration. You are not learning anything: you are assembling evidence for a conclusion you reached before you started.</p>
 
-<p>Structured writing is the discipline of organising information before you organise words. It is the decision, made before you open a blank document, about what your reader needs to know, in what order, and why. It is the understanding that documentation is not writing about a product: it is building a path through it.</p>
-
-<p>This distinction matters because most documentation problems are not writing problems. They are thinking problems. When a user gets lost in a help article, it is rarely because the sentences were unclear. It is because the person who wrote it had not fully mapped the territory before drawing the map. And the reason they had not mapped the territory is because they started with words instead of understanding.</p>
-
-<p>Technical writing carries a responsibility that most other forms of writing do not. When someone reads a novel and misunderstands a scene, they lose a moment of pleasure. When someone reads a technical document and misunderstands a step, they lose time, money, or trust in the product entirely. The stakes are different. Which means the preparation has to be different.</p>
+<p>Real research runs the other way. It begins by treating the gaps in your understanding as the most important part of the work, and it draws on more than one kind of source to close them. The product you use and the people you interview are primary sources, the ones you generate yourself. The existing docs, the support tickets, the release notes are secondary, someone else&rsquo;s account of what happened. A strong document is built from both, and it never mistakes one for the other.</p>
 
 <div class="pull-quote reveal">
-  <p>Assumption is the enemy of accurate documentation. Not bad grammar. Not poor formatting. Assumption.</p>
+  <p>The size of your document is decided before you write it, by how many people you were willing to ask.</p>
 </div>
 
-<p>Because assumption means you are documenting what you think is true rather than what is true. And in technical writing, the gap between those two things is where your audience gets lost.</p>
+<p>That willingness is the discipline. Everything after it is technique.</p>
 
 <hr>
 
-<h2>The Shift: Sentience vs. System</h2>
+<h2>The Shift: Observation vs. Inquiry</h2>
 
 <div class="contrast-block reveal">
   <div class="contrast-col contrast-col--left">
-    <span class="contrast-col-title">Sentience</span>
-    <span class="contrast-col-subtitle">The Creative Impulse</span>
-    <p class="contrast-col-quote">&ldquo;I will start writing and figure out the structure as the words flow.&rdquo;</p>
-    <span class="contrast-col-result">Result: A beautiful path to a dead end.</span>
+    <span class="contrast-col-title">Observation</span>
+    <span class="contrast-col-subtitle">The Single View</span>
+    <p class="contrast-col-quote">&ldquo;I was there. I saw it happen. I will write down what I saw.&rdquo;</p>
+    <span class="contrast-col-result">Result: one corner of the truth, told well.</span>
   </div>
   <div class="contrast-col contrast-col--right">
-    <span class="contrast-col-title">System</span>
+    <span class="contrast-col-title">Inquiry</span>
     <span class="contrast-col-subtitle">The Structured Discipline</span>
-    <p class="contrast-col-quote">&ldquo;I will map the territory, define the audience, and lock the architecture before typing a single sentence.&rdquo;</p>
-    <span class="contrast-col-result">Result: Functional, reliable documentation.</span>
+    <p class="contrast-col-quote">&ldquo;I will find the people who saw what I missed, and keep asking until the picture is whole.&rdquo;</p>
+    <span class="contrast-col-result">Result: the whole room, not one corner.</span>
   </div>
 </div>
 
 <hr>
 
-<h2>The Three Stages Before You Write</h2>
+<h2>Who You Ask Is the Whole Job</h2>
 
-<p>Structured writing is not a single action. It is a sequence. And that sequence begins long before you open a document.</p>
+<p>The students who wrote the best stories did not stop at one classmate. They moved between many: friends, guides, strangers. Each held a fragment. The story lived in the assembly of those fragments, not in any one of them.</p>
 
-<p>In the posts that follow this one, we will go deep into each stage. But here is the foundation you need to understand first.</p>
+<p>There is a discipline behind that instinct, and technical communication has a name for it: stakeholder consultation. Before you write, you map who holds a piece of the truth, then you go to each of them in turn. On a documentation project that map is more obvious than people assume.</p>
 
-<p><strong>The first stage is research.</strong> This is where you close the gap between assumption and accuracy. You use the product. You walk the process. You ask the questions your audience will ask. You do not move forward until you understand what you are documenting well enough to explain it to someone who has never seen it before.</p>
+<p>The product itself is the first source, and the only one you can interrogate without asking anyone. You walk the process, you click the buttons, you break it on purpose to see how it behaves when someone does the wrong thing. After that, every source is a person, and each one knows something the others structurally cannot. Engineers know why a thing was built the way it was, which is often more useful than knowing what it does. Support knows the questions users actually arrive with, not the ones you imagine they have, and that gap is wider than most writers admit. The users themselves, the source most writers never think to consult, know the one thing none of the others can see: where the product stops making sense to a person meeting it for the first time.</p>
 
-<p><strong>The second stage is audience analysis.</strong> Research tells you what is true. Audience analysis tells you what is relevant. Not everything you learn belongs in the document. The question is not what does this product do: it is what does this specific reader need to know, at this specific moment, to complete this specific task. Answering that question shapes everything that follows.</p>
+<p>The right questions matter as much as the right people. A weak question asks what does this do. A strong question asks what happens when someone does this wrong, where do people get stuck, what did you assume everyone already knew. Those last questions surface the details that decide whether a document works, and they are usually the ones nobody thought to mention, because they seemed too obvious to say out loud.</p>
 
-<p><strong>The third stage is information architecture.</strong> This is where you decide the order. What comes first, what comes next, and why. A document that contains the right information in the wrong order is still a document that fails. Architecture is the discipline of arranging what you know into a sequence your reader can follow without effort.</p>
+<p>On real documentation projects, the same feature rarely has a single description. Ask an engineer to describe it and you get the language of how it was built. Ask support to describe the same feature and you get the language of how it breaks. The two accounts rarely match, and the gap between them is almost always where the documentation needs the most work, because it is the part of the product that is hardest to explain. You only find that gap by asking both.</p>
 
-<p>These three stages are the skeleton of every document you will ever write. Master them, and the writing becomes the easiest part of the process.</p>
+<p>No single source is the last word, which is the real reason you consult several. Where independent sources agree, you can trust the fact. Where they contradict one another, you have found the exact point the document needs to resolve. Researchers call this triangulation. A claim earns its place not when one person asserts it, but when it holds from more than one direction.</p>
 
 <hr>
 
-<h2>The Work Before the Work</h2>
+<h2>Test What You Are Told</h2>
 
-<p>There is a reason experienced technical writers spend more time before the document than inside it. It is not perfectionism. It is not overthinking. It is the understanding that a document built on a weak foundation cannot be saved by strong sentences.</p>
+<p>Asking is only half of it. The other half is refusing to take any answer on trust until you have watched it hold.</p>
 
-<p>When I sat down to write that product review without fully understanding the product, I was not being lazy. I was being unconscious. I did not yet know that the work before the work was the work. I thought documentation began when you started typing. It does not. It begins when you start understanding.</p>
+<p>A subject matter expert hands you the steps to install the product. You write them down, cleanly, in order. Then you do the thing that separates a document a reader can trust from one that merely sounds right: you run the steps yourself, exactly as written, on a machine as bare as your reader&rsquo;s. Step four fails. It assumed administrator permissions the engineer never mentioned, because the engineer has always had them. Your reader does not. You only know that gap exists because you walked it. The expert was not wrong. They were complete for themselves and incomplete for the person you are writing for, and only verification finds the difference.</p>
 
-<p>That shift in thinking is what separates documentation that informs from documentation that merely exists. And it is the shift this series is built around.</p>
+<p>Research has an opposite failure too, and it is quieter. You can consult so widely and gather so much that the document drowns before it is written. So the discipline is not only knowing who to ask. It is knowing when the picture is whole enough to draw, and stopping there. The signal is convergence, not exhaustion: when the next person you ask only confirms what the last three already told you, the research is done. You stop because the answers have started to agree, not because you have run out of people to ask.</p>
+
+<p>Compressed to something you can carry, this stage is two questions asked of every claim before it reaches the page: did I watch it hold, and did it hold from more than one source. The first is verification. The second is triangulation. A fact that cannot answer both is not documentation yet. It is a guess in a confident voice.</p>
 
 <div class="callout-gold reveal">
-  <span class="callout-gold-label">Before you move on to Part 7</span>
-  <p>Pick a product, tool, or process you think you already understand well. Write down three assumptions you are currently making about it: things you believe to be true but have not actually verified. That list is where your next document either earns your reader&rsquo;s trust or loses it.</p>
+  <span class="callout-gold-label">Before you move on to Part 8</span>
+  <p>Take a procedure you have already documented and felt sure about. Find one step you wrote from your own knowledge rather than from watching it happen. Now run it on a clean setup, exactly as written, and note the first place a real user would stumble. That gap, between what you knew and what you verified, is the whole of this post.</p>
 </div>
 
-<p>In the next post, we go into the first stage in depth. Research: not as a preliminary checkbox, but as the foundation of everything accurate you will ever write.</p>
+<p>Research tells you what is true, and how widely true it is. But not everything true belongs in the document. The next stage decides which of everything you have gathered this particular reader actually needs, and in what depth. That is audience analysis, and it is where Part 8 begins.</p>
 
-<p><em>The words come later. First, you have to understand.</em></p>
+<p><em>Ask widely. Trust nothing untested. A document is only as honest as the search behind it.</em></p>
+
+<div class="further-reading reveal">
+  <span class="further-reading-label">Further reading</span>
+  <p>Suzan Last, <a href="https://pressbooks.bccampus.ca/technicalwriting/part/researchmethods/" target="_blank" rel="noopener noreferrer">Technical Writing Essentials</a>, on conducting research and mapping who to consult. Archbee&rsquo;s <a href="https://www.archbee.com/blog/research-in-technical-writing" target="_blank" rel="noopener noreferrer">practical guide to research in technical writing</a>, on sources and verification.</p>
+</div>
 
 <hr>
 
@@ -368,23 +376,14 @@ a{color:inherit;text-decoration:none;}
 
 <section class="post-related">
   <p class="post-related-label">Continue the series</p>
-  <div class="post-related-grid">
-    <a href="/blog/posts/anatomy-of-great-documentation/" class="post-related-card">
+  <div class="post-related-grid post-related-grid--single">
+    <a href="/blog/posts/introduction-to-structured-writing/" class="post-related-card">
       <div class="post-related-card-body">
         <span class="post-related-card-dir">&larr; Previous</span>
-        <span class="post-related-card-tag">Part 05</span>
-        <h3 class="post-related-card-title">Anatomy of Great Documentation</h3>
-        <p class="post-related-card-pull">&ldquo;Great documentation is not the sum of its well-written parts. It is the quality of its connections.&rdquo;</p>
-        <span class="post-related-card-cta">Read Part 05 &rarr;</span>
-      </div>
-    </a>
-    <a href="/blog/posts/the-discipline-of-research/" class="post-related-card">
-      <div class="post-related-card-body">
-        <span class="post-related-card-dir">Next &rarr;</span>
-        <span class="post-related-card-tag">Part 07</span>
-        <h3 class="post-related-card-title">Your Documentation Only Knows What One Person Noticed</h3>
-        <p class="post-related-card-pull">&ldquo;The size of your document is decided before you write it, by how many people you were willing to ask.&rdquo;</p>
-        <span class="post-related-card-cta">Read Part 07 &rarr;</span>
+        <span class="post-related-card-tag">Part 06</span>
+        <h3 class="post-related-card-title">Introduction to Structured Writing</h3>
+        <p class="post-related-card-pull">&ldquo;Most documentation problems are not writing problems. They are thinking problems.&rdquo;</p>
+        <span class="post-related-card-cta">Read Part 06 &rarr;</span>
       </div>
     </a>
   </div>
