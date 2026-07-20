@@ -23,6 +23,48 @@
   </url>
 
   <url>
+    <loc>https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://douglasebhoman.com/blog/posts/the-discipline-of-research/</loc>
     <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>

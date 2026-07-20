@@ -1,0 +1,26 @@
+{
+  "name": "douglasebhoman.github.io",
+  "version": "1.0.0",
+  "description": "Professional web presence and freelance practice for Douglas Ebhoman, a documentation systems specialist based in Prague. Built in pure HTML, CSS, and vanilla JavaScript with no framework, no build step, and no CMS. The repository contents are the deployment artefact.",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Douglasebhoman/douglasebhoman.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Douglasebhoman/douglasebhoman.github.io/issues"
+  },
+  "homepage": "https://github.com/Douglasebhoman/douglasebhoman.github.io#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}
