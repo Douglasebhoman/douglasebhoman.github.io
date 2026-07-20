@@ -22,5 +22,6 @@ module.exports = function (eleventyConfig) {
       input: ".",
       output: "_site",
     },
+    htmlTemplateEngine: "njk",
   };
 };
