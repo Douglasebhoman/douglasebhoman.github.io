@@ -21,18 +21,6 @@
       background-repeat: repeat;
       background-size: 256px 256px;
     }
-    .hero-canvas-wrap {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
-    #heroCanvas {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
     .ambient-orb {
       position: absolute;
       border-radius: 50%;
@@ -144,8 +132,8 @@
       z-index: -1;
     }
     @keyframes cardFloat { 0%, 100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(-8px); opacity: 1; } }
-    /* Mobile hero portrait — byline photo, hidden on desktop */
-    .hero-mobile-portrait{display:none;}
+    /* Mobile hero byline — avatar + name row, hidden on desktop */
+    .hero-byline{display:none;}
     /* ── Social proof carousel ── */
     .side-carousel-track{position:relative;overflow:hidden;min-height:76px;}
     .side-carousel-item{position:absolute;top:0;left:0;width:100%;opacity:0;transition:opacity 0.6s ease;pointer-events:none;}
@@ -164,7 +152,9 @@
     .pov-pullquote{column-span:all;border-left:3px solid var(--gold);padding:16px 24px;margin:24px 0;font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-style:italic;color:var(--text-dark);line-height:1.6;background:var(--gold-subtle);}
     .pov-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-light);margin-top:32px;}
     @media(max-width:768px){
-      .hero-mobile-portrait{display:block;width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--gold);box-shadow:0 0 0 4px rgba(184,150,46,.12);margin:16px auto 20px;}
+      .hero-byline{display:flex;align-items:center;gap:10px;margin:16px 0 20px;}
+      .hero-byline-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:center top;border:1px solid var(--gold-border);flex-shrink:0;}
+      .hero-byline-text{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.55);line-height:1.4;}
       /* Hero stats: dashboard-style 2×2 grid */
       .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(184,150,46,.35);padding:0;border-top:none;margin-top:28px;}
       .hero-stat{background:var(--navy);padding:20px 16px;flex:unset;min-width:unset;}
@@ -221,9 +211,6 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-grid-bg"></div>
-  <div class="hero-canvas-wrap">
-    <canvas id="heroCanvas"></canvas>
-  </div>
   <div class="hero-inner">
     <div>
       <div class="hero-badge"><span class="hero-badge-dot"></span>Currently taking documentation engagements</div>
@@ -233,10 +220,13 @@
       </div>
       <h1 class="hero-h1">Your product is scaling.<br>Your documentation <em>isn&rsquo;t.</em></h1>
       <p class="hero-sub">Every sprint ships. Your docs don&rsquo;t keep up. Your users pay for it: in confusion, in support tickets, in churn. <strong>I build documentation systems that hold up as your product grows.</strong></p>
-      <img class="hero-mobile-portrait" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="80" height="80" loading="eager">
+      <div class="hero-byline">
+        <img class="hero-byline-avatar" src="assets/images/douglas.jpg" alt="Douglas Ebhoman" width="44" height="44" loading="eager">
+        <span class="hero-byline-text">Douglas Ebhoman &middot; Documentation Systems Specialist</span>
+      </div>
       <div class="hero-actions">
-        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
-        <a href="#work" class="btn btn-ghost-light">See my work &rarr;</a>
+        <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold btn-plain" target="_blank" rel="noopener noreferrer">Book the Audit &middot; &euro;300</a>
+        <a href="#work" class="btn btn-ghost-light btn-plain">See my work &rarr;</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat"><div class="hero-stat-num" data-count="6" data-suffix="">6</div><div class="hero-stat-label">Portfolio pieces</div></div>
@@ -796,110 +786,6 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 </footer>
 
 <script>
-/* HERO PARTICLE NETWORK */
-const heroCanvas = document.getElementById('heroCanvas');
-if (heroCanvas) {
-  const ctx = heroCanvas.getContext('2d');
-  let particles = [], mouse = { x: null, y: null, radius: 150 };
-  let animationId, isActive = true;
-
-  function resizeHeroCanvas() {
-    const hero = document.querySelector('.hero');
-    if (hero) { heroCanvas.width = hero.offsetWidth; heroCanvas.height = hero.offsetHeight; }
-  }
-  resizeHeroCanvas();
-  window.addEventListener('resize', resizeHeroCanvas);
-
-  class Particle {
-    constructor() {
-      this.x = Math.random() * heroCanvas.width;
-      this.y = Math.random() * heroCanvas.height;
-      this.vx = (Math.random() - 0.5) * 0.3;
-      this.vy = (Math.random() - 0.5) * 0.3;
-      this.size = Math.random() * 2 + 0.5;
-      this.baseX = this.x; this.baseY = this.y;
-      this.density = (Math.random() * 30) + 1;
-      this.opacity = Math.random() * 0.5 + 0.1;
-    }
-    update() {
-      if (mouse.x != null) {
-        let dx = mouse.x - this.x, dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx*dx + dy*dy);
-        let force = (mouse.radius - distance) / mouse.radius;
-        if (distance < mouse.radius) {
-          this.x -= (dx/distance) * force * this.density * 0.6;
-          this.y -= (dy/distance) * force * this.density * 0.6;
-        } else {
-          if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 20;
-          if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 20;
-        }
-      }
-      this.x += this.vx; this.y += this.vy;
-      if (this.x < 0) this.x = heroCanvas.width;
-      if (this.x > heroCanvas.width) this.x = 0;
-      if (this.y < 0) this.y = heroCanvas.height;
-      if (this.y > heroCanvas.height) this.y = 0;
-      this.baseX += this.vx; this.baseY += this.vy;
-      if (this.baseX < 0) this.baseX = heroCanvas.width;
-      if (this.baseX > heroCanvas.width) this.baseX = 0;
-      if (this.baseY < 0) this.baseY = heroCanvas.height;
-      if (this.baseY > heroCanvas.height) this.baseY = 0;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(184,150,46,${this.opacity})`;
-      ctx.fill();
-    }
-  }
-
-  function initParticles() {
-    particles = [];
-    const count = Math.min(80, Math.floor((heroCanvas.width * heroCanvas.height) / 15000));
-    for (let i = 0; i < count; i++) particles.push(new Particle());
-  }
-  initParticles();
-
-  function connect() {
-    for (let a = 0; a < particles.length; a++) {
-      for (let b = a; b < particles.length; b++) {
-        let dx = particles[a].x - particles[b].x, dy = particles[a].y - particles[b].y;
-        let dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 120) {
-          ctx.strokeStyle = `rgba(184,150,46,${(1 - dist/120) * 0.15})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
-          ctx.stroke();
-        }
-      }
-    }
-  }
-
-  window.addEventListener('mousemove', (e) => {
-    const rect = heroCanvas.getBoundingClientRect();
-    mouse.x = e.x - rect.left; mouse.y = e.y - rect.top + window.scrollY;
-  });
-  window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
-
-  function animateHero() {
-    if (!isActive) return;
-    ctx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    connect();
-    animationId = requestAnimationFrame(animateHero);
-  }
-
-  new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { isActive = true; animateHero(); }
-      else { isActive = false; cancelAnimationFrame(animationId); }
-    });
-  }, { threshold: 0.1 }).observe(document.querySelector('.hero'));
-  animateHero();
-}
-
 /* CURSOR TRAIL */
 const cursorParticles = [];
 let lastCursorTime = 0;

@@ -30,6 +30,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .reveal.visible{opacity:1;transform:translateY(0);will-change:auto;}
 .reveal-d1{transition-delay:.1s;} .reveal-d2{transition-delay:.2s;} .reveal-d3{transition-delay:.3s;}
 .btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
+.btn-plain{font-family:var(--sans);letter-spacing:normal;text-transform:none;}
 .btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
 .btn-gold:hover{background:var(--gold-light);}
 .btn-gold:active{transform:scale(.97);}
