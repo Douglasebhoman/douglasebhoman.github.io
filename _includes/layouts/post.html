@@ -87,6 +87,13 @@ a{color:inherit;text-decoration:none;}
 .post-part-link--disabled{opacity:.18;pointer-events:none;cursor:default;}
 .post-part-series{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.1);}
 
+/* Post banner */
+.post-banner{width:100%;background:var(--navy);border-top:1px solid var(--gold-border);line-height:0;}
+.post-banner img{width:100%;height:auto;display:block;max-width:1659px;margin:0 auto;}
+
+/* Screen-reader only */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
 /* ── Post body ── */
 .post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
 .post-body{max-width:720px;margin:0 auto;}
@@ -277,11 +284,19 @@ a{color:inherit;text-decoration:none;}
 
 <main>
 
+{% if banner %}
+<div class="post-banner">
+  <img src="/assets/images/{{ bannerImage or cardImage }}"
+       alt="" role="presentation"
+       loading="eager" decoding="async">
+</div>
+{% endif %}
+
 <section class="post-hero">
   <div class="post-hero-inner">
     <a href="/blog/" class="post-back">&larr; Blog</a>
     <span class="post-series-tag">{{ seriesTag | safe }}</span>
-    <h1 class="post-title">{{ title | safe }}</h1>
+    <h1 class="post-title{% if banner %} sr-only{% endif %}">{{ title | safe }}</h1>
     <p class="post-subtitle">{{ postSubtitle | safe }}</p>
     <div class="post-meta">
       <span class="post-meta-item">Douglas Ebhoman</span>
