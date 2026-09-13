@@ -17,7 +17,7 @@
 
   <url>
     <loc>https://douglasebhoman.com/blog/</loc>
-    <lastmod>2026-06-27</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -67,6 +67,13 @@
   <url>
     <loc>https://douglasebhoman.com/blog/posts/the-discipline-of-research/</loc>
     <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://douglasebhoman.com/blog/posts/audience-analysis-in-documentation/</loc>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
