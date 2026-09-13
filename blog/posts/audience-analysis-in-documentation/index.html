@@ -1,25 +1,58 @@
+---
+title: "Your Documentation Explains Everything and Helps No One"
+readTime: "8 min read"
+part: 8
+draft: true
+cardDate: "July 2026"
+cardImage: "audience-analysis-in-documentation.png"
+cardExcerpt: "Research tells you what is true. Audience analysis decides what belongs, and what you deliberately leave out."
+pullQuote: "Information can be true, useful, and still not belong in the document you are writing."
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ description | safe }}">
+  <meta name="description" content="Research tells you what is true. Audience analysis decides what belongs. Part 8 of Systems Over Sentences, on selection as a design decision.">
   <meta name="author" content="Douglas Ebhoman">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="{{ canonicalUrl }}">
+  <link rel="canonical" href="https://douglasebhoman.com/blog/posts/audience-analysis-in-documentation">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="{{ canonicalUrl }}">
-  <meta property="og:title" content="{% if ogTitle %}{{ ogTitle | safe }}{% else %}{{ title | safe }} &middot; Douglas Ebhoman{% endif %}">
-  <meta property="og:description" content="{{ ogDescription | safe }}">
-  <meta property="og:image" content="{{ ogImage }}">
+  <meta property="og:url" content="https://douglasebhoman.com/blog/posts/audience-analysis-in-documentation">
+  <meta property="og:title" content="Your Documentation Explains Everything and Helps No One | Systems Over Sentences &middot; Part 8">
+  <meta property="og:description" content="Research tells you what is true. Audience analysis decides what belongs. Part 8 of Systems Over Sentences, on selection as a design decision.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/audience-analysis-in-documentation.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title | safe }} &middot; Douglas Ebhoman">
-  <meta name="twitter:description" content="{{ twitterDescription | safe }}">
-  <meta name="twitter:image" content="{{ ogImage }}">
-  <title>{% if pageTitle %}{{ pageTitle | safe }}{% else %}{{ title | safe }} &middot; Douglas Ebhoman{% endif %}</title>
-  {% if jsonLd %}<script type="application/ld+json">
-{{ jsonLd | safe }}</script>
-  {% endif %}
+  <meta name="twitter:title" content="Your Documentation Explains Everything and Helps No One &middot; Douglas Ebhoman">
+  <meta name="twitter:description" content="Research tells you what is true. Audience analysis decides what belongs.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/audience-analysis-in-documentation.png">
+  <title>Your Documentation Explains Everything and Helps No One | Systems Over Sentences &middot; Part 8 | Douglas Ebhoman</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Your Documentation Explains Everything and Helps No One",
+    "description": "Research tells you what is true. Audience analysis decides what belongs. Part 8 of Systems Over Sentences, on selection as a design decision.",
+    "datePublished": "2026-07-10",
+    "url": "https://douglasebhoman.com/blog/posts/audience-analysis-in-documentation",
+    "author": {
+      "@type": "Person",
+      "name": "Douglas Ebhoman",
+      "url": "https://douglasebhoman.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Douglas Ebhoman",
+      "url": "https://douglasebhoman.com"
+    },
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "Systems Over Sentences",
+      "url": "https://douglasebhoman.com/blog/"
+    },
+    "keywords": ["audience analysis", "technical writing", "documentation scope", "information selection", "structured writing", "documentation systems"]
+  }
+  </script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,8 +91,6 @@ a{color:inherit;text-decoration:none;}
 .nav-cta{background:var(--gold);color:var(--navy);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;font-weight:500;transition:background var(--fast);display:inline-block;}
 .nav-cta:hover{background:var(--gold-light);}
 .btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:13px 22px;transition:all var(--base);white-space:nowrap;cursor:pointer;border:none;}
-.btn-gold{background:var(--gold);color:var(--navy);font-weight:500;}
-.btn-gold:hover{background:var(--gold-light);}
 .btn-ghost-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);}
 .btn-ghost-light:hover{border-color:rgba(255,255,255,.35);color:#fff;}
 
@@ -67,10 +98,11 @@ a{color:inherit;text-decoration:none;}
 .noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px 256px;}
 .cursor-particle{position:fixed;width:4px;height:4px;border-radius:50%;background:rgba(184,150,46,.6);pointer-events:none;z-index:9997;will-change:transform,opacity;}
 
-/* ── Post hero ── */
+/* Post hero */
 .post-hero{background:var(--navy);padding:clamp(80px,10vw,120px) var(--pad) clamp(48px,6vw,72px);position:relative;overflow:hidden;}
 .post-hero-inner{max-width:720px;margin:0 auto;position:relative;z-index:1;}
 .post-back{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:6px;margin-bottom:28px;min-height:44px;}
+.post-back:hover{color:rgba(255,255,255,.6);}
 .post-series-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:4px 12px;display:inline-block;margin-bottom:20px;}
 .post-title{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:300;line-height:1.12;letter-spacing:-.025em;color:#fff;margin-bottom:12px;}
 .post-subtitle{font-family:var(--serif);font-size:clamp(14px,2vw,17px);font-style:italic;color:var(--gold-light);margin-bottom:24px;line-height:1.5;font-weight:300;}
@@ -87,7 +119,7 @@ a{color:inherit;text-decoration:none;}
 .post-part-link--disabled{opacity:.18;pointer-events:none;cursor:default;}
 .post-part-series{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.1);}
 
-/* ── Post body ── */
+/* Post body */
 .post-body-wrap{padding:clamp(48px,7vw,80px) var(--pad);background:var(--cream);}
 .post-body{max-width:720px;margin:0 auto;}
 .post-body p{font-family:var(--serif);font-size:clamp(15px,1.8vw,17px);color:var(--text-mid);line-height:1.9;margin-bottom:1.6rem;font-weight:300;}
@@ -98,8 +130,6 @@ a{color:inherit;text-decoration:none;}
 .post-body strong{color:var(--text-dark);font-weight:500;}
 .post-body a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
 .post-body a:hover{color:var(--gold-light);}
-
-/* Selection */
 ::selection{background:rgba(184,150,46,.2);color:var(--text-dark);}
 
 /* Pull quote */
@@ -108,37 +138,54 @@ a{color:inherit;text-decoration:none;}
 @keyframes quotePulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
 .pull-quote p{font-size:clamp(15px,2vw,18px);color:var(--text-dark);font-style:italic;margin-bottom:0;line-height:1.7;font-weight:400;}
 
-/* Quick win */
-.quick-win{border:1px solid var(--gold-border);padding:clamp(20px,3vw,32px);margin:2.5rem 0;background:var(--cream-2);}
-.quick-win-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.quick-win p{font-size:14px;margin-bottom:12px;color:var(--text-mid);}
-.quick-win p:last-child{margin-bottom:0;}
-.quick-win ol{padding-left:20px;margin-bottom:12px;}
-.quick-win ol li{font-family:var(--serif);font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:8px;}
-.quick-win ol li:last-child{margin-bottom:0;}
+/* Warehouse vs Path contrast block */
+.contrast-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin:2.5rem 0;}
+.contrast-col{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;}
+.contrast-col--left{background:var(--navy);}
+.contrast-col--right{background:var(--gold);}
+.contrast-col-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:4px;}
+.contrast-col--left .contrast-col-title{color:#fff;}
+.contrast-col--right .contrast-col-title{color:var(--navy);}
+.contrast-col-subtitle{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:20px;}
+.contrast-col--left .contrast-col-subtitle{color:rgba(255,255,255,.3);}
+.contrast-col--right .contrast-col-subtitle{color:rgba(24,34,44,.6);}
+.contrast-col-quote{font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-style:italic;font-weight:300;line-height:1.75;flex:1;margin-bottom:20px;}
+.contrast-col--left .contrast-col-quote{color:rgba(255,255,255,.75);}
+.contrast-col--right .contrast-col-quote{color:var(--navy);}
+.contrast-col-result{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding-top:16px;}
+.contrast-col--left .contrast-col-result{color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);}
+.contrast-col--right .contrast-col-result{color:rgba(24,34,44,.65);border-top:1px solid rgba(24,34,44,.15);}
 
-/* Anatomy grid */
-.anatomy-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.anatomy-item{background:var(--cream);padding:20px 24px;border-left:2px solid transparent;transition:border-color var(--fast),transform var(--base),box-shadow var(--base);}
-.anatomy-item:hover{border-left-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04);}
-.anatomy-item-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
-.anatomy-item p{font-size:13px;margin-bottom:0;color:var(--text-mid);}
+/* Homework callout */
+.callout-gold{border-left:4px solid var(--gold);background:var(--gold-subtle);padding:clamp(20px,3vw,32px);margin:2.5rem 0;}
+.callout-gold-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+.post-body .callout-gold p{font-family:var(--sans);font-size:14px;color:var(--text-mid);line-height:1.85;margin-bottom:0;font-weight:300;}
+
+/* Further reading */
+.further-reading{border-top:1px solid var(--border-light);margin-top:2.5rem;padding-top:1.5rem;}
+.further-reading-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.post-body .further-reading p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:0;}
+
+/* Author bio */
+.post-author-bio{border-top:1px solid var(--border-light);padding-top:2rem;margin-top:3rem;}
+.post-author-bio-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
+.post-body .post-author-bio p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.85;font-weight:300;font-style:italic;margin-bottom:0;}
+.post-author-bio a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
+.post-author-bio a:hover{color:var(--gold-light);}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-d1{transition-delay:.1s;}.reveal-d2{transition-delay:.2s;}.reveal-d3{transition-delay:.3s;}
 
-/* Related cards */
+/* Related */
 .post-related{background:var(--navy-mid);padding:clamp(40px,6vw,60px) clamp(20px,5vw,48px);border-top:1px solid var(--border-dark);}
 .post-related-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
 .post-related-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.06);}
 .post-related-grid{display:grid;gap:1px;background:rgba(255,255,255,.06);}
 .post-related-grid--single{grid-template-columns:1fr;max-width:480px;}
-.post-related-grid--double{grid-template-columns:1fr 1fr;}
 .post-related-card{background:var(--navy);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:background var(--base);}
 .post-related-card:hover{background:rgba(255,255,255,.03);}
-
 .post-related-card-body{padding:clamp(14px,2vw,22px);border-left:2px solid var(--gold-border);}
 .post-related-card-dir{font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:6px;display:block;}
 .post-related-card-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
@@ -168,6 +215,13 @@ a{color:inherit;text-decoration:none;}
 .post-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.3);transition:color var(--fast);}
 .post-footer-link:hover{color:var(--gold-light);}
 
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
+.nav-hamburger span{display:block;height:1.5px;background:#fff;border-radius:2px;transition:transform var(--base),opacity var(--base);}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
 /* Mobile */
 @media(max-width:768px){
   .nav-hamburger{display:flex;}
@@ -175,89 +229,19 @@ a{color:inherit;text-decoration:none;}
   .nav-links.open{display:flex;}
   .nav-links .nav-text{display:block;font-size:11px;padding:14px 0;border-bottom:1px solid var(--border-dark);}
   .nav-links .nav-icon{display:none;}
-  .nav-links .nav-cta{margin-top:12px;text-align:center;width:100%;padding:13px;}
+  .nav-links .nav-cta{margin-top:12px;text-align:center;width:100%;padding:13px;display:block;}
   .post-newsletter-inner{grid-template-columns:1fr;}
-  .post-related-grid--double{grid-template-columns:1fr;}
-  {% if extraCss == 'posts01to04' %}.audience-comparison{grid-template-columns:1fr;}.series-nav{flex-direction:column;align-items:flex-start;}.series-nav-link--next{margin-left:0;}{% endif %}
-  {% if extraCss == 'posts06to07' %}.contrast-block{grid-template-columns:1fr;}{% endif %}
+  .contrast-block{grid-template-columns:1fr;}
 }
-{% if extraCss == 'posts01to04' or extraCss == 'posts06to07' %}
-/* Hamburger base */
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
-.nav-hamburger span{display:block;height:1.5px;background:#fff;border-radius:2px;transition:transform var(--base),opacity var(--base);}
-.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-{% endif %}
-{% if extraCss == 'posts01to04' %}
-/* Newsletter label / outline button */
-.label-row{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.lm{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
-.lm--dim{color:rgba(255,255,255,.3);}
-.gold-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);width:48px;display:inline-block;flex-shrink:0;}
-.btn-outline-light{background:transparent;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.12);}
-.btn-outline-light:hover{border-color:rgba(255,255,255,.3);color:#fff;}
-/* Audience comparison */
-.audience-comparison{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-light);margin:2rem 0;}
-.audience-card{background:var(--cream);padding:20px;}
-.audience-card-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.audience-card pre{margin:0;font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.6;white-space:pre-wrap;background:none;border:none;padding:0;}
-.audience-card p{font-size:13px;margin-bottom:0;font-style:italic;color:var(--text-mid);}
-/* Code blocks */
-.post-body pre{background:var(--navy);border:1px solid rgba(255,255,255,.08);padding:20px 24px;margin:1.5rem 0;overflow-x:auto;font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.7);line-height:1.6;}
-.post-body code{font-family:var(--mono);font-size:13px;color:var(--gold);background:var(--gold-subtle);padding:2px 6px;}
-.post-body pre code{background:none;padding:0;color:rgba(255,255,255,.7);}
-/* Series nav */
-.series-nav{max-width:720px;margin:0 auto;padding:40px var(--pad);display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border-light);gap:24px;flex-wrap:wrap;background:var(--cream);}
-.series-nav-link{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);display:inline-flex;align-items:center;gap:8px;transition:color var(--fast);}
-.series-nav-link:hover{color:var(--gold);}
-.series-nav-link--next{margin-left:auto;}
-/* Mermaid diagram */
-.post-diagram{margin:2.5rem 0;padding:clamp(20px,3vw,32px);background:var(--cream-2);border:1px solid var(--border-light);}
-.post-diagram .mermaid{margin-top:16px;}
-{% endif %}
-{% if extraCss == 'posts06to07' %}
-/* Contrast block */
-.contrast-block{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.1);margin:2.5rem 0;}
-.contrast-col{padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;}
-.contrast-col--left{background:var(--navy);}
-.contrast-col--right{background:var(--gold);}
-.contrast-col-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);font-weight:300;line-height:1.15;letter-spacing:-.02em;margin-bottom:4px;}
-.contrast-col--left .contrast-col-title{color:#fff;}
-.contrast-col--right .contrast-col-title{color:var(--navy);}
-.contrast-col-subtitle{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;display:block;margin-bottom:20px;}
-.contrast-col--left .contrast-col-subtitle{color:rgba(255,255,255,.3);}
-.contrast-col--right .contrast-col-subtitle{color:rgba(24,34,44,.6);}
-.contrast-col-quote{font-family:var(--serif);font-size:clamp(14px,1.8vw,16px);font-style:italic;font-weight:300;line-height:1.75;flex:1;margin-bottom:20px;}
-.contrast-col--left .contrast-col-quote{color:rgba(255,255,255,.75);}
-.contrast-col--right .contrast-col-quote{color:var(--navy);}
-.contrast-col-result{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding-top:16px;}
-.contrast-col--left .contrast-col-result{color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);}
-.contrast-col--right .contrast-col-result{color:rgba(24,34,44,.65);border-top:1px solid rgba(24,34,44,.15);}
-/* Callout gold */
-.callout-gold{border-left:4px solid var(--gold);background:var(--gold-subtle);padding:clamp(20px,3vw,32px);margin:2.5rem 0;}
-.callout-gold-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
-.post-body .callout-gold p{font-family:var(--sans);font-size:14px;color:var(--text-mid);line-height:1.85;margin-bottom:0;font-weight:300;}
-/* Further reading */
-.further-reading{border-top:1px solid var(--border-light);margin-top:2.5rem;padding-top:1.5rem;}
-.further-reading-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.post-body .further-reading p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.8;font-weight:300;margin-bottom:0;}
-/* Author bio */
-.post-author-bio{border-top:1px solid var(--border-light);padding-top:2rem;margin-top:3rem;}
-.post-author-bio-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:block;}
-.post-body .post-author-bio p{font-family:var(--sans);font-size:13px;color:var(--text-mid);line-height:1.85;font-weight:300;font-style:italic;margin-bottom:0;}
-.post-author-bio a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
-.post-author-bio a:hover{color:var(--gold-light);}
-@media(max-width:480px){.post-part-series{display:none;}}
-{% endif %}
-</style>
-</head>
+@media(max-width:480px){
+  .post-part-series{display:none;}
+}
+</style></head>
 <body>
 
 <div class="noise-overlay" id="noiseOverlay"></div>
 <div class="progress-bar" id="progressBar"></div>
 
-<!-- NAV — no base target blank, Work goes to /work/ -->
 <nav class="nav" id="nav">
   <a href="/" class="nav-logo">Douglas Ebhoman</a>
   <div class="nav-links" id="navLinks">
@@ -280,58 +264,139 @@ a{color:inherit;text-decoration:none;}
 <section class="post-hero">
   <div class="post-hero-inner">
     <a href="/blog/" class="post-back">&larr; Blog</a>
-    <span class="post-series-tag">{{ seriesTag | safe }}</span>
-    <h1 class="post-title">{{ title | safe }}</h1>
-    <p class="post-subtitle">{{ postSubtitle | safe }}</p>
+    <span class="post-series-tag">Systems Over Sentences &middot; Part 08 of 10</span>
+    <h1 class="post-title">Your Documentation Explains Everything and Helps No One</h1>
+    <p class="post-subtitle">Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies.</p>
     <div class="post-meta">
       <span class="post-meta-item">Douglas Ebhoman</span>
-      <span class="post-meta-item">{{ publishDate }}</span>
-      <span class="post-meta-item">{{ readTime }}</span>
+      <span class="post-meta-item">July 10, 2026</span>
+      <span class="post-meta-item">8 min read</span>
     </div>
   </div>
 </section>
 
-<!-- PART NAV — single, no duplicate -->
-{%- set nav = {prev: collections.postsAsc | findByPart(part - 1), next: collections.postsAsc | findByPart(part + 1)} -%}
 <div class="post-part-nav">
   <div class="post-part-nav-inner">
-    {% if nav.prev %}<a href="{{ nav.prev.url }}" class="post-part-link">&larr; Part {{ nav.prev.data.part | pad }}</a>{% else %}<span class="post-part-link post-part-link--disabled">&larr; First part</span>{% endif %}
+    <a href="/blog/posts/the-discipline-of-research/" class="post-part-link">&larr; Part 07</a>
     <span class="post-part-series">Systems Over Sentences</span>
-    {% if nav.next %}<a href="{{ nav.next.url }}" class="post-part-link">Part {{ nav.next.data.part | pad }} &rarr;</a>{% else %}<span class="post-part-link post-part-link--disabled">Last part &rarr;</span>{% endif %}
+    <span class="post-part-link post-part-link--disabled">Series in progress &rarr;</span>
   </div>
 </div>
 
-{{ content | safe }}
+<div class="post-body-wrap" id="post-content">
+<article class="post-body">
+
+<p class="lead">I left rebasing out of a six-part guide to Git, and it was the best decision in the whole series.</p>
+
+<p>When I sat down to write <em>Git and GitHub for Technical Writers</em>, I was not short of material. I had spent real time with Git, with GitHub, and with the relationship between the two, and I had a body of knowledge I was confident would be useful to other writers. What I had not yet made was the decision that actually shapes a document.</p>
+
+<p>Rebasing is not an obscure corner of Git. It is one of the first things a developer will tell you to learn, and any serious treatment of the tool covers it. Leaving it out of a guide aimed at technical writers felt, at first, like an omission I would have to justify.</p>
+
+<p>Then I looked at what the reader was actually there to do. A technical writer adopting Docs-as-Code needs to commit their markdown, push it, open a pull request, and not lose their work. Git and GitHub are engineering tools. For a writer they are borrowed tools, picked up for a narrow and specific purpose. Rebasing serves a concern that belongs further inside that world: rewriting commit history to keep it linear, a thing engineering teams care about and a writer, at that stage, does not. Explaining it would not have made the reader more capable. It would have introduced a second mental model of how commits move, alongside merging, before the first one had settled.</p>
+
+<p>The information was accurate. It was genuinely useful. It simply did not belong in that document, for that reader, at that point. That is the decision this post is about.</p>
+
+<p>Part 7 was about research: how you find out what is true, and how widely true it is. This is the stage that comes next. Research produces more than any single document should contain, and audience analysis is what decides which of it survives.</p>
+
+<hr>
+
+<h2>Knowledge Creates a Temptation</h2>
+
+<p>Coming from creative writing, I was used to the idea that having something worth saying was reason enough to put it on the page. Technical writing demands a different instinct. The question is not what do I know that I can explain. It is what does this particular reader need to know right now. That distinction sounds small, and it is not.</p>
+
+<p>The trap is easy to fall into, especially early on. You learn something difficult, you finally understand it, and you want to explain it. So the terminology goes in, and the background, and the edge cases, and the exceptions, and the thing that took you three hours to work out. Before long the document has become a record of the writer's learning rather than a path through the reader's problem. Nothing in it is wrong. The writing may be perfectly good. But the reader is being asked to process information they have no reason to process yet.</p>
+
+<div class="pull-quote reveal">
+  <p>Information can be true, useful, and still not belong in the document you are writing.</p>
+</div>
+
+<p>The reader may not be ready for it. They may have already outgrown it. Or they may simply never need it for the task in front of them. The writer has to decide which, and the deciding is the work.</p>
+
+<hr>
+
+<h2>The Shift: Warehouse vs. Path</h2>
+
+<div class="contrast-block reveal">
+  <div class="contrast-col contrast-col--left">
+    <span class="contrast-col-title">Warehouse</span>
+    <span class="contrast-col-subtitle">The Collection</span>
+    <p class="contrast-col-quote">&ldquo;I learned all of this, and all of it is true, so all of it should be in here somewhere.&rdquo;</p>
+    <span class="contrast-col-result">Result: an inventory the reader must search.</span>
+  </div>
+  <div class="contrast-col contrast-col--right">
+    <span class="contrast-col-title">Path</span>
+    <span class="contrast-col-subtitle">The Designed Route</span>
+    <p class="contrast-col-quote">&ldquo;This reader is going somewhere specific. What do they need to take the next step, and nothing more.&rdquo;</p>
+    <span class="contrast-col-result">Result: a route the reader can follow.</span>
+  </div>
+</div>
+
+<p>A warehouse stores everything. A path decides where someone needs to go next. Once you start designing the path, omission stops looking like incompleteness and starts looking like the point.</p>
+
+<hr>
+
+<h2>Selection Happens Before the Sentence</h2>
+
+<p>Audience analysis is usually taught as a writing technique, something you apply to prose so it lands with the right reader. In practice most of its value is spent earlier than that. It is a selection mechanism. Before you decide how to explain something, you decide whether it should be explained at all.</p>
+
+<p>The questions that do this work are answered before the first paragraph exists. Who is this reader, and what are they trying to accomplish. What do they already know, and what can I reasonably assume. What is unfamiliar to them, and what have they already outgrown. What do they need to finish the task in front of them, what belongs later, and what is technically relevant but practically unnecessary. Answer those honestly and the document changes shape before a sentence is written.</p>
+
+<p>There is a failure mode waiting for anyone who skips this. When you do not analyse the audience carefully, you invent one: an imaginary reader somewhere in the middle, not a beginner and not experienced, who supposedly needs a little of everything. The result is predictable. The beginner meets concepts they were not prepared for. The experienced reader wades through explanations they no longer need. The document grows longer without becoming more useful. Everyone receives information and nobody gets what they came for. That failure has a cost beyond the reading: every page written this way is another page the team maintains, updates on release, and eventually has to reconcile with a product that has moved on.</p>
+
+<hr>
+
+<h2>Depth Is a Decision Too</h2>
+
+<p>Selection is not only in or out. The same concept can enter a document at very different depths, and choosing the depth is the same decision made at finer resolution.</p>
+
+<p>Branching is the example I keep returning to. A writer needs to know that a branch is a safe, separate copy of the work, how to make one, and how to get changes back into the main line. That is enough to work confidently for months. The full model underneath it, branches as movable pointers to commits, how the graph is actually assembled, is the same subject at a depth that answers questions the reader has not asked yet. Same concept. Two documents. The choice is not what is true about branching. It is how much of that truth this reader can use today.</p>
+
+<hr>
+
+<h2>The Uncomfortable Part</h2>
+
+<p>There is a humility required here that took me a while to accept. We become attached to information because we worked hard to learn it. Something cost three hours, so it feels like it has earned its place. But the effort it took the writer to acquire a piece of knowledge says nothing about its value to the reader. A concept can be genuinely difficult for me to learn and completely unnecessary for you to know.</p>
+
+<p>That makes the cut hard in a way that has nothing to do with judgement and everything to do with attachment. The reader never experiences your research. They do not know how many sources you consulted or how many concepts you turned over. They experience the document, and they judge it by whether it helped them do the thing they came to do. The filtering has to happen before it reaches them, or they end up doing it themselves, which is the job you were hired to do.</p>
+
+<p>So a technically impressive document can still be a badly designed one. Accurate explanations, thorough research, careful examples, and it can still fail, because it asked the wrong reader to carry the wrong information at the wrong time. The problem was never the knowledge. It was the selection.</p>
+
+<p>Compressed into something you can apply, the decision comes down to three questions asked of every piece of information before it earns a place. Does it serve the task the reader came to complete. Does including it force a second mental model before the first one has settled. And is it needed today, or does it belong in the document this reader reaches next. Rebasing failed all three at once, which is why the cut was easy in the end. Most cuts are not that clean, and the questions are what make the difficult ones decidable.</p>
+
+<div class="callout-gold reveal">
+  <span class="callout-gold-label">Before you move on to Part 9</span>
+  <p>Open something you have written and find one section you included because you knew it, not because the reader needed it. Ask what task it helps them complete. If the honest answer is none, cut it and read the document again without it. Notice whether anything was actually lost. That is the test, and it is uncomfortable the first few times.</p>
+</div>
+
+<p>Research tells you what is true. Audience analysis tells you what belongs. What neither tells you is the order it should arrive in, and a document with exactly the right information in the wrong sequence still fails the person reading it. That is information architecture, and it is where Part 9 begins.</p>
+
+<p><em>The goal was never to transfer everything you know. It was to get this reader to the next step.</em></p>
+
+<hr>
+
+<div class="post-author-bio reveal">
+  <span class="post-author-bio-label">About the author</span>
+  <p>Douglas Ebhoman is a freelance technical writer and documentation systems specialist based in Prague. He works with DevTools and SaaS companies under his brand KBD Creative. Read more at <a href="https://douglasebhoman.com">douglasebhoman.com</a>.</p>
+</div>
+
+</article>
+</div>
 
 <section class="post-related">
   <p class="post-related-label">Continue the series</p>
-  <div class="post-related-grid{% if nav.prev and nav.next %} post-related-grid--double{% else %} post-related-grid--single{% endif %}">
-    {% if nav.prev %}
-    <a href="{{ nav.prev.url }}" class="post-related-card">
+  <div class="post-related-grid post-related-grid--single">
+    <a href="/blog/posts/the-discipline-of-research/" class="post-related-card">
       <div class="post-related-card-body">
         <span class="post-related-card-dir">&larr; Previous</span>
-        <span class="post-related-card-tag">Part {{ nav.prev.data.part | pad }}</span>
-        <h3 class="post-related-card-title">{{ nav.prev.data.title | safe }}</h3>
-        <p class="post-related-card-pull">&ldquo;{{ nav.prev.data.pullQuote }}&rdquo;</p>
-        <span class="post-related-card-cta">Read Part {{ nav.prev.data.part | pad }} &rarr;</span>
+        <span class="post-related-card-tag">Part 07</span>
+        <h3 class="post-related-card-title">Your Documentation Only Knows What One Person Noticed</h3>
+        <p class="post-related-card-pull">&ldquo;The size of your document is decided before you write it, by how many people you were willing to ask.&rdquo;</p>
+        <span class="post-related-card-cta">Read Part 07 &rarr;</span>
       </div>
     </a>
-    {% endif %}
-    {% if nav.next %}
-    <a href="{{ nav.next.url }}" class="post-related-card">
-      <div class="post-related-card-body">
-        <span class="post-related-card-dir">Next &rarr;</span>
-        <span class="post-related-card-tag">Part {{ nav.next.data.part | pad }}</span>
-        <h3 class="post-related-card-title">{{ nav.next.data.title | safe }}</h3>
-        <p class="post-related-card-pull">&ldquo;{{ nav.next.data.pullQuote }}&rdquo;</p>
-        <span class="post-related-card-cta">Read Part {{ nav.next.data.part | pad }} &rarr;</span>
-      </div>
-    </a>
-    {% endif %}
   </div>
 </section>
 
-<!-- COMMENTS -->
 <section class="post-comments">
   <p class="comments-label">Discussion</p>
   <script src="https://giscus.app/client.js"
@@ -352,12 +417,10 @@ a{color:inherit;text-decoration:none;}
   </script>
 </section>
 
-<!-- NEWSLETTER -->
 <section class="post-newsletter">
   <div class="post-newsletter-inner">
     <div>
-      {% if newsletterShowLabel %}<p class="lm" style="color:rgba(255,255,255,.3);margin-bottom:12px;">Stay current</p>{% endif %}
-      {% set _nTag = newsletterTitleTag if newsletterTitleTag else 'p' %}<{{ _nTag }} class="post-newsletter-title">New writing, when it&rsquo;s <em>worth reading.</em></{{ _nTag }}>
+      <p class="post-newsletter-title">New writing, when it&rsquo;s <em>worth reading.</em></p>
       <p class="post-newsletter-desc">No newsletter cadence. No content calendar. I write when I have something worth saying and you get it when it&rsquo;s done.</p>
     </div>
     <div class="post-newsletter-actions">
@@ -366,7 +429,7 @@ a{color:inherit;text-decoration:none;}
         ml('account', '2241731');
       </script>
       <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
-      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn {{ newsletterBtnClass if newsletterBtnClass else 'btn-ghost-light' }}" style="text-align:center;"{% if not newsletterNoTarget %} target="_blank" rel="noopener noreferrer"{% endif %}>Book the Audit &middot; &euro;300</a>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-ghost-light" style="text-align:center;" target="_blank" rel="noopener noreferrer">Book the Audit &mdash; &euro;300</a>
     </div>
   </div>
 </section>
@@ -382,7 +445,7 @@ a{color:inherit;text-decoration:none;}
 
 <script>
 /* Noise animation */
-const noiseEl = document.getElementById('noiseOverlay');
+const noiseEl=document.getElementById('noiseOverlay');
 if(noiseEl){let n=0;function an(){n+=.5;noiseEl.style.backgroundPosition=n+'px '+n+'px';requestAnimationFrame(an);}an();}
 
 /* Cursor trail */
@@ -404,19 +467,7 @@ document.addEventListener('mousemove',e=>{
   requestAnimationFrame(ucp);
 })();
 
-/* Ken Burns parallax — does NOT fight CSS animation */
-window.addEventListener('scroll',()=>{
-  const img=document.querySelector('.post-banner-img-wrap img');
-  if(!img)return;
-  const wrap=document.querySelector('.post-banner-img-wrap');
-  const rect=wrap.getBoundingClientRect();
-  if(rect.bottom>0&&rect.top<window.innerHeight){
-    const progress=Math.min(1,Math.max(0,-rect.top/rect.height));
-    img.style.transform=`scale(1.06) translateY(${progress*8}%)`;
-  }
-},{passive:true});
-
-/* Scroll — null-safe */
+/* Scroll progress + nav shadow */
 let _t=false;
 window.addEventListener('scroll',()=>{
   if(!_t){requestAnimationFrame(()=>{
@@ -430,41 +481,43 @@ window.addEventListener('scroll',()=>{
   });_t=true;}
 },{passive:true});
 
-/* Reveal */
+/* Reveal on scroll */
 const ro=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
     if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'),i*100);
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
       ro.unobserve(e.target);
     }
   });
 },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
+/* Mobile nav toggle */
 const navHamburger=document.getElementById('navHamburger');
 const navLinksEl=document.getElementById('navLinks');
 if(navHamburger&&navLinksEl){
-  navHamburger.addEventListener('click',()=>{const isOpen=navLinksEl.classList.toggle('open');navHamburger.classList.toggle('open',isOpen);navHamburger.setAttribute('aria-expanded',String(isOpen));});
-  navLinksEl.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{setTimeout(()=>{navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');},50);});});
-  document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
-}
-
-/* Smooth anchor scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(!t)return;
-    e.preventDefault();
-    const start=window.pageYOffset,dist=t.getBoundingClientRect().top;
-    let s=null;
-    (function step(ts){
-      if(!s)s=ts;
-      const p=Math.min((ts-s)/800,1);
-      window.scrollTo(0,start+dist*(1-Math.pow(1-p,4)));
-      if(p<1)requestAnimationFrame(step);
-    })(performance.now());
+  navHamburger.addEventListener('click',()=>{
+    const isOpen=navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open',isOpen);
+    navHamburger.setAttribute('aria-expanded',String(isOpen));
   });
-});
+  navLinksEl.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',()=>{
+      setTimeout(()=>{
+        navLinksEl.classList.remove('open');
+        navHamburger.classList.remove('open');
+        navHamburger.setAttribute('aria-expanded','false');
+      },50);
+    });
+  });
+  document.addEventListener('click',e=>{
+    if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded','false');
+    }
+  });
+}
 </script>
 </body>
 </html>

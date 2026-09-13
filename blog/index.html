@@ -252,31 +252,32 @@ a{color:inherit;text-decoration:none;}
   </div>
 </section>
 
+{%- set latest = collections.posts | first -%}
 <!-- FEATURED ARTICLE -->
 <section class="blog-featured">
   <div class="blog-featured-banner">
-    <img src="../assets/images/the-discipline-of-research.png" alt="Your Documentation Only Knows What One Person Noticed" loading="eager">
+    <img src="../assets/images/{{ latest.data.cardImage }}" alt="{{ latest.data.title }}" loading="eager">
     <div class="blog-featured-banner-overlay"></div>
   </div>
   <div class="blog-featured-inner">
     <div class="blog-featured-left">
       <div>
-        <p class="blog-feature-label">Latest: Part 07</p>
-        <h2 class="blog-featured-title">Your Documentation Only Knows<br><em>What One Person Noticed</em></h2>
-        <p class="blog-featured-excerpt">Most documentation is written from a single point of view, and it fails in exactly the places that one person never thought to check. <strong>Accurate documentation is not written, it is assembled: from the product, the engineers, the support queue, and the users, then verified until every claim holds from more than one direction.</strong></p>
+        <p class="blog-feature-label">Latest: Part {{ latest.data.part | pad }}</p>
+        <h2 class="blog-featured-title">{{ latest.data.title }}</h2>
+        <p class="blog-featured-excerpt">{{ latest.data.cardExcerpt }}</p>
         <p class="blog-meta">
-          <span>June 2026</span>
+          <span>{{ latest.data.cardDate }}</span>
           <span class="blog-meta-sep"></span>
-          <span>7 min read</span>
+          <span>{{ latest.data.readTime }}</span>
           <span class="blog-meta-sep"></span>
           <span>Systems Over Sentences</span>
         </p>
       </div>
-      <a href="/blog/posts/the-discipline-of-research/" class="blog-read-link">Read the article &rarr;</a>
+      <a href="{{ latest.url }}" class="blog-read-link">Read the article &rarr;</a>
     </div>
     <div class="blog-featured-right">
-      <p class="blog-featured-pull">&ldquo;The size of your document is decided before you write it, by how many people you were willing to <em>ask.</em>&rdquo;</p>
-      <p class="blog-featured-pull-attr">From Part 07 of Systems Over Sentences</p>
+      <p class="blog-featured-pull">&ldquo;{{ latest.data.pullQuote }}&rdquo;</p>
+      <p class="blog-featured-pull-attr">From Part {{ latest.data.part | pad }} of Systems Over Sentences</p>
     </div>
   </div>
 </section>
@@ -288,34 +289,12 @@ a{color:inherit;text-decoration:none;}
     <h2 class="blog-series-title">Systems Over Sentences: <em>10 parts on how documentation actually works.</em></h2>
     <p class="blog-series-sub">A complete series for technical writers and the founders who work with them. Start from Part 01 or jump to wherever you are.</p>
     <div class="blog-series-parts">
-      <a href="/blog/posts/from-writing-to-documentation-systems/" class="blog-series-part reveal">
-        <p class="blog-series-part-num">Part 01</p>
-        <p class="blog-series-part-title">From Writing to Documentation Systems</p>
+      {%- for p in collections.postsAsc %}
+      <a href="{{ p.url }}" class="blog-series-part{% if p.data.part == latest.data.part %} blog-series-part--active{% endif %} reveal">
+        <p class="blog-series-part-num">Part {{ p.data.part | pad }}{% if p.data.part == latest.data.part %} &mdash; Latest{% endif %}</p>
+        <p class="blog-series-part-title">{{ p.data.title }}</p>
       </a>
-      <a href="/blog/posts/your-documentation-is-a-bakery/" class="blog-series-part reveal reveal-d1">
-        <p class="blog-series-part-num">Part 02</p>
-        <p class="blog-series-part-title">Your Documentation is a Bakery</p>
-      </a>
-      <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="blog-series-part reveal reveal-d2">
-        <p class="blog-series-part-num">Part 03</p>
-        <p class="blog-series-part-title">How Product Teams Actually Handle Documentation</p>
-      </a>
-      <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="blog-series-part reveal reveal-d1">
-        <p class="blog-series-part-num">Part 04</p>
-        <p class="blog-series-part-title">Writing for Developers vs Non-Technical Users</p>
-      </a>
-      <a href="/blog/posts/anatomy-of-great-documentation/" class="blog-series-part reveal reveal-d2">
-        <p class="blog-series-part-num">Part 05</p>
-        <p class="blog-series-part-title">Anatomy of Great Documentation</p>
-      </a>
-      <a href="/blog/posts/introduction-to-structured-writing/" class="blog-series-part reveal">
-        <p class="blog-series-part-num">Part 06</p>
-        <p class="blog-series-part-title">Introduction to Structured Writing</p>
-      </a>
-      <a href="/blog/posts/the-discipline-of-research/" class="blog-series-part blog-series-part--active reveal reveal-d1">
-        <p class="blog-series-part-num">Part 07 &mdash; Latest</p>
-        <p class="blog-series-part-title">Your Documentation Only Knows What One Person Noticed</p>
-      </a>
+      {%- endfor %}
     </div>
   </div>
 </section>
@@ -327,98 +306,20 @@ a{color:inherit;text-decoration:none;}
     <h2 class="blog-grid-title">Every article, every idea.</h2>
 
     <div class="blog-grid">
-
-      <a href="/blog/posts/the-discipline-of-research/" class="blog-card reveal">
-        <div class="blog-card-banner"><img src="../assets/images/the-discipline-of-research.png" alt="Your Documentation Only Knows What One Person Noticed" loading="lazy"></div>
+      {%- for p in collections.posts %}
+      <a href="{{ p.url }}" class="blog-card reveal">
+        <div class="blog-card-banner"><img src="../assets/images/{{ p.data.cardImage }}" alt="{{ p.data.title }}" loading="lazy"></div>
         <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 07 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">Your Documentation Only Knows What One Person Noticed</h3>
-          <p class="blog-card-excerpt">Most documentation is written from one point of view, and it fails where that one person never thought to look. Research is how you assemble the whole picture, and verify it.</p>
+          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part {{ p.data.part | pad }} &middot; Systems Over Sentences</div>
+          <h3 class="blog-card-title">{{ p.data.title }}</h3>
+          <p class="blog-card-excerpt">{{ p.data.cardExcerpt }}</p>
           <div class="blog-card-foot">
-            <span class="blog-card-date">June 2026</span>
+            <span class="blog-card-date">{{ p.data.cardDate }}</span>
             <span class="blog-card-arrow">&rarr;</span>
           </div>
         </div>
       </a>
-
-      <a href="/blog/posts/introduction-to-structured-writing/" class="blog-card reveal reveal-d1">
-        <div class="blog-card-banner"><img src="../assets/images/introduction-to-structured-writing.png" alt="Introduction to Structured Writing" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 06 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">Introduction to Structured Writing</h3>
-          <p class="blog-card-excerpt">Most writing problems are not writing problems. They are structure problems. Here is the framework that separates content that scales from content that stalls.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">June 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="/blog/posts/anatomy-of-great-documentation/" class="blog-card reveal">
-        <div class="blog-card-banner"><img src="../assets/images/anatomy-of-great-documentation-cover.png" alt="Anatomy of Great Documentation" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 05 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">Anatomy of Great Documentation</h3>
-          <p class="blog-card-excerpt">Three elements separate documentation that works from documentation that merely exists. They show up in the same places every time.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">May 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="/blog/posts/writing-for-developers-vs-non-technical-users/" class="blog-card reveal reveal-d1">
-        <div class="blog-card-banner"><img src="../assets/images/writing-for-developers-vs-non-technical-users.jpeg" alt="Writing for Developers vs Non-Technical Users" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 04 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">Writing for Developers vs Non-Technical Users</h3>
-          <p class="blog-card-excerpt">Same information, completely different job. Here&rsquo;s what that distinction actually means in practice, and why getting it wrong costs more than you&rsquo;d think.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">April 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="/blog/posts/how-product-teams-actually-handle-documentation/" class="blog-card reveal reveal-d2">
-        <div class="blog-card-banner"><img src="../assets/images/how-product-teams-handle-documentation.png" alt="How Product Teams Actually Handle Documentation" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 03 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">How Product Teams Actually Handle Documentation</h3>
-          <p class="blog-card-excerpt">Documentation doesn&rsquo;t break at the writing stage. It breaks when no one clearly owns what happens next.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">April 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="/blog/posts/your-documentation-is-a-bakery/" class="blog-card reveal">
-        <div class="blog-card-banner"><img src="../assets/images/Your-documentation-is-a-bakery.png" alt="Your Documentation is a Bakery" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 02 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">Your Documentation is a Bakery. Here&rsquo;s How to Build a Supermarket.</h3>
-          <p class="blog-card-excerpt">You can&rsquo;t control which page your reader lands on first. What you can control is whether every page has windows that connect them to what they need next.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">April 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
-      <a href="/blog/posts/from-writing-to-documentation-systems/" class="blog-card reveal reveal-d1">
-        <div class="blog-card-banner"><img src="../assets/images/from-writing-to-documentation-systems.jpeg" alt="From Writing to Documentation Systems" loading="lazy"></div>
-        <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part 01 &middot; Systems Over Sentences</div>
-          <h3 class="blog-card-title">From Writing to Documentation Systems</h3>
-          <p class="blog-card-excerpt">Most people think technical writing is about writing. The real job is designing how information works. Here&rsquo;s the distinction that changes everything.</p>
-          <div class="blog-card-foot">
-            <span class="blog-card-date">April 2026</span>
-            <span class="blog-card-arrow">&rarr;</span>
-          </div>
-        </div>
-      </a>
-
+      {%- endfor %}
 
       <div class="blog-card blog-card--soon">
         <div class="blog-card-banner" style="display:flex;align-items:center;justify-content:center;background:var(--navy-mid);">
