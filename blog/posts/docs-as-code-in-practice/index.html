@@ -1,0 +1,155 @@
+---
+layout: layouts/post.html
+title: "Your Documentation Should Not Need Four Copies of the Truth"
+description: "Putting documentation in Git makes it versioned. It does not make it coherent. Part 10 of Systems Over Sentences, on Docs-as-Code as infrastructure rather than tooling."
+ogDescription: "Putting documentation in Git makes it versioned. It does not make it coherent. Part 10 of Systems Over Sentences, on Docs-as-Code as infrastructure rather than tooling."
+twitterDescription: "Putting documentation in Git makes it versioned. It does not make it coherent."
+ogImage: "https://douglasebhoman.com/assets/images/docs-as-code-in-practice.png"
+canonicalUrl: "https://douglasebhoman.com/blog/posts/docs-as-code-in-practice"
+seriesTag: "Systems Over Sentences &middot; Part 10 of 10"
+postSubtitle: "Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies."
+publishDate: "October 12, 2026"
+readTime: "7 min read"
+pageTitle: "Your Documentation Should Not Need Four Copies of the Truth | Systems Over Sentences &middot; Part 10 | Douglas Ebhoman"
+ogTitle: "Your Documentation Should Not Need Four Copies of the Truth | Systems Over Sentences &middot; Part 10"
+jsonLd: |2
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Your Documentation Should Not Need Four Copies of the Truth",
+      "description": "Putting documentation in Git makes it versioned. It does not make it coherent. Part 10 of Systems Over Sentences, on Docs-as-Code as infrastructure rather than tooling.",
+      "datePublished": "2026-10-12",
+      "url": "https://douglasebhoman.com/blog/posts/docs-as-code-in-practice",
+      "author": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "Systems Over Sentences",
+        "url": "https://douglasebhoman.com/blog/"
+      },
+      "keywords": ["docs-as-code", "technical writing", "documentation systems", "single source of truth", "documentation infrastructure", "static site generators"]
+    }
+extraCss: posts06to07
+part: 10
+draft: true
+cardDate: "October 2026"
+cardImage: "docs-as-code-in-practice.png"
+cardExcerpt: "My own site spent weeks telling readers the wrong thing about my latest writing, and nothing ever told me. The finale of Systems Over Sentences."
+pullQuote: "Memory is not infrastructure."
+---
+
+<!-- BODY -->
+<div class="post-body-wrap" id="post-content">
+<article class="post-body">
+
+<p class="lead">For days, possibly weeks, my own site was quietly telling readers the wrong thing about my latest writing.</p>
+
+<p>I did not find it by checking. I opened the Work page to see whether that section still matched my brand standards, and there it was: three cards under a heading that said Latest Writing, and not one of them was the piece I had just published. Part 7 was live. The repository knew. The blog index knew. The Work page was still recommending older work.</p>
+
+<p>I cannot tell you how long it had been wrong, because nothing told me. No build failed. No link broke. The page looked exactly as it was designed to look. It was simply out of date, and it would have stayed out of date for as long as I did not happen to look at it.</p>
+
+<p>Fixing it took two minutes, and that was the part that bothered me. I had already published the article. Why was I still walking around my own site telling it about something it already contained?</p>
+
+<hr>
+
+<h2>The Problem Was Not Git</h2>
+
+<p>By any description I would have given at the time, I was already doing Docs-as-Code. The content lived in a repository. Everything was versioned. The site was generated from those files by a build. Branches, history, review, deployment on push, all of it was in place.</p>
+
+<p>And I was still maintaining the same fact in four places by hand.</p>
+
+<p>Those two things are often treated as the same thing, and they are not. Putting documentation in Git makes it versioned. It does not make it coherent. A repository can record every change you make and still leave you personally responsible for remembering every other place that change was supposed to reach. Git can tell you what changed. It cannot know what that change was supposed to keep true.</p>
+
+<hr>
+
+<h2>One Fact, Four Surfaces</h2>
+
+<p>Publishing a post on my site meant remembering the post itself, the featured block at the top of the blog index, the series strip beneath it, the grid of cards below that, the Latest Writing strip on the Work page, and the sitemap. Most of those I updated out of habit. The Work page I forgot, because it sits on a page I have no reason to open while publishing.</p>
+
+<p>A checklist would have caught it. But a checklist is a person promising to remember a relationship the system knows nothing about. At that point the workflow depends on memory, and memory is the least reliable component in any system.</p>
+
+<div class="pull-quote reveal">
+  <p>Memory is not infrastructure.</p>
+</div>
+
+<p>The better question was never what do I need to remember to update. It is what should change when this file changes. The first is a systems question. The second is a memory test, and I had been quietly failing it for weeks.</p>
+
+<div class="contrast-block reveal">
+  <div class="contrast-col contrast-col--left">
+    <span class="contrast-col-title">Copies</span>
+    <span class="contrast-col-subtitle">The Memory Test</span>
+    <p class="contrast-col-quote">&ldquo;Publish the post. Then update the index, the strip, the grid, the Work page and the sitemap.&rdquo;</p>
+    <span class="contrast-col-result">Result: a truth that goes stale without telling you.</span>
+  </div>
+  <div class="contrast-col contrast-col--right">
+    <span class="contrast-col-title">Source</span>
+    <span class="contrast-col-subtitle">The System&rsquo;s Job</span>
+    <p class="contrast-col-quote">&ldquo;Publish the post. Everything that depends on it derives from the post itself.&rdquo;</p>
+    <span class="contrast-col-result">Result: one place where being right is enough.</span>
+  </div>
+</div>
+
+<hr>
+
+<h2>One Source, Many Surfaces</h2>
+
+<p>The article already knew almost everything those other surfaces were displaying. Its title. Its date. Its part number. Its image. Its excerpt. Its place in the series. None of that needed to be typed into another file. It needed to be readable from the file that already held it.</p>
+
+<p>So I changed the relationship rather than the content. Those facts were already sitting at the top of each post as structured metadata, which is the part that matters: they were not prose the build had to interpret, they were fields it could read. That turns a post from a document into something the site can query. Every surface that showed something about a post stopped keeping its own copy and started asking the posts themselves.</p>
+
+<p>That sounds like an implementation detail, and it is not. It moves a responsibility. The writer creates the source. The system creates the representations.</p>
+
+<p>To prove it worked, I created a temporary post, gave it a part number, and rebuilt the site. The featured block changed. The series strip changed. The grid changed. The strip on the Work page changed. Four surfaces, one file, no other edits. Then I deleted the test post, rebuilt, and everything went back.</p>
+
+<p>My first reaction was not satisfaction. It was mild irritation. Every one of those manual updates I had been carefully making, and occasionally forgetting, had been unnecessary. That work was never part of writing. It was a consequence of how I had built the thing.</p>
+
+<hr>
+
+<h2>Automation Is Not the Point</h2>
+
+<p>It is easy to reduce Docs-as-Code to a list of tools. Git, Markdown, pull requests, continuous integration, a static site generator, linters. Those matter, and I use all of them. But the tools are not the idea.</p>
+
+<p>The idea is that documentation should behave like an engineered system. A change should have one known source. Relationships should be explicit rather than remembered. Changes should be reviewable. The published result should be reproducible from the source. And repeated information should be derived, not synchronised by hand.</p>
+
+<p>What that buys the writer is attention. If the system handles mechanical consistency, I am no longer asking whether I updated the other page. I am asking whether this is still the right information for this reader. The first question is maintenance. The second one is the work.</p>
+
+<hr>
+
+<h2>The Decisions Have to Survive</h2>
+
+<p>That shift matters more than it sounds, because attention is what the rest of this series was asking for. Parts 6 through 9 were about decisions. Research establishes what is true. Audience analysis decides what belongs. Architecture decides how the pieces relate. Each is a judgement a writer makes, and each is fragile in the same way: it exists in the writer&rsquo;s head, and nothing outside that head enforces it.</p>
+
+<p>Decide that every part of a series should stand on its own, and the decision holds only as long as you remember to write it into every page. Decide that a card should always carry a post&rsquo;s title, date and excerpt, and the decision starts drifting the moment those values are copied into a second file. Decide that publishing should place a post in the right index, and you have described a build step rather than a rule, until the build actually performs it.</p>
+
+<p>That is what this last part is for. Not a tool bolted onto the end of a series about thinking, but an answer to the question the thinking eventually forces. How do these decisions survive contact with a real project, over time, when the person who made them has forgotten the details?</p>
+
+<div class="callout-gold reveal">
+  <span class="callout-gold-label">One last test</span>
+  <p>Change something in your documentation that appears in more than one place: a product name, a version number, the title of a page. Then count how many places you have to update by hand. For each one, ask whether it genuinely needs its own editorial decision, or whether it is a copy the system could have derived from the source. Some will be genuine. The rest are relationships you are currently maintaining with memory, and every one of them is waiting to go stale without telling you.</p>
+</div>
+
+<p>The Work page failure was small. Nothing broke, nobody was blocked, no customer lost access to anything. That is exactly why it is worth ending on. It was not caused by carelessness, and being a more careful writer would not have prevented it. It was caused by an architecture that allowed one fact to live in four places, and offered no signal when three of them were right and one was wrong.</p>
+
+<p>When documentation keeps going wrong in small ways, the instinct is to be more careful. Usually the better answer is to stop asking the writer to compensate for the system.</p>
+
+<p>This series began with a phrase I use about my own work: narrative is infrastructure. Ten parts later, I can say what I actually mean by it. The words are the visible part. Underneath them sit decisions about what is true, what belongs and how it all relates, and those decisions are only as durable as the system holding them. Build the system, and the writing has somewhere to stand.</p>
+
+<p><em>The writer decides what the documentation means. The system keeps that meaning from drifting.</em></p>
+
+<hr>
+
+<div class="post-author-bio reveal">
+  <span class="post-author-bio-label">About the author</span>
+  <p>Douglas Ebhoman is a freelance technical writer and documentation systems specialist based in Prague. He works with DevTools and SaaS companies under his brand KBD Creative. Read more at <a href="https://douglasebhoman.com">douglasebhoman.com</a>.</p>
+</div>
+
+</article>
+</div>
