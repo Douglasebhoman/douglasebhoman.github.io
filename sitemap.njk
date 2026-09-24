@@ -1,3 +1,7 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
@@ -21,62 +25,19 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+{%- set monthNums = {"January":"01","February":"02","March":"03","April":"04","May":"05","June":"06","July":"07","August":"08","September":"09","October":"10","November":"11","December":"12"} %}
+{%- for post in collections.posts %}
+{%- set dateParts = post.data.publishDate.split(", ") %}
+{%- set monthDay = dateParts[0].split(" ") %}
+{%- set day = ("0" + monthDay[1]).slice(-2) %}
 
   <url>
-    <loc>https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/</loc>
-    <lastmod>2026-04-08</lastmod>
+    <loc>{{ post.data.canonicalUrl }}</loc>
+    <lastmod>{{ dateParts[1] }}-{{ monthNums[monthDay[0]] }}-{{ day }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/</loc>
-    <lastmod>2026-04-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/</loc>
-    <lastmod>2026-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/</loc>
-    <lastmod>2026-06-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/the-discipline-of-research/</loc>
-    <lastmod>2026-06-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://douglasebhoman.com/blog/posts/audience-analysis-in-documentation/</loc>
-    <lastmod>2026-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+{%- endfor %}
 
   <url>
     <loc>https://douglasebhoman.com/cv/</loc>
