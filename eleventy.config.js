@@ -15,6 +15,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("node_modules/**");
   eleventyConfig.ignores.add("_site/**");
   eleventyConfig.ignores.add("README.md");
+  // Share card sources, rendered to PNG by hand and never published
+  eleventyConfig.ignores.add("scripts/**");
 
   // ---------------------------------------------------------------
   // POSTS COLLECTION
