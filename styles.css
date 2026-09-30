@@ -165,7 +165,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .pov-principle:last-child{border-bottom:none;padding-bottom:0;}
 .pov-p-num{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
 .pov-p-title{font-family:var(--serif);font-size:15px;font-weight:400;color:#fff;font-style:italic;margin-bottom:5px;line-height:1.3;}
-.pov-p-desc{font-size:12px;color:rgba(255,255,255,.35);line-height:1.7;font-weight:300;}
+.pov-p-desc{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;font-weight:300;}
 
 /* HEALTH CHECK */
 .hc{background:var(--navy-mid);padding:clamp(56px,8vw,80px) var(--pad);border-top:1px solid var(--border-dark);}
