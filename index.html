@@ -498,8 +498,8 @@
           <h1 class="doc-h1">Site Architecture</h1>
           <p class="doc-p">This document describes the technical architecture of <code style="font-family:var(--mono);font-size:11px;">douglasebhoman.com</code>. Written for future maintainers who need to understand how the site is structured without reverse-engineering it from source.</p>
           <h2 class="doc-h2">Technology stack</h2>
-          <table class="doc-table"><thead><tr><th>Layer</th><th>Technology</th><th>Why</th></tr></thead><tbody><tr><td>Generator</td><td>Jekyll</td><td>Supported natively by GitHub Pages.</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>Free, reliable, deploys on git push.</td></tr><tr><td>Styles</td><td>Custom CSS</td><td>Zero dependencies. Full design control.</td></tr><tr><td>DNS</td><td>Cloudflare</td><td>Free SSL and performance caching.</td></tr></tbody></table>
-          <div class="doc-note"><strong>Deployment</strong> Every push to <code style="font-family:var(--mono);font-size:11px;">main</code> triggers a GitHub Pages build. Deployments complete in under 60 seconds.</div>
+          <table class="doc-table"><thead><tr><th>Layer</th><th>Technology</th><th>Why</th></tr></thead><tbody><tr><td>Generator</td><td>Eleventy 3</td><td>One shared post layout and one posts collection build every page.</td></tr><tr><td>Scripts</td><td>Vanilla JavaScript</td><td>No front-end framework.</td></tr><tr><td>Styles</td><td>Custom CSS</td><td>Zero dependencies. Full design control.</td></tr><tr><td>Hosting</td><td>GitHub Pages</td><td>Deployed by a GitHub Actions workflow on every push to main.</td></tr><tr><td>DNS</td><td>Cloudflare</td><td>DNS only, proxy off. HTTPS is issued by GitHub Pages.</td></tr><tr><td>Docs</td><td>MkDocs + Material</td><td>Separate repository, built and deployed by GitHub Actions.</td></tr></tbody></table>
+          <div class="doc-note"><strong>Deployment</strong> Every push to <code style="font-family:var(--mono);font-size:11px;">main</code> runs a GitHub Actions workflow that builds the site with Eleventy and publishes the output to GitHub Pages.</div>
         </div>
       </div>
     </div>
@@ -1116,7 +1116,7 @@ const hcQs = [
 const dimContext = {
   accuracy: {
     label: "Accuracy",
-    cost: "Inaccurate documentation costs your engineering team an average of 3–5 hours per mis-documented endpoint in support and debugging time.",
+    cost: "Every unclear endpoint sends developers to your support queue, and that cost repeats until the page is fixed.",
     fix: "The audit reviews every page against your live product and identifies exactly where the drift is, ranked by how much it's costing you."
   },
   ownership: {

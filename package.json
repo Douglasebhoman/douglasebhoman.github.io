@@ -1,7 +1,7 @@
 {
   "name": "douglasebhoman.github.io",
   "version": "1.0.0",
-  "description": "Professional web presence and freelance practice for Douglas Ebhoman, a documentation systems specialist based in Prague. Built in pure HTML, CSS, and vanilla JavaScript with no framework, no build step, and no CMS. The repository contents are the deployment artefact.",
+  "description": "Professional web presence and freelance practice for Douglas Ebhoman, a documentation systems specialist based in Prague. Built with Eleventy 3, custom CSS and vanilla JavaScript, with no front-end framework and no CMS. A GitHub Actions workflow builds the site and deploys it to GitHub Pages.",
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
