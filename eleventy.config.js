@@ -17,6 +17,17 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
 
   // ---------------------------------------------------------------
+  // DRAFTS
+  // A file with `draft: true` is skipped entirely in production
+  // builds (`npm run build` and the deploy workflow), so it is never
+  // written to _site and has no public URL. Under `npm start`
+  // (eleventy --serve) it still renders locally for review.
+  // ---------------------------------------------------------------
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => {
+    if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") return false;
+  });
+
+  // ---------------------------------------------------------------
   // POSTS COLLECTION
   // Single source of truth for every "latest writing" surface:
   // the blog featured block, series strip, blog grid, and the
