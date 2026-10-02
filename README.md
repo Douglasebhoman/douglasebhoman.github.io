@@ -1,9 +1,10 @@
 # douglasebhoman.com
 
 Professional web presence and freelance practice for Douglas Ebhoman,
-a documentation systems specialist based in Prague. Built in pure HTML,
-CSS, and vanilla JavaScript with no framework, no build step, and no CMS.
-The repository contents are the deployment artefact.
+a documentation systems specialist based in Prague. Built with HTML, CSS
+and vanilla JavaScript, and Eleventy 3, with no front-end framework and no
+CMS. A GitHub Actions workflow builds the site into `_site/` and deploys that
+output to GitHub Pages.
 
 ---
 
@@ -30,9 +31,11 @@ The repository contents are the deployment artefact.
 | --- | --- |
 | `styles.css` | Global stylesheet shared across all pages |
 | `assets/images/` | All site images — portfolio cards, blog post covers, headshots |
-| `site-docs/` | Built output of the site documentation — source lives at github.com/Douglasebhoman/site-docs |
 | `CNAME` | Custom domain record for GitHub Pages (`douglasebhoman.com`) |
-| `sitemap.xml` | XML sitemap for search engine indexing |
+| `sitemap.njk` | Generates `/sitemap.xml`. Blog post entries come from the posts collection. Other entries are written by hand |
+| `eleventy.config.js` | Eleventy configuration: copied files, ignored files and the posts collections |
+| `_includes/layouts/post.html` | Shared layout for every blog post |
+| `.github/workflows/deploy.yml` | Builds the site and deploys it to GitHub Pages |
 | `robots.txt` | Crawler directives |
 | `.nojekyll` | Prevents GitHub Pages from running Jekyll on the repository |
 
@@ -45,7 +48,8 @@ The repository contents are the deployment artefact.
 | Markup | HTML5 |
 | Styles | CSS3 — custom properties, Grid, Flexbox, `clamp()`, multi-column layout, CSS animations |
 | Scripts | Vanilla JavaScript — no frameworks or libraries |
-| Hosting | GitHub Pages, served directly from `main` |
+| Build | Eleventy 3.1.6 on Node 22 |
+| Hosting | GitHub Pages, deployed by GitHub Actions on every push to `main` |
 | DNS | Cloudflare — DNS-only mode (no proxy), CNAME pointing to `douglasebhoman.github.io` |
 | HTTPS | Let's Encrypt via GitHub Pages automatic certificate issuance |
 | Fonts | Google Fonts — Fraunces, DM Sans, DM Mono |
@@ -81,15 +85,18 @@ All interactions live in a single `<script>` block before `</body>` in
 
 ## Deployment
 
-The site deploys automatically on every push to `main`. There is no
-build step — GitHub Pages serves the repository contents directly.
+Every push to `main` runs the **Build and Deploy to GitHub Pages** workflow
+in `.github/workflows/deploy.yml`. Only the build output is published.
 
 ### Flow
 
 1. Push or merge to `main`
-2. GitHub's built-in `pages-build-deployment` workflow triggers automatically
-3. Files are served as-is — no compilation, no preprocessing
-4. Live at `douglasebhoman.com` within one to two minutes
+2. The workflow installs dependencies with `npm ci` on Node 22
+3. Eleventy builds the site into `_site/`
+4. The workflow uploads `_site/` and deploys it to GitHub Pages
+5. Live at `douglasebhoman.com`, usually within a minute or two
+
+The Pages source in the repository settings must be **GitHub Actions**.
 
 ### Custom domain setup
 
@@ -106,8 +113,12 @@ Let's Encrypt certificate issuance.
 ### Verifying a deployment
 
 After pushing, open the **Actions** tab in the repository. The
-`pages-build-deployment` workflow shows a green checkmark when the
-deployment completes successfully.
+**Build and Deploy to GitHub Pages** run shows a green tick on both jobs,
+`build` and `deploy`, when the deployment completes successfully.
+
+The site documentation is maintained in the separate
+[site-docs](https://github.com/Douglasebhoman/site-docs) repository and
+served at [douglasebhoman.com/site-docs](https://douglasebhoman.com/site-docs/).
 
 ---
 
