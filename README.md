@@ -126,17 +126,8 @@ served at [douglasebhoman.com/site-docs](https://douglasebhoman.com/site-docs/).
 
 *Systems Over Sentences* is a 10-part series on documentation
 architecture, ownership, and craft for DevTools and SaaS teams.
-Six parts are published.
 
-| Part | Title | Date |
-| --- | --- | --- |
-| 01 | [From Writing to Documentation Systems](https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/) | April 8, 2026 |
-| 02 | [Your Documentation is a Bakery. Here's How to Build a Supermarket.](https://douglasebhoman.com/blog/posts/your-documentation-is-a-bakery/) | April 13, 2026 |
-| 03 | [How Product Teams Actually Handle Documentation (And Why It Usually Fails)](https://douglasebhoman.com/blog/posts/how-product-teams-actually-handle-documentation/) | April 20, 2026 |
-| 04 | [Writing for Developers vs Non-Technical Users: Why the Difference Matters](https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/) | April 27, 2026 |
-| 05 | [The Anatomy of Great Documentation](https://douglasebhoman.com/blog/posts/anatomy-of-great-documentation/) | May 3, 2026 |
-| 06 | [Introduction to Structured Writing](https://douglasebhoman.com/blog/posts/introduction-to-structured-writing/) | — |
-| 07–10 | *In progress* | — |
+The current list of published posts is on the blog: [douglasebhoman.com/blog](https://douglasebhoman.com/blog/).
 
 Each post is self-contained and part of a connected series. Every post
 includes a series navigation strip, a Giscus comment thread, and a
