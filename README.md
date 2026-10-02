@@ -17,12 +17,7 @@ output to GitHub Pages.
 | `/services/` | Services | Documentation Audit — €300 fixed-fee service, deliverables, FAQ |
 | `/audit/` | Audit | Standalone audit booking page with Calendly embed |
 | `/blog/` | Blog index | Systems Over Sentences series — article grid and newsletter |
-| `/blog/posts/from-writing-to-documentation-systems/` | Post 01 | From Writing to Documentation Systems |
-| `/blog/posts/your-documentation-is-a-bakery/` | Post 02 | Your Documentation is a Bakery. Here's How to Build a Supermarket. |
-| `/blog/posts/how-product-teams-actually-handle-documentation/` | Post 03 | How Product Teams Actually Handle Documentation (And Why It Usually Fails) |
-| `/blog/posts/writing-for-developers-vs-non-technical-users/` | Post 04 | Writing for Developers vs Non-Technical Users: Why the Difference Matters |
-| `/blog/posts/anatomy-of-great-documentation/` | Post 05 | The Anatomy of Great Documentation |
-| `/blog/posts/introduction-to-structured-writing/` | Post 06 | Introduction to Structured Writing |
+| `/blog/posts/<slug>/` | Blog post | One page per post, generated from the post file and the shared post layout |
 | `/404.html` | 404 | Custom error page with navigation back to the homepage |
 
 ### Supporting files
