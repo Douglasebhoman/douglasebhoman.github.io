@@ -1,15 +1,46 @@
 ---
 layout: layouts/post.html
-title: Writing for Developers vs Non-Technical Users
+title: "Writing for Developers vs Non-Technical Users"
 description: "Writing for developers and non-technical readers are not just different tones: they are different jobs. Here is what that distinction actually means in practice."
 ogDescription: "Writing for developers and non-technical readers are not just different tones: they are different jobs. Here is what that distinction actually means in practice."
 twitterDescription: "Writing for developers and non-technical readers are not just different tones: they are different jobs."
-ogImage: "https://douglasebhoman.com/assets/images/writing-for-developers-vs-non-technical-users-cover.png"
+ogImage: "https://douglasebhoman.com/assets/images/writing-for-developers-vs-non-technical-users.jpeg"
 canonicalUrl: "https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/"
 seriesTag: "Systems Over Sentences &middot; Part 04 of 10"
-postSubtitle: "&ldquo;Same information, completely different job. The distinction is not about vocabulary. It is about what the reader is trying to do when they open the page.&rdquo;"
+postSubtitle: "Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies."
 publishDate: "April 27, 2026"
-readTime: "6 min read"
+readTime: "10 min read"
+pageTitle: "Developer Documentation vs User Documentation: Why the Same System Needs Two Different Documents | Systems Over Sentences &middot; Part 4"
+ogTitle: "Developer Documentation vs User Documentation: Why the Same System Needs Two Different Documents | Systems Over Sentences &middot; Part 4"
+jsonLd: |2
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Writing for Developers vs Non-Technical Users",
+      "description": "Writing for developers and non-technical readers are not different tones, they are different jobs, and the split is not the one most writers think it is. Part 4 of Systems Over Sentences.",
+      "datePublished": "2026-04-27",
+      "url": "https://douglasebhoman.com/blog/posts/writing-for-developers-vs-non-technical-users/",
+      "author": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "Systems Over Sentences",
+        "url": "https://douglasebhoman.com/blog/"
+      },
+      "citation": [
+        "Colin Camerer, George Loewenstein and Martin Weber, The Curse of Knowledge in Economic Settings: An Experimental Analysis, Journal of Political Economy 97(5), 1989",
+        "Jakob Nielsen, Progressive Disclosure, Nielsen Norman Group, 2006"
+      ],
+      "keywords": ["developer documentation", "user documentation", "curse of knowledge", "progressive disclosure", "technical writing", "audience analysis"]
+    }
 newsletterShowLabel: true
 newsletterTitleTag: h2
 newsletterBtnClass: btn-outline-light
@@ -23,17 +54,56 @@ pullQuote: "Same information, completely different job."
 ---
 
 <!-- BODY -->
-<div class="post-body-wrap"><article class="post-body">
-<p class="lead">Earlier this year I documented douglasebhoman.com, my personal portfolio site. I built it. Every line of HTML, every CSS variable, every deployment pipeline. There is no version of this site I do not understand. And yet, writing developer documentation for it was one of the hardest writing tasks I have done.</p>
-<p>Not because the system was complex. Because I knew it too well. Every assumption I had made during the build, assumptions so familiar they had become invisible, suddenly needed to be surfaced, named, and explained for someone who was not me. The curse of knowledge does not spare you just because the system is your own. It hits harder.</p>
+<div class="post-body-wrap" id="post-content">
+<article class="post-body">
+
+<p class="lead">Earlier this year I documented douglasebhoman.com, my own portfolio site. I built it. Every line of HTML, every CSS variable, every deployment pipeline. There is no version of this site I do not understand. And writing developer documentation for it was one of the hardest writing tasks I have done.</p>
+
+<p>Not because the system was complex. Because I knew it too well. Every assumption I had made during the build, assumptions so familiar they had stopped being visible to me, had to be surfaced, named and explained for somebody who was not me.</p>
+
+<p>That difficulty has a name and a literature. In 1989, Camerer, Loewenstein and Weber gave it one: the curse of knowledge, the finding that better-informed people cannot set aside what they know when predicting what less-informed people will think. Their experiments were in asset markets rather than documentation, but the judgement at the centre of them is the writer&rsquo;s judgement exactly. One group forecast eight companies&rsquo; earnings. A second group, who had been shown the real figures, tried to predict what the first group had guessed. Knowing the answer made them worse at modelling people who did not.</p>
+
+<p>It does not spare you just because the system is your own. It hits harder, because there is nobody else to notice what you left out.</p>
+
 <hr>
-<h2>The tour guide and the precision guide</h2>
-<p>Writing a blog series is like taking your audience on a tour. There is a specific destination, but the journey is the point. You show the reader every detail along the way, because context is what makes the content worth reading. The narrative earns the information.</p>
-<p>Writing developer documentation is different. You are not a tour guide. You are an expert escort who takes the reader directly to the destination, stripping out everything that does not serve the task. No history. No exploration. No detours through your own thinking. Precision is the value. Every word that is not load-bearing is a word that should not be there.</p>
-<p>What made documenting my own site so disorienting was that I had to become the escort for a destination I had built myself. I had to pretend I did not know the shortcuts. I had to write the long way for a reader who needed the long way, even though I had never taken it. That is the job. And it is harder than it sounds.</p>
+
+<h2>Two questions, not one</h2>
+
+<p>The usual framing of this problem is developers against everybody else, and that framing is incomplete. It describes one variable and then behaves as though it were the only one.</p>
+
+<p>There are two, and they move independently.</p>
+
+<p>The first is about vocabulary and assumed context. What can I take for granted? Does this reader know what an endpoint is, what a parameter does, what this acronym expands to? That is the developer and non-technical axis, and it governs word choice, how much you define, and how much you explain before you can begin.</p>
+
+<p>The second is about what the reader came to do. Did they open this page to understand something, or to get something done? That axis governs structure, length, and whether context is valuable or obstructive.</p>
+
+<p>Those are not the same question, and they do not line up. A senior engineer reading about a system architecture before a design review came to understand, and wants the long version with the reasoning intact. A marketing manager trying to export a report before a meeting came to use, and every sentence of background between them and step one is a cost. Both readers exist. Both are badly served by documentation that assumes the audience axis settles the task axis.</p>
+
+<div class="contrast-block reveal">
+  <div class="contrast-col contrast-col--left">
+    <span class="contrast-col-title">The Tour</span>
+    <span class="contrast-col-subtitle">The reader came to understand</span>
+    <p class="contrast-col-quote">&ldquo;Why is it built this way? What were the alternatives? What will this cost me later?&rdquo;</p>
+    <span class="contrast-col-result">Context is the value. The detour is the point.</span>
+  </div>
+  <div class="contrast-col contrast-col--right">
+    <span class="contrast-col-title">The Escort</span>
+    <span class="contrast-col-subtitle">The reader came to use</span>
+    <p class="contrast-col-quote">&ldquo;What do I type? What do I click? How do I know it worked?&rdquo;</p>
+    <span class="contrast-col-result">Precision is the value. Every word that is not load-bearing is a cost.</span>
+  </div>
+</div>
+
+<p>A tour guide shows you everything on the way, because the journey is what you came for. An escort takes you to the destination and strips out everything that does not serve arriving. Neither is better. Choosing the wrong one is what produces documentation that is accurate and useless at the same time.</p>
+
+<p>What made documenting my own site disorienting was having to be the escort for a destination I had built. I knew every shortcut. I had to write the long way for a reader who needed the long way, having never once taken it myself.</p>
+
 <hr>
-<h2>The developer wants results. The non-technical reader wants understanding.</h2>
-<p>When their needs align, writing for both audiences is straightforward. When they diverge, they diverge completely. Consider the same piece of information written for two different readers:</p>
+
+<h2>Same system, different documents</h2>
+
+<p>Here is where the usual advice goes wrong. It suggests that writing for two audiences means writing the same information two ways. Usually it means writing two different documents about two different tasks that happen to touch the same part of the system.</p>
+
 <div class="audience-comparison">
   <div class="audience-card">
     <span class="audience-card-label">For a developer</span>
@@ -48,32 +118,93 @@ Response: 200 OK
   </div>
   <div class="audience-card">
     <span class="audience-card-label">For a non-technical reader</span>
-    <p>&ldquo;Think of the user ID as a library card number. When you ask the system for a specific user, you hand over their card number and the system retrieves everything it knows about them.&rdquo;</p>
+    <p>Open <strong>Customers</strong>, search by email address, and open the record. Everything the system holds about that person is on this page, including the reference our engineers will ask you for if you raise a support ticket.</p>
   </div>
 </div>
-<p>Same information. One gives the developer exactly what they need to act. The other gives the non-technical reader exactly what they need to understand. </p>
-<hr>
-<h2>Where technical writers most often get this wrong</h2>
-<p>There are two failure modes and most writers fall into one of them. The first is not trusting the developer: over-explaining code samples, defining syntax that any working engineer already knows, adding context the developer did not ask for. The result is documentation that wastes their time and signals clearly that the writer does not understand who they are writing for.</p>
-<p>The second failure mode is the mirror: underestimating the non-technical reader. Assuming they know what an API is, what a parameter does, what an acronym means. The result is documentation that intimidates rather than informs.</p>
-<p>I fell into the first failure mode when I started documenting my own site. I kept wanting to explain <em>why</em> I made certain decisions. That is valuable context for a blog post. It is noise in a technical reference. Stripping that context out was the hardest editing I have done.</p>
-<hr>
-<h2>What language precision actually means in practice</h2>
-<p>Language precision is not about vocabulary. It is about matching your language to the level of understanding your reader brings to the page. In a product team, you work from user personas: documented profiles of your target readers. A Senior DevOps Engineer and a Marketing Manager are not the same reader, even if they are using the same product.</p>
-<p>Outside a product team, writing independently as I am, you build the persona yourself. You make educated assumptions based on who you expect to land on the page, and you write for that reader explicitly. The friction of writing for someone you cannot meet is part of the job. The skill is in making your assumptions deliberate rather than accidental.</p>
-<hr>
-<h2>Progressive disclosure: one system, two readers</h2>
-<p>The developer and non-technical reader split does not always mean writing two separate documents. Great documentation systems use progressive disclosure, giving each reader what they need at the level they need it, within the same structure. The developer gets the code sample immediately. The precision guide takes them straight to the destination. The non-technical reader gets a link: &ldquo;Read more about how this works.&rdquo;</p>
-<p>This is the difference between documentation that serves one audience and documentation that scales. The escort and the tour guide do not have to be separate trips. They can be the same road with different lanes.</p>
-<div class="quick-win">
-  <span class="quick-win-label">Quick win for systems thinkers</span>
-  <p>Before you write a single word, ask yourself one question: <em>does my reader want to understand this, or do they want to use it?</em></p>
-  <p><strong>Understanding</strong> means writing for the non-technical reader. Define terms. Build context. Surface assumptions. Tell the story.</p>
-  <p><strong>Using</strong> means writing for the developer. Lead with the outcome. Trust the reader. Get out of the way.</p>
-  <p>And if your documentation needs to serve both, design for progressive disclosure. Give the developer the direct path. Give the non-technical reader the door to go deeper.</p>
+
+<p>Both columns touch the same user record. Neither is a translation of the other. The person on the right will never call that endpoint, so explaining it to them in analogy serves nobody: it performs accessibility without doing any work. What they need is the task they actually have, written in the words their screen uses, with one bridge to the other document at the point where the two readers meet, which is the support ticket.</p>
+
+<p>That is the real relationship between developer and user documentation. Not two depths of one explanation. Two jobs, connected at the seams.</p>
+
+<p>Getting that relationship wrong produces two failure modes, and most writers live in one of them.</p>
+
+<p>The first is not trusting the developer. Over-explaining code samples, defining syntax any working engineer already holds, adding context nobody asked for. The result wastes their time and signals that the writer does not know who they are writing for, which is the fastest way to lose an audience that was predisposed to skim anyway.</p>
+
+<p>The second is underestimating the non-technical reader, which usually means writing about the system instead of about their task. A page that explains what the integration does, when the reader needed to know which button connects it. The result does not inform, it intimidates, and intimidated readers do not ask for help. They ask a colleague, which is how the drift in Part 3 begins.</p>
+
+<p>I fell into the first when I started on my own site. I kept wanting to explain <em>why</em> I had made certain decisions. That is valuable in a blog post. It is noise in a technical reference. Cutting it was the hardest editing I have done, because every sentence I removed was true.</p>
+
+<div class="pull-quote reveal">
+  <p>Accurate is not the same as useful. Most documentation that fails is already accurate.</p>
 </div>
-<h2>What is next</h2>
-<p>In Part 5 we get into the anatomy of great documentation: what separates a document that works from one that merely exists. The difference shows up in the same three places every time.</p>
+
 <hr>
-<p><em>I am building a live example of developer-facing documentation as I write this series. <a href="https://douglasebhoman.github.io/mkdocs-for-technical-writers">MkDocs for Technical Writers</a> is a practical guide to building and deploying documentation sites, and it is the direct result of everything this post describes.</em></p>
-</article></div>
+
+<h2>Writing for the reader you cannot meet</h2>
+
+<p>Inside a product team you work from personas: documented profiles of real reader types, usually built from support data and sales calls. A Senior DevOps Engineer and a Marketing Manager are not the same reader, even on the same product, even on the same feature.</p>
+
+<p>Writing independently, as I do, you build the persona yourself. You make assumptions about who lands on the page and you write for that person deliberately. The friction of writing for somebody you cannot interview is part of the work. The skill is in making the assumptions explicit rather than accidental, because an unexamined assumption is just the curse of knowledge wearing a job title.</p>
+
+<p>One asymmetry is worth more than any persona template, and it is the thing most writers miss about non-technical readers.</p>
+
+<p>Developers read documentation non-linearly. They arrive, scan for the code block, read backwards from it if something does not parse, and leave. They are comfortable being lost for thirty seconds because they know the shape of the thing they are looking for.</p>
+
+<p>A non-technical reader reads in order, because they cannot skim for a landmark they would not recognise. That single difference changes everything structural. It means sequence matters more than completeness. It means a step out of order is worse than a step missing, because a missing step produces a question and a wrong order produces a broken system. It means the first screen has to establish what this page will get them, since they cannot jump ahead to find out.</p>
+
+<p>Write for a developer and you are designing for retrieval. Write for a non-technical reader and you are building a path, and the path has to hold even when somebody is following it for the first time, slightly anxious, on a deadline.</p>
+
+<hr>
+
+<h2>What progressive disclosure can and cannot do</h2>
+
+<p>The usual answer to serving two readers is progressive disclosure, a term from interaction design that Jakob Nielsen has written about at the Nielsen Norman Group: defer advanced or rarely used material to a secondary screen, so the first screen carries only what most people need.</p>
+
+<p>It is a genuinely useful pattern and it is narrower than it is usually sold as. It works when both readers need <em>the same thing at different depths</em>. An architecture overview a product manager reads once and an engineer reads properly is a real case. A summary with the derivation one layer down is a real case.</p>
+
+<p>It does not work when the readers need different things. You cannot progressively disclose your way from an admin panel walkthrough to an API reference, because the second is not a deeper version of the first. It is a different document for a different job, and pretending otherwise produces a page that is slightly wrong for everybody.</p>
+
+<p>So the honest test is not how to serve both readers on one page. It is which of the two situations you are in.</p>
+
+<div class="callout-gold reveal">
+  <span class="callout-gold-label">Before you write a word</span>
+  <p>Answer both questions separately, in this order:</p>
+  <ol>
+    <li>What can I assume this reader already holds? That decides vocabulary, how much you define, and what you can leave out.</li>
+    <li>Did they come to understand or to use? That decides structure, length, and whether your reasoning belongs on the page at all.</li>
+  </ol>
+  <p>Then one more: is the other reader after the same thing at a different depth, or a different thing entirely? Same thing, use progressive disclosure and keep one page. Different thing, write the second document and build one deliberate link between them at the point where the two readers actually meet.</p>
+</div>
+
+<hr>
+
+<h2>Why trying harder does not work</h2>
+
+<p>Everything above is mechanical and can be learned in an afternoon. The part that does not get easier is the part those 1989 experiments were actually about.</p>
+
+<p>You cannot reliably simulate not knowing something. Once a system is in your head, the version of yourself who did not understand it is gone, and what replaces that memory is a confident guess about what was hard. The guess tends to be wrong in the same direction: you remember what was interesting to learn and forget what was merely unfamiliar, and the merely unfamiliar is what stops people.</p>
+
+<p>The most useful part of that study is what failed. Some participants were given feedback, and feedback made no measurable difference to the bias. Being told they had been wrong did not make the next judgement better. What halved the bias was the market: the participants who happened to be less affected traded more often, and their activity pulled the price towards the truth. The correction came from the structure, not from anybody getting better at introspection.</p>
+
+<p>That has a direct reading for documentation, and it is not the one writers want. Being told that a page assumed too much does not reliably improve the next page. What improves it is giving the people who are not cursed real influence over the document: the support engineer whose ticket queue is evidence, the new hire who followed the guide and stopped at step four, the reader who asked a colleague instead. Not their opinions, collected politely after the fact. Their findings, with a route into the page and a named person able to act on them.</p>
+
+<p>Which is why this chapter sits in a series about systems rather than about craft. Audience analysis is a skill, and it is a skill with a ceiling that no amount of care will get you past. Above that ceiling it stops being a writing problem and becomes an architecture question: who sees the failure, and what are they able to do about it?</p>
+
+<p>Part 5 turns to what separates a document that works from one that merely exists. The difference shows up in the same three places every time.</p>
+
+<p><em>You cannot remember not knowing. Somebody in your organisation does, and nobody is asking them.</em></p>
+
+<div class="further-reading reveal">
+  <span class="further-reading-label">Further reading</span>
+  <p>Colin Camerer, George Loewenstein and Martin Weber, &ldquo;The Curse of Knowledge in Economic Settings: An Experimental Analysis&rdquo;, <em>Journal of Political Economy</em> 97, no. 5 (1989): 1232&ndash;1254. And Jakob Nielsen, <a href="https://www.nngroup.com/articles/progressive-disclosure/" target="_blank" rel="noopener noreferrer">Progressive Disclosure</a>, Nielsen Norman Group, 2006, for the pattern and its limits.</p>
+</div>
+
+<hr>
+
+<div class="post-author-bio reveal">
+  <span class="post-author-bio-label">About the author</span>
+  <p>Douglas Ebhoman is a freelance technical writer and documentation systems specialist based in Prague. He works with DevTools and SaaS companies under his brand KBD Creative. Read more at <a href="https://douglasebhoman.com">douglasebhoman.com</a>.</p>
+</div>
+
+</article>
+</div>
