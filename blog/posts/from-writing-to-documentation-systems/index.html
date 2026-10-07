@@ -1,121 +1,147 @@
 ---
 layout: layouts/post.html
-title: From Writing to Documentation Systems
-description: "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work. Here is what systems thinking actually looks like in practice."
-ogDescription: "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work. Here is what systems thinking actually looks like in practice."
+title: "From Writing to Documentation Systems"
+description: "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work. Here is what documentation systems thinking actually looks like in practice."
+ogDescription: "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work. Here is what documentation systems thinking actually looks like in practice."
 twitterDescription: "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work."
 ogImage: "https://douglasebhoman.com/assets/images/from-writing-to-documentation-systems.jpeg"
 canonicalUrl: "https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/"
 seriesTag: "Systems Over Sentences &middot; Part 01 of 10"
-postSubtitle: "&ldquo;Most people think technical writing is about writing. The real job is designing how information works.&rdquo;"
+postSubtitle: "Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies."
 publishDate: "April 8, 2026"
-readTime: "4 min read"
-newsletterShowLabel: true
-newsletterTitleTag: h2
+readTime: "6 min read"
+pageTitle: "Documentation Systems: Why Well-Written Docs Still Fail | Systems Over Sentences &middot; Part 1"
+ogTitle: "Documentation Systems: Why Well-Written Docs Still Fail | Systems Over Sentences &middot; Part 1"
+jsonLd: |2
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "From Writing to Documentation Systems",
+      "description": "Most documentation does not fail because of bad writing. It fails because nobody designed how it should work. Part 1 of Systems Over Sentences.",
+      "datePublished": "2026-04-08",
+      "url": "https://douglasebhoman.com/blog/posts/from-writing-to-documentation-systems/",
+      "author": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Douglas Ebhoman",
+        "url": "https://douglasebhoman.com"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "name": "Systems Over Sentences",
+        "url": "https://douglasebhoman.com/blog/"
+      },
+      "keywords": ["documentation systems", "technical writing", "information architecture", "docs-as-code", "content strategy"]
+    }
 part: 1
 cardDate: "April 2026"
 cardImage: "from-writing-to-documentation-systems.jpeg"
 banner: true
 cardExcerpt: "Most people think technical writing is about writing. The real job is designing how information works. Here is the distinction that changes everything."
 pullQuote: "Most people think technical writing is about writing. The real job is designing how information works."
+newsletterShowLabel: true
+newsletterTitleTag: h2
 ---
 
 <!-- BODY -->
-<div class="post-body-wrap"><article class="post-body">
-<p class="lead">When I started my Git and GitHub for Technical Writers series, I had a plan. The content would be accurate, the structure sound, and the logic clean. I would write each part, host it on a GitHub repo, and use LinkedIn to drive the traffic.</p>
-<p>The content was accurate. The structure was technically sound. And yet something was wrong. A reader landing on Part 3 had to orient themselves before they could learn anything. The information was there. The experience of moving through it was friction, not flow.</p>
-<p>That was not a writing problem. I had not written a single bad sentence. It was a system problem.</p>
-<p>The real job of a technical writer is not writing. It is designing how information works.</p>
+<div class="post-body-wrap" id="post-content">
+<article class="post-body">
+
+<p class="lead">Almost nobody who read my Git and GitHub for Technical Writers series started at the beginning.</p>
+
+<p>I had posted each part to LinkedIn as I finished it, which meant the link people clicked was never Part 1. It was whichever part I had written that week. Someone following that link arrived at Part 3 or Part 5 with no idea there were other parts, no sense of what had already been established, and nothing on the page to tell them.</p>
+
+<p>The content was accurate. I had checked that. Each part held together on its own. I had checked that too. What I had never checked was arrival: what it is like to land on one of those pages without the context I was carrying in my head while writing it.</p>
+
+<p>That is not a problem you can fix with a better sentence. Every sentence was already fine.</p>
+
 <hr>
+
 <h2>The symptom nobody names correctly</h2>
-<p>At some point, every documentation team hits the same wall. The guides are well-written. The grammar is clean. The tone is consistent. And yet users still cannot find what they need. Engineers still get the same questions in Slack. Onboarding still takes longer than it should.</p>
-<p>The instinct is to write more. Add more detail. Create more guides. But that is not the problem. The problem is that nobody designed <em>how the documentation works</em>, only <em>what it says</em>.</p>
-<h2>What a system problem looks like in practice</h2>
-<p>You have seen this before, even if you did not have a name for it. Guides that contradict each other because two writers worked in isolation. Installation docs missing a step that everyone on the team knows but nobody wrote down. A getting-started page referencing a feature deprecated eight months ago, with no named owner to fix it. Content scattered across Notion, Confluence, a GitHub wiki, and a PDF someone emailed in 2022.</p>
-<p>None of that is a writing failure. Every individual document might be perfectly written. It is a system failure. Academics call it Information Architecture. I call it Documentation Entropy: the slow, compounding drift that happens when documentation is written but never designed as a system. Every page that becomes stale, every link that breaks, every step that goes missing is entropy accumulating. A writer who can only fix sentences cannot fix it.</p>
-<h2>What the process revealed</h2>
-<p>The solution was not to rewrite the content. It was to change the infrastructure: host it as a live static site where a reader could move through six parts the way you move through a story, with direction, with context, with a sense of where they are and where they are going.</p>
-<p>Rebuilding the infrastructure also became content in itself. Documenting the process gave my audience something no amount of accurate writing could: a window into how documentation decisions actually get made. I was not just thinking about whether the information was correct. I was thinking about how a reader moves through it.</p>
-<p>That is the shift. From writing to systems thinking.</p>
-<h2>The difference between writing and systems thinking</h2>
-<p><em>Writing</em> asks: is this clear? Is this accurate? Is this readable?</p>
-<p><em>Documentation systems</em> ask: where does this live? Who owns it? How does it get updated when the product changes? Can any part of it be reused? What happens to it at scale?</p>
-<p>One is about the quality of a document. The other is about the health of an entire information architecture. Most writers are trained for the first. Most product teams desperately need the second.</p>
-<div class="post-diagram">
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script>
-mermaid.initialize({
-  startOnLoad:true,
-  theme:'default',
-  themeVariables:{
-    primaryColor:'#F2EFE9',
-    primaryTextColor:'#111827',
-    primaryBorderColor:'rgba(184,150,46,0.4)',
-    lineColor:'#B8962E',
-    secondaryColor:'#F9F7F4',
-    tertiaryColor:'#F9F7F4',
-    background:'#F2EFE9',
-    mainBkg:'#F2EFE9',
-    nodeBorder:'rgba(184,150,46,0.4)',
-    clusterBkg:'rgba(184,150,46,0.06)',
-    clusterBorder:'rgba(184,150,46,0.3)',
-    titleColor:'#111827',
-    edgeLabelBackground:'#F2EFE9',
-    fontFamily:'DM Sans, sans-serif',
-    fontSize:'16px'
-  }
-});
-window.addEventListener('load', function(){
-  setTimeout(function(){
-    document.querySelectorAll('.post-diagram .mermaid svg text').forEach(function(el){
-      el.style.setProperty('font-size','15px','important');
-      el.style.setProperty('font-family','DM Sans, sans-serif','important');
-    });
-    document.querySelectorAll('.post-diagram .mermaid svg .label div').forEach(function(el){
-      el.style.setProperty('font-size','15px','important');
-      el.style.setProperty('font-family','DM Sans, sans-serif','important');
-      el.style.setProperty('color','#111827','important');
-    });
-  }, 1000);
-});
-</script>
-<div class="mermaid">
-flowchart LR
-  subgraph W ["Writing asks"]
-    W1["Is this clear?"]
-    W2["Is this accurate?"]
-    W3["Is this readable?"]
-  end
-  subgraph S ["Systems thinking asks"]
-    S1["Where does this live?"]
-    S2["Who owns it?"]
-    S3["How does it get updated?"]
-    S4["Can any part be reused?"]
-    S5["What happens at scale?"]
-  end
-  W -->|"not enough"| S
-</div>
-</div>
-<h2>The same content. Two completely different levels of thinking.</h2>
-<p>Take an installation guide. A writing-focused approach produces clear, accurate, well-formatted steps. A systems-focused approach asks different questions before a single word is written: Should prerequisites be a separate reusable section or embedded in this guide? How does this guide connect to the configuration guide that follows it? What is the versioning strategy when v2 ships? Who is the subject matter expert and what is the review cadence?</p>
-<p>The output might look similar on the surface. But the second approach produces documentation that survives the product, and the team, changing around it. That is the difference between documentation that works on launch day and documentation that still works two years later.</p>
-<h2>One of a technical writer&rsquo;s core jobs</h2>
-<p>Architecture in technical writing is building doors that connect documents: foreseeing how your audience moves, and making sure they never feel lost in the middle of it. A reader who stumbles onto Part 3 of a series without reading Part 1 must find something within that document telling them it is part of a whole. Every piece carries its own weight and solves a specific problem, but it also has to signal its place in something larger.</p>
-<p>That is not a formatting decision. It is a systems decision. Your job is to make complexity followable, the way a story feels native to the world of whoever is reading it.</p>
-<h2>Why this matters more now than it ever has</h2>
-<p>Modern product teams move fast. Features ship in weeks. APIs change. Products pivot. In that environment, documentation that is not designed as a system becomes a liability almost immediately. It goes stale. It fragments. It contradicts itself. The cost of fixing it compounds every sprint.</p>
-<p>Teams that understand this are not just looking for writers. They are looking for people who can think about information architecture, work alongside engineers in Git-based workflows, own content strategy across a product, and make decisions about structure and reuse that a product manager does not have the context to make.</p>
-<h2>Where this series is going</h2>
-<p>That is the opening argument. Part 02 makes it concrete. Most documentation is built like a bakery: one product, one shelf, accurate and useful but isolated. A reader arrives, finds what they need or does not, and leaves. There is nothing to pull them deeper.</p>
-<p>Building a supermarket is a different job entirely. That is what Part 02 is about.</p>
-<div class="quick-win">
-  <span class="quick-win-label">Quick win for systems thinkers</span>
-  <p>Next time you are asked to fix a typo, pause for one second and ask yourself: does this error exist in five other places?</p>
-  <p>If yes, you do not have a typo problem. You have a system problem. A systems thinker does not fix the five instances. They find the source, the template, the shared component, the unowned page, and fix it once.</p>
-</div>
-<h2>The system always tells you what it needs</h2>
-<p>The shift from writing to systems thinking rarely happens in planning. It happens in the work itself; when a broken link reveals a connectivity failure, when a stale page reveals an ownership gap, when a support ticket reveals a findability problem that no amount of careful writing could have prevented.</p>
-<p>The system always tells you what it needs. The question is whether you are looking at the sentences or at the structure.</p>
+
+<p>Every documentation team eventually hits the same wall. The guides are well written. The grammar is clean. The tone is consistent. And yet users still cannot find what they need, engineers still answer the same questions in Slack, and onboarding still takes longer than it should.</p>
+
+<p>The instinct is to write more. Add detail. Create another guide. But the problem is neither the volume nor the quality of what has been written. The problem is that somebody decided what the documentation says, and nobody decided how it works.</p>
+
+<p>You have seen the result, even without a name for it. Guides that contradict each other because two writers worked in isolation. Installation docs missing a step everyone on the team knows but nobody wrote down. A getting-started page referencing a feature deprecated eight months ago, with no named owner to fix it. Content scattered across Notion, Confluence, a GitHub wiki, and a PDF someone emailed in 2022.</p>
+
+<p>None of that is a writing failure. Every individual document in that list might be perfectly written. It is a failure of the relationships between documents, and the discipline that governs those relationships has a name: information architecture, the work of deciding how the pieces relate and who maintains the relationship when the product changes.</p>
+
+<p>What accumulates in its absence is something I think of as documentation entropy. Every page that goes stale, every link that breaks, every step that quietly disappears is entropy accumulating, and it compounds, because each drifted page makes the next one harder to trust. A writer who can only fix sentences cannot fix it.</p>
+
 <hr>
-<p><em>Already thinking about the tooling layer? My <a href="https://douglasebhoman.com/git-github-for-technical-writers-series/">Git &amp; GitHub for Technical Writers series</a> covers the Git-based workflows that modern documentation systems run on.</em></p>
-</article></div>
+
+<h2>The shift: writing versus systems</h2>
+
+<div class="contrast-block reveal">
+  <div class="contrast-col contrast-col--left">
+    <span class="contrast-col-title">Writing</span>
+    <span class="contrast-col-subtitle">The Document</span>
+    <p class="contrast-col-quote">&ldquo;Is this clear? Is this accurate? Is this readable?&rdquo;</p>
+    <span class="contrast-col-result">Result: a good page, on its own.</span>
+  </div>
+  <div class="contrast-col contrast-col--right">
+    <span class="contrast-col-title">Systems</span>
+    <span class="contrast-col-subtitle">The Architecture</span>
+    <p class="contrast-col-quote">&ldquo;Where does this live? Who owns it? How does it change when the product does?&rdquo;</p>
+    <span class="contrast-col-result">Result: documentation that survives the product.</span>
+  </div>
+</div>
+
+<p>One question is about the quality of a document. The other is about the health of an entire information architecture. Most writers are trained for the first. Most product teams urgently need the second and cannot describe what they are missing, which is why the request that reaches the writer is almost always a request to write something.</p>
+
+<hr>
+
+<h2>Building doors between documents</h2>
+
+<div class="pull-quote reveal">
+  <p>Architecture is the work of building doors between documents, so that nobody is ever lost in the middle of one.</p>
+</div>
+
+<p>A reader who arrives at Part 3 without reading Part 1 has to find something inside that document telling them it is part of a whole. Not a navigation bar bolted to the side, which readers skip, but something in the piece itself: a line near the top saying what this is and what it assumes, a named thing to go back to, a reason to go forward. Every piece carries its own weight and solves its own problem. It also has to signal its place in something larger.</p>
+
+<p>That is not a formatting decision, and it is not a courtesy. It decides whether the work gets used at all. A document that does not tell readers where they are costs them a decision before it gives them anything, and a reader making a decision is a reader who might leave.</p>
+
+<p>The same thinking applies below the level of a series. Take an installation guide. A writing-focused approach produces clear, accurate, well-formatted steps. A systems-focused approach asks a different set of questions before a single word exists. Should prerequisites be a reusable section or embedded here? How does this guide connect to the configuration guide that follows it? What happens to it when version two ships? Who is the subject matter expert, and how often does this get reviewed?</p>
+
+<p>The two outputs can look almost identical on the page. The difference shows up a year later, when the product has moved and only one of them has moved with it.</p>
+
+<h2>What changed when I rebuilt it</h2>
+
+<p>The fix was not rewriting the content. It was changing the infrastructure. The series moved out of a plain repository and became a live site built from Markdown, version controlled in Git, deployed automatically on every push, and organised so that a reader could move through it the way you move through a story, with direction, with context, and with a sense of where they are and where they are going.</p>
+
+<p>The doors turned out to be small and specific. Every part now carries its position on the page, so a reader arriving at Part 3 is told immediately that it is Part 3 of a sequence, not a standalone article. Every part ends by naming the next one and what it will do, rather than stopping. Every part offers the parts either side of it, so moving backwards costs one click rather than a search. None of those are impressive pieces of engineering. They are decisions about arrival, made once, and they are the difference between a reader who orients themselves and a reader who leaves.</p>
+
+<p>Rebuilding it also became content in itself. Documenting the process gave readers something no amount of accurate writing could: a window into how documentation decisions actually get made. By the end I was no longer asking whether the information was correct. I was asking how someone moves through it.</p>
+
+<hr>
+
+<h2>The system always tells you what it needs</h2>
+
+<p>The shift from writing to systems thinking rarely happens in planning. It happens in the work: when a broken link reveals a connectivity failure, when a stale page reveals an ownership gap, when a support ticket reveals a findability problem that no amount of careful writing would have prevented.</p>
+
+<p>Most people think technical writing is about writing. The real job is designing how information works, and the system will tell you what it needs long before anyone complains about the prose. The question is whether you are looking at the sentences or at the structure.</p>
+
+<div class="callout-gold reveal">
+  <span class="callout-gold-label">Before you move on to Part 2</span>
+  <p>Next time you are asked to fix a typo, pause and ask whether that same error exists in five other places. If it does, you do not have a typo problem. You have a system problem.</p>
+  <p>A systems thinker does not fix the five instances. They find the source: the template, the shared component, the unowned page, and fix it once. Do that one thing this week, and notice how differently the request looks the second time it arrives.</p>
+</div>
+
+<p>Part 2 makes the argument concrete, and it begins with shelves. Most documentation is built like a bakery. Building a supermarket is a different job entirely, and the difference is not size.</p>
+
+<p><em>Write the sentences carefully. Then ask what happens to them when nobody is watching.</em></p>
+
+<hr>
+
+<div class="post-author-bio reveal">
+  <span class="post-author-bio-label">About the author</span>
+  <p>Douglas Ebhoman is a freelance technical writer and documentation systems specialist based in Prague. He works with DevTools and SaaS companies under his brand KBD Creative. Read more at <a href="https://douglasebhoman.com">douglasebhoman.com</a>.</p>
+</div>
+
+</article>
+</div>
