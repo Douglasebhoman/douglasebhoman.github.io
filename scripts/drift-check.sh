@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fails if any source HTML file contains a claim that no longer matches
+# Fails if any source HTML or Nunjucks file contains a claim that no longer matches
 # the Upwork profile or the verifiable record.
 #
 # CSS is blanked before matching, both <style> blocks and style="" attributes,
@@ -52,7 +52,7 @@ while IFS= read -r -d '' file; do
       found=1
     fi
   done
-done < <(find . \( -name .git -o -name _site -o -name node_modules \) -prune -o -name '*.html' -print0 | sort -z)
+done < <(find . \( -name .git -o -name _site -o -name node_modules \) -prune -o \( -name '*.html' -o -name '*.njk' \) -print0 | sort -z)
 
 if [ "$found" -eq 1 ]; then
   echo "drift-check: failed"
