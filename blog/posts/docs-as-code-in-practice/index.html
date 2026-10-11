@@ -133,8 +133,11 @@ pullQuote: "Memory is not infrastructure."
 <p>That is what this last part is for. Not a tool bolted onto the end of a series about thinking, but an answer to the question the thinking eventually forces. How do these decisions survive contact with a real project, over time, when the person who made them has forgotten the details?</p>
 
 <div class="callout-gold reveal">
-  <span class="callout-gold-label">One last test</span>
-  <p>Change something in your documentation that appears in more than one place: a product name, a version number, the title of a page. Then count how many places you have to update by hand. For each one, ask whether it genuinely needs its own editorial decision, or whether it is a copy the system could have derived from the source. Some will be genuine. The rest are relationships you are currently maintaining with memory, and every one of them is waiting to go stale without telling you.</p>
+  <span class="callout-gold-label">Architecture audit &middot; Count the copies</span>
+  <p>List every fact your documentation states in more than one place. Product name. Version numbers. Supported platforms. Pricing. Default values. The name of the page you keep linking to.</p>
+  <p>For each one, count the places and ask a single question: does this copy need its own editorial decision, or is it a copy the system could derive from a source? Some genuinely need deciding. The rest are relationships you are currently maintaining with memory.</p>
+  <p>Then pick the fact with the highest count and change it. Count how many files you touch by hand. That number is your maintenance cost for one fact, and multiplying it by the length of your list is the closest thing to a measurement this book can offer you.</p>
+  <p>Every one of those copies is waiting to go stale without telling you.</p>
 </div>
 
 <p>The Work page failure was small. Nothing broke, nobody was blocked, no customer lost access to anything. That is exactly why it is worth ending on. It was not caused by carelessness, and being a more careful writer would not have prevented it. It was caused by an architecture that allowed one fact to live in four places, and offered no signal when three of them were right and one was wrong.</p>
