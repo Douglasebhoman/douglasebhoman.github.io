@@ -9,8 +9,8 @@ canonicalUrl: "https://douglasebhoman.com/blog/posts/docs-as-code-in-practice/"
 seriesTag: "Systems Over Sentences &middot; Part 10 of 10"
 publishDate: "October 4, 2026"
 readTime: "7 min read"
-pageTitle: "Docs-as-Code Is Not a Toolchain: Your Documentation Should Not Need Four Copies of the Truth | Systems Over Sentences &middot; Part 10"
-ogTitle: "Docs-as-Code Is Not a Toolchain: Your Documentation Should Not Need Four Copies of the Truth | Systems Over Sentences &middot; Part 10"
+pageTitle: "Docs-as-Code Is Not a Toolchain | Systems Over Sentences &middot; Part 10"
+ogTitle: "Docs-as-Code Is Not a Toolchain | Systems Over Sentences &middot; Part 10"
 jsonLd: |2
     {
       "@context": "https://schema.org",
@@ -56,21 +56,29 @@ pullQuote: "Memory is not infrastructure."
 
 <hr>
 
-<h2>The Problem Was Not Git</h2>
+<h2>The problem was not Git</h2>
 
 <p>By any description I would have given at the time, I was already doing Docs-as-Code. The content lived in a repository. Everything was versioned. The site was generated from those files by a build. Branches, history, review, deployment on push, all of it was in place.</p>
 
 <p>And I was still maintaining the same fact in four places by hand.</p>
 
-<p>Those two things are often treated as the same thing, and they are not. Putting documentation in Git makes it versioned. It does not make it coherent. A repository can record every change you make and still leave you personally responsible for remembering every other place that change was supposed to reach. Git can tell you what changed. It cannot know what that change was supposed to keep true.</p>
+<p>Those two things are often treated as the same thing, and they are not. Putting documentation in Git makes it versioned. It does not make it coherent. A repository can record every change you make and still leave you personally responsible for remembering every other place that change was supposed to reach.</p>
+
+<p>The reason is in what version control is built to hold. Its unit is the change. A commit is a precise, permanent record of what moved, when, and at whose hand, and that record is genuinely valuable. But a change is not an invariant. Git can tell you that a file was edited. It has no way to know what that edit was supposed to keep true elsewhere, because nothing ever told it that the relationship existed.</p>
+
+<p>So version control answers one question completely and another not at all. What changed, and who changed it: answered, permanently, for the life of the project. What else should have changed: not a question the system can even be asked. No amount of branching discipline closes that gap, because the gap is not in how carefully you commit. It is in what the tool was built to know.</p>
 
 <hr>
 
-<h2>One Fact, Four Surfaces</h2>
+<h2>One fact, four surfaces</h2>
 
 <p>Publishing a post on my site meant remembering the post itself, the featured block at the top of the blog index, the series strip beneath it, the grid of cards below that, the Latest Writing strip on the Work page, and the sitemap. Most of those I updated out of habit. The Work page I forgot, because it sits on a page I have no reason to open while publishing.</p>
 
-<p>A checklist would have caught it. But a checklist is a person promising to remember a relationship the system knows nothing about. At that point the workflow depends on memory, and memory is the least reliable component in any system.</p>
+<p>That last clause is the whole mechanism, and it generalises. The copies that go stale are not the ones you are careless about. They are the ones that live outside the moment of change. Every surface I updated reliably sat on a path I was already walking: publish the post, look at the blog, see the cards. The one I missed sat on a page the act of publishing gave me no reason to visit.</p>
+
+<p>Which means the copies most likely to be wrong in any documentation set are the ones furthest from the workflow that should update them. A release note duplicated in the installation guide gets caught. The same fact sitting in a partner-facing PDF does not, because shipping a release has never once involved opening it.</p>
+
+<p>A checklist would have caught mine. But a checklist is a person promising to remember a relationship the system knows nothing about. At that point the workflow depends on memory, and memory is the least reliable component in any system.</p>
 
 <div class="pull-quote reveal">
   <p>Memory is not infrastructure.</p>
@@ -95,7 +103,7 @@ pullQuote: "Memory is not infrastructure."
 
 <hr>
 
-<h2>One Source, Many Surfaces</h2>
+<h2>One source, many surfaces</h2>
 
 <p>The article already knew almost everything those other surfaces were displaying. Its title. Its date. Its part number. Its image. Its excerpt. Its place in the series. None of that needed to be typed into another file. It needed to be readable from the file that already held it.</p>
 
@@ -107,21 +115,15 @@ pullQuote: "Memory is not infrastructure."
 
 <p>My first reaction was not satisfaction. It was mild irritation. Every one of those manual updates I had been carefully making, and occasionally forgetting, had been unnecessary. That work was never part of writing. It was a consequence of how I had built the thing.</p>
 
-<hr>
-
-<h2>Automation Is Not the Point</h2>
-
-<p>It is easy to reduce Docs-as-Code to a list of tools. Git, Markdown, pull requests, continuous integration, a static site generator, linters. Those matter, and I use all of them. But the tools are not the idea.</p>
-
-<p>The idea is that documentation should behave like an engineered system. A change should have one known source. Relationships should be explicit rather than remembered. Changes should be reviewable. The published result should be reproducible from the source. And repeated information should be derived, not synchronised by hand.</p>
+<p>It is easy to reduce Docs-as-Code to a list of tools. Git, Markdown, pull requests, continuous integration, a static site generator, linters. Those matter, and I use all of them. But the tools are not the idea. The idea is that documentation should behave like an engineered system. A change should have one known source. Relationships should be explicit rather than remembered. Changes should be reviewable. The published result should be reproducible from the source. And repeated information should be derived, not synchronised by hand.</p>
 
 <p>What that buys the writer is attention. If the system handles mechanical consistency, I am no longer asking whether I updated the other page. I am asking whether this is still the right information for this reader. The first question is maintenance. The second one is the work.</p>
 
 <hr>
 
-<h2>The Decisions Have to Survive</h2>
+<h2>The decisions have to survive</h2>
 
-<p>That shift matters more than it sounds, because attention is what the rest of this series was asking for. Parts 6 through 9 were about decisions. Research establishes what is true. Audience analysis decides what belongs. Architecture decides how the pieces relate. Each is a judgement a writer makes, and each is fragile in the same way: it exists in the writer&rsquo;s head, and nothing outside that head enforces it.</p>
+<p>That shift matters more than it sounds, because attention is what the rest of this series was asking for. Parts 6 to 9 were about decisions. Research establishes what is true. Audience analysis decides what belongs. Architecture decides how the pieces relate. Each is a judgement a writer makes, and each is fragile in the same way: it exists in the writer&rsquo;s head, and nothing outside that head enforces it.</p>
 
 <p>Decide that every part of a series should stand on its own, and the decision holds only as long as you remember to write it into every page. Decide that a card should always carry a post&rsquo;s title, date and excerpt, and the decision starts drifting the moment those values are copied into a second file. Decide that publishing should place a post in the right index, and you have described a build step rather than a rule, until the build actually performs it.</p>
 
@@ -131,9 +133,14 @@ pullQuote: "Memory is not infrastructure."
   <span class="callout-gold-label">Architecture audit &middot; Count the copies</span>
   <p>List every fact your documentation states in more than one place. Product name. Version numbers. Supported platforms. Pricing. Default values. The name of the page you keep linking to.</p>
   <p>For each one, count the places and ask a single question: does this copy need its own editorial decision, or is it a copy the system could derive from a source? Some genuinely need deciding. The rest are relationships you are currently maintaining with memory.</p>
-  <p>Then pick the fact with the highest count and change it. Count how many files you touch by hand. That number is your maintenance cost for one fact, and multiplying it by the length of your list is the closest thing to a measurement this book can offer you.</p>
-  <p>Every one of those copies is waiting to go stale without telling you.</p>
+  <p>Then add those counts together. That total is the number of copies you are keeping true by hand, and it is the one number in this exercise you did not already know. Every one of them is waiting to go stale without telling you.</p>
 </div>
+
+<p>I ran that exercise on this series while writing this post. What it turned up was not a version number or a product name. It was me.</p>
+
+<p>The paragraph describing who I am sat in all ten posts. So did the subtitle line beneath every title. Two facts, twenty copies, inside the files arguing that one fact in four places is an architecture failure. They come from one place now, and changing my title changes the site. My name and my web address are still repeated in the structured data of all ten, which is the next item on the list.</p>
+
+<p>The point is not that I was careless. I had already done this work for post metadata, deliberately, and described it a few paragraphs ago. The exercise still found two more, because an exercise looks where a person has stopped thinking to look.</p>
 
 <p>The Work page failure was small. Nothing broke, nobody was blocked, no customer lost access to anything. That is exactly why it is worth ending on. It was not caused by carelessness, and being a more careful writer would not have prevented it. It was caused by an architecture that allowed one fact to live in four places, and offered no signal when three of them were right and one was wrong.</p>
 
