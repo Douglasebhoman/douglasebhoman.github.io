@@ -63,6 +63,37 @@ module.exports = function (eleventyConfig) {
     (list || []).find((p) => p.data.part === n)
   );
 
+  // ---------------------------------------------------------------
+  // STRUCTURED DATA (see _includes/partials/post-jsonld.njk)
+  // ---------------------------------------------------------------
+
+  // "October 4, 2026" -> "2026-10-04". Strict: anything else fails
+  // the build rather than publishing a wrong or empty date.
+  const MONTHS = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+  eleventyConfig.addFilter("isoDate", (s) => {
+    const m = /^([A-Z][a-z]+) (\d{1,2}), (\d{4})$/.exec(String(s));
+    const month = m ? MONTHS.indexOf(m[1]) + 1 : 0;
+    const day = m ? Number(m[2]) : 0;
+    const year = m ? Number(m[3]) : 0;
+    const valid = month > 0 && day >= 1 &&
+      day <= new Date(Date.UTC(year, month, 0)).getUTCDate();
+    if (!valid) throw new Error(`isoDate: cannot parse publishDate "${s}"`);
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  });
+
+  // A string as a JSON literal for a <script type="application/ld+json">
+  // block. HTML entities are not decoded inside a script element, so a
+  // value containing one fails the build instead of shipping "&rsquo;"
+  // to search engines. "<" is escaped so "</script>" cannot end the block.
+  eleventyConfig.addFilter("jsonString", (s) => {
+    if (typeof s !== "string") throw new Error(`jsonString: expected a string, got ${JSON.stringify(s)}`);
+    if (/&(#\d+|#x[0-9a-f]+|[a-z][a-z0-9]*);/i.test(s)) {
+      throw new Error(`jsonString: HTML entity in structured data value "${s}"`);
+    }
+    return JSON.stringify(s).replace(/</g, "\\u003c");
+  });
+
   return {
     dir: {
       input: ".",
