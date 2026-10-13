@@ -1,3 +1,9 @@
+{#- Page title: pageTitle holds only the per-post SEO title. For a post in
+    the series, " | <series name> &middot; Part N" is appended from the series
+    constants in blog/posts/posts.json and the post's part number.
+    og:title defaults to the assembled page title; set ogTitle to override. -#}
+{%- set _seriesSuffix = (" | " ~ series.name ~ " &middot; Part " ~ part) if part else "" -%}
+{%- set _pageTitle = (pageTitle ~ _seriesSuffix) if pageTitle else (title ~ " &middot; Douglas Ebhoman") -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +15,17 @@
   <link rel="canonical" href="{{ canonicalUrl }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ canonicalUrl }}">
-  <meta property="og:title" content="{% if ogTitle %}{{ ogTitle | safe }}{% else %}{{ title | safe }} &middot; Douglas Ebhoman{% endif %}">
+  <meta property="og:title" content="{{ (ogTitle or _pageTitle) | safe }}">
   <meta property="og:description" content="{{ ogDescription | safe }}">
   <meta property="og:image" content="{{ ogImage }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title | safe }} &middot; Douglas Ebhoman">
-  <meta name="twitter:description" content="{{ twitterDescription | safe }}">
+  <meta name="twitter:description" content="{{ (twitterDescription or description) | safe }}">
   <meta name="twitter:image" content="{{ ogImage }}">
-  <title>{% if pageTitle %}{{ pageTitle | safe }}{% else %}{{ title | safe }} &middot; Douglas Ebhoman{% endif %}</title>
-  {% if jsonLd %}<script type="application/ld+json">
-{{ jsonLd | safe }}</script>
-  {% endif %}
+  <title>{{ _pageTitle | safe }}</title>
+  {# BlogPosting structured data, built from front matter #}<script type="application/ld+json">
+{% include "partials/post-jsonld.njk" %}</script>
+  
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -296,7 +302,7 @@ a{color:inherit;text-decoration:none;}
 <section class="post-hero">
   <div class="post-hero-inner">
     <a href="/blog/" class="post-back">&larr; Blog</a>
-    <span class="post-series-tag">{{ seriesTag | safe }}</span>
+    {% if part %}<span class="post-series-tag">{{ series.name }} &middot; Part {{ part | pad }} of {{ series.total }}</span>{% endif %}
     <h1 class="post-title{% if banner %} sr-only{% endif %}">{{ title | safe }}</h1>
     <p class="post-subtitle">{{ postSubtitle | safe }}</p>
     <div class="post-meta">
@@ -312,7 +318,7 @@ a{color:inherit;text-decoration:none;}
 <div class="post-part-nav">
   <div class="post-part-nav-inner">
     {% if nav.prev %}<a href="{{ nav.prev.url }}" class="post-part-link">&larr; Part {{ nav.prev.data.part | pad }}</a>{% else %}<span class="post-part-link post-part-link--disabled">&larr; First part</span>{% endif %}
-    <span class="post-part-series">Systems Over Sentences</span>
+    <span class="post-part-series">{{ series.name }}</span>
     {% if nav.next %}<a href="{{ nav.next.url }}" class="post-part-link">Part {{ nav.next.data.part | pad }} &rarr;</a>{% else %}<span class="post-part-link post-part-link--disabled">Last part &rarr;</span>{% endif %}
   </div>
 </div>

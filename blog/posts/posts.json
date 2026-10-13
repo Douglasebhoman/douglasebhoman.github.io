@@ -1,3 +1,8 @@
 {
-  "postSubtitle": "Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies."
+  "postSubtitle": "Written by Douglas Ebhoman, a technical writer based in Prague who builds documentation systems for DevTools and SaaS companies.",
+  "series": {
+    "name": "Systems Over Sentences",
+    "total": 10,
+    "url": "https://douglasebhoman.com/blog/"
+  }
 }
