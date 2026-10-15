@@ -1,9 +1,12 @@
-{#- Page title: pageTitle holds only the per-post SEO title. For a post in
-    the series, " | <series name> &middot; Part N" is appended from the series
-    constants in blog/posts/posts.json and the post's part number.
+{#- Page title: pageTitle is an optional per-post SEO title; without it the
+    post's title is used. For a post in the series, " | <series name>
+    &middot; Part N" is appended from the series constants in
+    blog/posts/posts.json and the post's part number, so the suffix never
+    depends on pageTitle being set. A post with no part keeps its pageTitle
+    as written, or its title followed by "&middot; Douglas Ebhoman".
     og:title defaults to the assembled page title; set ogTitle to override. -#}
 {%- set _seriesSuffix = (" | " ~ series.name ~ " &middot; Part " ~ part) if part else "" -%}
-{%- set _pageTitle = (pageTitle ~ _seriesSuffix) if pageTitle else (title ~ " &middot; Douglas Ebhoman") -%}
+{%- set _pageTitle = ((pageTitle or title) ~ _seriesSuffix) if part else (pageTitle or (title ~ " &middot; Douglas Ebhoman")) -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +19,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ canonicalUrl }}">
   <meta property="og:title" content="{{ (ogTitle or _pageTitle) | safe }}">
-  <meta property="og:description" content="{{ ogDescription | safe }}">
+  <meta property="og:description" content="{{ (ogDescription or description) | safe }}">
   <meta property="og:image" content="{{ ogImage }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title | safe }} &middot; Douglas Ebhoman">
