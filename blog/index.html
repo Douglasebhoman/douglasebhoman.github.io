@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog &mdash; Systems Over Sentences &middot; Douglas Ebhoman</title>
+  <title>Blog &mdash; {{ series.name }} &middot; Douglas Ebhoman</title>
   <meta name="description" content="How I think about documentation systems. Writing for DevTools and SaaS founders on documentation architecture, Docs-as-Code, and the craft of technical writing.">
-  <meta property="og:title" content="Systems Over Sentences">
+  <meta property="og:title" content="{{ series.name }}">
   <meta property="og:description" content="How I think about documentation systems. Writing for DevTools and SaaS founders on documentation architecture, Docs-as-Code, and the craft of technical writing.">
   <meta property="og:url" content="https://douglasebhoman.com/blog/">
   <meta property="og:type" content="website">
@@ -250,7 +250,7 @@ a{color:inherit;text-decoration:none;}
 <section class="blog-hero">
   <div class="blog-hero-inner">
     <div class="label-row"><span class="lm lm--dim">Writing</span><span class="gold-rule"></span></div>
-    <p class="blog-tagline">Systems Over Sentences</p>
+    <p class="blog-tagline">{{ series.name }}</p>
     <h1 class="blog-hero-h1">How I think about<br>documentation <em>systems.</em></h1>
     <p class="blog-hero-sub">Not tips. Not listicles. Writing for DevTools and SaaS founders on the architecture, ownership, and craft underneath good technical documentation.</p>
     <div class="blog-hero-cta">
@@ -279,14 +279,14 @@ a{color:inherit;text-decoration:none;}
           <span class="blog-meta-sep"></span>
           <span>{{ latest.data.readTime }}</span>
           <span class="blog-meta-sep"></span>
-          <span>Systems Over Sentences</span>
+          <span>{{ series.name }}</span>
         </p>
       </div>
       <a href="{{ latest.url }}" class="blog-read-link">Read the article &rarr;</a>
     </div>
     <div class="blog-featured-right">
       <p class="blog-featured-pull">&ldquo;{{ latest.data.pullQuote }}&rdquo;</p>
-      <p class="blog-featured-pull-attr">From Part {{ latest.data.part | pad }} of Systems Over Sentences</p>
+      <p class="blog-featured-pull-attr">From Part {{ latest.data.part | pad }} of {{ series.name }}</p>
     </div>
   </div>
 </section>
@@ -295,7 +295,7 @@ a{color:inherit;text-decoration:none;}
 <section class="blog-series">
   <div class="blog-series-inner">
     <div class="label-row"><span class="lm lm--dim">The series</span><span class="gold-rule"></span></div>
-    <h2 class="blog-series-title">Systems Over Sentences: <em>10 parts on how documentation actually works.</em></h2>
+    <h2 class="blog-series-title">{{ series.name }}: <em>10 parts on how documentation actually works.</em></h2>
     <p class="blog-series-sub">A complete series for technical writers and the founders who work with them. Start from Part 01 or jump to wherever you are.</p>
     <div class="blog-series-parts">
       {%- for p in collections.postsAsc %}
@@ -319,7 +319,7 @@ a{color:inherit;text-decoration:none;}
       <a href="{{ p.url }}" class="blog-card reveal">
         <div class="blog-card-banner"><img src="../assets/images/{{ p.data.cardImage }}" alt="{{ p.data.title }}" loading="lazy"></div>
         <div class="blog-card-body">
-          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part {{ p.data.part | pad }} &middot; Systems Over Sentences</div>
+          <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part {{ p.data.part | pad }} &middot; {{ series.name }}</div>
           <h3 class="blog-card-title">{{ p.data.title }}</h3>
           <p class="blog-card-excerpt">{{ p.data.cardExcerpt }}</p>
           <div class="blog-card-foot">

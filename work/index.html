@@ -622,7 +622,7 @@ a{color:inherit;text-decoration:none;}
       <a href="{{ p.url }}" class="work-writing-card">
         <div class="work-writing-card-image"><img src="../assets/images/{{ p.data.cardImage }}" alt="{{ p.data.title }}" loading="lazy" width="800" height="450"></div>
         <div class="work-writing-card-body">
-          <span class="work-writing-card-series">Systems Over Sentences &middot; Part {{ p.data.part | pad }}</span>
+          <span class="work-writing-card-series">{{ series.name }} &middot; Part {{ p.data.part | pad }}</span>
           <h3 class="work-writing-card-title">{{ p.data.title }}</h3>
           <span class="work-writing-card-link">Read on the blog &rarr;</span>
         </div>

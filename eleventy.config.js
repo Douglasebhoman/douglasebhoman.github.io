@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 module.exports = function (eleventyConfig) {
   // Passthrough copy — static assets and root-level files Eleventy would otherwise ignore
   eleventyConfig.addPassthroughCopy("assets");
@@ -52,6 +55,18 @@ module.exports = function (eleventyConfig) {
   // Oldest first: the series navigation strip
   eleventyConfig.addCollection("postsAsc", (api) =>
     seriesPosts(api).sort((a, b) => a.data.part - b.data.part)
+  );
+
+  // ---------------------------------------------------------------
+  // SERIES
+  // The series name, total and blog URL are written once, in
+  // blog/posts/posts.json. That file is directory data, so only the
+  // posts can see it. This publishes the same object to every page,
+  // so the blog index and the Work page read it rather than repeating
+  // it. The file is read on every build, so editing it needs no restart.
+  // ---------------------------------------------------------------
+  eleventyConfig.addGlobalData("series", () =>
+    JSON.parse(fs.readFileSync(path.join(__dirname, "blog/posts/posts.json"), "utf8")).series
   );
 
   // 7 -> "07"
