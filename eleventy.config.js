@@ -21,6 +21,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("CLAUDE.md");
   // Share card sources, rendered to PNG by hand and never published
   eleventyConfig.ignores.add("scripts/**");
+  // Book source: Markdown chapters derived from the posts. They live here so a
+  // post and its chapter can share a commit, but they are not part of the site.
+  eleventyConfig.ignores.add("book/**");
 
   // ---------------------------------------------------------------
   // DRAFTS
