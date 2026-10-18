@@ -32,7 +32,7 @@ So version control answers one question completely and another not at all. What 
 
 ## One fact, four surfaces
 
-Publishing a post on my site meant remembering the post itself, the featured block at the top of the blog index, the series strip beneath it, the grid of cards below that, the Latest Writing strip on the Work page, and the sitemap. Most of those I updated out of habit. The Work page I forgot, because it sits on a page I have no reason to open while publishing.
+Publishing a post on my site meant remembering the post itself, the featured block at the top of the blog index, the series strip beneath it, the grid of cards below that, the Latest Writing strip on the Work page, and the sitemap. Four of those surfaces carried the post’s own title, date and excerpt. The sitemap was hand-written then too, and it was a separate problem with a separate fix. Most of those I updated out of habit. The Work page I forgot, because it sits on a page I have no reason to open while publishing.
 
 That last clause is the whole mechanism, and it generalises. The copies that go stale are not the ones you are careless about. They are the ones that live outside the moment of change. Every surface I updated reliably sat on a path I was already walking: publish the post, look at the blog, see the cards. The one I missed sat on a page the act of publishing gave me no reason to visit.
 
@@ -46,7 +46,7 @@ Memory is not infrastructure.
 
 :::
 
-The better question was never what do I need to remember to update. It is what should change when this file changes. The first is a systems question. The second is a memory test, and I had been quietly failing it for weeks.
+The better question was never what do I need to remember to update. It is what should change when this file changes. The first is a memory test, and I had been quietly failing it for weeks. The second is a systems question.
 
 :::: contrast
 
@@ -124,6 +124,6 @@ The Work page failure was small. Nothing broke, nobody was blocked, no customer 
 
 When documentation keeps going wrong in small ways, the instinct is to be more careful. Usually the better answer is to stop asking the writer to compensate for the system.
 
-This series began with a phrase I use about my own work: narrative is infrastructure. Ten parts later, I can say what I actually mean by it. The words are the visible part. Underneath them sit decisions about what is true, what belongs and how it all relates, and those decisions are only as durable as the system holding them. Build the system, and the writing has somewhere to stand.
+I have a phrase I use about my own work: narrative is infrastructure. Ten parts later, I can say what I actually mean by it. The words are the visible part. Underneath them sit decisions about what is true, what belongs and how it all relates, and those decisions are only as durable as the system holding them. Build the system, and the writing has somewhere to stand.
 
 *The writer decides what the documentation means. The system keeps that meaning from drifting.*
