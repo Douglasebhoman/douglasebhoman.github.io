@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history: the book staleness check reads each post's last commit.
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -32,6 +35,10 @@ jobs:
 
       - name: Drift check
         run: bash scripts/drift-check.sh
+
+      # Fails when a post has changed since its book chapter was converted.
+      - name: Book chapters match their posts
+        run: node book/tools/stale.js
 
       - name: Build with Eleventy
         run: npx @11ty/eleventy
