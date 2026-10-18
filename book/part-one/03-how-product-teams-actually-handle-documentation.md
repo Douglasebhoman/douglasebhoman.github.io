@@ -1,0 +1,119 @@
+---
+chapter: 3
+title: "How Product Teams Actually Handle Documentation"
+source: blog/posts/how-product-teams-actually-handle-documentation/index.html
+---
+
+For a stretch of my independent practice I held every role at once. Subject matter expert, writer, reviewer, maintainer, owner. I was the only one in the room, which meant I was also the only one reading the room.
+
+Work moved slower than it should have, and that part I expected. One person moving through a workflow designed for several creates a queue at every stage, and I was the queue.
+
+What I did not expect was the second problem. Assumptions I had made about what a reader already knew, steps I treated as obvious because I was the person who knew the product, went into the canonical document and stayed there. Because I owned the source of truth, my error became the truth. Nobody caught it. There was nobody to catch it.
+
+What makes that worth examining is everything it rules out. No handoff lost anything. No ticket fell into a gap between two departments. No competing priority pushed the update into the next sprint. There was one person, holding every role, with complete context and no coordination cost whatsoever, and the documentation still drifted away from the product.
+
+So the drift cannot have been caused by coordination, because there was none to fail. Which means product teams are dealing with two separate problems that look like one. There is the coordination problem, which everyone already talks about: handoffs, sprints, competing priorities, the gap between engineering and documentation. And underneath it there is a second problem that survives when you remove all of that, and it does not have a common name. That second one is what this is about.
+
+---
+
+## The ownership problem nobody names
+
+Every stage people usually blame has one thing in common: someone is watching it. Writing has a writer. Review has a reviewer. The handoff between engineering and documentation has two parties who both know it is happening, which is why it generates friction, and friction is useful. Visible problems get fixed, or at minimum get complained about.
+
+The failure happens in the one interval nobody is standing in. The product ships. The docs go live. The sprint closes. Three months later a parameter is renamed, a step is deprecated, a prerequisite is added. The documentation does not move with it, and not because nobody noticed. Because nobody was assigned to notice.
+
+::: pull-quote
+
+Ownership that is assumed is ownership that belongs to nobody.
+
+:::
+
+This is not a distinction about effort. Every page in a documentation set has an author. Almost none of them have a named owner. The author is a fact about the past. The owner is a commitment about the future, and only one of those two keeps a document true.
+
+:::: contrast
+
+::: column
+
+### The Snapshot
+
+Who wrote this?
+
+“Who wrote it? When did it ship? Was it accurate at the time?”
+
+Result: a record of what was once true.
+
+:::
+
+::: column
+
+### The System
+
+Who owns this next?
+
+“Who owns it now? What will tell them the product moved? When do they look?”
+
+Result: a document that stays true.
+
+:::
+
+::::
+
+Both columns are about care. Only one of them survives the person who did the caring leaving the company.
+
+---
+
+## Ownership lives in the SME relationship
+
+Ownership sounds like a process question. In practice it is a relationship question, and that becomes obvious the first time you need an answer from someone who does not report to you.
+
+A technical writer with seven years of experience put it to me this way: some companies make the subject matter expert available to you immediately, and in others you have to make that move yourself.
+
+That second kind is more common than it should be, and the distinction matters more than it sounds. In the first kind, the organisation has decided that answering the writer is part of someone’s job. In the second, it has decided nothing, and the writer is left to construct the arrangement privately, person by person, with no authority to do it. Both companies will tell you they take documentation seriously. Only one of them has made that true in anyone’s week.
+
+Subject matter experts are people with their own deadlines, and they are not waiting for your questions. The formal channel gets you access. A scheduled meeting, a ticket, an introduction from a manager. Access is not the same as answers. A calendar invitation produces a conversation. It does not produce the unprompted message three weeks later telling you an endpoint changed and you will want to look at that page.
+
+That second thing is what documentation actually runs on, because documentation is never one conversation. As the product evolves the questions multiply, and they arrive at awkward moments, in small quantities, needing fast answers. A writer with a real relationship gets those answers in minutes. A writer without one waits, and while they wait the documentation drifts.
+
+One question changes that relationship faster than any introduction, and it costs nothing. Stop asking subject matter experts how something works. Ask instead what the one thing is that users always get wrong about it. The first question makes you a task they have to service. The second shows you are thinking about their support load, which is the thing they actually care about. That is the whole reason to prefer it: not because it is a trick that produces faster replies, but because it changes what you are to them from an interruption into someone reducing the same problem they are.
+
+---
+
+## How the drift stays invisible
+
+The ownership gap would be straightforward to fix if it announced itself. It does not, because a functioning organisation is extremely good at routing around it.
+
+A user cannot find the step, so they ask in Slack and someone answers. A support engineer recognises the question, replies directly, and closes the ticket. A senior developer onboards the new hire in person, because that is faster than sending them to a page. Every one of those is a competent person solving a real problem. Every one of them resolves the symptom and leaves the cause exactly where it was. The question gets answered. The page stays wrong.
+
+And because the question got answered, no ticket exists. Nothing in any system records that the documentation failed. The only trace is in the time of the people who absorbed it, and nobody measures that either.
+
+This is documentation entropy in its quietest form. Not a catastrophic failure, a slow drift. Pages that are ninety percent accurate. Procedures that mostly work. Instructions that were right once and are now wrong in small ways, costing a user half an hour of confusion that they blame on themselves. Each instance is too small to escalate. Accumulated across a documentation set with no named owners, it becomes a liability that grows every sprint, and the first time anyone adds it up is usually during an audit that someone else is paying for.
+
+---
+
+## Who owns this next
+
+The question most teams ask about a document is who wrote it. That is the wrong question, and it is the wrong question for a particular reason: it is answerable. Git knows who wrote it. The page history knows. Asking it feels like diligence and costs nothing, which is exactly why it is the question that gets asked.
+
+The useful question is harder, because someone has to volunteer to be the answer.
+
+::: {.callout label="Feedback audit · Who fixes this page"}
+
+Pick any page in your current documentation and ask one question: if this page becomes inaccurate tomorrow, who is responsible for fixing it?
+
+The answer has to be a name. Not a team, not a role, not “the docs person”. A name, because teams do not notice things, people do. If you cannot produce one for the page in front of you, produce one now, record it wherever that page keeps its own details so that it outlives the conversation, and tell the person. You have just converted one snapshot into one maintained document. Do it for the ten pages that would hurt most if they were wrong, and you have the beginning of a system.
+
+:::
+
+A documentation set with a name against every page is a system. One without them is a snapshot: accurate on the day it was taken, and quietly ageing from then on. The difference never shows at launch, when both look identical. It shows later, which is the only point at which anyone can tell whether the documentation was built or merely written.
+
+This is not an exotic practice, and it is not mine. GitLab runs its entire public handbook on the principle that accountability belongs to a named individual rather than a group, and publishes the handbook itself so you can see how it is applied. The idea is borrowed, well established, and almost never extended to documentation pages, which is the gap worth taking.
+
+Part 4 turns from who maintains a document to who reads it, and makes one of the most practically useful distinctions in the work: writing for developers against writing for everyone else. The same information, a completely different job, and getting it wrong costs more than it looks like it should.
+
+*Owning the source of truth does not make you right. It only means nothing will tell you when you are not.*
+
+::: {.further-reading label="Further reading"}
+
+GitLab’s [Directly Responsible Individuals](https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/) handbook page, and the public handbook around it, for a working example of named individual accountability applied across an entire documentation set.
+
+:::

@@ -1,17 +1,23 @@
 name: Build and Deploy to GitHub Pages
 
+# A push to main builds, checks and deploys. A pull request into main builds
+# and runs the same checks, so a chapter that no longer matches its post fails
+# at review, but nothing is uploaded or deployed.
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
+# Deploys queue one at a time. A pull request gets its own group, so its checks
+# neither wait behind a deploy nor hold one up.
 concurrency:
-  group: pages
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
   cancel-in-progress: false
 
 jobs:
@@ -33,17 +39,33 @@ jobs:
       - name: Drift check
         run: bash scripts/drift-check.sh
 
+      # Fails when a committed chapter differs from a fresh conversion of its post.
+      # It never rewrites a chapter: a person re-runs book/tools/convert.js.
+      - name: Book chapters match a fresh conversion
+        run: node book/tools/check-regenerated.js
+
+      # Compares each chapter's words, links and containers with its post. The
+      # check above cannot see a converter that drops content, because the
+      # committed chapter and the fresh conversion would drop it alike.
+      - name: Book chapters carry their posts' content
+        run: node book/tools/verify.js
+
       - name: Build with Eleventy
         run: npx @11ty/eleventy
 
       - name: Upload Pages artifact
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
 
   deploy:
+    if: github.event_name == 'push'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
