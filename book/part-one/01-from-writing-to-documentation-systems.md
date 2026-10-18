@@ -95,9 +95,7 @@ The shift from writing to systems thinking rarely happens in planning. It happen
 
 Most people think technical writing is about writing. The real job is designing how information works, and the system will tell you what it needs long before anyone complains about the prose. The question is whether you are looking at the sentences or at the structure.
 
-::: callout
-
-Architecture audit · Find the source
+::: {.callout label="Architecture audit · Find the source"}
 
 Next time you are asked to fix a typo, pause and ask whether that same error exists in five other places. If it does, you do not have a typo problem. You have a system problem.
 

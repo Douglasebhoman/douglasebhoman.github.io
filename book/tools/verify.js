@@ -1,0 +1,127 @@
+#!/usr/bin/env node
+// Check one chapter against the post it was converted from.
+//
+//   node book/tools/verify.js <post path> <chapter path>
+//
+// Reports, and exits non-zero if any check fails:
+//   a. prose words: the post body as text, against the chapter body with fence
+//      markers, attributes and markdown syntax removed. Container labels are
+//      fence attributes in the chapter, so they are set aside from the post's
+//      words before the two sequences are compared.
+//   b. links: text and target, both sides.
+//   c. containers by class in the post, against fenced divs by name.
+//   d. raw HTML tags left in the chapter, outside code blocks.
+//   e. every fence opens and closes, nests correctly, and an outer fence has
+//      exactly one more colon than the deepest fence inside it.
+// The site build check is separate: build main and the branch from fresh
+// checkouts and compare the output trees.
+
+const path = require("path");
+const fs = require("fs");
+const matter = require("gray-matter");
+const { parseDocument, DomUtils } = require("htmlparser2");
+const root = path.resolve(__dirname, "..", "..");
+
+const [postPath, chapPath] = process.argv.slice(2);
+if (!postPath || !chapPath) { console.error("usage: node book/tools/verify.js <post path> <chapter path>"); process.exit(2); }
+const post = matter(fs.readFileSync(path.join(root, postPath), "utf8")).content;
+const chap = fs.readFileSync(path.join(root, chapPath), "utf8").replace(/\r/g, "");
+const fmMatch = /^---\n([\s\S]*?)\n---\n/.exec(chap);
+if (!fmMatch) { console.error("chapter has no front matter"); process.exit(1); }
+const mdLines = chap.slice(fmMatch[0].length).split("\n");
+const doc = parseDocument(post, { decodeEntities: true });
+let failed = false;
+const bad = (msg) => { failed = true; console.log("   FAIL: " + msg); };
+
+// ---- text of the post, block aware, so inline tags do not split words from punctuation
+const BLOCK = new Set(["p", "div", "li", "ol", "ul", "h1", "h2", "h3", "h4", "h5", "h6", "pre", "span", "hr", "section"]);
+const textOf = (n) => n.type === "text" ? n.data : (n.children || []).map((c) => (c.type === "tag" && BLOCK.has(c.name) ? " " + textOf(c) + " " : textOf(c))).join("");
+const words = (s) => s.replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+const LABELS = ["callout-gold-label", "quick-win-label", "further-reading-label", "audience-card-label"];
+const labelNodes = DomUtils.findAll((n) => n.name === "span" && LABELS.some((l) => (n.attribs.class || "").split(/\s+/).includes(l)), doc.children);
+const labelWords = labelNodes.reduce((sum, n) => sum + words(textOf(n)).length, 0);
+labelNodes.forEach((n) => DomUtils.removeElement(n));
+const postWordsNoLabels = words(textOf(doc));
+const postWordsTotal = postWordsNoLabels.length + labelWords;
+
+// ---- chapter prose: drop fences, code fence markers and markdown syntax, keep code content as is
+let inCode = null; const proseParts = [];
+for (const l of mdLines) {
+  const cf = /^(`{3,})(.*)$/.exec(l);
+  if (cf && (!inCode || cf[1] === inCode)) { inCode = inCode ? null : cf[1]; continue; }
+  if (inCode) { proseParts.push(l); continue; }
+  if (/^:{3,}( .*)?$/.test(l) || /^---$/.test(l)) continue;
+  proseParts.push(l
+    .replace(/^#{1,6} /, "").replace(/^(\d+\.|-) /, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*|\*/g, "").replace(/\\([\\`*_\[\]<>])/g, "$1"));
+}
+const mdWords = words(proseParts.join("\n"));
+console.log(`a. words: post body ${postWordsTotal} | chapter body without fences, attributes and syntax ${mdWords.length} | difference ${mdWords.length - postWordsTotal}`);
+console.log(`   container labels in the post, now fence attributes: ${labelNodes.length} labels, ${labelWords} words`);
+const same = JSON.stringify(mdWords) === JSON.stringify(postWordsNoLabels);
+console.log(`   chapter words identical, in order, to post words without labels (${postWordsNoLabels.length}): ${same}`);
+if (!same) { const i = mdWords.findIndex((w, k) => w !== postWordsNoLabels[k]); bad(`first difference at word ${i}: chapter "${mdWords[i]}" post "${postWordsNoLabels[i]}"`); }
+
+// ---- b. links
+const postLinks = DomUtils.findAll((n) => n.name === "a", doc.children).map((a) => `${DomUtils.textContent(a).replace(/\s+/g, " ")} -> ${a.attribs.href}`);
+const mdText = mdLines.join("\n");
+const mdLinks = [...mdText.matchAll(/(?<!!)\[([^\]]*)\]\(([^)]*)\)/g)].map((m) => `${m[1].replace(/\*/g, "")} -> ${m[2]}`);
+console.log(`b. links: post ${postLinks.length} | chapter ${mdLinks.length}`);
+postLinks.forEach((l) => console.log("   post:    " + l));
+mdLinks.forEach((l) => console.log("   chapter: " + l));
+postLinks.filter((l) => !mdLinks.includes(l)).forEach((l) => bad("only in post: " + l));
+mdLinks.filter((l) => !postLinks.includes(l)).forEach((l) => bad("only in chapter: " + l));
+
+// ---- c. containers
+const MAP = [["callout-gold", "callout"], ["quick-win", "quick-win"], ["further-reading", "further-reading"], ["pull-quote", "pull-quote"], ["contrast-block", "contrast"], ["contrast-col", "column"], ["audience-comparison", "cards"], ["audience-card", "card"]];
+const byClass = {};
+DomUtils.findAll((n) => n.name === "div", doc.children).forEach((n) => (n.attribs.class || "").split(/\s+/).forEach((c) => { byClass[c] = (byClass[c] || 0) + 1; }));
+const byFence = {}; const labelled = {};
+inCode = null;
+for (const l of mdLines) {
+  const cf = /^(`{3,})/.exec(l); if (cf && (!inCode || cf[1] === inCode)) { inCode = inCode ? null : cf[1]; continue; } if (inCode) continue;
+  const m = /^:{3,} (?:\{\.([\w-]+)( label="[^"]*")?\}|([\w-]+))$/.exec(l);
+  if (m) { const name = m[1] || m[3]; byFence[name] = (byFence[name] || 0) + 1; if (m[2]) labelled[name] = (labelled[name] || 0) + 1; }
+}
+console.log("c. containers:");
+for (const [cls, name] of MAP) {
+  const p = byClass[cls] || 0, f = byFence[name] || 0;
+  console.log(`   ${cls.padEnd(20)} post ${String(p).padEnd(3)} ${name.padEnd(16)} chapter ${f}${labelled[name] ? ` (${labelled[name]} with label)` : ""}`);
+  if (p !== f) bad(`${cls} ${p} against ${name} ${f}`);
+}
+console.log(`   post-author-bio      post ${byClass["post-author-bio"] || 0}   dropped`);
+for (const name of Object.keys(byFence)) if (!MAP.some(([, n]) => n === name)) bad("fence name with no mapping: " + name);
+
+// ---- d. raw HTML outside code
+const html = []; inCode = null;
+mdLines.forEach((l, i) => {
+  const cf = /^(`{3,})/.exec(l); if (cf && (!inCode || cf[1] === inCode)) { inCode = inCode ? null : cf[1]; return; } if (inCode) return;
+  for (const m of l.replace(/`[^`]*`/g, "").matchAll(/<\/?[a-zA-Z][a-zA-Z0-9-]*(\s[^>]*)?\/?>/g)) html.push(`line ${i + 1 + fmMatch[0].split("\n").length - 1}: ${m[0]}`);
+});
+console.log(`d. raw HTML tags outside code blocks: ${html.length}`);
+html.forEach((h) => bad(h));
+
+// ---- e. fences
+const stack = []; let opened = 0; inCode = null; let codeBlocks = 0;
+mdLines.forEach((l, i) => {
+  const cf = /^(`{3,})/.exec(l);
+  if (cf && (!inCode || cf[1] === inCode)) { if (!inCode) codeBlocks++; inCode = inCode ? null : cf[1]; return; }
+  if (inCode) return;
+  const open = /^(:{3,}) \S/.exec(l), close = /^(:{3,})$/.exec(l);
+  if (open) { stack.push({ colons: open[1].length, line: i, inner: 0 }); opened++; }
+  else if (close) {
+    const top = stack.pop();
+    if (!top) return bad(`line ${i}: closing fence with nothing open`);
+    if (top.colons !== close[1].length) bad(`line ${i}: closes ${close[1].length} colons, opened with ${top.colons}`);
+    const want = top.inner ? top.inner + 1 : 3;
+    if (top.colons !== want) bad(`fence opened on line ${top.line} has ${top.colons} colons, expected ${want}`);
+    if (stack.length) stack[stack.length - 1].inner = Math.max(stack[stack.length - 1].inner, top.colons);
+  }
+});
+if (stack.length) bad(`${stack.length} fence(s) never closed`);
+if (inCode) bad("code block never closed");
+console.log(`e. fences: ${opened} opened, balanced and nested with the colon rule: ${!failed || stack.length === 0 ? "checked" : ""} | code blocks: ${codeBlocks}, closed: ${!inCode}`);
+
+console.log(failed ? "RESULT: FAIL" : "RESULT: PASS");
+process.exit(failed ? 1 : 0);
