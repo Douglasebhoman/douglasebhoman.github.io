@@ -2,7 +2,6 @@
 chapter: 5
 title: "Anatomy of Great Documentation"
 source: blog/posts/anatomy-of-great-documentation/index.html
-source_commit: a2b8d9781a13ba79bec4577754f8b423ac631b37
 ---
 
 Most documentation does not fail at launch.

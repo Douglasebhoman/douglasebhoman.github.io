@@ -2,7 +2,6 @@
 chapter: 1
 title: "From Writing to Documentation Systems"
 source: blog/posts/from-writing-to-documentation-systems/index.html
-source_commit: 45a6993e3af6ddc3e09e1ad338a51fa839936740
 ---
 
 Almost nobody who read my Git and GitHub for Technical Writers series started at the beginning.

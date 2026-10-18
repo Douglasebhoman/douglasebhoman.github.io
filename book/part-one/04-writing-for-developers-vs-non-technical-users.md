@@ -2,7 +2,6 @@
 chapter: 4
 title: "Writing for Developers vs Non-Technical Users"
 source: blog/posts/writing-for-developers-vs-non-technical-users/index.html
-source_commit: 45a6993e3af6ddc3e09e1ad338a51fa839936740
 ---
 
 Earlier this year I documented douglasebhoman.com, my own portfolio site. I built it. Every line of HTML, every CSS variable, every deployment pipeline. There is no version of this site I do not understand. And writing developer documentation for it was one of the hardest writing tasks I have done.

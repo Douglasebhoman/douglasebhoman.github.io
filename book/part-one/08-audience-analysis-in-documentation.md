@@ -2,7 +2,6 @@
 chapter: 8
 title: "Your Documentation Explains Everything and Helps No One"
 source: blog/posts/audience-analysis-in-documentation/index.html
-source_commit: 21fa643b414b7e34f1e26b75fa1a19098eb6204b
 ---
 
 I left rebasing out of a six-part guide to Git, and it was the best decision in the whole series.

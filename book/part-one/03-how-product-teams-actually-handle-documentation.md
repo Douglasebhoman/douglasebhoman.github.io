@@ -2,7 +2,6 @@
 chapter: 3
 title: "How Product Teams Actually Handle Documentation"
 source: blog/posts/how-product-teams-actually-handle-documentation/index.html
-source_commit: a2b8d9781a13ba79bec4577754f8b423ac631b37
 ---
 
 For a stretch of my independent practice I held every role at once. Subject matter expert, writer, reviewer, maintainer, owner. I was the only one in the room, which meant I was also the only one reading the room.

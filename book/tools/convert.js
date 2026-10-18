@@ -22,22 +22,21 @@
 //   hr                                       ---
 //
 // An outer fence carries one more colon than the fences inside it.
-// The output is the front matter (chapter, title, source, source_commit) and
+// The output is the front matter (chapter, title, source) and
 // the body. Nothing from the layout (banner, author bio) is in a post body.
 
 const path = require("path");
 const fs = require("fs");
-const cp = require("child_process");
 const matter = require("gray-matter");
 const { parseDocument } = require("htmlparser2");
 
 const root = path.resolve(__dirname, "..", "..");
 
 function convert(postPath, chapterNo) {
-  const raw = fs.readFileSync(path.join(root, postPath), "utf8");
+  // Line endings are normalised so the output is the same on every platform:
+  // a Windows checkout of a post has CRLF, and a code block would carry it.
+  const raw = fs.readFileSync(path.join(root, postPath), "utf8").replace(/\r\n?/g, "\n");
   const { data, content } = matter(raw);
-  const sourceCommit = cp.execFileSync("git", ["-C", root, "log", "-1", "--format=%H", "--", postPath]).toString().trim();
-  if (!/^[0-9a-f]{40}$/.test(sourceCommit)) throw new Error("no commit found for " + postPath);
   const doc = parseDocument(content, { decodeEntities: true });
   const notes = [];
 
@@ -160,8 +159,8 @@ function convert(postPath, chapterNo) {
     const colons = ":".repeat(2 + depth(b));
     return [`${colons} ${b.attrs || b.fence}`, ...b.children.map(render), colons].join("\n\n");
   };
-  const fm = ["---", `chapter: ${Number(chapterNo)}`, `title: ${JSON.stringify(data.title)}`, `source: ${postPath}`, `source_commit: ${sourceCommit}`, "---"].join("\n");
-  return { text: fm + "\n\n" + blocks.map(render).join("\n\n") + "\n", notes, sourceCommit };
+  const fm = ["---", `chapter: ${Number(chapterNo)}`, `title: ${JSON.stringify(data.title)}`, `source: ${postPath}`, "---"].join("\n");
+  return { text: fm + "\n\n" + blocks.map(render).join("\n\n") + "\n", notes };
 }
 
 module.exports = { convert, root };
@@ -170,10 +169,10 @@ if (require.main === module) {
   const [postPath, chapterNo, outPath] = process.argv.slice(2);
   if (!postPath || !chapterNo || !outPath) { console.error("usage: node book/tools/convert.js <post path> <chapter number> <output path>"); process.exit(2); }
   try {
-    const { text, notes, sourceCommit } = convert(postPath, chapterNo);
+    const { text, notes } = convert(postPath, chapterNo);
     fs.mkdirSync(path.dirname(path.join(root, outPath)), { recursive: true });
     fs.writeFileSync(path.join(root, outPath), text);
-    console.log(`wrote ${outPath} (source_commit ${sourceCommit})`);
+    console.log(`wrote ${outPath}`);
     [...new Set(notes)].forEach((n) => console.log("note: " + n));
   } catch (e) {
     console.error("REFUSED: " + e.message);

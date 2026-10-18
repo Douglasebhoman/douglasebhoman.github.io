@@ -2,7 +2,6 @@
 chapter: 2
 title: "Your Documentation is a Bakery. Here is How to Build a Supermarket."
 source: blog/posts/your-documentation-is-a-bakery/index.html
-source_commit: a2b8d9781a13ba79bec4577754f8b423ac631b37
 ---
 
 I went into an open-source project’s documentation to understand one concept, and I came out of it no clearer than when I started.

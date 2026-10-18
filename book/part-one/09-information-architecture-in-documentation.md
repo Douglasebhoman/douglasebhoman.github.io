@@ -2,7 +2,6 @@
 chapter: 9
 title: "Your Documentation Is a Series. Your Reader Skipped Part 1."
 source: blog/posts/information-architecture-in-documentation/index.html
-source_commit: 21fa643b414b7e34f1e26b75fa1a19098eb6204b
 ---
 
 This series was meant to run in a different order. A page I had already published would not let it.

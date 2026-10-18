@@ -2,7 +2,6 @@
 chapter: 7
 title: "Your Documentation Only Knows What One Person Noticed"
 source: blog/posts/the-discipline-of-research/index.html
-source_commit: 21fa643b414b7e34f1e26b75fa1a19098eb6204b
 ---
 
 Thirty of us went on the same picnic. Only a few came back with the real story.

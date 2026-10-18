@@ -2,7 +2,6 @@
 chapter: 6
 title: "Introduction to Structured Writing"
 source: blog/posts/introduction-to-structured-writing/index.html
-source_commit: 21fa643b414b7e34f1e26b75fa1a19098eb6204b
 ---
 
 There were words on the page. What the page did not have was the information someone needed.

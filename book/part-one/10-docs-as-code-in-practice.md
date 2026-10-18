@@ -2,7 +2,6 @@
 chapter: 10
 title: "Your Documentation Should Not Need Four Copies of the Truth"
 source: blog/posts/docs-as-code-in-practice/index.html
-source_commit: 21fa643b414b7e34f1e26b75fa1a19098eb6204b
 ---
 
 For days, possibly weeks, my own site was quietly telling readers the wrong thing about my latest writing.
