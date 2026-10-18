@@ -16,7 +16,7 @@ So I rebuilt. Research became Part 7, audience analysis became Part 8, and this 
 
 At the end of Part 8, I said that a document with the right information in the wrong sequence still fails its reader. That is true, and it is incomplete. The sequence of this series was never really decided by the plan. It was decided by what each part depended on. Once one piece made a promise, the pieces after it had to honour it, and the order followed from that.
 
-That is what information architecture actually is. Not arranging pages into an order, but deciding how they relate to one another, and letting the order fall out of those relationships. Part 2 of this series was about the windows between pages, the routes a reader takes from one to the next. This post is about what has to exist inside a page for any of those windows to lead somewhere.
+That is what information architecture actually is. Not arranging pages into an order, but deciding how they relate to one another, and letting the order fall out of those relationships. Part 6 called it deciding the order, which is the writer’s view of it. Part 2 of this series was about the windows between pages, the routes a reader takes from one to the next. This post is about what has to exist inside a page for any of those windows to lead somewhere.
 
 ---
 
