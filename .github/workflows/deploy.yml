@@ -44,6 +44,12 @@ jobs:
       - name: Book chapters match a fresh conversion
         run: node book/tools/check-regenerated.js
 
+      # Compares each chapter's words, links and containers with its post. The
+      # check above cannot see a converter that drops content, because the
+      # committed chapter and the fresh conversion would drop it alike.
+      - name: Book chapters carry their posts' content
+        run: node book/tools/verify.js
+
       - name: Build with Eleventy
         run: npx @11ty/eleventy
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Check one chapter against the post it was converted from.
 //
-//   node book/tools/verify.js <post path> <chapter path>
+//   node book/tools/verify.js                            every chapter
+//   node book/tools/verify.js <post path> <chapter path> one chapter
 //
 // Reports, and exits non-zero if any check fails:
 //   a. prose words: the post body as text, against the chapter body with fence
@@ -23,7 +24,27 @@ const { parseDocument, DomUtils } = require("htmlparser2");
 const root = path.resolve(__dirname, "..", "..");
 
 const [postPath, chapPath] = process.argv.slice(2);
-if (!postPath || !chapPath) { console.error("usage: node book/tools/verify.js <post path> <chapter path>"); process.exit(2); }
+
+// With no arguments, check every chapter against the post its file name
+// derives (book/tools/chapters.js), each in its own process, and fail if any
+// chapter fails. This is how CI runs it.
+if (!postPath && !chapPath) {
+  const { listChapters } = require("./chapters.js");
+  const cp = require("child_process");
+  let failedChapters = 0;
+  for (const ch of listChapters()) {
+    if (ch.error) { console.log(`== ${ch.file}\n   FAIL: ${ch.error}`); failedChapters++; continue; }
+    const r = cp.spawnSync(process.execPath, [__filename, ch.source, ch.file], { encoding: "utf8" });
+    console.log(`== ${ch.file}  (from ${ch.source})`);
+    const indent = (t) => t.replace(/\n$/, "").replace(/^/gm, "   ") + "\n";
+    if (r.stdout) process.stdout.write(indent(r.stdout));
+    if (r.stderr) process.stdout.write(indent(r.stderr));
+    if (r.status !== 0) failedChapters++;
+  }
+  console.log(failedChapters ? `CONTENT CHECK: ${failedChapters} chapter(s) failed` : "CONTENT CHECK: every chapter passed");
+  process.exit(failedChapters ? 1 : 0);
+}
+if (!postPath || !chapPath) { console.error("usage: node book/tools/verify.js [<post path> <chapter path>]"); process.exit(2); }
 const post = matter(fs.readFileSync(path.join(root, postPath), "utf8")).content;
 const chap = fs.readFileSync(path.join(root, chapPath), "utf8").replace(/\r/g, "");
 const fmMatch = /^---\n([\s\S]*?)\n---\n/.exec(chap);
