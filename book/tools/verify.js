@@ -8,12 +8,14 @@
 //   a. prose words: the post body as text, against the chapter body with fence
 //      markers, attributes and markdown syntax removed. Container labels are
 //      fence attributes in the chapter, so they are set aside from the post's
-//      words before the two sequences are compared.
+//      words before the two sequences are compared; check f compares them.
 //   b. links: text and target, both sides.
 //   c. containers by class in the post, against fenced divs by name.
 //   d. raw HTML tags left in the chapter, outside code blocks.
 //   e. every fence opens and closes, nests correctly, and an outer fence has
 //      exactly one more colon than the deepest fence inside it.
+//   f. every label="..." fence attribute, in order, against the label text and
+//      container in the post.
 // The site build check is separate: build main and the branch from fresh
 // checkouts and compare the output trees.
 
@@ -61,6 +63,12 @@ const words = (s) => s.replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
 const LABELS = ["callout-gold-label", "quick-win-label", "further-reading-label", "audience-card-label"];
 const labelNodes = DomUtils.findAll((n) => n.name === "span" && LABELS.some((l) => (n.attribs.class || "").split(/\s+/).includes(l)), doc.children);
 const labelWords = labelNodes.reduce((sum, n) => sum + words(textOf(n)).length, 0);
+// Kept for check f, which compares each label with its fence attribute.
+const LABEL_CONTAINER = { "callout-gold-label": "callout", "quick-win-label": "quick-win", "further-reading-label": "further-reading", "audience-card-label": "card" };
+const postLabels = labelNodes.map((n) => ({
+  container: LABEL_CONTAINER[(n.attribs.class || "").split(/\s+/).find((c) => LABEL_CONTAINER[c])],
+  text: words(textOf(n)).join(" "),
+}));
 labelNodes.forEach((n) => DomUtils.removeElement(n));
 const postWordsNoLabels = words(textOf(doc));
 const postWordsTotal = postWordsNoLabels.length + labelWords;
@@ -143,6 +151,25 @@ mdLines.forEach((l, i) => {
 if (stack.length) bad(`${stack.length} fence(s) never closed`);
 if (inCode) bad("code block never closed");
 console.log(`e. fences: ${opened} opened, balanced and nested with the colon rule: ${!failed || stack.length === 0 ? "checked" : ""} | code blocks: ${codeBlocks}, closed: ${!inCode}`);
+
+// ---- f. labels: each label="..." fence attribute, in order, against the label in
+// the corresponding post container. Check a sets label words aside, so without
+// this no check would ever read a label.
+const chapterLabels = []; inCode = null;
+mdLines.forEach((l, i) => {
+  const cf = /^(`{3,})/.exec(l); if (cf && (!inCode || cf[1] === inCode)) { inCode = inCode ? null : cf[1]; return; } if (inCode) return;
+  const m = /^:{3,} \{\.([\w-]+) label="([^"]*)"\}$/.exec(l);
+  if (m) chapterLabels.push({ container: m[1], text: m[2].replace(/\\([\\`*_\[\]<>])/g, "$1"), line: i + 1 + fmMatch[0].split("\n").length - 1 });
+});
+console.log(`f. labels: post ${postLabels.length} | chapter ${chapterLabels.length}`);
+const labelCount = Math.max(postLabels.length, chapterLabels.length);
+for (let k = 0; k < labelCount; k++) {
+  const p = postLabels[k], c = chapterLabels[k];
+  if (!p) { bad(`label ${k + 1}: chapter line ${c.line} has ${c.container} label "${c.text}" with no label in the post`); continue; }
+  if (!c) { bad(`label ${k + 1}: post ${p.container} label "${p.text}" has no label attribute in the chapter`); continue; }
+  if (p.container !== c.container || p.text !== c.text) bad(`label ${k + 1}, chapter line ${c.line}: chapter ${c.container} label "${c.text}" but post ${p.container} label "${p.text}"`);
+  else console.log(`   ${k + 1}. ${c.container}: "${c.text}" matches`);
+}
 
 console.log(failed ? "RESULT: FAIL" : "RESULT: PASS");
 process.exit(failed ? 1 : 0);
