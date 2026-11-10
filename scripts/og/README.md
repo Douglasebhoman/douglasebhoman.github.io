@@ -2,7 +2,7 @@
 
 Source files for the Open Graph share images. Each card is a standalone HTML
 page sized at 1200 x 627 pixels. It uses the colour tokens from `styles.css`
-and the site fonts from Google Fonts. Eleventy ignores this folder, so none of
+and the site fonts from `assets/fonts/`. Eleventy ignores this folder, so none of
 these files are published.
 
 | Source | Output | Used by |
@@ -27,10 +27,9 @@ W=$(pwd -W)
   "file:///$W/scripts/og/og-$CARD.html"
 ```
 
-The render needs a network connection. The cards load Fraunces, DM Sans and
-DM Mono from Google Fonts, and without a connection Chrome falls back to
-system fonts. Open the PNG afterwards and check that the title is set in
-Fraunces before you commit it.
+The cards load Fraunces, DM Sans and DM Mono from `assets/fonts/` by relative
+path, so the render works offline. Open the PNG afterwards and check that the
+title is set in Fraunces before you commit it.
 
 ## Site documentation card screenshot
 

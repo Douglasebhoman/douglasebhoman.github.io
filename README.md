@@ -49,7 +49,7 @@ output to GitHub Pages.
 | Hosting | GitHub Pages, deployed by GitHub Actions on every push to `main` |
 | DNS | Cloudflare — DNS-only mode (no proxy), CNAME pointing to `douglasebhoman.github.io` |
 | HTTPS | Let's Encrypt via GitHub Pages automatic certificate issuance |
-| Fonts | Google Fonts — Fraunces, DM Sans, DM Mono |
+| Fonts | Self-hosted in `assets/fonts/` — Fraunces, DM Sans, DM Mono (WOFF2, from Google Fonts, SIL OFL 1.1) |
 | Comments | Giscus — GitHub Discussions as comment backend on all blog posts |
 | Newsletter | MailerLite — embedded form widget |
 | Booking | Calendly — booking link for the Documentation Audit |
