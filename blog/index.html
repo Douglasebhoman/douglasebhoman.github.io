@@ -176,8 +176,6 @@ a{color:inherit;text-decoration:none;}
 .blog-newsletter-h2 em{font-style:italic;color:var(--gold-light);}
 .blog-newsletter-sub{font-size:13px;color:var(--text-dim);line-height:1.8;font-weight:300;}
 .blog-newsletter-sub strong{color:rgba(255,255,255,.7);font-weight:400;}
-.blog-newsletter-form{display:flex;flex-direction:column;gap:10px;}
-.blog-newsletter-note{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.2);margin-top:4px;}
 
 /* ── About ── */
 .blog-about{background:var(--cream-2);padding:clamp(48px,6vw,64px) var(--pad);border-top:1px solid var(--border-light);}
@@ -345,21 +343,15 @@ a{color:inherit;text-decoration:none;}
   </div>
 </section>
 
-<!-- NEWSLETTER -->
+<!-- BOOK -->
 <section class="blog-newsletter">
   <div class="blog-newsletter-inner">
     <div>
-      <div class="label-row"><span class="lm lm--dim">Stay current</span><span class="gold-rule"></span></div>
-      <h2 class="blog-newsletter-h2">New writing, when it&rsquo;s <em>worth reading.</em></h2>
-      <p class="blog-newsletter-sub">No newsletter cadence. No content calendar. I write when I have something worth saying, <strong>usually once or twice a month</strong>, and you get it when it&rsquo;s done.</p>
+      <h2 class="blog-newsletter-h2">Your Documentation Fails Silently</h2>
+      <p class="blog-newsletter-sub">A free book on finding the documentation faults nobody reports. Four chapters, a worksheet, and three audits on real documentation, including mine.</p>
     </div>
-    <div class="blog-newsletter-form">
-      <script>
-        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-        ml('account', '2241731');
-      </script>
-      <div class="ml-embedded" data-form="8iCjwu" style="width:100%;"></div>
-      <p class="blog-newsletter-note">No spam. Unsubscribe any time. Your email is not shared.</p>
+    <div>
+      <a href="/book/" class="btn btn-ghost-light" style="display:block;text-align:center;">Read it</a>
     </div>
   </div>
 </section>

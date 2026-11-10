@@ -51,7 +51,7 @@ output to GitHub Pages.
 | HTTPS | Let's Encrypt via GitHub Pages automatic certificate issuance |
 | Fonts | Self-hosted in `assets/fonts/` — Fraunces, DM Sans, DM Mono (WOFF2, from Google Fonts, SIL OFL 1.1) |
 | Comments | Giscus — GitHub Discussions as comment backend on all blog posts |
-| Newsletter | MailerLite — embedded form widget |
+| Newsletter | EmailOctopus — embedded form widget, used only on `/book/` |
 | Booking | Calendly — booking link for the Documentation Audit |
 
 ### Vanilla JavaScript interactions (homepage)
