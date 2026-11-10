@@ -1,0 +1,284 @@
+---
+# Served at /book/. The source cannot live in book/, because eleventy.config.js
+# ignores book/** (the folder held the book's own source), so this page sets its
+# address here instead.
+permalink: /book/index.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free book on auditing documentation for the failures that never produce a complaint. Four chapters, a worksheet, and three audits run on real documentation.">
+  <meta name="author" content="Douglas Ebhoman">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://douglasebhoman.com/book/">
+  <meta property="og:type" content="book">
+  <meta property="og:url" content="https://douglasebhoman.com/book/">
+  <meta property="og:title" content="Your Documentation Fails Silently — Douglas Ebhoman">
+  <meta property="og:description" content="Nobody is going to tell you which of your pages stopped being true. A free book on auditing documentation for the failures that never produce a complaint.">
+  <meta property="og:image" content="https://douglasebhoman.com/assets/images/your-documentation-fails-silently-cover.jpg">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="900">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Your Documentation Fails Silently — Douglas Ebhoman">
+  <meta name="twitter:description" content="Nobody is going to tell you which of your pages stopped being true. A free book on auditing documentation for the failures that never produce a complaint.">
+  <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/your-documentation-fails-silently-cover.jpg">
+  <title>Your Documentation Fails Silently &mdash; Douglas Ebhoman</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ── Book hero: headline, subhead and the cover ── */
+    .book-hero{background:var(--navy);padding:clamp(64px,10vw,96px) var(--pad) clamp(56px,8vw,80px);position:relative;overflow:hidden;border-bottom:1px solid var(--border-dark);}
+    .book-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);}
+    .book-hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
+    .book-hero-inner{max-width:var(--container);margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 280px;gap:clamp(40px,6vw,72px);align-items:center;}
+    .book-hero-h1{font-family:var(--serif);font-size:clamp(30px,5vw,48px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:20px;max-width:620px;}
+    .book-hero-sub{font-size:15px;color:var(--text-dim);line-height:1.85;max-width:540px;font-weight:300;}
+    .book-cover{width:280px;height:auto;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+
+    /* ── Prose sections ── */
+    .book-sec{background:var(--cream);padding:clamp(56px,8vw,80px) var(--pad);border-top:1px solid var(--border-light);}
+    .book-sec--alt{background:var(--cream-2);}
+    .book-inner{max-width:var(--container);margin:0 auto;}
+    .book-h2{font-family:var(--serif);font-size:clamp(26px,4vw,36px);font-weight:300;color:var(--text-dark);line-height:1.2;letter-spacing:-.02em;margin-bottom:28px;max-width:680px;}
+    .book-prose{max-width:660px;}
+    .book-prose p{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--text-mid);line-height:1.85;margin-bottom:20px;}
+    .book-prose p:last-child{margin-bottom:0;}
+
+    /* ── What is in it ── */
+    .book-contents{max-width:720px;display:flex;flex-direction:column;}
+    .book-contents-item{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--border-light);}
+    .book-contents-item:first-child{border-top:1px solid var(--border-light);}
+    .book-contents-num{font-family:var(--mono);font-size:22px;font-weight:300;color:var(--gold);line-height:1.2;opacity:.6;}
+    .book-contents-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text-dark);line-height:1.3;margin-bottom:6px;}
+    .book-contents-desc{font-size:14px;color:var(--text-mid);line-height:1.8;font-weight:300;}
+
+    /* ── The form ── */
+    .book-form-sec{background:var(--navy);padding:clamp(56px,8vw,80px) var(--pad);position:relative;border-top:1px solid var(--border-dark);}
+    .book-form-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+    .book-form-inner{max-width:660px;margin:0 auto;}
+    .book-form-honest{font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:32px;}
+    .book-form-embed{background:var(--cream);padding:clamp(20px,3vw,32px);min-height:120px;}
+    .book-form-note{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;font-weight:300;margin-top:18px;}
+    .book-form-note a{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;}
+
+    /* ── Who wrote it ── */
+    .book-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px;}
+
+    /* ── Hamburger ── */
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
+    .nav-hamburger span{display:block;height:1.5px;background:#fff;border-radius:2px;transition:transform var(--base),opacity var(--base);}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+    /* ── Mobile responsive ── */
+    @media(max-width:768px){
+      .nav-hamburger{display:flex;}
+      .book-hero-inner{grid-template-columns:1fr;}
+      .book-cover{width:220px;}
+    }
+    @media(max-width:480px){
+      .book-contents-item{grid-template-columns:32px 1fr;gap:12px;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/services/" class="nav-text">Services</a>
+    <a href="/audit/"    class="nav-text">Audit</a>
+    <a href="/work/"     class="nav-text">Work</a>
+    <a href="/#about"    class="nav-text">About</a>
+    <a href="/blog/"     class="nav-text">Blog</a>
+    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="book-hero" id="top">
+  <div class="book-hero-grid"></div>
+  <div class="book-hero-inner">
+    <div>
+      <div class="label-row reveal"><span class="lm lm--dim">Free book</span><span class="gold-rule"></span></div>
+      <h1 class="book-hero-h1 reveal reveal-d1">Nobody is going to tell you which of your pages stopped being true.</h1>
+      <p class="book-hero-sub reveal reveal-d2">A free book on auditing documentation for the failures that never produce a complaint. Four chapters, a worksheet, and three audits run on real documentation, including mine.</p>
+    </div>
+    <img class="book-cover reveal reveal-d2" src="../assets/images/your-documentation-fails-silently-cover.jpg" alt="Cover of Your Documentation Fails Silently: How to Audit the Problems Your Users Never Report, by Douglas Ebhoman" width="600" height="900" loading="eager">
+  </div>
+</section>
+
+<!-- OPENING -->
+<section class="book-sec">
+  <div class="book-inner">
+    <div class="book-prose reveal">
+      <p>Your documentation does not fail the way software fails. There is no error, no alert, no number that moves. A page stops being true, a reader works around it in four minutes, and nobody files anything.</p>
+      <p>The problem is not that the writing is bad. Most documentation that fails is already accurate. The faults that cost your readers time are structural, which is why reading the pages does not find them, and why the person least able to see them is the person who wrote them.</p>
+      <p>This book is the instrument I use for that, and three runs of it on documentation I own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IN IT -->
+<section class="book-sec book-sec--alt">
+  <div class="book-inner">
+    <div class="label-row reveal"><span class="lm">What is in it</span><span class="gold-rule"></span></div>
+    <div class="book-contents reveal reveal-d1">
+      <div class="book-contents-item">
+        <span class="book-contents-num">1</span>
+        <div><p class="book-contents-title">Accurate and Failing</p><p class="book-contents-desc">Why documentation fails without anyone reporting it, why reading cannot find those faults, and why more care is not the answer.</p></div>
+      </div>
+      <div class="book-contents-item">
+        <span class="book-contents-num">2</span>
+        <div><p class="book-contents-title">The Complaint Is Not the Problem</p><p class="book-contents-desc">How to begin an audit when nobody has complained, which is the normal case and the hard one.</p></div>
+      </div>
+      <div class="book-contents-item">
+        <span class="book-contents-num">3</span>
+        <div><p class="book-contents-title">The Documentation Audit</p><p class="book-contents-desc">The instrument itself. Connectivity, architecture and feedback, run separately, producing one findings list with an address against every row.</p></div>
+      </div>
+      <div class="book-contents-item">
+        <span class="book-contents-num">4</span>
+        <div><p class="book-contents-title">Three Runs</p><p class="book-contents-desc">The audit on three real documentation sets, all of them mine. Fourteen findings in a set I would have told you was fine, a published guide with a live 404 that no reader ever mentioned, and one repair that put another page out of date within the hour.</p></div>
+      </div>
+      <div class="book-contents-item">
+        <span class="book-contents-num"></span>
+        <div><p class="book-contents-title">The Audit, as a Worksheet</p><p class="book-contents-desc">The questions with nothing around them, so you can run it without reading the chapter again.</p></div>
+      </div>
+      <div class="book-contents-item">
+        <span class="book-contents-num"></span>
+        <div><p class="book-contents-title">What to Do with What You Found</p><p class="book-contents-desc">Including the findings you cannot fix on your own, and what to do with those.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE FORM -->
+<section class="book-form-sec" id="get-the-book">
+  <div class="book-form-inner">
+    <div class="label-row reveal"><span class="lm lm--dim">Get the book</span><span class="gold-rule"></span></div>
+    <p class="book-form-honest reveal reveal-d1">None of this is on my blog, and none of it is anywhere else. The ten posts in the {{ series.name }} series are free on this site and always will be, and this book is not a repackaging of them. It is the part I had not written.</p>
+    <div class="book-form-embed">
+<script async src="https://eocampaign1.com/form/68d334a0-d8eb-11f1-b81c-5528a71d958f.js" data-form="68d334a0-d8eb-11f1-b81c-5528a71d958f"></script>
+    </div>
+    <p class="book-form-note">One email to confirm your address. The book is one click after that. <a href="/privacy/">What I do with your address.</a></p>
+  </div>
+</section>
+
+<!-- WHO WROTE IT -->
+<section class="book-sec">
+  <div class="book-inner">
+    <div class="label-row reveal"><span class="lm">Who wrote it</span><span class="gold-rule"></span></div>
+    <div class="book-prose reveal reveal-d1">
+      <p>I am Douglas Ebhoman. I work on documentation systems for DevTools and SaaS companies, mostly API documentation and docs-as-code, from Prague.</p>
+      <p>The three audits in chapter 4 are on my own work, and all three found faults. That is the point of them. A worked example on someone else&rsquo;s documentation only proves that their set had problems, which nobody doubted.</p>
+    </div>
+    <div class="book-links reveal reveal-d2">
+      <a href="{{ series.url }}" class="btn btn-ghost-dark">Read the series</a>
+      <a href="/audit/" class="btn btn-ghost-dark">The audit, as a service</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="f-inner">
+    <div class="f-brand">
+      <div>
+        <p class="f-logo">Douglas Ebhoman</p>
+        <p class="f-tagline">Narrative is infrastructure. I treat it that way.</p>
+        <div class="f-avail"><span class="f-avail-dot"></span><span class="f-avail-text">Available for freelance engagements</span></div>
+      </div>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="f-audit-btn" target="_blank" rel="noopener noreferrer">Book the Audit</a>
+    </div>
+    <div class="f-nav">
+      <div><p class="f-col-label">Navigation</p><div class="f-links"><a href="/services/">Services</a><a href="/audit/">Audit</a><a href="/work/">Work</a><a href="/#about">About</a><a href="/blog/">Blog</a></div></div>
+      <div><p class="f-col-label">Selected work</p><div class="f-links"><a href="/mkdocs-for-technical-writers/">MkDocs for Technical Writers</a><a href="/openweather-docs/">OpenWeather API Guide</a><a href="/personal-website-setup-guide/">Personal Website Setup</a><a href="https://douglasebhoman.com/site-docs/" target="_blank" rel="noopener noreferrer">Site Documentation</a></div></div>
+    </div>
+    <div class="f-contact">
+      <p class="f-contact-label">Connect</p>
+      <div class="f-contact-grid">
+        <a href="mailto:douglas@douglasebhoman.com" class="f-contact-item"><span class="f-contact-lbl">Email</span><span class="f-contact-val">douglas@douglasebhoman.com</span></a>
+        <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">LinkedIn</span><span class="f-contact-val">linkedin.com/in/douglas-ebhoman</span></a>
+        <a href="https://github.com/Douglasebhoman" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">GitHub</span><span class="f-contact-val">github.com/Douglasebhoman</span></a>
+        <a href="https://www.upwork.com/freelancers/~01648efb4323646120" class="f-contact-item" target="_blank" rel="noopener"><span class="f-contact-lbl">Upwork</span><span class="f-contact-val">Douglas Ebhoman on Upwork</span></a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span class="f-copy">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</span>
+      <a href="#top" class="f-back">Back to top &uarr;</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Progress + nav scroll */
+let _scrollTick = false;
+window.addEventListener('scroll', () => {
+  if (!_scrollTick) {
+    requestAnimationFrame(() => {
+      const s = document.documentElement.scrollTop;
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pb = document.getElementById('progressBar');
+      const nv = document.getElementById('nav');
+      if (pb) pb.style.width = (s / h * 100) + '%';
+      if (nv) nv.className = 'nav' + (s > 40 ? ' scrolled' : '');
+      _scrollTick = false;
+    });
+    _scrollTick = true;
+  }
+}, { passive: true });
+
+/* Hamburger */
+const navHamburger = document.getElementById('navHamburger');
+const navLinksEl = document.getElementById('navLinks');
+if (navHamburger && navLinksEl) {
+  navHamburger.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open', isOpen);
+    navHamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinksEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(() => {
+        navLinksEl.classList.remove('open');
+        navHamburger.classList.remove('open');
+        navHamburger.setAttribute('aria-expanded', 'false');
+      }, 50);
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!navLinksEl.contains(e.target) && !navHamburger.contains(e.target)) {
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/* Scroll reveal */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
