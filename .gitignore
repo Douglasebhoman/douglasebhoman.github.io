@@ -1,2 +1,8 @@
 node_modules/
 _site/
+
+# The private book's working files. On this machine book/ holds the book's
+# source and builds from its own repository, including a Cloudflare credential
+# (book/cloudflare-token) and the unlisted deploy path (book/.deploy-path).
+# None of it belongs in the site repository: it must never be committed here.
+book/
