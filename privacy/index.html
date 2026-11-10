@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How douglasebhoman.com and the book page handle your data: what is collected, why, who processes it, how long it is kept, and your rights under the GDPR.">
+  <meta name="author" content="Douglas Ebhoman">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://douglasebhoman.com/privacy/">
+  <title>Privacy Notice &mdash; Douglas Ebhoman</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    /* ── Privacy hero ── */
+    .privacy-hero{background:var(--navy);padding:clamp(56px,8vw,80px) var(--pad) clamp(48px,7vw,64px);position:relative;overflow:hidden;border-bottom:1px solid var(--border-dark);}
+    .privacy-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);}
+    .privacy-hero-inner{max-width:var(--container);margin:0 auto;position:relative;z-index:1;}
+    .privacy-hero-h1{font-family:var(--serif);font-size:clamp(30px,5vw,48px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:16px;}
+    .privacy-updated{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);}
+
+    /* ── The notice: one readable column ── */
+    .privacy-sec{background:var(--cream);padding:clamp(48px,7vw,72px) var(--pad);}
+    .privacy-inner{max-width:680px;margin:0 auto;}
+    .privacy-inner h2{font-family:var(--serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--text-dark);line-height:1.25;letter-spacing:-.015em;margin:56px 0 18px;padding-top:28px;border-top:1px solid var(--border-light);}
+    .privacy-inner h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+    .privacy-inner p, .privacy-inner li, .privacy-inner address{font-size:15px;color:var(--text-mid);line-height:1.85;font-weight:300;}
+    .privacy-inner p{margin-bottom:16px;}
+    .privacy-inner strong{color:var(--text-dark);font-weight:500;}
+    .privacy-inner ul{margin:0 0 16px 1.2em;list-style:disc;}
+    .privacy-inner li{margin-bottom:4px;}
+    .privacy-inner address{font-style:normal;margin:0 0 16px;padding-left:16px;border-left:2px solid var(--gold-border);}
+    .privacy-inner a{color:var(--text-dark);text-decoration:underline;text-underline-offset:3px;}
+    .privacy-inner a:hover{color:var(--gold);}
+    .privacy-processor{margin-bottom:20px;}
+    /* Values still to be supplied, kept visible until they are filled in */
+    mark.todo{background:#FDE68A;color:#111827;padding:0 3px;font-weight:500;}
+
+    /* ── Hamburger ── */
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
+    .nav-hamburger span{display:block;height:1.5px;background:#fff;border-radius:2px;transition:transform var(--base),opacity var(--base);}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+    /* ── Mobile responsive ── */
+    @media(max-width:768px){
+      .nav-hamburger{display:flex;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">Douglas Ebhoman</a>
+  <div class="nav-links" id="navLinks">
+    <a href="/services/" class="nav-text">Services</a>
+    <a href="/audit/"    class="nav-text">Audit</a>
+    <a href="/work/"     class="nav-text">Work</a>
+    <a href="/#about"    class="nav-text">About</a>
+    <a href="/blog/"     class="nav-text">Blog</a>
+    <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="nav-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://github.com/Douglasebhoman" class="nav-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="https://calendly.com/douglas-douglasebhoman/30min" class="nav-cta" target="_blank" rel="noopener noreferrer">Book the Audit</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="privacy-hero" id="top">
+  <div class="privacy-hero-inner">
+    <div class="label-row"><span class="lm lm--dim">Privacy</span><span class="gold-rule"></span></div>
+    <h1 class="privacy-hero-h1">Privacy notice</h1>
+    <p class="privacy-updated">Last updated: <mark class="todo">[date]</mark></p>
+  </div>
+</section>
+
+<!-- THE NOTICE -->
+<section class="privacy-sec">
+  <div class="privacy-inner">
+
+    <h2>What this notice covers</h2>
+    <p>douglasebhoman.com and the page the book is served from. Anything else I build will carry its own notice, and this one does not speak for it.</p>
+
+    <h2>Who is responsible for your data</h2>
+    <p>Douglas Ebhoman, trading as KBD Creative, <mark class="todo">[IČO if you have one]</mark>, <mark class="todo">[address]</mark>, Czech Republic.</p>
+    <p>I am the data controller. That means I decide what is collected and why, and I am the person accountable for it.</p>
+    <p>You can reach me at <a href="mailto:douglas@douglasebhoman.com">douglas@douglasebhoman.com</a> about anything on this page, including asking me to delete everything I hold about you.</p>
+
+    <h2>What I collect, and why</h2>
+    <p><strong>Your email address, when you ask for the book.</strong></p>
+    <p>I collect it so I can send you the book and, if you confirmed that you wanted them, occasional emails about documentation systems. I also keep a record of when you confirmed and from which page, because I have to be able to show that you agreed rather than assert it.</p>
+    <p>The lawful basis is your consent. You gave it by confirming your address, and you can withdraw it at any time without giving a reason.</p>
+    <p><strong>What I record about emails.</strong> I record whether a link in an email was clicked. I do not track whether an email was opened, which means no invisible pixel and no record of when you read anything.</p>
+    <p><strong>What the book page counts.</strong> Nothing yet. When counting starts, this page will say what is counted before it begins, and it will be four things and nothing else: that the page was opened, the furthest chapter reached in a visit, whether the PDF was downloaded, and whether a link to my audit service was followed. Each stored as a number with a date and no identifier, never connected to your email address.</p>
+    <p><strong>What your browser remembers.</strong> The book page saves your reading position in your own browser so you can return to where you left off. It stays on your device, it is never sent to me, and clearing your browser data removes it.</p>
+    <p><strong>What I do not collect.</strong> I do not store IP addresses or device fingerprints. There is no advertising network here and nothing on this site follows you anywhere else.</p>
+
+    <h2>Who else handles it</h2>
+    <p>Three companies process data on my behalf, under contract, and none may use it for their own purposes.</p>
+    <p class="privacy-processor"><strong>EmailOctopus.</strong> Your email address, your consent record, and the emails I send you. <mark class="todo">[country or region, from their own DPA]</mark><br>
+    The sign-up form on the book page is loaded from EmailOctopus&rsquo;s servers, which means they receive the network address of anyone who views that page, not only people who sign up.</p>
+    <p class="privacy-processor"><strong>GitHub.</strong> Serving this website. <mark class="todo">[country or region, from their own DPA]</mark></p>
+    <p class="privacy-processor"><strong>Cloudflare.</strong> Serving the book and running the DNS for this domain. <mark class="todo">[country or region, from their own DPA]</mark></p>
+    <p>If any of them processes data outside the European Economic Area, that transfer is covered by the European Commission&rsquo;s standard contractual clauses.</p>
+
+    <h2>How long I keep it</h2>
+    <p><strong>Your email address:</strong> until you unsubscribe or ask me to delete it.</p>
+    <p><strong>Your consent record:</strong> for <mark class="todo">[three years]</mark> after you unsubscribe. I keep it after you leave for one reason, which is that if anyone ever asks me to prove you had agreed, the record is the only thing that can. It holds the date, the page and nothing else.</p>
+
+    <h2>What you can ask me to do</h2>
+    <p>Under the GDPR you have the right to:</p>
+    <ul>
+      <li>see what I hold about you</li>
+      <li>have anything wrong corrected</li>
+      <li>have it deleted</li>
+      <li>get a copy in a portable form</li>
+      <li>object to what I am doing with it</li>
+      <li>withdraw your consent, at any time, without explanation</li>
+    </ul>
+    <p>Withdrawing consent does not undo what was lawful before you withdrew it, and it does not take the book away.</p>
+    <p>Email me and I will action it. I will not ask why, and I will not try to talk you out of it. If I have not replied within thirty days, that is a failure on my part and you are entitled to say so to the authority below.</p>
+
+    <h2>If you are unhappy with how I handle this</h2>
+    <p>Tell me first, because it is usually faster. If that does not resolve it, you can complain to the Czech data protection authority:</p>
+    <address>Úřad pro ochranu osobních údajů<br>Pplk. Sochora 27<br>170 00 Praha 7<br>Czech Republic<br><a href="https://uoou.gov.cz" target="_blank" rel="noopener noreferrer">uoou.gov.cz</a></address>
+    <p>You can complain to them without telling me first. I would rather you told me, but it is your choice and not a condition.</p>
+
+    <h2>Changes to this notice</h2>
+    <p>If I change what I collect or why, I will update this page and change the date at the top. If the change is significant, and particularly if it affects what you consented to, I will email you rather than leave you to notice.</p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="f-inner">
+    <div class="f-brand">
+      <div>
+        <p class="f-logo">Douglas Ebhoman</p>
+        <p class="f-tagline">Narrative is infrastructure. I treat it that way.</p>
+        <div class="f-avail"><span class="f-avail-dot"></span><span class="f-avail-text">Available for freelance engagements</span></div>
+      </div>
+      <a href="https://calendly.com/douglas-douglasebhoman/30min" class="f-audit-btn" target="_blank" rel="noopener noreferrer">Book the Audit</a>
+    </div>
+    <div class="f-nav">
+      <div><p class="f-col-label">Navigation</p><div class="f-links"><a href="/services/">Services</a><a href="/audit/">Audit</a><a href="/work/">Work</a><a href="/#about">About</a><a href="/blog/">Blog</a></div></div>
+      <div><p class="f-col-label">Selected work</p><div class="f-links"><a href="/mkdocs-for-technical-writers/">MkDocs for Technical Writers</a><a href="/openweather-docs/">OpenWeather API Guide</a><a href="/personal-website-setup-guide/">Personal Website Setup</a><a href="https://douglasebhoman.com/site-docs/" target="_blank" rel="noopener noreferrer">Site Documentation</a></div></div>
+    </div>
+    <div class="f-contact">
+      <p class="f-contact-label">Connect</p>
+      <div class="f-contact-grid">
+        <a href="mailto:douglas@douglasebhoman.com" class="f-contact-item"><span class="f-contact-lbl">Email</span><span class="f-contact-val">douglas@douglasebhoman.com</span></a>
+        <a href="https://linkedin.com/in/douglas-ebhoman-757329289" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">LinkedIn</span><span class="f-contact-val">linkedin.com/in/douglas-ebhoman</span></a>
+        <a href="https://github.com/Douglasebhoman" class="f-contact-item" target="_blank" rel="noopener noreferrer"><span class="f-contact-lbl">GitHub</span><span class="f-contact-val">github.com/Douglasebhoman</span></a>
+        <a href="https://www.upwork.com/freelancers/~01648efb4323646120" class="f-contact-item" target="_blank" rel="noopener"><span class="f-contact-lbl">Upwork</span><span class="f-contact-val">Douglas Ebhoman on Upwork</span></a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span class="f-copy">&copy; 2026 Douglas Ebhoman &middot; Prague, Czechia &middot; Documentation Systems Specialist</span>
+      <a href="#top" class="f-back">Back to top &uarr;</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Progress + nav scroll */
+let _scrollTick = false;
+window.addEventListener('scroll', () => {
+  if (!_scrollTick) {
+    requestAnimationFrame(() => {
+      const s = document.documentElement.scrollTop;
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pb = document.getElementById('progressBar');
+      const nv = document.getElementById('nav');
+      if (pb) pb.style.width = (s / h * 100) + '%';
+      if (nv) nv.className = 'nav' + (s > 40 ? ' scrolled' : '');
+      _scrollTick = false;
+    });
+    _scrollTick = true;
+  }
+}, { passive: true });
+
+/* Hamburger */
+const navHamburger = document.getElementById('navHamburger');
+const navLinksEl = document.getElementById('navLinks');
+if (navHamburger && navLinksEl) {
+  navHamburger.addEventListener('click', () => {
+    const isOpen = navLinksEl.classList.toggle('open');
+    navHamburger.classList.toggle('open', isOpen);
+    navHamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinksEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      setTimeout(() => {
+        navLinksEl.classList.remove('open');
+        navHamburger.classList.remove('open');
+        navHamburger.setAttribute('aria-expanded', 'false');
+      }, 50);
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!navLinksEl.contains(e.target) && !navHamburger.contains(e.target)) {
+      navLinksEl.classList.remove('open');
+      navHamburger.classList.remove('open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/* Scroll reveal */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>
