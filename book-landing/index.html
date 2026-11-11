@@ -29,43 +29,72 @@ permalink: /book/index.html
   <link rel="stylesheet" href="../assets/fonts/fonts.css">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    /* ── Book hero: headline, subhead and the cover ── */
-    .book-hero{background:var(--navy);padding:clamp(64px,10vw,96px) var(--pad) clamp(56px,8vw,80px);position:relative;overflow:hidden;border-bottom:1px solid var(--border-dark);}
-    .book-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-border),transparent);}
-    .book-hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
-    .book-hero-inner{max-width:var(--container);margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 280px;gap:clamp(40px,6vw,72px);align-items:center;}
-    .book-hero-h1{font-family:var(--serif);font-size:clamp(30px,5vw,48px);font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:20px;max-width:620px;}
-    .book-hero-sub{font-size:15px;color:var(--text-dim);line-height:1.85;max-width:540px;font-weight:300;}
-    .book-cover{width:280px;height:auto;box-shadow:0 24px 60px rgba(0,0,0,.45);}
+    /* ── Bands: full width, navy and cream alternating ── */
+    .bk-band{padding:clamp(64px,9vw,104px) var(--pad);position:relative;}
+    .bk-band--navy{background:var(--navy);}
+    .bk-band--cream{background:var(--cream);}
+    .bk-inner{max-width:var(--container);margin:0 auto;position:relative;z-index:1;}
 
-    /* ── Prose sections ── */
-    .book-sec{background:var(--cream);padding:clamp(56px,8vw,80px) var(--pad);border-top:1px solid var(--border-light);}
-    .book-sec--alt{background:var(--cream-2);}
-    .book-inner{max-width:var(--container);margin:0 auto;}
-    .book-h2{font-family:var(--serif);font-size:clamp(26px,4vw,36px);font-weight:300;color:var(--text-dark);line-height:1.2;letter-spacing:-.02em;margin-bottom:28px;max-width:680px;}
-    .book-prose{max-width:660px;}
-    .book-prose p{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--text-mid);line-height:1.85;margin-bottom:20px;}
-    .book-prose p:last-child{margin-bottom:0;}
+    /* ── Section label: rule, name, diamond ── */
+    .bk-label{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
+    .bk-label-rule{width:32px;height:1px;background:var(--gold);flex-shrink:0;}
+    .bk-label-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
 
-    /* ── What is in it ── */
-    .book-contents{max-width:720px;display:flex;flex-direction:column;}
-    .book-contents-item{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--border-light);}
-    .book-contents-item:first-child{border-top:1px solid var(--border-light);}
-    .book-contents-num{font-family:var(--mono);font-size:22px;font-weight:300;color:var(--gold);line-height:1.2;opacity:.6;}
-    .book-contents-title{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--text-dark);line-height:1.3;margin-bottom:6px;}
-    .book-contents-desc{font-size:14px;color:var(--text-mid);line-height:1.8;font-weight:300;}
+    /* ── 1. Hero ── */
+    .bk-hero{padding-top:clamp(64px,10vw,104px);overflow:hidden;border-bottom:1px solid var(--border-dark);}
+    .bk-hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.025;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
+    .bk-hero-inner{display:grid;grid-template-columns:1fr 300px;gap:clamp(40px,6vw,80px);align-items:center;}
+    .bk-hero-h1{font-family:var(--serif);font-size:clamp(32px,5vw,50px);font-weight:300;color:var(--white);line-height:1.12;letter-spacing:-.025em;margin-bottom:22px;max-width:620px;}
+    .bk-hero-sub{font-size:15px;color:var(--text-dim);line-height:1.85;max-width:540px;font-weight:300;}
+    .bk-hero-claim{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--gold-light);line-height:1.7;max-width:560px;margin-top:24px;}
+    .bk-cover{display:block;width:300px;height:auto;box-shadow:0 18px 48px rgba(0,0,0,.35);}
 
-    /* ── The form ── */
-    .book-form-sec{background:var(--navy);padding:clamp(56px,8vw,80px) var(--pad);position:relative;border-top:1px solid var(--border-dark);}
-    .book-form-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
-    .book-form-inner{max-width:660px;margin:0 auto;}
-    .book-form-honest{font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:32px;}
-    .book-form-embed{background:var(--cream);padding:clamp(20px,3vw,32px);min-height:120px;}
-    .book-form-note{font-size:13px;color:rgba(255,255,255,.5);line-height:1.8;font-weight:300;margin-top:18px;}
-    .book-form-note a{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;}
+    /* ── The EmailOctopus form, in the hero. Its script injects Bootstrap-style
+       rules scoped to [data-form] after this stylesheet, some with !important, so
+       these add .bk-form to outrank them and repeat !important where they must. ── */
+    .bk-form{margin-top:36px;max-width:520px;}
+    .bk-form [data-form].inline-container{max-width:none!important;margin:0;}
+    .bk-form [data-form] .emailoctopus-form-wrapper{margin-top:0!important;}
+    .bk-form [data-form] .emailoctopus-form .main-form{flex-wrap:nowrap;align-items:stretch;justify-content:flex-start;}
+    .bk-form [data-form] .emailoctopus-form [eo-form-fields-container]{display:block;flex:1 1 auto;}
+    .bk-form [data-form] .emailoctopus-form .emailoctopus-form-row{margin:0!important;min-width:0;}
+    .bk-form [data-form] .emailoctopus-form .form-control{height:50px;background:var(--white);border:1px solid var(--white);border-radius:0;color:var(--text-dark);font-family:var(--sans);font-size:15px;font-weight:400;padding:0 16px;}
+    .bk-form [data-form] .emailoctopus-form .form-control::placeholder{color:var(--text-muted);}
+    .bk-form [data-form] .emailoctopus-form .form-control:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-border);}
+    .bk-form [data-form] .emailoctopus-form input[type=submit]{flex:0 0 auto;width:auto!important;height:50px;margin:0!important;padding:0 26px;background:var(--gold);border:0;border-radius:0;color:var(--navy);font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background var(--fast);}
+    .bk-form [data-form] .emailoctopus-form input[type=submit]:hover{background:var(--gold-light);}
+    .bk-form [data-form] .emailoctopus-form input[type=submit]:focus{box-shadow:0 0 0 3px var(--gold-border);}
+    .bk-form [data-form] .emailoctopus-success-message,.bk-form [data-form] .emailoctopus-error-message{color:var(--white)!important;font-family:var(--sans);font-size:15px;text-align:left;}
+    .bk-form [data-form] .text-center{text-align:left;}
+    .bk-form [data-form] .mastfoot{margin-top:12px;}
+    .bk-form [data-form] .mastfoot.no-bg p{background-color:var(--cream);border-color:var(--cream);}
+    .bk-note{font-size:13px;color:var(--text-dim);line-height:1.8;font-weight:300;margin-top:16px;max-width:520px;}
+    .bk-note a{color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;}
 
-    /* ── Who wrote it ── */
-    .book-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px;}
+    /* ── 2 and 6. Prose on cream ── */
+    .bk-prose{max-width:660px;}
+    .bk-prose p{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--text-mid);line-height:1.85;margin-bottom:20px;}
+    .bk-prose p:last-child{margin-bottom:0;}
+    .bk-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px;}
+
+    /* ── 3. What is in it ── */
+    .bk-chapters{list-style:none;max-width:720px;display:flex;flex-direction:column;gap:32px;}
+    .bk-chapter{display:grid;grid-template-columns:44px 1fr;gap:20px;align-items:start;}
+    .bk-chapter-num{width:44px;height:44px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:14px;color:var(--gold);}
+    .bk-chapter-title{font-family:var(--serif);font-size:21px;font-weight:300;color:var(--white);line-height:1.3;margin:8px 0 8px;}
+    .bk-chapter-desc{font-size:14.5px;color:rgba(255,255,255,.62);line-height:1.8;font-weight:300;}
+    .bk-rule{width:48px;height:1px;background:var(--gold);margin:48px 0 32px 64px;}
+    .bk-extras{max-width:720px;display:flex;flex-direction:column;gap:22px;padding-left:64px;}
+    .bk-extra-title{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--white);line-height:1.3;margin-bottom:6px;}
+    .bk-extra-desc{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.8;font-weight:300;}
+
+    /* ── 4. The honest paragraph ── */
+    .bk-honest{font-family:var(--serif);font-size:clamp(19px,2.4vw,24px);font-weight:300;color:var(--text-dark);line-height:1.65;text-align:center;max-width:760px;margin:0 auto;}
+
+    /* ── 5. Second form ── */
+    .bk-form-band{border-top:1px solid var(--border-dark);}
+    .bk-form-cta{display:block;width:fit-content;margin:0 auto;font-size:11px;padding:17px 32px;}
+    .bk-form-band .bk-note{text-align:center;margin-left:auto;margin-right:auto;}
 
     /* ── Hamburger ── */
     .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:1px solid rgba(255,255,255,.12);cursor:pointer;padding:10px;flex-shrink:0;}
@@ -80,11 +109,19 @@ permalink: /book/index.html
       .nav-hamburger{display:flex;}
     }
     @media(max-width:768px){
-      .book-hero-inner{grid-template-columns:1fr;}
-      .book-cover{width:220px;}
+      .bk-hero-inner{grid-template-columns:1fr;}
+      .bk-cover{width:220px;margin:8px auto 0;}
+    }
+    @media(max-width:560px){
+      .bk-form [data-form] .emailoctopus-form .main-form{flex-direction:column;}
+      .bk-form [data-form] .emailoctopus-form input[type=submit]{width:100%!important;margin-top:10px!important;}
     }
     @media(max-width:480px){
-      .book-contents-item{grid-template-columns:32px 1fr;gap:12px;}
+      .bk-chapter{grid-template-columns:36px 1fr;gap:14px;}
+      .bk-chapter-num{width:36px;height:36px;font-size:13px;}
+      .bk-chapter-title{margin-top:5px;}
+      .bk-rule{margin-left:50px;}
+      .bk-extras{padding-left:50px;}
     }
   </style>
 </head>
@@ -111,23 +148,29 @@ permalink: /book/index.html
   </button>
 </nav>
 
-<!-- HERO -->
-<section class="book-hero" id="top">
-  <div class="book-hero-grid"></div>
-  <div class="book-hero-inner">
+<!-- 1. HERO -->
+<section class="bk-band bk-band--navy bk-hero" id="top">
+  <div class="bk-hero-grid"></div>
+  <div class="bk-inner bk-hero-inner">
     <div>
-      <div class="label-row reveal"><span class="lm lm--dim">Free book</span><span class="gold-rule"></span></div>
-      <h1 class="book-hero-h1 reveal reveal-d1">Nobody is going to tell you which of your pages stopped being true.</h1>
-      <p class="book-hero-sub reveal reveal-d2">A free book on auditing documentation for the failures that never produce a complaint. Four chapters, a worksheet, and three audits run on real documentation, including mine.</p>
+      <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Free book</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+      <h1 class="bk-hero-h1 reveal reveal-d1">Nobody is going to tell you which of your pages stopped being true.</h1>
+      <p class="bk-hero-sub reveal reveal-d2">A free book on auditing documentation for the failures that never produce a complaint. Four chapters, a worksheet, and three audits run on real documentation, including mine.</p>
+      <p class="bk-hero-claim reveal reveal-d2">In the first audit I ran on my own documentation I found fourteen findings in a set I would have told you was fine, including a live 404 no reader ever reported.</p>
+      <div class="bk-form" id="get-the-book">
+<script async src="https://eocampaign1.com/form/68d334a0-d8eb-11f1-b81c-5528a71d958f.js" data-form="68d334a0-d8eb-11f1-b81c-5528a71d958f"></script>
+      </div>
+      <p class="bk-note">One email to confirm your address. The book is one click after that. <a href="/privacy/">What I do with your address.</a></p>
     </div>
-    <img class="book-cover reveal reveal-d2" src="../assets/images/your-documentation-fails-silently-cover.jpg" alt="Cover of Your Documentation Fails Silently: How to Audit the Problems Your Users Never Report, by Douglas Ebhoman" width="600" height="900" loading="eager">
+    <img class="bk-cover reveal reveal-d2" src="../assets/images/your-documentation-fails-silently-cover.jpg" alt="Cover of Your Documentation Fails Silently: How to Audit the Problems Your Users Never Report, by Douglas Ebhoman" width="600" height="900" loading="eager">
   </div>
 </section>
 
-<!-- OPENING -->
-<section class="book-sec">
-  <div class="book-inner">
-    <div class="book-prose reveal">
+<!-- 2. WHY IT IS INVISIBLE -->
+<section class="bk-band bk-band--cream">
+  <div class="bk-inner">
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Why it is invisible</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <div class="bk-prose reveal reveal-d1">
       <p>Your documentation does not fail the way software fails. There is no error, no alert, no number that moves. A page stops being true, a reader works around it in four minutes, and nobody files anything.</p>
       <p>The problem is not that the writing is bad. Most documentation that fails is already accurate. The faults that cost your readers time are structural, which is why reading the pages does not find them, and why the person least able to see them is the person who wrote them.</p>
       <p>This book is the instrument I use for that, and three runs of it on documentation I own.</p>
@@ -135,60 +178,63 @@ permalink: /book/index.html
   </div>
 </section>
 
-<!-- WHAT IS IN IT -->
-<section class="book-sec book-sec--alt">
-  <div class="book-inner">
-    <div class="label-row reveal"><span class="lm">What is in it</span><span class="gold-rule"></span></div>
-    <div class="book-contents reveal reveal-d1">
-      <div class="book-contents-item">
-        <span class="book-contents-num">1</span>
-        <div><p class="book-contents-title">Accurate and Failing</p><p class="book-contents-desc">Why documentation fails without anyone reporting it, why reading cannot find those faults, and why more care is not the answer.</p></div>
-      </div>
-      <div class="book-contents-item">
-        <span class="book-contents-num">2</span>
-        <div><p class="book-contents-title">The Complaint Is Not the Problem</p><p class="book-contents-desc">How to begin an audit when nobody has complained, which is the normal case and the hard one.</p></div>
-      </div>
-      <div class="book-contents-item">
-        <span class="book-contents-num">3</span>
-        <div><p class="book-contents-title">The Documentation Audit</p><p class="book-contents-desc">The instrument itself. Connectivity, architecture and feedback, run separately, producing one findings list with an address against every row.</p></div>
-      </div>
-      <div class="book-contents-item">
-        <span class="book-contents-num">4</span>
-        <div><p class="book-contents-title">Three Runs</p><p class="book-contents-desc">The audit on three real documentation sets, all of them mine. Fourteen findings in a set I would have told you was fine, a published guide with a live 404 that no reader ever mentioned, and one repair that put another page out of date within the hour.</p></div>
-      </div>
-      <div class="book-contents-item">
-        <span class="book-contents-num"></span>
-        <div><p class="book-contents-title">The Audit, as a Worksheet</p><p class="book-contents-desc">The questions with nothing around them, so you can run it without reading the chapter again.</p></div>
-      </div>
-      <div class="book-contents-item">
-        <span class="book-contents-num"></span>
-        <div><p class="book-contents-title">What to Do with What You Found</p><p class="book-contents-desc">Including the findings you cannot fix on your own, and what to do with those.</p></div>
-      </div>
+<!-- 3. WHAT IS IN IT -->
+<section class="bk-band bk-band--navy">
+  <div class="bk-inner">
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">What is in it</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <ol class="bk-chapters reveal reveal-d1">
+      <li class="bk-chapter">
+        <span class="bk-chapter-num">1</span>
+        <div><p class="bk-chapter-title">Accurate and Failing</p><p class="bk-chapter-desc">Why documentation fails without anyone reporting it, why reading cannot find those faults, and why more care is not the answer.</p></div>
+      </li>
+      <li class="bk-chapter">
+        <span class="bk-chapter-num">2</span>
+        <div><p class="bk-chapter-title">The Complaint Is Not the Problem</p><p class="bk-chapter-desc">How to begin an audit when nobody has complained, which is the normal case and the hard one.</p></div>
+      </li>
+      <li class="bk-chapter">
+        <span class="bk-chapter-num">3</span>
+        <div><p class="bk-chapter-title">The Documentation Audit</p><p class="bk-chapter-desc">The instrument itself. Connectivity, architecture and feedback, run separately, producing one findings list with an address against every row.</p></div>
+      </li>
+      <li class="bk-chapter">
+        <span class="bk-chapter-num">4</span>
+        <div><p class="bk-chapter-title">Three Runs</p><p class="bk-chapter-desc">The audit on three real documentation sets, all of them mine. Fourteen findings in a set I would have told you was fine, a published guide with a live 404 that no reader ever mentioned, and one repair that put another page out of date within the hour.</p></div>
+      </li>
+    </ol>
+    <div class="bk-rule reveal"></div>
+    <div class="bk-extras reveal">
+      <div><p class="bk-extra-title">The Audit, as a Worksheet</p><p class="bk-extra-desc">The questions with nothing around them, so you can run it without reading the chapter again.</p></div>
+      <div><p class="bk-extra-title">What to Do with What You Found</p><p class="bk-extra-desc">Including the findings you cannot fix on your own, and what to do with those.</p></div>
     </div>
   </div>
 </section>
 
-<!-- THE FORM -->
-<section class="book-form-sec" id="get-the-book">
-  <div class="book-form-inner">
-    <div class="label-row reveal"><span class="lm lm--dim">Get the book</span><span class="gold-rule"></span></div>
-    <p class="book-form-honest reveal reveal-d1">None of this is on my blog, and none of it is anywhere else. The ten posts in the {{ series.name }} series are free on this site and always will be, and this book is not a repackaging of them. It is the part I had not written.</p>
-    <div class="book-form-embed">
-<script async src="https://eocampaign1.com/form/68d334a0-d8eb-11f1-b81c-5528a71d958f.js" data-form="68d334a0-d8eb-11f1-b81c-5528a71d958f"></script>
-    </div>
-    <p class="book-form-note">One email to confirm your address. The book is one click after that. <a href="/privacy/">What I do with your address.</a></p>
+<!-- 4. THE HONEST PARAGRAPH -->
+<section class="bk-band bk-band--cream">
+  <div class="bk-inner">
+    <p class="bk-honest reveal">None of this is on my blog, and none of it is anywhere else. The ten posts in the {{ series.name }} series are free on this site and always will be, and this book is not a repackaging of them. It is the part I had not written.</p>
   </div>
 </section>
 
-<!-- WHO WROTE IT -->
-<section class="book-sec">
-  <div class="book-inner">
-    <div class="label-row reveal"><span class="lm">Who wrote it</span><span class="gold-rule"></span></div>
-    <div class="book-prose reveal reveal-d1">
+<!-- 5. SECOND FORM -->
+<section class="bk-band bk-band--navy bk-form-band">
+  <div class="bk-inner">
+    <!-- A second copy of the EmailOctopus script renders a second form, but its
+         submit handler binds to the first form only, so the copy here would send
+         the address off-site in a plain GET. This links to the hero form instead. -->
+    <a href="#get-the-book" class="btn btn-gold bk-form-cta">Send me the book</a>
+    <p class="bk-note">One email to confirm your address. The book is one click after that. <a href="/privacy/">What I do with your address.</a></p>
+  </div>
+</section>
+
+<!-- 6. WHO WROTE IT -->
+<section class="bk-band bk-band--cream">
+  <div class="bk-inner">
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Who wrote it</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <div class="bk-prose reveal reveal-d1">
       <p>I am Douglas Ebhoman. I work on documentation systems for DevTools and SaaS companies, mostly API documentation and docs-as-code, from Prague.</p>
       <p>The three audits in chapter 4 are on my own work, and all three found faults. That is the point of them. A worked example on someone else&rsquo;s documentation only proves that their set had problems, which nobody doubted.</p>
     </div>
-    <div class="book-links reveal reveal-d2">
+    <div class="bk-links reveal reveal-d2">
       <a href="{{ series.url }}" class="btn btn-ghost-dark">Read the series</a>
       <a href="/audit/" class="btn btn-ghost-dark">The audit, as a service</a>
     </div>
