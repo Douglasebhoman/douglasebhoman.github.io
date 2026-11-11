@@ -35,10 +35,9 @@ permalink: /book/index.html
     .bk-band--cream{background:var(--cream);}
     .bk-inner{max-width:var(--container);margin:0 auto;position:relative;z-index:1;}
 
-    /* ── Section label: rule, name, diamond ── */
+    /* ── Section label: rule, then name ── */
     .bk-label{display:flex;align-items:center;gap:14px;margin-bottom:28px;}
     .bk-label-rule{width:32px;height:1px;background:var(--gold);flex-shrink:0;}
-    .bk-label-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;}
 
     /* ── 1. Hero ── */
     .bk-hero{padding-top:clamp(64px,10vw,104px);overflow:hidden;border-bottom:1px solid var(--border-dark);}
@@ -153,7 +152,7 @@ permalink: /book/index.html
   <div class="bk-hero-grid"></div>
   <div class="bk-inner bk-hero-inner">
     <div>
-      <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Free book</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+      <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Free book</span></div>
       <h1 class="bk-hero-h1 reveal reveal-d1">Nobody is going to tell you which of your pages stopped being true.</h1>
       <p class="bk-hero-sub reveal reveal-d2">A free book on auditing documentation for the failures that never produce a complaint. Four chapters, a worksheet, and three audits run on real documentation, including mine.</p>
       <p class="bk-hero-claim reveal reveal-d2">In the first audit I ran on my own documentation I found fourteen findings in a set I would have told you was fine, including a live 404 no reader ever reported.</p>
@@ -169,7 +168,7 @@ permalink: /book/index.html
 <!-- 2. WHY IT IS INVISIBLE -->
 <section class="bk-band bk-band--cream">
   <div class="bk-inner">
-    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Why it is invisible</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Why it is invisible</span></div>
     <div class="bk-prose reveal reveal-d1">
       <p>Your documentation does not fail the way software fails. There is no error, no alert, no number that moves. A page stops being true, a reader works around it in four minutes, and nobody files anything.</p>
       <p>The problem is not that the writing is bad. Most documentation that fails is already accurate. The faults that cost your readers time are structural, which is why reading the pages does not find them, and why the person least able to see them is the person who wrote them.</p>
@@ -181,7 +180,7 @@ permalink: /book/index.html
 <!-- 3. WHAT IS IN IT -->
 <section class="bk-band bk-band--navy">
   <div class="bk-inner">
-    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">What is in it</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">What is in it</span></div>
     <ol class="bk-chapters reveal reveal-d1">
       <li class="bk-chapter">
         <span class="bk-chapter-num">1</span>
@@ -229,7 +228,7 @@ permalink: /book/index.html
 <!-- 6. WHO WROTE IT -->
 <section class="bk-band bk-band--cream">
   <div class="bk-inner">
-    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Who wrote it</span><span class="bk-label-diamond" aria-hidden="true"></span></div>
+    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">Who wrote it</span></div>
     <div class="bk-prose reveal reveal-d1">
       <p>I am Douglas Ebhoman. I work on documentation systems for DevTools and SaaS companies, mostly API documentation and docs-as-code, from Prague.</p>
       <p>The three audits in chapter 4 are on my own work, and all three found faults. That is the point of them. A worked example on someone else&rsquo;s documentation only proves that their set had problems, which nobody doubted.</p>
