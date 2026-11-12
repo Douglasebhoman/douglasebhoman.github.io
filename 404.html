@@ -1,3 +1,8 @@
+---
+# Served at /404.html, where GitHub Pages looks for it. This is a template
+# only so its stylesheet links can carry a content hash (the hashed filter).
+permalink: /404.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +13,9 @@
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>" />
 
-  <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}" />
 
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}" />
 
   <style>
     .error-page {

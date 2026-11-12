@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services &mdash; Documentation Audit &middot; Douglas Ebhoman</title>
   <meta name="description" content="Documentation Audit from &euro;300, delivered in five working days. A full review of your documentation against four dimensions: accuracy, structure, ownership, and findability.">
-  <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}">
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}">
 <style>
 /* ── Services-specific styles ── */
 
@@ -620,7 +620,7 @@
 </section>
 
 <!-- THE PROBLEM -->
-<section class="sv-problem reveal">
+<section class="sv-problem" data-reveal>
   <div class="sv-problem-inner">
     <div>
       <div class="label-row"><span class="lm lm--dim">The problem</span><span class="gold-rule"></span></div>
@@ -629,17 +629,17 @@
       <p class="sv-problem-body">The Documentation Audit identifies exactly which of these patterns is active in your system and gives you a ranked action plan for addressing them. Not a general audit. Not a list of suggestions. A precise diagnosis of what is broken and what to fix first.</p>
     </div>
     <div class="sv-failures">
-      <div class="sv-failure reveal">
+      <div class="sv-failure" data-reveal>
         <p class="sv-failure-num">01 &mdash; Failure mode</p>
         <p class="sv-failure-title">It drifts from the product</p>
         <p class="sv-failure-desc">Every sprint ships without a documentation update. The gap between what your product does and what your docs say it does widens quietly, until a user hits it, or a new engineer spends three days in the wrong place.</p>
       </div>
-      <div class="sv-failure reveal reveal-d1">
+      <div class="sv-failure" data-reveal="1">
         <p class="sv-failure-num">02 &mdash; Failure mode</p>
         <p class="sv-failure-title">Nobody owns it</p>
         <p class="sv-failure-desc">Documentation without a named owner is documentation with a countdown timer. When everyone is responsible, no one is. Pages go stale, errors accumulate, and the team stops trusting what they wrote six months ago.</p>
       </div>
-      <div class="sv-failure reveal reveal-d2">
+      <div class="sv-failure" data-reveal="2">
         <p class="sv-failure-num">03 &mdash; Failure mode</p>
         <p class="sv-failure-title">Users cannot find what they need</p>
         <p class="sv-failure-desc">Findability is an architecture problem, not a writing problem. If your readers are searching support channels for answers that live in your docs, the structure is broken, not the content.</p>
@@ -659,19 +659,19 @@
         <!-- Four dimensions -->
         <p style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Four dimensions reviewed</p>
         <div class="sv-dimensions">
-          <div class="sv-dim reveal">
+          <div class="sv-dim" data-reveal>
             <p class="sv-dim-name">Accuracy</p>
             <p class="sv-dim-desc">Is what your docs say what your product actually does? Where is the drift? What created it and how do you close it?</p>
           </div>
-          <div class="sv-dim reveal reveal-d1">
+          <div class="sv-dim" data-reveal="1">
             <p class="sv-dim-name">Architecture</p>
             <p class="sv-dim-desc">Can a reader navigate from their problem to the solution without asking someone? Where does the structure break down?</p>
           </div>
-          <div class="sv-dim reveal reveal-d2">
+          <div class="sv-dim" data-reveal="2">
             <p class="sv-dim-name">Ownership</p>
             <p class="sv-dim-desc">Who is responsible for each section staying accurate? Is that responsibility explicit, or assumed by default?</p>
           </div>
-          <div class="sv-dim reveal reveal-d3">
+          <div class="sv-dim" data-reveal="3">
             <p class="sv-dim-name">Empathy</p>
             <p class="sv-dim-desc">Is your documentation written for the person who built the product, or the person who has to use it? The difference is structural, not stylistic.</p>
           </div>
@@ -705,7 +705,7 @@
 
       <!-- Pricing card -->
       <div>
-        <div class="sv-pricing-card reveal">
+        <div class="sv-pricing-card" data-reveal>
           <div class="sv-pricing-head">
             <p class="sv-pricing-title">Documentation Audit<br><em>I read your docs. You get clarity.</em></p>
             <p class="sv-pricing-sub">Fixed fee &middot; No surprises &middot; 5 working days</p>
@@ -740,30 +740,30 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="sv-process reveal">
+<section class="sv-process" data-reveal>
   <div class="sv-process-inner">
     <div class="label-row"><span class="lm lm--dim">How it works</span><span class="gold-rule"></span></div>
     <h2 class="sv-process-title">From first contact to delivered system.</h2>
     <div class="sv-steps">
-      <div class="sv-step reveal">
+      <div class="sv-step" data-reveal>
         <p class="sv-step-num">Step 01</p>
         <p class="sv-step-title">Audit</p>
         <p class="sv-step-body">You send me the link to your documentation. I review it against the four dimensions: accuracy, structure, ownership, and findability. Every finding is documented with specific evidence, not impressions.</p>
         <p class="sv-step-benefit">You find out exactly what is broken.</p>
       </div>
-      <div class="sv-step reveal reveal-d1">
+      <div class="sv-step" data-reveal="1">
         <p class="sv-step-num">Step 02</p>
         <p class="sv-step-title">Report</p>
         <p class="sv-step-body">Within five working days you receive a written report. Every finding is specific and ranked by impact. You know what to fix first and why, without ambiguity, without guessing.</p>
         <p class="sv-step-benefit">You have a prioritised plan in hand.</p>
       </div>
-      <div class="sv-step reveal reveal-d2">
+      <div class="sv-step" data-reveal="2">
         <p class="sv-step-num">Step 03</p>
         <p class="sv-step-title">Walkthrough</p>
         <p class="sv-step-body">We spend 30 minutes on a call going through the findings. You can ask questions, challenge the conclusions, and leave the call knowing exactly what you need to do next.</p>
         <p class="sv-step-benefit">You leave with clarity, not more questions.</p>
       </div>
-      <div class="sv-step reveal reveal-d3">
+      <div class="sv-step" data-reveal="3">
         <p class="sv-step-num">Step 04</p>
         <p class="sv-step-title">Optionally: build</p>
         <p class="sv-step-body">If you want help implementing the recommendations (architecture, templates, ownership model, deployment pipeline), that&rsquo;s a separate engagement. The audit stands alone.</p>
@@ -774,7 +774,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="sv-faq reveal">
+<section class="sv-faq" data-reveal>
   <div class="sv-faq-inner">
     <div>
       <div class="label-row"><span class="lm">Questions</span><span class="gold-rule"></span></div>
@@ -872,6 +872,6 @@ if(navHamburger&&navLinksEl){
   document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
 }
 </script>
-<script src="/assets/js/reveal.js" defer></script>
+<script src="{{ '/assets/js/reveal.js' | hashed }}" defer></script>
 </body>
 </html>

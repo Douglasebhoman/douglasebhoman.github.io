@@ -1,3 +1,4 @@
+const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
 
@@ -8,7 +9,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy(".nojekyll");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("styles.css");
-  eleventyConfig.addPassthroughCopy("404.html");
   // Favicon files (add more extensions here if favicon assets are added later)
   eleventyConfig.addPassthroughCopy("*.ico");
   eleventyConfig.addPassthroughCopy("*.png");
@@ -71,6 +71,20 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData("series", () =>
     JSON.parse(fs.readFileSync(path.join(__dirname, "blog/posts/posts.json"), "utf8")).series
   );
+
+  // ---------------------------------------------------------------
+  // CACHE BUSTING
+  // "/styles.css" -> "/styles.css?v=3f9a0c21e7", a hash of the file's
+  // current contents, so the URL changes whenever the file does and a
+  // browser holding an older copy fetches the new one. Takes a path
+  // from the site root; a path that does not exist fails the build.
+  // ---------------------------------------------------------------
+  eleventyConfig.addFilter("hashed", (url) => {
+    const file = path.join(__dirname, String(url).replace(/^\//, ""));
+    if (!url.startsWith("/") || !fs.existsSync(file)) throw new Error(`hashed: no file at "${url}"`);
+    const hash = crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex").slice(0, 10);
+    return `${url}?v=${hash}`;
+  });
 
   // 7 -> "07"
   eleventyConfig.addFilter("pad", (n) => String(n).padStart(2, "0"));

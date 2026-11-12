@@ -26,8 +26,8 @@ permalink: /book/index.html
   <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/your-documentation-fails-silently-cover.jpg">
   <title>Your Documentation Fails Silently &mdash; Douglas Ebhoman</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
-  <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}">
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}">
   <style>
     /* ── Bands: full width, navy and cream alternating ── */
     .bk-band{padding:clamp(64px,9vw,104px) var(--pad);position:relative;}
@@ -157,7 +157,7 @@ permalink: /book/index.html
 <!-- 1. HERO -->
 <section class="bk-band bk-band--navy bk-hero" id="top">
   <div class="bk-hero-grid"></div>
-  <div class="bk-inner bk-hero-inner reveal">
+  <div class="bk-inner bk-hero-inner" data-reveal>
     <div>
       <div class="bk-label"><span class="bk-label-rule"></span><span class="lm">Free book</span></div>
       <h1 class="bk-hero-h1">Nobody is going to tell you which of your pages stopped being true.</h1>
@@ -174,7 +174,7 @@ permalink: /book/index.html
 
 <!-- 2. WHY IT IS INVISIBLE -->
 <section class="bk-band bk-band--cream">
-  <div class="bk-inner bk-inner--problem reveal">
+  <div class="bk-inner bk-inner--problem" data-reveal>
     <div class="bk-label"><span class="bk-label-rule"></span><span class="lm">Why it is invisible</span></div>
     <div class="bk-prose">
       <p>Your documentation does not fail the way software fails. There is no error, no alert, no number that moves. A page stops being true, a reader works around it in four minutes, and nobody files anything.</p>
@@ -187,26 +187,26 @@ permalink: /book/index.html
 <!-- 3. WHAT IS IN IT -->
 <section class="bk-band bk-band--navy">
   <div class="bk-inner bk-inner--chapters">
-    <div class="bk-label reveal"><span class="bk-label-rule"></span><span class="lm">What is in it</span></div>
+    <div class="bk-label" data-reveal><span class="bk-label-rule"></span><span class="lm">What is in it</span></div>
     <ol class="bk-chapters">
-      <li class="bk-chapter reveal">
+      <li class="bk-chapter" data-reveal>
         <span class="bk-chapter-num">1</span>
         <div><p class="bk-chapter-title">Accurate and Failing</p><p class="bk-chapter-desc">Why documentation fails without anyone reporting it, why reading cannot find those faults, and why more care is not the answer.</p></div>
       </li>
-      <li class="bk-chapter reveal reveal-d1">
+      <li class="bk-chapter" data-reveal="1">
         <span class="bk-chapter-num">2</span>
         <div><p class="bk-chapter-title">The Complaint Is Not the Problem</p><p class="bk-chapter-desc">How to begin an audit when nobody has complained, which is the normal case and the hard one.</p></div>
       </li>
-      <li class="bk-chapter reveal reveal-d2">
+      <li class="bk-chapter" data-reveal="2">
         <span class="bk-chapter-num">3</span>
         <div><p class="bk-chapter-title">The Documentation Audit</p><p class="bk-chapter-desc">The instrument itself. Connectivity, architecture and feedback, run separately, producing one findings list with an address against every row.</p></div>
       </li>
-      <li class="bk-chapter reveal reveal-d3">
+      <li class="bk-chapter" data-reveal="3">
         <span class="bk-chapter-num">4</span>
         <div><p class="bk-chapter-title">Three Runs</p><p class="bk-chapter-desc">The audit on three real documentation sets, all of them mine. Fourteen findings in a set I would have told you was fine, a published guide with a live 404 that no reader ever mentioned, and one repair that put another page out of date within the hour.</p></div>
       </li>
     </ol>
-    <div class="reveal">
+    <div data-reveal>
       <div class="bk-rule"></div>
       <div class="bk-extras">
         <div><p class="bk-extra-title">The Audit, as a Worksheet</p><p class="bk-extra-desc">The questions with nothing around them, so you can run it without reading the chapter again.</p></div>
@@ -218,7 +218,7 @@ permalink: /book/index.html
 
 <!-- 4. THE HONEST PARAGRAPH AND THE SECOND FORM -->
 <section class="bk-band bk-band--navy bk-form-band">
-  <div class="bk-inner bk-inner--honest reveal">
+  <div class="bk-inner bk-inner--honest" data-reveal>
     <p class="bk-honest">None of this is on my blog, and none of it is anywhere else. The ten posts in the {{ series.name }} series are free on this site and always will be, and this book is not a repackaging of them. It is the part I had not written.</p>
     <!-- A second copy of the EmailOctopus script renders a second form, but its
          submit handler binds to the first form only, so the copy here would send
@@ -230,7 +230,7 @@ permalink: /book/index.html
 
 <!-- 5. WHO WROTE IT -->
 <section class="bk-band bk-band--cream">
-  <div class="bk-inner bk-inner--byline reveal">
+  <div class="bk-inner bk-inner--byline" data-reveal>
     <div class="bk-label"><span class="bk-label-rule"></span><span class="lm">Who wrote it</span></div>
     <div class="bk-prose">
       <p>I am Douglas Ebhoman. I work on documentation systems for DevTools and SaaS companies, mostly API documentation and docs-as-code, from Prague.</p>
@@ -319,6 +319,6 @@ if (navHamburger && navLinksEl) {
   });
 }
 </script>
-<script src="/assets/js/reveal.js" defer></script>
+<script src="{{ '/assets/js/reveal.js' | hashed }}" defer></script>
 </body>
 </html>

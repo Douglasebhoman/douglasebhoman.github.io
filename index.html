@@ -14,8 +14,8 @@
   <meta property="og:image:height" content="627">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/og-home.png">
-  <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}">
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}">
   <style>
     .noise-overlay {
       position: fixed;
@@ -309,7 +309,7 @@
 </div>
 
 <!-- IMPACT METRICS -->
-<section class="metrics reveal">
+<section class="metrics" data-reveal>
   <div class="gradient-mesh" id="metricsMesh">
     <div class="mesh-blob" style="width:400px;height:400px;top:-100px;left:-100px;background:#B8962E;"></div>
     <div class="mesh-blob" style="width:350px;height:350px;bottom:-80px;right:-80px;background:#D4A853;"></div>
@@ -320,19 +320,19 @@
     <p class="metrics-lead">Documentation is a product surface.<br>Treat it like one.</p>
     <p class="metrics-sub">Three things that are true about my work and can be verified right now. <strong>Not estimates. Not projections. Facts.</strong></p>
     <div class="metrics-grid">
-      <div class="metric-card reveal reveal-d1">
+      <div class="metric-card" data-reveal="1">
         <p class="metric-num"><span data-count="6" data-suffix="">0</span></p>
         <p class="metric-title">Publicly accessible portfolio pieces</p>
         <p class="metric-desc">Every piece is version-controlled, live, and readable right now. Not a PDF. Not a screenshot. Documentation you can evaluate the same way a developer would encounter it.</p>
         <span class="metric-honest">All six available at douglasebhoman.com/work</span>
       </div>
-      <div class="metric-card reveal reveal-d2">
+      <div class="metric-card" data-reveal="2">
         <p class="metric-num"><span data-count="10" data-suffix="">0</span></p>
         <p class="metric-title">Published essays on documentation systems</p>
         <p class="metric-desc">Systems Over Sentences is a ten-part series on why documentation fails structurally and what to build instead. Every essay is public, dated, and open for comment.</p>
         <span class="metric-honest">Freelance since November 2025 &middot; API docs &middot; Docs-as-Code</span>
       </div>
-      <div class="metric-card reveal reveal-d3">
+      <div class="metric-card" data-reveal="3">
         <p class="metric-num"><span data-count="5" data-suffix="">0</span></p>
         <p class="metric-title">Working days to audit delivery</p>
         <p class="metric-desc">You send me the link. I send you the report. A written diagnosis, prioritised action plan, and 30-minute walkthrough. Fixed fee. No scope creep.</p>
@@ -343,7 +343,7 @@
 </section>
 
 <!-- PROOF OF VOICE -->
-<section class="pov reveal" id="about">
+<section class="pov" data-reveal id="about">
   <div class="pov-inner">
     <div class="pov-newspaper-hdr">
       <span class="pov-newspaper-label">About the Writer</span>
@@ -368,7 +368,7 @@
 </section>
 
 <!-- HEALTH CHECK -->
-<section class="hc reveal" id="health-check">
+<section class="hc" data-reveal id="health-check">
   <div class="hc-inner">
     <div class="label-row"><span class="lm lm--dim">Documentation health check</span><span class="gold-rule"></span></div>
     <h2 class="hc-title">Is your documentation<br>holding up as your product grows?</h2>
@@ -378,7 +378,7 @@
 </section>
 
 <!-- SELECTED WORK -->
-<section class="work reveal" id="work">
+<section class="work" data-reveal id="work">
   <div class="work-inner">
     <div class="work-header">
       <div>
@@ -388,7 +388,7 @@
       <a href="/work/" class="work-all">View all work &rarr;</a>
     </div>
     <div class="work-grid">
-      <a href="/mkdocs-for-technical-writers/" class="work-card reveal reveal-d1">
+      <a href="/mkdocs-for-technical-writers/" class="work-card" data-reveal="1">
         <div class="work-banner"><img class="work-banner-img" src="assets/images/mkdocs-for-technical-writers-card.png" alt="MkDocs" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Docs-as-Code</span></div>
         <div class="work-body">
           <div class="work-num">01</div>
@@ -399,7 +399,7 @@
           <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
         </div>
       </a>
-      <a href="/openweather-docs/" class="work-card reveal reveal-d2">
+      <a href="/openweather-docs/" class="work-card" data-reveal="2">
         <div class="work-banner"><img class="work-banner-img" src="assets/images/openweather-card.svg" alt="OpenWeather API" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">API Documentation</span></div>
         <div class="work-body">
           <div class="work-num">02</div>
@@ -410,7 +410,7 @@
           <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
         </div>
       </a>
-      <a href="/personal-website-setup-guide/" class="work-card reveal reveal-d1">
+      <a href="/personal-website-setup-guide/" class="work-card" data-reveal="1">
         <div class="work-banner"><img class="work-banner-img" src="assets/images/personal-website-setup-guide.png" alt="Website Setup" onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Infrastructure Docs</span></div>
         <div class="work-body">
           <div class="work-num">03</div>
@@ -421,7 +421,7 @@
           <div class="work-foot"><span class="work-link">Read the documentation</span><span class="work-arrow">&rarr;</span></div>
         </div>
       </a>
-      <a href="https://douglasebhoman.com/site-docs/" class="work-card reveal reveal-d2" target="_blank" rel="noopener noreferrer">
+      <a href="https://douglasebhoman.com/site-docs/" class="work-card" data-reveal="2" target="_blank" rel="noopener noreferrer">
         <div class="work-banner"><img class="work-banner-img" src="assets/images/site-docs-card.png" alt="Screenshot of the douglasebhoman.com site documentation, showing the Deployment page and the navigation." onerror="this.parentElement.style.minHeight='120px';this.remove();"><span class="work-banner-tag">Internal Docs</span></div>
         <div class="work-body">
           <div class="work-num">04</div>
@@ -437,7 +437,7 @@
 </section>
 
 <!-- WRITING SAMPLES -->
-<section class="samples reveal" id="samples">
+<section class="samples" data-reveal id="samples">
   <div class="samples-inner">
     <div class="label-row"><span class="lm">Documentation in practice</span><span class="gold-rule"></span></div>
     <h2 class="work-title" style="margin-bottom:12px;color:var(--text-dark);">Not screenshots. Not PDFs.<br>Actual documentation, rendered live.</h2>
@@ -512,7 +512,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 </section>
 
 <!-- DOCUMENTATION AUDIT -->
-<section class="audit reveal" id="services">
+<section class="audit" data-reveal id="services">
   <div class="audit-inner">
     <div class="label-row"><span class="lm">The service</span><span class="gold-rule"></span></div>
     <div class="audit-split">
@@ -549,18 +549,18 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="process reveal">
+<section class="process" data-reveal>
   <div class="process-inner">
     <div class="label-row"><span class="lm lm--dim">How it works</span><span class="gold-rule"></span></div>
     <h2 class="process-title">From first contact to delivered system.</h2>
     <div class="process-split">
       <div class="process-steps">
-        <div class="process-step reveal"><div class="process-step-num">01</div><div><p class="process-step-title">Audit</p><p class="process-step-body">I review your documentation against four dimensions: accuracy, structure, ownership, and findability. You receive a written report and a 30-minute walkthrough within five working days.</p><p class="process-step-benefit">You find out exactly what is broken.</p></div></div>
-        <div class="process-step reveal reveal-d1"><div class="process-step-num">02</div><div><p class="process-step-title">Diagnose</p><p class="process-step-body">We identify structural problems and prioritise what to fix first, and why. Every recommendation is ranked by impact, not by how easy it is to implement.</p><p class="process-step-benefit">You know where to start.</p></div></div>
-        <div class="process-step reveal reveal-d2"><div class="process-step-num">03</div><div><p class="process-step-title">Build</p><p class="process-step-body">I design and implement the documentation system: architecture, templates, ownership model, deployment pipeline. The kind that stays accurate as your product grows.</p><p class="process-step-benefit">You get a system, not a document.</p></div></div>
-        <div class="process-step reveal reveal-d3"><div class="process-step-num">04</div><div><p class="process-step-title">Hand off</p><p class="process-step-body">Your team owns everything. I document the system itself so you can maintain it without me. The goal is independence, not dependency.</p><p class="process-step-benefit">You don&rsquo;t need me forever.</p></div></div>
+        <div class="process-step" data-reveal><div class="process-step-num">01</div><div><p class="process-step-title">Audit</p><p class="process-step-body">I review your documentation against four dimensions: accuracy, structure, ownership, and findability. You receive a written report and a 30-minute walkthrough within five working days.</p><p class="process-step-benefit">You find out exactly what is broken.</p></div></div>
+        <div class="process-step" data-reveal="1"><div class="process-step-num">02</div><div><p class="process-step-title">Diagnose</p><p class="process-step-body">We identify structural problems and prioritise what to fix first, and why. Every recommendation is ranked by impact, not by how easy it is to implement.</p><p class="process-step-benefit">You know where to start.</p></div></div>
+        <div class="process-step" data-reveal="2"><div class="process-step-num">03</div><div><p class="process-step-title">Build</p><p class="process-step-body">I design and implement the documentation system: architecture, templates, ownership model, deployment pipeline. The kind that stays accurate as your product grows.</p><p class="process-step-benefit">You get a system, not a document.</p></div></div>
+        <div class="process-step" data-reveal="3"><div class="process-step-num">04</div><div><p class="process-step-title">Hand off</p><p class="process-step-body">Your team owns everything. I document the system itself so you can maintain it without me. The goal is independence, not dependency.</p><p class="process-step-benefit">You don&rsquo;t need me forever.</p></div></div>
       </div>
-      <div class="strategy-doc reveal reveal-d1">
+      <div class="strategy-doc" data-reveal="1">
         <div class="strategy-doc-bar"><div class="strategy-doc-dots"><div class="strategy-doc-dot"></div><div class="strategy-doc-dot"></div><div class="strategy-doc-dot"></div></div><span class="strategy-doc-file">docs-strategy.md</span></div>
         <div class="strategy-doc-body">
           <div class="strategy-line"><span class="strategy-ln">1</span><span class="strategy-code"><span class="h1"># Documentation Strategy</span></span></div>
@@ -582,7 +582,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 </section>
 
 <!-- SOCIAL PROOF -->
-<section class="proof reveal">
+<section class="proof" data-reveal>
   <div class="gradient-mesh" id="proofMesh">
     <div class="ambient-orb ambient-orb--gold" style="width:300px;height:300px;top:10%;left:5%;"></div>
     <div class="ambient-orb ambient-orb--warm" style="width:250px;height:250px;bottom:20%;right:10%;"></div>
@@ -594,7 +594,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
     <h2 class="proof-title">In a reader&rsquo;s own words.</h2>
 
     <!-- FEATURED -->
-    <div class="feat reveal">
+    <div class="feat" data-reveal>
       <div class="feat-left">
         <span class="verified">Quoted with permission</span>
         <p class="feat-headline">&ldquo;A must-read if you want to adopt Git and GitHub for product documentation.&rdquo;</p>
@@ -613,7 +613,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
     </div>
 
     <!-- PATTERN STATEMENT -->
-    <div class="proof-pattern reveal">
+    <div class="proof-pattern" data-reveal>
       <div class="proof-pattern-left">
         <p class="proof-pattern-label">What the audit looks for</p>
         <p class="proof-pattern-body">Documentation problems usually present as writing problems: pages out of date, users who cannot find what they need, one engineer who is the only source of truth. Underneath, the cause is often structural. Nobody owns the page, nothing triggers an update, and there is no path from the reader&rsquo;s problem to the answer.</p>
@@ -629,7 +629,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
     </div>
 
     <!-- VERIFIABLE SIGNALS -->
-    <div class="proof-signals reveal">
+    <div class="proof-signals" data-reveal>
       <div class="proof-signal">
         <span class="proof-signal-icon"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
         <span class="proof-signal-text">All six portfolio pieces publicly accessible on <a href="https://github.com/Douglasebhoman" target="_blank" rel="noopener noreferrer">GitHub</a></span>
@@ -645,7 +645,7 @@ git commit -m "docs: clarify token expiry behaviour in auth guide"</code></div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta reveal" id="contact">
+<section class="cta" data-reveal id="contact">
   <div class="gradient-mesh" id="ctaMesh">
     <div class="ambient-orb ambient-orb--gold" style="width:350px;height:350px;top:-100px;right:-100px;"></div>
     <div class="ambient-orb ambient-orb--deep" style="width:280px;height:280px;bottom:-60px;left:-60px;"></div>
@@ -957,7 +957,7 @@ function animateCounter(el) {
 }
 
 /* COUNTERS: start when their block first comes into view (reveal.js) */
-document.querySelectorAll('.reveal').forEach(el => {
+document.querySelectorAll('[data-reveal]').forEach(el => {
   el.addEventListener('reveal', () => el.querySelectorAll('[data-count]').forEach(animateCounter), { once: true });
 });
 
@@ -1035,6 +1035,6 @@ function switchTab(btn, id) {
   let timer = setInterval(() => show(idx + 1), 4000);
 })();
 </script>
-<script src="/assets/js/reveal.js" defer></script>
+<script src="{{ '/assets/js/reveal.js' | hashed }}" defer></script>
 </body>
 </html>

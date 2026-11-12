@@ -20,8 +20,8 @@
   <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/og-audit.png">
   <title>Documentation Audit &mdash; Douglas Ebhoman</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2318222C'/><text x='50%25' y='50%25' font-family='Georgia,serif' font-size='20' font-weight='bold' fill='%23B8962E' text-anchor='middle' dominant-baseline='central'>D</text></svg>">
-  <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}">
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}">
   <style>
     /* ── Audit hero ── */
     .audit-page-hero{background:var(--navy);padding:clamp(64px,10vw,96px) var(--pad) clamp(56px,8vw,80px);position:relative;overflow:hidden;border-bottom:1px solid var(--border-dark);}
@@ -165,19 +165,19 @@
 <section class="audit-page-hero" id="top">
   <div class="audit-hero-grid"></div>
   <div class="audit-hero-inner">
-    <div class="label-row reveal"><span class="lm lm--dim">Documentation Audit</span><span class="gold-rule"></span></div>
-    <h1 class="audit-hero-h1 reveal reveal-d1">Find out what is breaking<br>in your documentation.<br><em>Free, in 2 minutes.</em></h1>
-    <p class="audit-hero-sub reveal reveal-d2">Most documentation problems are invisible until a user hits them. The health check surfaces them before that happens.</p>
+    <div class="label-row" data-reveal><span class="lm lm--dim">Documentation Audit</span><span class="gold-rule"></span></div>
+    <h1 class="audit-hero-h1" data-reveal="1">Find out what is breaking<br>in your documentation.<br><em>Free, in 2 minutes.</em></h1>
+    <p class="audit-hero-sub" data-reveal="2">Most documentation problems are invisible until a user hits them. The health check surfaces them before that happens.</p>
   </div>
 </section>
 
 <!-- STEP 1: FREE HEALTH CHECK -->
 <section class="audit-hc-sec" id="health-check">
   <div class="audit-hc-inner">
-    <div class="label-row reveal"><span class="lm lm--dim">Step 1 &mdash; Take the free health check</span><span class="gold-rule"></span></div>
-    <p class="audit-hc-intro reveal reveal-d1">Answer six questions about how your documentation actually works. You will get an instant score across three dimensions with specific findings.</p>
+    <div class="label-row" data-reveal><span class="lm lm--dim">Step 1 &mdash; Take the free health check</span><span class="gold-rule"></span></div>
+    <p class="audit-hc-intro" data-reveal="1">Answer six questions about how your documentation actually works. You will get an instant score across three dimensions with specific findings.</p>
 
-    <div class="reveal reveal-d2">
+    <div data-reveal="2">
 {% set bookingBlock = true %}{% include "partials/health-check.njk" %}
     </div>
   </div>
@@ -186,23 +186,23 @@
 <!-- STEP 2: WHAT THE PAID AUDIT COVERS -->
 <section class="audit-covers-sec" id="audit-covers">
   <div class="audit-covers-inner">
-    <div class="audit-covers-head reveal">
+    <div class="audit-covers-head" data-reveal>
       <div class="label-row" style="margin-bottom:14px;"><span class="lm">Step 2 &mdash; The full audit</span><span class="gold-rule"></span></div>
       <h2 class="audit-covers-h2">Three audits in one engagement.</h2>
       <p class="audit-covers-sub">The health check tells you where the problems are. The paid audit tells you exactly why they exist and what to do about them.</p>
     </div>
     <div class="audit-covers-grid">
-      <div class="audit-cover-col reveal">
+      <div class="audit-cover-col" data-reveal>
         <div class="audit-cover-num">01</div>
         <h3 class="audit-cover-title">Connectivity audit</h3>
         <p class="audit-cover-desc">Every link, every cross-reference, every dead end. I trace the paths a reader actually takes through your documentation and identify every point where the path breaks. Broken links are the visible failure. Missing links are the expensive one.</p>
       </div>
-      <div class="audit-cover-col reveal reveal-d1">
+      <div class="audit-cover-col" data-reveal="1">
         <div class="audit-cover-num">02</div>
         <h3 class="audit-cover-title">Architecture audit</h3>
         <p class="audit-cover-desc">Whether the structure reflects the current product, not the product at launch. Documentation architecture drifts silently. Features get added, sections get orphaned, and the navigation stops making sense to anyone who didn&rsquo;t build it. I map the gap between what exists and what your users actually need.</p>
       </div>
-      <div class="audit-cover-col reveal reveal-d2">
+      <div class="audit-cover-col" data-reveal="2">
         <div class="audit-cover-num">03</div>
         <h3 class="audit-cover-title">Feedback audit</h3>
         <p class="audit-cover-desc">Whether the documentation system is built to improve or built to stagnate. Good documentation has a feedback mechanism. Most documentation doesn&rsquo;t. I assess whether your system can learn from users and evolve, or whether it is structurally unable to change without a major rewrite.</p>
@@ -214,31 +214,31 @@
 <!-- WHAT YOU RECEIVE -->
 <section class="audit-delivers-sec">
   <div class="audit-delivers-inner">
-    <div class="label-row reveal"><span class="lm lm--dim">What you receive</span><span class="gold-rule"></span></div>
-    <h2 class="audit-delivers-h2 reveal reveal-d1">Everything you need to<br>act on the findings immediately.</h2>
+    <div class="label-row" data-reveal><span class="lm lm--dim">What you receive</span><span class="gold-rule"></span></div>
+    <h2 class="audit-delivers-h2" data-reveal="1">Everything you need to<br>act on the findings immediately.</h2>
     <div class="audit-delivers-list">
-      <div class="audit-deliver-item reveal">
+      <div class="audit-deliver-item" data-reveal>
         <div class="audit-deliver-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <p class="audit-deliver-title">Written audit report (PDF)</p>
           <p class="audit-deliver-desc">A full written diagnosis of your documentation system, structured by the three audit dimensions. Every finding is specific. Every problem has a page reference, not a vague summary.</p>
         </div>
       </div>
-      <div class="audit-deliver-item reveal reveal-d1">
+      <div class="audit-deliver-item" data-reveal="1">
         <div class="audit-deliver-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <p class="audit-deliver-title">Prioritised action plan</p>
           <p class="audit-deliver-desc">Every finding ranked by impact, not by how easy it is to fix. You know exactly what to address first and why. No open-ended recommendations. No generic best-practice lists.</p>
         </div>
       </div>
-      <div class="audit-deliver-item reveal reveal-d2">
+      <div class="audit-deliver-item" data-reveal="2">
         <div class="audit-deliver-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <p class="audit-deliver-title">30-minute walkthrough call</p>
           <p class="audit-deliver-desc">I walk you through every finding. You can ask questions, push back, and leave the call knowing exactly what happens next. Included in the fixed fee.</p>
         </div>
       </div>
-      <div class="audit-deliver-item reveal reveal-d3">
+      <div class="audit-deliver-item" data-reveal="3">
         <div class="audit-deliver-check"><svg viewBox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div>
           <p class="audit-deliver-title">14-day follow-up check</p>
@@ -252,18 +252,18 @@
 <!-- WHO THIS IS FOR -->
 <section class="audit-who-sec">
   <div class="audit-who-inner">
-    <div class="label-row reveal"><span class="lm">Who this is for</span><span class="gold-rule"></span></div>
-    <h2 class="audit-who-h2 reveal reveal-d1">Three situations where the audit pays for itself.</h2>
+    <div class="label-row" data-reveal><span class="lm">Who this is for</span><span class="gold-rule"></span></div>
+    <h2 class="audit-who-h2" data-reveal="1">Three situations where the audit pays for itself.</h2>
     <div class="audit-who-grid">
-      <div class="audit-who-item reveal">
+      <div class="audit-who-item" data-reveal>
         <span class="audit-who-label">Founder</span>
         <p class="audit-who-text">Your product is scaling faster than your documentation. Every sprint ships. Your docs are <strong>one sprint behind, then two, then six</strong>. Your users are navigating by instinct and your support queue is the proof. The audit tells you exactly where the documentation system broke down and what to fix before the gap becomes structural.</p>
       </div>
-      <div class="audit-who-item reveal reveal-d1">
+      <div class="audit-who-item" data-reveal="1">
         <span class="audit-who-label">Engineering team</span>
         <p class="audit-who-text">Your support tickets reference the same documentation pages repeatedly. The same questions come up in Slack every week. <strong>Engineers are answering questions that should be answered by docs.</strong> The audit identifies which specific pages are failing, why users are not finding the answers they need, and what would have to change for the documentation to start deflecting tickets.</p>
       </div>
-      <div class="audit-who-item reveal reveal-d2">
+      <div class="audit-who-item" data-reveal="2">
         <span class="audit-who-label">Technical writer</span>
         <p class="audit-who-text">You inherited a documentation system you did not build and <strong>cannot fully trust</strong>. You do not know what is accurate, what is out of date, or what the original structure was trying to solve. The audit gives you a baseline: a complete picture of what exists, what is broken, and what a realistic improvement path looks like.</p>
       </div>
@@ -274,9 +274,9 @@
 <!-- FAQ -->
 <section class="audit-faq-sec">
   <div class="audit-faq-inner">
-    <div class="label-row reveal"><span class="lm">Common questions</span><span class="gold-rule"></span></div>
-    <h2 class="audit-faq-h2 reveal reveal-d1">Everything you need to know<br>before booking.</h2>
-    <div class="faq-list reveal reveal-d2">
+    <div class="label-row" data-reveal><span class="lm">Common questions</span><span class="gold-rule"></span></div>
+    <h2 class="audit-faq-h2" data-reveal="1">Everything you need to know<br>before booking.</h2>
+    <div class="faq-list" data-reveal="2">
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -336,14 +336,14 @@
 <section class="audit-final-sec" id="book">
   <div class="audit-final-grid"></div>
   <div class="audit-final-inner">
-    <div class="label-row reveal" style="justify-content:center;"><span class="lm lm--dim">Get started</span><span class="gold-rule"></span></div>
-    <h2 class="audit-final-h2 reveal reveal-d1">Ready to find out<br>what is broken?</h2>
-    <div class="audit-final-actions reveal reveal-d2">
+    <div class="label-row" data-reveal style="justify-content:center;"><span class="lm lm--dim">Get started</span><span class="gold-rule"></span></div>
+    <h2 class="audit-final-h2" data-reveal="1">Ready to find out<br>what is broken?</h2>
+    <div class="audit-final-actions" data-reveal="2">
       <a href="https://calendly.com/douglas-douglasebhoman/30min" class="btn btn-gold" target="_blank" rel="noopener noreferrer">Book the Documentation Audit &rarr;</a>
       <span class="audit-final-price">&euro;300</span>
     </div>
     <p class="price-note price-note--platform">This is the direct booking price. The audit is also offered on Upwork as three packages, from $150 to $650, each with its own scope and priced in US dollars.</p>
-    <p class="audit-final-guarantee reveal reveal-d3">If the audit does not surface at least three actionable findings, you pay nothing.</p>
+    <p class="audit-final-guarantee" data-reveal="3">If the audit does not surface at least three actionable findings, you pay nothing.</p>
   </div>
 </section>
 
@@ -437,6 +437,6 @@ function toggleFaq(btn) {
   }
 }
 </script>
-<script src="/assets/js/reveal.js" defer></script>
+<script src="{{ '/assets/js/reveal.js' | hashed }}" defer></script>
 </body>
 </html>

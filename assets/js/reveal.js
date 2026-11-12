@@ -1,18 +1,24 @@
 /* Scroll reveal, shared by every page.
 
-   Elements marked .reveal fade in and rise 16px the first time they scroll into
-   view, once. reveal-d1 to reveal-d3 delay an element by 100 to 300ms, to stagger
-   neighbours.
+   Elements marked data-reveal fade in and rise 16px the first time they scroll
+   into view, once. data-reveal="1" to "3" delays an element by 100 to 300ms, to
+   stagger neighbours.
+
+   It is an attribute, not a class, because the site once revealed a .reveal
+   class with the hidden state in styles.css. A browser still holding that
+   stylesheet would hide anything marked .reveal for good; it has no rule for
+   data-reveal.
 
    The hidden state is set here, never in a stylesheet, so with JavaScript off
    nothing is hidden. Nothing is hidden either when the reader prefers reduced
    motion, or when the element is already on screen at load, which avoids a
    flash of visible, hidden, visible.
 
-   Every .reveal element gets a "reveal" event the first time it comes into view,
-   animated or not, for pages that start something then (the homepage counters). */
+   Every data-reveal element gets a "reveal" event the first time it comes into
+   view, animated or not, for pages that start something then (the homepage
+   counters). */
 (() => {
-  const els = document.querySelectorAll('.reveal');
+  const els = document.querySelectorAll('[data-reveal]');
   if (!els.length || !('IntersectionObserver' in window)) return;
 
   const DURATION = 400, RISE = 16;
@@ -26,8 +32,8 @@
   };
 
   const show = (el) => {
-    const step = el.className.match(/\breveal-d([1-3])\b/);
-    const delay = step ? step[1] * 100 : 0;
+    const step = Number(el.dataset.reveal);
+    const delay = step >= 1 && step <= 3 ? step * 100 : 0;
     el.style.transition = `opacity ${DURATION}ms ease-out ${delay}ms, transform ${DURATION}ms ease-out ${delay}ms`;
     el.style.opacity = '';
     el.style.transform = '';

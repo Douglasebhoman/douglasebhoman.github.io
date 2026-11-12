@@ -14,8 +14,8 @@
   <meta property="og:image:height" content="627">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://douglasebhoman.com/assets/images/og-blog.png">
-  <link rel="stylesheet" href="../assets/fonts/fonts.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="{{ '/assets/fonts/fonts.css' | hashed }}">
+  <link rel="stylesheet" href="{{ '/styles.css' | hashed }}">
 <style>
 /* ── Critical base (self-contained) ── */
 :root {
@@ -296,7 +296,7 @@ a{color:inherit;text-decoration:none;}
     <p class="blog-series-sub">A complete series for technical writers and the founders who work with them. Start from Part 01 or jump to wherever you are.</p>
     <div class="blog-series-parts">
       {%- for p in collections.postsAsc %}
-      <a href="{{ p.url }}" class="blog-series-part{% if p.data.part == latest.data.part %} blog-series-part--active{% endif %} reveal">
+      <a href="{{ p.url }}" class="blog-series-part{% if p.data.part == latest.data.part %} blog-series-part--active{% endif %}" data-reveal>
         <p class="blog-series-part-num">Part {{ p.data.part | pad }}{% if p.data.part == latest.data.part %} &mdash; Latest{% endif %}</p>
         <p class="blog-series-part-title">{{ p.data.title }}</p>
       </a>
@@ -313,7 +313,7 @@ a{color:inherit;text-decoration:none;}
 
     <div class="blog-grid">
       {%- for p in collections.posts %}
-      <a href="{{ p.url }}" class="blog-card reveal">
+      <a href="{{ p.url }}" class="blog-card" data-reveal>
         <div class="blog-card-banner"><img src="../assets/images/{{ p.data.cardImage }}" alt="{{ p.data.title }}" loading="lazy"></div>
         <div class="blog-card-body">
           <div class="blog-card-cat"><span class="blog-card-cat-dot"></span>Part {{ p.data.part | pad }} &middot; {{ series.name }}</div>
@@ -431,6 +431,6 @@ if(navHamburger&&navLinksEl){
   document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
 }
 </script>
-<script src="/assets/js/reveal.js" defer></script>
+<script src="{{ '/assets/js/reveal.js' | hashed }}" defer></script>
 </body>
 </html>
