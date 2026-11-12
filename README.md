@@ -16,7 +16,7 @@ output to GitHub Pages.
 | `/work/` | Work | Full grid of documentation portfolio pieces |
 | `/services/` | Services | Documentation Audit — €300 fixed-fee service, deliverables, FAQ |
 | `/audit/` | Audit | Standalone audit booking page with Calendly embed |
-| `/book/` | Book | Free book landing page with the EmailOctopus sign-up form. Source is `book-landing/index.html`, which sets its own permalink, because the build ignores `book/`. Not in the main navigation |
+| `/book/` | Book | Free book landing page with the EmailOctopus sign-up form. Source is `book-landing/index.html`, which sets its own permalink, because the build ignores `book/`. In the main navigation as FREE BOOK |
 | `/privacy/` | Privacy | Privacy notice for the site and the book page: what is collected, processors, retention, GDPR rights. Linked from the book page's sign-up form |
 | `/blog/` | Blog index | Systems Over Sentences series — article grid and newsletter |
 | `/blog/posts/<slug>/` | Blog post | One page per post, generated from the post file and the shared post layout |
