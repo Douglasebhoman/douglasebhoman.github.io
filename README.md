@@ -28,6 +28,7 @@ output to GitHub Pages.
 | --- | --- |
 | `styles.css` | Global stylesheet shared across all pages |
 | `assets/images/` | All site images — portfolio cards, blog post covers, headshots |
+| `assets/js/reveal.js` | The scroll reveal, shared by every page that uses `.reveal` |
 | `CNAME` | Custom domain record for GitHub Pages (`douglasebhoman.com`) |
 | `sitemap.njk` | Generates `/sitemap.xml`. Blog post entries come from the posts collection. Other entries are written by hand |
 | `eleventy.config.js` | Eleventy configuration: copied files, ignored files and the posts collections |
@@ -68,7 +69,7 @@ All interactions live in a single `<script>` block before `</body>` in
 | Scroll progress bar | Gold bar across the top of the viewport tracking scroll depth |
 | Nav scroll state | Nav gains `scrolled` class after 40px scroll, triggering shadow |
 | Ambient orb animation | Three blurred gold gradients animate on a sine-wave path |
-| Scroll reveals | `IntersectionObserver` fades `.reveal` elements up as they enter the viewport |
+| Scroll reveals | `assets/js/reveal.js` fades `.reveal` elements in and up 16px over 400ms as they first enter the viewport, once. `reveal-d1` to `reveal-d3` stagger by 100ms steps. Off for `prefers-reduced-motion` |
 | Animated counters | Stat numbers count up when visible — runs once per element |
 | Typewriter effect | Cycles through three code snippets in the hero panel |
 | Social proof carousel | Auto-rotating three-item carousel with dot indicators, 4s per item |
@@ -181,7 +182,7 @@ published posts.
 - `img { display: block; max-width: 100%; height: auto; }` global reset in `styles.css`
 - Page-specific styles live in a `<style>` block in each page's `<head>`
 - Global styles that apply across all pages live in `styles.css`
-- Scroll reveal: `.reveal` elements gain `.visible` via `IntersectionObserver`
+- Scroll reveal: mark an element `.reveal` and load `/assets/js/reveal.js`. The script sets the hidden state itself, so there is no reveal CSS, and with JavaScript off nothing is hidden. It fires a `reveal` event on each element the first time it comes into view
 - Focus ring: `outline: 2px solid var(--gold); outline-offset: 3px` on all interactive elements via `:focus-visible`
 - Responsive breakpoints: `768px` (mobile), `600px` (contact grid collapse), `480px` (small mobile)
 

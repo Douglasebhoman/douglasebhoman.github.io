@@ -864,9 +864,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('nav').className = 'nav' + (s > 40 ? ' scrolled' : '');
 }, { passive: true });
 
-const obs = new IntersectionObserver(e => e.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); }), { threshold: .1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
 const navHamburger=document.getElementById('navHamburger');
 const navLinksEl=document.getElementById('navLinks');
 if(navHamburger&&navLinksEl){
@@ -875,5 +872,6 @@ if(navHamburger&&navLinksEl){
   document.addEventListener('click',e=>{if(!navLinksEl.contains(e.target)&&!navHamburger.contains(e.target)){navLinksEl.classList.remove('open');navHamburger.classList.remove('open');navHamburger.setAttribute('aria-expanded','false');}});
 }
 </script>
+<script src="/assets/js/reveal.js" defer></script>
 </body>
 </html>

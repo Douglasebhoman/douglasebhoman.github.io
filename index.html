@@ -956,17 +956,10 @@ function animateCounter(el) {
   requestAnimationFrame(update);
 }
 
-/* SCROLL REVEAL */
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      e.target.querySelectorAll('[data-count]').forEach(animateCounter);
-      revealObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+/* COUNTERS: start when their block first comes into view (reveal.js) */
+document.querySelectorAll('.reveal').forEach(el => {
+  el.addEventListener('reveal', () => el.querySelectorAll('[data-count]').forEach(animateCounter), { once: true });
+});
 
 /* COMMAND PALETTE */
 const cmdItems = [
@@ -1042,5 +1035,6 @@ function switchTab(btn, id) {
   let timer = setInterval(() => show(idx + 1), 4000);
 })();
 </script>
+<script src="/assets/js/reveal.js" defer></script>
 </body>
 </html>

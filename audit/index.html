@@ -423,17 +423,6 @@ if (navHamburger && navLinksEl) {
   });
 }
 
-/* Scroll reveal */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      revealObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
 /* FAQ accordion */
 function toggleFaq(btn) {
   const item = btn.closest('.faq-item');
@@ -448,5 +437,6 @@ function toggleFaq(btn) {
   }
 }
 </script>
+<script src="/assets/js/reveal.js" defer></script>
 </body>
 </html>
