@@ -115,8 +115,14 @@ permalink: /book/index.html
       .nav-hamburger{display:flex;}
     }
     @media(max-width:768px){
-      .bk-hero-inner{grid-template-columns:1fr;}
-      .bk-cover{width:220px;margin:8px auto 0;}
+      /* One column, with the cover between the subhead and the finding line.
+         The text column's children join the hero grid directly so the cover
+         can be ordered among them; the gap between grid rows is dropped
+         because those children keep their own margins, as before. */
+      .bk-hero-inner{grid-template-columns:1fr;row-gap:0;}
+      .bk-hero-inner > div:first-child{display:contents;}
+      .bk-hero-claim,.bk-hero .bk-form,.bk-hero .bk-note{order:2;}
+      .bk-cover{order:1;width:220px;margin:28px auto 4px;}
     }
     @media(max-width:560px){
       .bk-form [data-form] .emailoctopus-form .main-form{flex-direction:column;}
