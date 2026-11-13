@@ -33,6 +33,7 @@ output to GitHub Pages.
 | `sitemap.njk` | Generates `/sitemap.xml`. Blog post entries come from the posts collection. Other entries are written by hand |
 | `eleventy.config.js` | Eleventy configuration: copied files, ignored files and the posts collections |
 | `_includes/layouts/post.html` | Shared layout for every blog post |
+| `_includes/partials/site-footer.njk` | The site footer, included by the homepage, services, work, audit, blog, privacy and book pages. Blog posts and the 404 page have their own |
 | `.github/workflows/deploy.yml` | Builds the site and deploys it to GitHub Pages |
 | `robots.txt` | Crawler directives |
 | `.nojekyll` | Prevents GitHub Pages from running Jekyll on the repository |
