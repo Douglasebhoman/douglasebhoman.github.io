@@ -517,28 +517,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .f-inner{max-width:var(--container);margin:0 auto;}
 .f-brand{padding:clamp(28px,5vw,48px) var(--pad);display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06);}
 .f-logo{font-family:var(--serif);font-size:20px;font-weight:300;color:#fff;letter-spacing:-.01em;margin-bottom:7px;}
-.f-tagline{font-family:var(--serif);font-size:13px;font-style:italic;color:rgba(255,255,255,.3);line-height:1.6;margin-bottom:14px;}
+.f-tagline{font-family:var(--serif);font-size:13px;font-style:italic;color:rgba(255,255,255,.47);line-height:1.6;margin-bottom:14px;}
 .f-avail{display:flex;align-items:center;gap:8px;}
 .f-avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite;}
 @media (prefers-reduced-motion:reduce){.f-avail-dot{animation:none;}}
-/* Footer text opacities are the lowest that meet WCAG AA on the navy:
-   .47 white is 4.61:1 (text, 4.5 needed), .34 white is 3.08:1 (the arrow,
-   a non-text control, 3 needed). One step lower fails either. */
+/* Footer body text is one baseline, white .47, the lowest that meets WCAG AA
+   on the navy: 4.61:1 (4.5 needed). The arrow, a non-text control, is .34,
+   3.08:1 (3 needed). One step lower fails either. The audit link, an action,
+   is .52, 5.33:1: above the text around it, below the book button's gold
+   label (5.71:1), so the book stays the brightest action. */
 .f-avail-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.47);}
 /* The book is the footer's one button; the audit is a text link under it */
 .f-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:center;}
 .f-book-btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:10px 18px;transition:background var(--fast),color var(--fast);}
 .f-book-btn:hover{background:var(--gold);color:var(--navy);}
-.f-audit-link{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.45);text-decoration:underline;text-decoration-color:rgba(255,255,255,.2);text-underline-offset:3px;transition:color var(--fast);}
+.f-audit-link{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.52);text-decoration:underline;text-decoration-color:rgba(255,255,255,.2);text-underline-offset:3px;transition:color var(--fast);}
 .f-audit-link:hover{color:var(--gold-light);}
 /* Navigation on the left, email and icons on the right; they stack when narrow */
 .f-nav{padding:clamp(24px,4vw,36px) var(--pad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px 40px;border-bottom:1px solid rgba(255,255,255,.06);}
 .f-links{display:flex;flex-wrap:wrap;gap:10px 24px;}
-.f-links a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.35);transition:color var(--fast);line-height:1.5;}
+.f-links a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.47);transition:color var(--fast);line-height:1.5;}
 .f-links a:hover{color:var(--gold-light);}
 .f-contact{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;}
 /* nowrap: the address never breaks mid-word */
-.f-email{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.4);white-space:nowrap;transition:color var(--fast);}
+.f-email{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.47);white-space:nowrap;transition:color var(--fast);}
 .f-email:hover{color:var(--gold-light);}
 .f-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;color:rgba(255,255,255,.45);transition:color var(--fast);}
 .f-icon svg{display:block;}
