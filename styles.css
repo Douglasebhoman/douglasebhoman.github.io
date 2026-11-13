@@ -521,7 +521,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .f-avail{display:flex;align-items:center;gap:8px;}
 .f-avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite;}
 @media (prefers-reduced-motion:reduce){.f-avail-dot{animation:none;}}
-.f-avail-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.25);}
+/* Footer text opacities are the lowest that meet WCAG AA on the navy:
+   .47 white is 4.61:1 (text, 4.5 needed), .34 white is 3.08:1 (the arrow,
+   a non-text control, 3 needed). One step lower fails either. */
+.f-avail-text{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.47);}
 /* The book is the footer's one button; the audit is a text link under it */
 .f-actions{display:flex;flex-direction:column;align-items:flex-end;gap:14px;align-self:center;}
 .f-book-btn{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:10px 18px;transition:background var(--fast),color var(--fast);}
@@ -541,10 +544,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .f-icon svg{display:block;}
 .f-icon:hover{color:var(--gold-light);}
 .f-bottom{padding:18px var(--pad);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
-.f-copy{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.18);}
-.f-copy a{color:inherit;text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
-.f-copy a:hover{color:var(--gold);}
-.f-back{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.18);text-decoration:none;padding:6px 8px;margin:-6px -8px;transition:color var(--fast);}
+.f-copy{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.47);}
+/* Privacy is gold and underlined, the site's in-text link treatment, so it
+   reads as a link and not as part of the line (5.71:1) */
+.f-copy a{color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color var(--fast);}
+.f-copy a:hover{color:var(--gold-light);}
+.f-back{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.34);text-decoration:none;padding:6px 8px;margin:-6px -8px;transition:color var(--fast);}
 .f-back:hover{color:var(--gold);}
 
 
